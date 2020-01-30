@@ -1,0 +1,25 @@
+<resources>
+    <string-array name="kin">
+        <item isEnabled="false">Choose a kin</item>
+        <item>Human</item>
+        <item>Elf</item>
+        <item>Halfling</item>
+        <item>Dwarf</item>
+        <item>Orc</item>
+        <item>Wolfkin</item>
+        <item>Goblin</item>
+    </string-array>
+
+    <string-array name="profession">
+        <item isEnabled="false">Choose a profession</item>
+        <item>Fighter</item>
+        <item>Druid</item>
+        <item>Thief</item>
+        <item>Minstrel</item>
+        <item>Sorceror</item>
+        <item>Hunter</item>
+        <item>Rider</item>
+        <item>Peddler</item>
+    </string-array>
+
+</resources>

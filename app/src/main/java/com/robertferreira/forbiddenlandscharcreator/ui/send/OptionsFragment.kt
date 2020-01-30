@@ -1,4 +1,4 @@
-package com.robertferreira.forbiddenlandscharcreator.ui.tools
+package com.robertferreira.forbiddenlandscharcreator.ui.send
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.robertferreira.forbiddenlandscharcreator.R
 
-class ToolsFragment : Fragment() {
+class OptionsFragment : Fragment() {
 
-    private lateinit var toolsViewModel: ToolsViewModel
+    private lateinit var sendViewModel: OptionsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        toolsViewModel =
-                ViewModelProviders.of(this).get(ToolsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_tools, container, false)
-        val textView: TextView = root.findViewById(R.id.text_tools)
-        toolsViewModel.text.observe(this, Observer {
+        sendViewModel =
+                ViewModelProviders.of(this).get(OptionsViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_options, container, false)
+        val textView: TextView = root.findViewById(R.id.text_send)
+        sendViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

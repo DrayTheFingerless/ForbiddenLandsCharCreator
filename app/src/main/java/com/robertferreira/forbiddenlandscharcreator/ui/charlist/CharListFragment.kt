@@ -1,4 +1,4 @@
-package com.robertferreira.forbiddenlandscharcreator.ui.gallery
+package com.robertferreira.forbiddenlandscharcreator.ui.charlist
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.robertferreira.forbiddenlandscharcreator.R
 
-class GalleryFragment : Fragment() {
+class CharListFragment : Fragment() {
 
-    private lateinit var galleryViewModel: GalleryViewModel
+    private lateinit var charListViewModel: CharListViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_gallery, container, false)
+        charListViewModel =
+                ViewModelProviders.of(this).get(CharListViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_charlist, container, false)
         val textView: TextView = root.findViewById(R.id.text_gallery)
-        galleryViewModel.text.observe(this, Observer {
+        charListViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

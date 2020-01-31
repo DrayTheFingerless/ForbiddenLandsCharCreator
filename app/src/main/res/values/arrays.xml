@@ -22,4 +22,10 @@
         <item>Peddler</item>
     </string-array>
 
+    <string-array name="age">
+        <item isEnabled="false">Choose an age range</item>
+        <item>Young</item>
+        <item>Adult</item>
+        <item>Old</item>
+    </string-array>
 </resources>

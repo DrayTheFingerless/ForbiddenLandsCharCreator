@@ -5,7 +5,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">New Character</string>
+    <string name="menu_home">Home</string>
     <string name="menu_new">New Character</string>
     <string name="menu_list">My Characters</string>
     <string name="menu_options">Options</string>

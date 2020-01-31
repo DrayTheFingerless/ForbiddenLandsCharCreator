@@ -2,21 +2,21 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/nav_home">
     <fragment
-        android:id="@+id/charCreationFragment"
-        android:name="com.robertferreira.forbiddenlandscharcreator.ui.charcreation.CharCreationFragment"
-        android:label="CharCreationFragment" />
-    <fragment
-        android:id="@+id/charListFragment"
-        android:name="com.robertferreira.forbiddenlandscharcreator.ui.charlist.CharListFragment"
-        android:label="CharListFragment" />
-    <fragment
-        android:id="@+id/optionsFragment"
-        android:name="com.robertferreira.forbiddenlandscharcreator.ui.send.OptionsFragment"
-        android:label="OptionsFragment" />
-    <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/nav_home"
         android:name="com.robertferreira.forbiddenlandscharcreator.ui.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="Home" />
+    <fragment
+        android:id="@+id/nav_new"
+        android:name="com.robertferreira.forbiddenlandscharcreator.ui.charcreation.CharCreationFragment"
+        android:label="Character Creation" />
+    <fragment
+        android:id="@+id/nav_list"
+        android:name="com.robertferreira.forbiddenlandscharcreator.ui.charlist.CharListFragment"
+        android:label="Character List" />
+    <fragment
+        android:id="@+id/nav_options"
+        android:name="com.robertferreira.forbiddenlandscharcreator.ui.options.OptionsFragment"
+        android:label="Options" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.robertferreira.forbiddenlandscharcreator.ui.send
+package com.robertferreira.forbiddenlandscharcreator.ui.options
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

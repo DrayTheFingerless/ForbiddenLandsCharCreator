@@ -1,4 +1,4 @@
-package com.robertferreira.forbiddenlandscharcreator.ui.send
+package com.robertferreira.forbiddenlandscharcreator.ui.options
 
 import android.os.Bundle
 import android.view.LayoutInflater

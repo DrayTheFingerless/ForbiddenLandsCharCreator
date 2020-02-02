@@ -3,10 +3,14 @@ package com.robertferreira.forbiddenlandscharcreator.ui.charcreation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.robertferreira.forbiddenlandscharcreator.FLCharacter
 
 class CharCreationViewModel : ViewModel() {
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is creation Fragment"
+    private val character = MutableLiveData<FLCharacter>().apply {
+        value = FLCharacter()
     }
-    val text: LiveData<String> = _text
+
+    val char: LiveData<FLCharacter> = character
+
+
 }

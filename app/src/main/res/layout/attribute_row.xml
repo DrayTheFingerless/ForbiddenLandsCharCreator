@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:background="#00ffffff"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:id = "@+id/my_stepper">
+
+    <ImageButton
+        android:id="@+id/stepper_remove"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:contentDescription="removeButton"
+        android:src="@drawable/ic_remove" />
+
+    <TextView
+        android:id="@+id/stepper_value"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_weight="1"
+        android:gravity="center" />
+
+    <ImageButton
+        android:id="@+id/stepper_add"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:contentDescription="addButton"
+        android:src="@drawable/ic_add_black" />
+
+</LinearLayout>

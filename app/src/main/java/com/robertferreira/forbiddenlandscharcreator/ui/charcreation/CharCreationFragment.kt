@@ -5,10 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProviders
-import com.robertferreira.forbiddenlandscharcreator.R
 import com.robertferreira.forbiddenlandscharcreator.ui.charlist.CharListViewModel
 import androidx.fragment.app.Fragment
 import android.widget.*
+import com.robertferreira.forbiddenlandscharcreator.*
 import kotlinx.android.synthetic.main.fragment_charcreation.*
 
 class CharCreationFragment : Fragment() {
@@ -30,31 +30,23 @@ class CharCreationFragment : Fragment() {
 
 
         val kinSpinner = root.findViewById<Spinner>(R.id.kinSpinner)
+        val kinAdapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, Kins.kins )
+        kinAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        kinSpinner!!.setAdapter(kinAdapter)
+
         val professionSpinner = root.findViewById<Spinner>(R.id.professionSpinner)
+        val professionAdapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, Professions.professions )
+        professionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        professionSpinner!!.setAdapter(professionAdapter)
+
         val ageSpinner = root.findViewById<Spinner>(R.id.ageSpinner)
-
-        val kins = resources.getStringArray(R.array.kin)
-        val professions = resources.getStringArray(R.array.profession)
-        val ages = resources.getStringArray(R.array.age)
-
-        setSpinner(kinSpinner,kins);
-        setSpinner(professionSpinner, professions);
-        setSpinner(ageSpinner, ages);
+        val ageAdapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, Ages.ages )
+        ageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        ageSpinner!!.setAdapter(ageAdapter)
 
         setKinListener(kinSpinner)
 
         return root
-    }
-
-    fun setSpinner(spinner: Spinner, options: Array<String>) {
-        // Create an ArrayAdapter using a simple spinner layout and languages array
-        val aa = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, options )
-
-
-        // Set layout to use when the list of choices appear
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        // Set Adapter to Spinner
-        spinner!!.setAdapter(aa)
     }
 
     fun setKinListener(kinSpinner : Spinner) {

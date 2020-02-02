@@ -9,4 +9,11 @@
     <string name="menu_new">New Character</string>
     <string name="menu_list">My Characters</string>
     <string name="menu_options">Options</string>
+
+
+    <string name="strength">Strength</string>
+    <string name="agility">Agility</string>
+    <string name="wits">Wits</string>
+    <string name="empathy">Empathy</string>
+
 </resources>

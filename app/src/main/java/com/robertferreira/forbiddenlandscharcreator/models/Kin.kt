@@ -1,7 +1,5 @@
 package com.robertferreira.forbiddenlandscharcreator
 
-
-
 class Kin {
     var Name : String = ""
     var KinId : Int = -1

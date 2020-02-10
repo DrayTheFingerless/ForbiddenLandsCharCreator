@@ -1,0 +1,42 @@
+[
+    {
+      "id": "0",
+      "name": "Adaptive",
+      "description": "If you spend a WP when about to roll for a skill, you can roll for any skill of your choice to achieve result. Must be able to explain how you use said skill, with GM's discretion."
+    },
+    {
+      "id": "1",
+      "name": "Inner Peace",
+      "description": "You can spend 1 WP to enter a meditation that lasts 1 Quarter of a day. Must remain undisturbed during this time. At the end of the Quarter, all your critical injuries and attribute damage is healed."
+    },
+    {
+      "id": "2",
+      "name": "Psychic Power",
+      "description": "Every time WPs are spent using talents or spells, the first WP counts as two."
+    },
+    {
+      "id": "3",
+      "name": "True Grit",
+      "description": "You can push rolls multiple times by using WP. For each WP spent, roll one more time."
+    },
+    {
+      "id": "4",
+      "name": "Hard to Catch",
+      "description": "You can spend WPs to avoid being hit by physical attacks. Every WP spent eliminates one Success the attacker rolls."
+    },
+    {
+      "id": "5",
+      "name": "Hunting Instincts",
+      "description": "Can spend WPs to designate one creature as prey. Must be in line of sight or must have a scent to follow. Number of WPs equals amount of days you can follow your prey. In combat, attacks against prey get +1 bonus per WP spent, until Broken or you choose to let prey go."
+    },
+    {
+      "id": "6",
+      "name": "Unbreakable",
+      "description": "When Broken by any kind of damage, you can spend WPs to get back up. For every WP spent, you recover 1 point of the Broken attribute. You cannot use this unless you are Broken. This does not affect critical injuries."
+    },
+    {
+      "id": "7",
+      "name": "Sneaky",
+      "description": "When rolling for Stealth, you can spend WPs which are automatically turned into extra Successes. You can even roll first and spend WP after you see the result."
+    }
+]

@@ -1,0 +1,117 @@
+{
+  "druid": [
+    {
+      "name": "Path of Healing",
+      "description": "Your calling is to use the forces of nature to heal and nurture the injured and the lost souls. The rank of this talent determines which spells you can use.",
+      "rank_1": "You can cast rank 1 spells from the Healing discipline.",
+      "rank_2": "You can cast rank 1 and rank 2 spells from the Healing discipline.",
+      "rank_3": "You can cast rank 1, 2 and 3 spells from the Healing discipline."
+    },
+    {
+      "name": "Path of Shifting Shapes",
+      "description": "You are one with the feral creatures of the world and can assume their attributes or even take their form. The rank of this talent determines which spells you can use.",
+      "rank_1": "You can cast rank 1 spells from the Shapeshifting discipline.",
+      "rank_2": "You can cast rank 1 and rank 2 spells from the Shapeshifting discipline.",
+      "rank_3": "You can cast rank 1, 2 and 3 spells from the Shapeshifting discipline."
+    },
+    {
+      "name": "Path of Sight",
+      "description": "You can see beyond sight, and your inner eye can see what has happened and what will happen. The rank of this talent determines which spells you can use",
+      "rank_1": "You can cast rank 1 spells from the Awareness discipline.",
+      "rank_2": "You can cast rank 1 and rank 2 spells from the Awareness discipline.",
+      "rank_3": "You can cast rank 1, 2 and 3 spells from the Awareness discipline."
+    }
+  ],
+  "fighter": [
+    {
+      "name": "Path of the Blade",
+      "description": "You are one with your blade. You practice with your weapon every day and know all its qualities, as if it were part of your own body.",
+      "rank_1": "When you hit with a close combat attack, you can spend a Willpower Point to find a weakness in your opponent’s armor or natural armor. The armor has no effect against your attack.",
+      "rank_2": "Once you have used up all your actions during the round, you can spend a WP to immediately attack again in close combat.",
+      "rank_3": "When you hit with a close combat attack, you can increase the damage by spending WP. Every point spent increases damage by 1. You must state how many WP you use before your opponent rolls for armor."
+    },
+    {
+      "name": "Path of the Enemy",
+      "description": "You see through your opponent and anticipate his next move before it happens. Observe that this talent is only applicable if you use the system for hidden combinations in close combat",
+      "rank_1": "If you spend a Willpower Point when you and your opponent choose your hidden combinations, your opponent must choose his combination first and then reveal his first or second card to you before you choose your own combination. Your opponent chooses which card to show.",
+      "rank_2": "As per rank 1, but you decide if your opponent shows the first or second card of his combination.",
+      "rank_3": "As per rank 1, but your opponent must show both his actions before you choose your own actions."
+    },
+    {
+      "name": "Path of the Shield",
+      "description": "You are a rock in the heat of battle, immovable and hard to kill. This talent affects how you PARRY attacks, regardless of whether you do it with a shield or a weapon.",
+      "rank_1": "When a friend within NEAR range is attacked, you can spend a Willpower Point to PARRY the attack for him. Your PARRY follows the normal rules and counts as one of your actions in the round.",
+      "rank_2": "When you PARRY, you can immediately spend a WP to not count the PARRY against your actions in the round, making it “free.” You can do this several times in a round, as long as you have WP to spend.",
+      "rank_3": "You can cast rank 1 spells from the Healing discipline."
+    }
+  ],
+  "hunter": [
+    {
+      "name": "Path of the Arrow"
+    },
+    {
+      "name": "Path of the Beast"
+    },
+    {
+      "name": "Path of the Forest"
+    }
+  ],
+  "minstrel": [
+    {
+      "name": "Path of the Hymn"
+    },
+    {
+      "name": "Path of the Song"
+    },
+    {
+      "name": "Path of the Warcry"
+    }
+  ],
+  "peddler": [
+    {
+      "name": "Path of Gold"
+    },
+    {
+      "name": "Path of Lies"
+    },
+    {
+      "name": "Path of Many Things"
+    }
+  ],
+  "rider": [
+    {
+      "name": "Path of the Companion"
+    },
+    {
+      "name": "Path of the Knight"
+    },
+    {
+      "name": "Path of the Plains"
+    }
+  ],
+  "rogue": [
+    {
+      "name": "Path of the Face"
+    },
+    {
+      "name": "Path of the Killer"
+    },
+    {
+      "name": "Path of Poison"
+    }
+  ],
+  "sorcerer": [
+    {
+      "name": "Path of Blood"
+    },
+    {
+      "name": "Path of Death"
+    },
+    {
+      "name": "Path of Signs"
+    },
+    {
+      "name": "Path of Stone"
+    }
+  ]
+}

@@ -9,6 +9,7 @@ import com.robertferreira.forbiddenlandscharcreator.ui.charlist.CharListViewMode
 import androidx.fragment.app.Fragment
 import android.widget.*
 import com.robertferreira.forbiddenlandscharcreator.*
+import com.robertferreira.forbiddenlandscharcreator.utils.Utils
 import kotlinx.android.synthetic.main.fragment_charcreation.*
 
 class CharCreationFragment : Fragment() {
@@ -23,6 +24,8 @@ class CharCreationFragment : Fragment() {
         charCreationViewModel =
             ViewModelProviders.of(this).get(CharCreationViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_charcreation, container, false)
+
+        //example view model bind. get text view, link textview value with Observer
         /*val textView: TextView = root.findViewById(R.id.text_gallery)
         charCreationViewModel.text.observe(this, Observer {
             textView.text = it
@@ -33,6 +36,7 @@ class CharCreationFragment : Fragment() {
         val kinAdapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, Kins.kins )
         kinAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         kinSpinner!!.setAdapter(kinAdapter)
+
 
         val professionSpinner = root.findViewById<Spinner>(R.id.professionSpinner)
         val professionAdapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, Professions.professions )
@@ -45,6 +49,7 @@ class CharCreationFragment : Fragment() {
         ageSpinner!!.setAdapter(ageAdapter)
 
         setKinListener(kinSpinner)
+
 
         return root
     }

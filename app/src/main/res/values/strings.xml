@@ -11,9 +11,34 @@
     <string name="menu_options">Options</string>
 
 
+    <string name="age">Age</string>
+
+    <!-- Attribute Strings -->
+    <string name="attributes">Attributes</string>
+
     <string name="strength">Strength</string>
     <string name="agility">Agility</string>
     <string name="wits">Wits</string>
     <string name="empathy">Empathy</string>
+
+    <!-- Skill Strings -->
+    <string name="skills">Skills</string>
+
+    <string name="might">Might</string>
+    <string name="endurance">Endurance</string>
+    <string name="melee">Melee</string>
+    <string name="crafting">Crafting</string>
+    <string name="stealth">Stealth</string>
+    <string name="sleight_hand">Sleight of Hand</string>
+    <string name="move">Move</string>
+    <string name="marksmanship">Marksmanship</string>
+    <string name="scouting">Scouting</string>
+    <string name="lore">Lore</string>
+    <string name="survival">Survival</string>
+    <string name="insight">Insight</string>
+    <string name="manipulation">Manipulation</string>
+    <string name="performance">Performance</string>
+    <string name="healing">Healing</string>
+    <string name="animal_handling">Animal Handling</string>
 
 </resources>

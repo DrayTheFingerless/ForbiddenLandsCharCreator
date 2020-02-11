@@ -16,8 +16,14 @@ class Profession {
 }
 
 object Professions {
-    val professions = arrayListOf<Profession>(Profession("Fighter",1,"Big Sticks"),
+    val professions = arrayListOf<Profession>(
+        Profession("Druid",0,"Registered animal lover"),
+        Profession("Fighter",1,"Big Sticks"),
         Profession("Hunter",2,"Loner in the woods"),
-        Profession("Druid",3,"Registered animal lover"),
-        Profession("Sorceror",4,"What a fuckin' nerd"))
+        Profession("Minstrel",3,"Plays the guitar"),
+        Profession("Peddler",4,"I'll buy it at a high price"),
+        Profession("Rider",5,"My little pony"),
+        Profession("Rogue",6,"That's mine"),
+        Profession("Sorceror",7,"What a fuckin nerd"))
+
 }

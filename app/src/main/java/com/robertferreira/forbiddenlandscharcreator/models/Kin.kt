@@ -1,6 +1,6 @@
 package com.robertferreira.forbiddenlandscharcreator
 
-class Kin {
+open class Kin {
     var Name : String = ""
     var KinId : Int = -1
     var Description : String = ""
@@ -17,8 +17,14 @@ class Kin {
 }
 
 object Kins {
-    val kins = arrayListOf<Kin>(Kin("Human",1,"Humans are stinky and mean."),
-    Kin("Elf",2,"Elves are kinda gay and pretty"),
-    Kin("Dwarf",3,"Dwarves are short."),
-    Kin("Goblin",4,"Goblins are creepy and funny"))
+    val kins = arrayListOf<Kin>(
+        Kin("Human",0,"Humans are stinky and mean."),
+        Kin("Elf",1,"Elves are kinda gay and pretty"),
+        Kin("Half-Elf",2,"Half elves are kinda gay and pretty"),
+        Kin("Dwarf",3,"Dwarves are short."),
+        Kin("Halfling",4,"Degenerates."),
+        Kin("Wolfkin",5,"No I'm NOT a furry!"),
+        Kin("Orc",6,"Flashy bitz dem boyz has"),
+        Kin("Goblin",7,"I dun like em"))
+
 }

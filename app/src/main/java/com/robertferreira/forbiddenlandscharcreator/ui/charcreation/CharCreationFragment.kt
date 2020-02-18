@@ -13,11 +13,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.robertferreira.forbiddenlandscharcreator.Ages
+import com.robertferreira.forbiddenlandscharcreator.Kin
 import com.robertferreira.forbiddenlandscharcreator.Kins
 import com.robertferreira.forbiddenlandscharcreator.Profession
 import com.robertferreira.forbiddenlandscharcreator.Professions
 import com.robertferreira.forbiddenlandscharcreator.R
 import com.robertferreira.forbiddenlandscharcreator.Talent
+import kotlinx.android.synthetic.main.fragment_charcreation.*
 
 
 class CharCreationFragment : Fragment() {
@@ -44,7 +46,7 @@ class CharCreationFragment : Fragment() {
         val kinAdapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, Kins.kins )
         kinAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         kinSpinner!!.setAdapter(kinAdapter)
-
+        setKinListener(kinSpinner)
 
         val professionSpinner = root.findViewById<Spinner>(R.id.professionSpinner)
         val professionAdapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, Professions.professions )
@@ -67,28 +69,7 @@ class CharCreationFragment : Fragment() {
         ageSpinner!!.setAdapter(ageAdapter)
 
         val profTalentSpinner = root.findViewById<Spinner>(R.id.prof_talent_spinner)
-//        var profTalentAdapter = ArrayAdapter<Talent>(this.requireContext(), android.R.layout.simple_spinner_item )
-        val profTalentAdapter: ArrayAdapter<Talent> = object : ArrayAdapter<Talent>(
-            this.requireContext(),
-            android.R.layout.simple_spinner_item) {
-            override fun getView(
-                position: Int,
-                convertView: View?,
-                parent: ViewGroup
-            ): View {
-                val v = super.getView(position, convertView, parent)
-                if (position == count) {
-                    (v.findViewById<View>(android.R.id.text1) as TextView).text = ""
-                    (v.findViewById<View>(android.R.id.text1) as TextView).hint =
-                       "Profession Talent" //"Hint to be displayed"
-                }
-                return v
-            }
-
-            override fun getCount(): Int {
-                return super.getCount() - 1 // you dont display last item. It is used as hint.
-            }
-        }
+        var profTalentAdapter = ArrayAdapter<Talent>(this.requireContext(), android.R.layout.simple_spinner_item )
         profTalentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         profTalentSpinner!!.setAdapter(profTalentAdapter)
         charCreationViewModel.pTalents.observe(this, Observer {
@@ -97,22 +78,21 @@ class CharCreationFragment : Fragment() {
             profTalentAdapter.addAll(it)
         })
 
-        setKinListener(kinSpinner)
-
-
         return root
     }
 
     fun setKinListener(kinSpinner : Spinner) {
        var listener = object: AdapterView.OnItemSelectedListener {
            override fun onNothingSelected(parent: AdapterView<*>?) {
-                //clear Kin Talent Key
                 //clear Prime Kin Attribute
+               charCreationViewModel.char.value?.KinId = -1
+               kin_talent_display.text = "None"
            }
 
            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-               //alter Kin Talent Key to filter available kin talents and clear selected Kin Talent
                //alter Prime Kin Attribute based on selected Kin
+               charCreationViewModel.char.value?.KinId = Kins.kins[position].KinId
+               kin_talent_display.text = charCreationViewModel.kTalents.value?.first{ it.id == Kins.kins[position].KinId }?.name
            }
        }
 

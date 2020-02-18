@@ -41,10 +41,39 @@
                     android:layout_weight="1" />
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/kin_talent_display"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="2"
+                    android:hint="Kin Talent"
+                    android:foregroundTint="@android:color/white"
+                    android:visibility="visible" />
+
+                <Spinner
+                    android:id="@+id/prof_talent_spinner"
+                    style="@android:style/Widget.Material.Light.Spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="2"
+                    android:foregroundTint="@android:color/white"
+                    android:visibility="visible" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="199dp"
                 android:layout_height="match_parent"
+                android:layout_margin="5dp"
                 android:orientation="horizontal"
                 android:padding="10dp">
 
@@ -64,6 +93,7 @@
                     android:hint="@string/age"
                     android:inputType="number" />
 
+
             </LinearLayout>
 
             <LinearLayout
@@ -75,7 +105,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
@@ -85,11 +115,11 @@
 
                 <TextView
                     android:id="@+id/attribute_points"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:text="13" />
 
                 <ImageView
@@ -110,7 +140,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="5dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -123,16 +154,8 @@
                         android:id="@+id/strength_stepper"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         app:init_value="2" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="0dp"
@@ -144,15 +167,17 @@
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         app:init_value="2" />
+
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="5dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -164,15 +189,8 @@
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         app:init_value="2" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="0dp"
@@ -184,8 +202,15 @@
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         app:init_value="2" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
                 </LinearLayout>
 
@@ -212,8 +237,9 @@
                     android:id="@+id/skill_points"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:text="8" />
 
                 <ImageView
@@ -235,82 +261,75 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="5dp">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="@string/might" />
+                        android:text="@string/might"
+                        android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         app:init_value="0" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="@string/endurance" />
+                        android:text="@string/endurance"
+                        android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         app:init_value="0" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/melee" />
-
-                    <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        app:init_value="0" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="5dp">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="@string/crafting" />
+                        android:text="@string/melee"
+                        android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         app:init_value="0" />
 
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/crafting"
+                        android:textSize="12sp" />
+
+                    <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        app:init_value="0" />
                 </LinearLayout>
+
 
                 <View
                     android:id="@+id/divider"
@@ -321,19 +340,35 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="5dp">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="@string/stealth" />
+                        android:text="@string/stealth"
+                        android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        app:init_value="0" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/sleight_hand"
+                        android:textSize="12sp" />
+
+                    <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
                         app:init_value="0" />
 
                 </LinearLayout>
@@ -341,59 +376,35 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="5dp">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="@string/sleight_hand" />
+                        android:text="@string/move"
+                        android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         app:init_value="0" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="@string/move" />
+                        android:text="@string/marksmanship"
+                        android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        app:init_value="0" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/marksmanship" />
-
-                    <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         app:init_value="0" />
 
                 </LinearLayout>
@@ -407,19 +418,35 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="5dp">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="@string/scouting" />
+                        android:text="@string/scouting"
+                        android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        app:init_value="0" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/lore"
+                        android:textSize="12sp" />
+
+                    <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
                         app:init_value="0" />
 
                 </LinearLayout>
@@ -427,59 +454,35 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="5dp">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="@string/lore" />
+                        android:text="@string/survival"
+                        android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         app:init_value="0" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="@string/survival" />
+                        android:text="@string/insight"
+                        android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        app:init_value="0" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/insight" />
-
-                    <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         app:init_value="0" />
 
                 </LinearLayout>
@@ -493,19 +496,35 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="5dp">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="@string/manipulation" />
+                        android:text="@string/manipulation"
+                        android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        app:init_value="0" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/performance"
+                        android:textSize="12sp" />
+
+                    <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
                         app:init_value="0" />
 
                 </LinearLayout>
@@ -513,59 +532,35 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="5dp">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="@string/performance" />
+                        android:text="@string/healing"
+                        android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         app:init_value="0" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="@string/healing" />
+                        android:text="@string/animal_handling"
+                        android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        app:init_value="0" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/animal_handling" />
-
-                    <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         app:init_value="0" />
 
                 </LinearLayout>
@@ -578,15 +573,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <Spinner
-                    android:id="@+id/prof_talent_spinner"
-                    style="@android:style/Widget.Material.Light.Spinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="2"
-                    android:foregroundTint="@android:color/white"
-                    android:visibility="visible" />
+
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -594,7 +581,7 @@
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:fontFamily="monospace"
-                    android:text="Attributes"
+                    android:text="Talents"
                     android:textSize="18sp" />
 
                 <LinearLayout

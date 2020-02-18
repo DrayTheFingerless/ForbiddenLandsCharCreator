@@ -25,20 +25,25 @@ class CharCreationViewModel(application: Application) : AndroidViewModel(applica
     }
     val char: LiveData<FLCharacter>
         get() = character
+
+
     private var listKinTalents = MutableLiveData<List<Talent>>().apply {
         value =  loadTalents("kin_talents")
     }
     val kTalents : LiveData<List<Talent>>
         get() = listKinTalents
+
+
+    private var listProfessionTalents = MutableLiveData<List<Talent>>().apply {
+        value =  loadTalents("profession_talents")
+    }
     private var filterListProfessionTalents = MutableLiveData<List<Talent>>().apply {
         value =  listOf()
     }
     val pTalents : LiveData<List<Talent>>
         get() = filterListProfessionTalents
 
-    private val listProfessionTalents = MutableLiveData<List<Talent>>().apply {
-        value =  loadTalents("profession_talents")
-    }
+
 
     private val listGeneralTalents = MutableLiveData<List<Talent>>().apply {
         value =  loadTalents("general_talents")
@@ -57,9 +62,11 @@ class CharCreationViewModel(application: Application) : AndroidViewModel(applica
         return gson.fromJson(jsonFileString, listType)
     }
 
+    //filters from all profession talents into a filtered list for Prof Talents Spinner
     fun getFilteredProfessionTalents(profId : Int)  {
         Log.i("filtering talents", profId.toString())
-        filterListProfessionTalents.value = listProfessionTalents.value?.filter{it.Type == profId}
+        filterListProfessionTalents.value = listProfessionTalents.value?.filter{it.type == profId}
+        print(filterListProfessionTalents.value?.count())
     }
 
     //bindable livedata variable

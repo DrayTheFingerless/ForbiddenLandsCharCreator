@@ -12,20 +12,20 @@
 
     <string-array name="profession">
         <item isEnabled="false">Choose a profession</item>
-        <item>Fighter</item>
-        <item>Druid</item>
-        <item>Thief</item>
-        <item>Minstrel</item>
-        <item>Sorceror</item>
-        <item>Hunter</item>
-        <item>Rider</item>
-        <item>Peddler</item>
+        <item id="0">Fighter</item>
+        <item id="0">Druid</item>
+        <item id="0" >Thief</item>
+        <item id="0">Minstrel</item>
+        <item id="0">Sorceror</item>
+        <item id="0">Hunter</item>
+        <item id="0">Rider</item>
+        <item id="0">Peddler</item>
     </string-array>
 
     <string-array name="age">
         <item isEnabled="false">Choose an age range</item>
-        <item>Young</item>
-        <item>Adult</item>
-        <item>Old</item>
+        <item id="0" >Young</item>
+        <item id="1">Adult</item>
+        <item id="2">Old</item>
     </string-array>
 </resources>

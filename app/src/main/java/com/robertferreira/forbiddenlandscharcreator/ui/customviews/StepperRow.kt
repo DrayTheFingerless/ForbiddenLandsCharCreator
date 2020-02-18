@@ -20,6 +20,8 @@ class StepperRow : LinearLayout {
 
     var minimum_value : Int = 0
     var max_value : Int = 6
+    var current_value : Int = 0
+
     constructor(context: Context) : super(context) {
         init(context,null, 0)
     }
@@ -45,11 +47,32 @@ class StepperRow : LinearLayout {
 
             //style stepper with styledAttributes
             minimum_value = styledAttributes.getInt(R.styleable.StepperRow_init_value, 0)
+            current_value = minimum_value
             styledAttributes.recycle()
         }
 
         stepper_value.text = minimum_value.toString()
         stepper_remove.isEnabled = false
+
+        stepper_remove.setOnClickListener {
+            if(current_value > minimum_value){
+                stepper_add.isEnabled = true
+                current_value-=1
+            }
+            else stepper_remove.isEnabled = false
+
+            setText(current_value)
+        }
+        stepper_add.setOnClickListener {
+
+            if(current_value < max_value){
+                stepper_remove.isEnabled = true
+                current_value+=1
+            }
+            else stepper_add.isEnabled = false
+
+            setText(current_value)
+        }
 
     }
     fun isShowMinimumValue(): Int {
@@ -64,10 +87,7 @@ class StepperRow : LinearLayout {
 
     fun setText(value : Int?)
     {
-        if (value != null)
-            stepper_value.text = value.toString()
-        else {
-            stepper_value.text = "0"
-        }
+        if (value != null) stepper_value.text = "$value"
+        else stepper_value.text = "$minimum_value"
     }
 }

@@ -40,5 +40,6 @@
     <string name="performance">Performance</string>
     <string name="healing">Healing</string>
     <string name="animal_handling">Animal Handling</string>
+    <string name="none">None</string>
 
 </resources>

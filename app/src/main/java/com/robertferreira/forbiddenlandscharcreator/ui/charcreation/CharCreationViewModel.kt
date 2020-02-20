@@ -11,62 +11,60 @@ import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.robertferreira.forbiddenlandscharcreator.FLCharacter
+import com.robertferreira.forbiddenlandscharcreator.Kins
 import com.robertferreira.forbiddenlandscharcreator.Profession
 import com.robertferreira.forbiddenlandscharcreator.Talent
 import com.robertferreira.forbiddenlandscharcreator.utils.Utils
+import com.robertferreira.forbiddenlandscharcreator.utils.Utils.loadTalents
 
 class CharCreationViewModel(application: Application) : AndroidViewModel(application) {
 
     /*@OnLifecycleEvent(Lifecycle.Event.)
     fun onResume() {  }*/
 
-    private val character = MutableLiveData<FLCharacter>().apply {
-        value = FLCharacter()
-    }
+    //Character to be saved
+    private val character = MutableLiveData<FLCharacter>().apply { value = FLCharacter() }
     val char: LiveData<FLCharacter>
         get() = character
 
+    private val kTName = MutableLiveData<String>()
+    val kinTalentName : LiveData<String>
+        get() = kTName
 
-    private var listKinTalents = MutableLiveData<List<Talent>>().apply {
-        value =  loadTalents("kin_talents")
-    }
+
+    //list of Kin Talents
+    private var listKinTalents = MutableLiveData<List<Talent>>().apply { value =  loadTalents(this@CharCreationViewModel.getApplication(),"kin_talents") }
     val kTalents : LiveData<List<Talent>>
         get() = listKinTalents
 
+    //list of Profession Talents
+    private var listProfessionTalents = MutableLiveData<List<Talent>>().apply { value =  loadTalents(this@CharCreationViewModel.getApplication(),"profession_talents") }
 
-    private var listProfessionTalents = MutableLiveData<List<Talent>>().apply {
-        value =  loadTalents("profession_talents")
-    }
-    private var filterListProfessionTalents = MutableLiveData<List<Talent>>().apply {
-        value =  listOf()
-    }
+    //list of Profession Talents Filtered by Profession selected
+    private var filterListProfessionTalents = MutableLiveData<List<Talent>>().apply { value =  listOf() }
     val pTalents : LiveData<List<Talent>>
         get() = filterListProfessionTalents
 
 
-
-    private val listGeneralTalents = MutableLiveData<List<Talent>>().apply {
-        value =  loadTalents("general_talents")
-    }
+    //list of General Talents
+    private val listGeneralTalents = MutableLiveData<List<Talent>>().apply { value =  loadTalents(this@CharCreationViewModel.getApplication(),"general_talents") }
     val gTalents : LiveData<List<Talent>> = listGeneralTalents
 
 
-    //function loads a list of Talents from json file
-    private fun loadTalents(filename : String) : List<Talent>{
-        val jsonFileString = Utils.getJsonDataFromAsset(this.getApplication(), filename)
-        Log.i("talents", jsonFileString)
-
-        val gson = Gson()
-        val listType = object : TypeToken<List<Talent>>() {}.type
-
-        return gson.fromJson(jsonFileString, listType)
-    }
 
     //filters from all profession talents into a filtered list for Prof Talents Spinner
     fun getFilteredProfessionTalents(profId : Int)  {
         Log.i("filtering talents", profId.toString())
         filterListProfessionTalents.value = listProfessionTalents.value?.filter{it.type == profId}
         print(filterListProfessionTalents.value?.count())
+    }
+
+    fun ClearKin() {
+        character.value?.KinId = -1
+    }
+    fun SelectKin(position : Int){
+        character.value?.KinId = Kins.kins[position].KinId
+        kTName.value = kTalents.value?.first{ it.id == character.value?.KinId }?.name
     }
 
     //bindable livedata variable

@@ -9,6 +9,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -19,80 +20,81 @@ import com.robertferreira.forbiddenlandscharcreator.Profession
 import com.robertferreira.forbiddenlandscharcreator.Professions
 import com.robertferreira.forbiddenlandscharcreator.R
 import com.robertferreira.forbiddenlandscharcreator.Talent
+import com.robertferreira.forbiddenlandscharcreator.databinding.FragmentCharcreationBinding
 import kotlinx.android.synthetic.main.fragment_charcreation.*
 
 
 class CharCreationFragment : Fragment() {
 
-    private lateinit var charCreationViewModel: CharCreationViewModel
+    private lateinit var viewModel: CharCreationViewModel
+
+    private lateinit var binding : FragmentCharcreationBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        charCreationViewModel =
-            ViewModelProviders.of(this).get(CharCreationViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_charcreation, container, false)
+        viewModel =
+            ViewModelProviders.of(this).get(viewModel::class.java)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_charcreation, container, false)
 
         //example view model bind. get text view, link textview value with Observer
         /*val textView: TextView = root.findViewById(R.id.text_gallery)
-        charCreationViewModel.text.observe(this, Observer {
+        viewModel.text.observe(this, Observer {
             textView.text = it
         })*/
 
-
-        val kinSpinner = root.findViewById<Spinner>(R.id.kinSpinner)
+        //setup simple adapter for kin spinner with boilerplate kins array
         val kinAdapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, Kins.kins )
         kinAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        kinSpinner!!.setAdapter(kinAdapter)
-        setKinListener(kinSpinner)
+        binding.kinSpinner!!.setAdapter(kinAdapter)
+        setKinListener(binding.kinSpinner)
 
-        val professionSpinner = root.findViewById<Spinner>(R.id.professionSpinner)
+        viewModel.kinTalentName.observe(this, Observer {
+            binding.kinTalentDisplay.text = it
+        })
         val professionAdapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, Professions.professions )
         professionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        professionSpinner!!.setAdapter(professionAdapter)
-        professionSpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        binding.professionSpinner!!.setAdapter(professionAdapter)
+        binding.professionSpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                charCreationViewModel.getFilteredProfessionTalents(-1)
+                viewModel.getFilteredProfessionTalents(-1)
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val selectedProfession = professionSpinner.selectedItem as Profession
-                charCreationViewModel.getFilteredProfessionTalents(selectedProfession.ProfessionId)
+                viewModel.getFilteredProfessionTalents(selectedProfession.ProfessionId)
             }
         }
 
-        val ageSpinner = root.findViewById<Spinner>(R.id.ageSpinner)
         val ageAdapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, Ages.ages )
         ageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        ageSpinner!!.setAdapter(ageAdapter)
+        binding.ageSpinner!!.setAdapter(ageAdapter)
 
-        val profTalentSpinner = root.findViewById<Spinner>(R.id.prof_talent_spinner)
         var profTalentAdapter = ArrayAdapter<Talent>(this.requireContext(), android.R.layout.simple_spinner_item )
         profTalentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        profTalentSpinner!!.setAdapter(profTalentAdapter)
-        charCreationViewModel.pTalents.observe(this, Observer {
+        binding.profTalentSpinner!!.setAdapter(profTalentAdapter)
+        viewModel.pTalents.observe(this, Observer {
             Log.i("filtered talents0", it.count().toString())
             profTalentAdapter.clear()
             profTalentAdapter.addAll(it)
         })
 
-        return root
+        return binding.root
     }
 
     fun setKinListener(kinSpinner : Spinner) {
        var listener = object: AdapterView.OnItemSelectedListener {
            override fun onNothingSelected(parent: AdapterView<*>?) {
                 //clear Prime Kin Attribute
-               charCreationViewModel.char.value?.KinId = -1
-               kin_talent_display.text = "None"
+               viewModel.ClearKin()
+               kin_talent_display.text = getString(R.string.none)
            }
 
            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-               //alter Prime Kin Attribute based on selected Kin
-               charCreationViewModel.char.value?.KinId = Kins.kins[position].KinId
-               kin_talent_display.text = charCreationViewModel.kTalents.value?.first{ it.id == Kins.kins[position].KinId }?.name
+               // **alter Prime Kin Attribute based on selected Kin**
+               viewModel.SelectKin(position)
            }
        }
 

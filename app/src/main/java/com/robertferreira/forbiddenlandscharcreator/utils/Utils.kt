@@ -1,4 +1,4 @@
-package com.robertferreira.forbiddenlandscharcreator.utils
+package com.robertferreira.forbiddenlandscharcreator
 
 import android.content.Context
 import android.util.Log
@@ -33,4 +33,30 @@ object Utils {
         return gson.fromJson(jsonFileString, listType)
     }
 
+}
+
+enum class Attributes(val id : Int) {
+    Strength(0),
+    Agility(1),
+    Wits(2),
+    Empathy(3)
+}
+
+enum class Skills(val id : Int) {
+    Might (0),
+    Endurance (1),
+    Melee (2),
+    Crafting (3),
+    Stealth (4),
+    SleightOfHand (5),
+    Move (6),
+    Marksmanship (7),
+    Scouting (8),
+    Lore (9),
+    Survival (10),
+    Insight (11),
+    Manipulation (12),
+    Performance (13),
+    Healing (14),
+    AnimalHandling (15),
 }

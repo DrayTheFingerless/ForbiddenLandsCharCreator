@@ -35,8 +35,7 @@ class CharCreationFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel =
-            ViewModelProviders.of(this).get(viewModel::class.java)
+        viewModel =  ViewModelProviders.of(this).get(CharCreationViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_charcreation, container, false)
 
         //example view model bind. get text view, link textview value with Observer
@@ -81,6 +80,10 @@ class CharCreationFragment : Fragment() {
             profTalentAdapter.addAll(it)
         })
 
+        //hook up steppers
+        setSkillObservers()
+
+
         return binding.root
     }
 
@@ -88,7 +91,6 @@ class CharCreationFragment : Fragment() {
        var listener = object: AdapterView.OnItemSelectedListener {
            override fun onNothingSelected(parent: AdapterView<*>?) {
                 //clear Prime Kin Attribute
-               viewModel.ClearKin()
                kin_talent_display.text = getString(R.string.none)
            }
 
@@ -101,5 +103,21 @@ class CharCreationFragment : Fragment() {
         kinSpinner.onItemSelectedListener = listener
     }
 
+    fun setSkillObservers(){
+        viewModel.charStrength.observe(this,Observer{
+            binding.strengthStepper.current_value = it
+        })
 
+        viewModel.charAgility.observe(this,Observer{
+            binding.agilityStepper.current_value = it
+        })
+
+        viewModel.charWits.observe(this,Observer{
+            binding.witsStepper.current_value = it
+        })
+
+        viewModel.charEmpathy.observe(this,Observer{
+            binding.empathyStepper.current_value = it
+        })
+    }
 }

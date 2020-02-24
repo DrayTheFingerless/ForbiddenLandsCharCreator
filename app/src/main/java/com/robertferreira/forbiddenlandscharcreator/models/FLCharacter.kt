@@ -2,6 +2,9 @@ package com.robertferreira.forbiddenlandscharcreator
 
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
+import com.robertferreira.forbiddenlandscharcreator.Attributes.Agility
+import com.robertferreira.forbiddenlandscharcreator.Attributes.Empathy
+import com.robertferreira.forbiddenlandscharcreator.Attributes.Wits
 import org.w3c.dom.Attr
 
 class FLCharacter : BaseObservable() {
@@ -15,10 +18,10 @@ class FLCharacter : BaseObservable() {
      var AgeId: Int = 0
      var AgeNumber: Int = 0
 
-     var Strength: Int = 2
-     var Agility: Int = 2
-     var Wits: Int = 2
-     var Empathy: Int = 2
+    @Bindable var Strength: Int = 2
+    @Bindable var Agility: Int = 2
+    @Bindable var Wits: Int = 2
+    @Bindable var Empathy: Int = 2
 
      var Pride: String = ""
      var DarkSecret: String = ""
@@ -139,9 +142,11 @@ class FLCharacter : BaseObservable() {
              Wits = 2
              Empathy = 2
          }
+         notifyChange()
+
      }
 
-     fun IncrementAttribute(attribute: Attributes ){
+    fun IncrementAttribute(attribute: Attributes ){
          var max = 4
          if(Profession.KeyAttribute == attribute)
              max++
@@ -149,23 +154,36 @@ class FLCharacter : BaseObservable() {
              max++
 
          when (attribute) {
-             Attributes.Strength -> if(Strength < max) Strength++
-             Attributes.Agility -> if(Agility < max) Agility++
-             Attributes.Wits -> if(Wits < max) Wits++
-             Attributes.Empathy -> if(Empathy < max) Empathy++
+             Attributes.Strength -> if(Strength < max) { Strength++
+                 notifyPropertyChanged(this.Strength)}
+             Attributes.Agility -> if(Agility < max) {
+                 Agility++
+                 notifyPropertyChanged(this.Agility)
+                }
+             Attributes.Wits -> if(Wits < max) { Wits++
+                notifyPropertyChanged(this.Wits)}
+             Attributes.Empathy -> if(Empathy < max){ Empathy++
+                 notifyPropertyChanged(this.Empathy)
+             }
          }
-
          notifyChange()
      }
 
     fun DecrementAttribute(attribute: Attributes ){
         when (attribute) {
-            Attributes.Strength -> if(Strength > 2) Strength--
-            Attributes.Agility -> if(Agility > 2) Agility--
-            Attributes.Wits -> if(Wits > 2) Wits--
-            Attributes.Empathy -> if(Strength > 2) Empathy--
+            Attributes.Strength -> if(Strength > 2) {Strength--
+                notifyPropertyChanged(this.Strength)
+            }
+            Attributes.Agility -> if(Agility > 2){ Agility--
+                notifyPropertyChanged(this.Agility)
+            }
+            Attributes.Wits -> if(Wits > 2){ Wits--
+                notifyPropertyChanged(this.Wits)
+            }
+            Attributes.Empathy -> if(Empathy > 2) {Empathy--
+                notifyPropertyChanged(this.Empathy)
+            }
         }
-
         notifyChange()
 
     }
@@ -176,12 +194,32 @@ class FLCharacter : BaseObservable() {
         if(Profession.Skills.contains(skill))
             max = 3
         MySkills.get(skill)?.let{ va ->
-            if(addOrSubtract && va < max)
+            if(addOrSubtract && va < max && SkillPointsLeft() > 0)
                 MySkills.set(skill,va+1)
             else if(!addOrSubtract && va > 0)
-                MySkills.set(skill,va+1)
+                MySkills.set(skill,va-1)
         }
 
         notifyChange()
+    }
+
+    fun AttrPointsLeft() : Int{
+        val currentUsed = Strength+Agility+Wits+Empathy
+        when(AgeId){
+            0 -> return 15 - currentUsed
+            1 -> return 14 - currentUsed
+            2 -> return 13 - currentUsed
+            else -> return 13 - currentUsed
+        }
+    }
+
+    fun SkillPointsLeft() : Int {
+        val currentUsed = MySkills.values.sum()
+        when(AgeId){
+            0 -> return 8 - currentUsed
+            1 -> return 10 - currentUsed
+            2 -> return 12 - currentUsed
+            else -> return 8 - currentUsed
+        }
     }
  }

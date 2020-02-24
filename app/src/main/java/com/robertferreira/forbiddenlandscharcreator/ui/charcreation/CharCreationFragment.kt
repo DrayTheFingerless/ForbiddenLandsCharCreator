@@ -93,7 +93,7 @@ class CharCreationFragment : Fragment() {
         var profTalentAdapter = ArrayAdapter<Talent>(this.requireContext(), android.R.layout.simple_spinner_item )
         profTalentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.profTalentSpinner!!.setAdapter(profTalentAdapter)
-        viewModel.pTalents.observe(this, Observer {
+        viewModel.pTalents.observe(viewLifecycleOwner, Observer {
             Log.i("filtered talents0", it.count().toString())
             profTalentAdapter.clear()
             profTalentAdapter.addAll(it)
@@ -126,81 +126,81 @@ class CharCreationFragment : Fragment() {
 
     fun setObservers(){
         //kin Talent
-        viewModel.kinTalentName.observe(this, Observer {
+        viewModel.kinTalentName.observe(viewLifecycleOwner, Observer {
             binding.kinTalentDisplay.text = it
         })
 
 
         //attributes
-/*        viewModel.attrPoints.observe(this, Observer{
+        viewModel.attrPoints.observe(viewLifecycleOwner, Observer{
             binding.attributePoints.text = it.toString()
-        })*/
-        viewModel.charStrength.observe(this,Observer{
+        })
+        viewModel.charStrength.observe(viewLifecycleOwner,Observer{
             binding.strengthStepper.setText(it)
         })
 
-        viewModel.charAgility.observe(this,Observer{
+        viewModel.charAgility.observe(viewLifecycleOwner,Observer{
             binding.agilityStepper.setText(it)
         })
 
-        viewModel.charWits.observe(this,Observer{
+        viewModel.charWits.observe(viewLifecycleOwner,Observer{
             binding.witsStepper.setText(it)
         })
 
-        viewModel.charEmpathy.observe(this,Observer{
+        viewModel.charEmpathy.observe(viewLifecycleOwner,Observer{
             binding.empathyStepper.setText(it)
         })
 
         //skills
-/*        viewModel.skillPoints.observe(this, Observer{
+        viewModel.skillPoints.observe(viewLifecycleOwner, Observer{
             binding.skillPoints.text = it.toString()
-        })*/
-        viewModel.charMight.observe(this,Observer{
+        })
+        viewModel.charMight.observe(viewLifecycleOwner,Observer{
             binding.mightStepper.setText(it)
         })
-        viewModel.charEndurance.observe(this,Observer{
+        viewModel.charEndurance.observe(viewLifecycleOwner,Observer{
             binding.enduranceStepper.setText(it)
         })
-        viewModel.charCraft.observe(this,Observer{
+        viewModel.charCraft.observe(viewLifecycleOwner,Observer{
             binding.craftStepper.setText(it)
         })
-        viewModel.charMelee.observe(this,Observer{
+        viewModel.charMelee.observe(viewLifecycleOwner,Observer{
             binding.meleeStepper.setText(it)
         })
-        viewModel.charStealth.observe(this,Observer{
+        viewModel.charStealth.observe(viewLifecycleOwner,Observer{
             binding.stealthStepper.setText(it)
         })
-        viewModel.charSleight.observe(this,Observer{
+        viewModel.charSleight.observe(viewLifecycleOwner,Observer{
             binding.sleightStepper.setText(it)
         })
-        viewModel.charMove.observe(this,Observer{
+        viewModel.charMove.observe(viewLifecycleOwner,Observer{
             binding.moveStepper.setText(it)
         })
-        viewModel.charMarksman.observe(this,Observer{
+        viewModel.charMarksman.observe(viewLifecycleOwner,Observer{
             binding.marksmanshipStepper.setText(it)
         })
-        viewModel.charScout.observe(this,Observer{
+        viewModel.charScout.observe(viewLifecycleOwner,Observer{
             binding.scoutingStepper.setText(it)
         })
-        viewModel.charLore.observe(this,Observer{
+        viewModel.charLore.observe(viewLifecycleOwner,Observer{
             binding.loreStepper.setText(it)
         })
-        viewModel.charSurvival.observe(this,Observer{
+        viewModel.charSurvival.observe(viewLifecycleOwner,Observer{
             binding.survivalStepper.setText(it)
         })
-        viewModel.charInsight.observe(this,Observer{
+        viewModel.charInsight.observe(viewLifecycleOwner,Observer{
             binding.insightStepper.setText(it)
         })
-        viewModel.charManipulation.observe(this,Observer{
+        viewModel.charManipulation.observe(viewLifecycleOwner,Observer{
             binding.manipulationStepper.setText(it)
         })
-        viewModel.charPerfomance.observe(this,Observer{
+        viewModel.charPerfomance.observe(viewLifecycleOwner,Observer{
             binding.performanceStepper.setText(it)
         })
-        viewModel.charHealing.observe(this,Observer{
+        viewModel.charHealing.observe(viewLifecycleOwner,Observer{
             binding.healingStepper.setText(it)
         })
-        viewModel.charAnimal.observe(this,Observer{
+        viewModel.charAnimal.observe(viewLifecycleOwner,Observer{
             binding.animalStepper.setText(it)
         })
     }
@@ -210,37 +210,55 @@ class CharCreationFragment : Fragment() {
         setAttributeStepperListener(binding.agilityStepper, Attributes.Agility)
         setAttributeStepperListener(binding.witsStepper, Attributes.Wits)
         setAttributeStepperListener(binding.empathyStepper, Attributes.Empathy)
+
+        setSkillStepperListener(binding.mightStepper, Skills.Might)
+        setSkillStepperListener(binding.enduranceStepper, Skills.Endurance)
+        setSkillStepperListener(binding.meleeStepper, Skills.Melee)
+        setSkillStepperListener(binding.craftStepper, Skills.Crafting)
+        setSkillStepperListener(binding.stealthStepper, Skills.Stealth)
+        setSkillStepperListener(binding.sleightStepper, Skills.SleightOfHand)
+        setSkillStepperListener(binding.moveStepper, Skills.Move)
+        setSkillStepperListener(binding.marksmanshipStepper, Skills.Marksmanship)
+        setSkillStepperListener(binding.scoutingStepper, Skills.Scouting)
+        setSkillStepperListener(binding.loreStepper, Skills.Lore)
+        setSkillStepperListener(binding.survivalStepper, Skills.Survival)
+        setSkillStepperListener(binding.insightStepper, Skills.Insight)
+        setSkillStepperListener(binding.manipulationStepper, Skills.Manipulation)
+        setSkillStepperListener(binding.performanceStepper, Skills.Performance)
+        setSkillStepperListener(binding.healingStepper, Skills.Healing)
+        setSkillStepperListener(binding.animalStepper, Skills.AnimalHandling)
+
     }
 
     fun setAttributeStepperListener(st: StepperRow, attribute : Attributes){
         st.stepper_remove.setOnClickListener {
-            if(st.current_value > st.minimum_value){
+            /*if(st.current_value > st.minimum_value){
                 st.stepper_add.isEnabled = true
             }
-            else  st.stepper_remove.isEnabled = false
+            else  st.stepper_remove.isEnabled = false*/
             viewModel.DecrementAttribute(attribute)
         }
         st.stepper_add.setOnClickListener {
-            if(st.current_value <  st.max_value){
+            /*if(st.current_value <  st.max_value){
                 st.stepper_remove.isEnabled = true
             }
-            else st.stepper_add.isEnabled = false
+            else st.stepper_add.isEnabled = false*/
             viewModel.IncrementAttribute(attribute)
         }
     }
     fun setSkillStepperListener(st: StepperRow, skill : Skills){
         st.stepper_remove.setOnClickListener {
-            if(st.current_value > st.minimum_value){
+           /* if(st.current_value > st.minimum_value){
                 st.stepper_add.isEnabled = true
             }
-            else st.stepper_remove.isEnabled = false
+            else st.stepper_remove.isEnabled = false*/
             viewModel.ChangeSkill(skill, false)
         }
         st.stepper_add.setOnClickListener {
-            if(st.current_value <  st.max_value){
+            /*if(st.current_value <  st.max_value){
                 st.stepper_remove.isEnabled = true
             }
-            else st.stepper_add.isEnabled = false
+            else st.stepper_add.isEnabled = false*/
             viewModel.ChangeSkill(skill, true)
         }
     }

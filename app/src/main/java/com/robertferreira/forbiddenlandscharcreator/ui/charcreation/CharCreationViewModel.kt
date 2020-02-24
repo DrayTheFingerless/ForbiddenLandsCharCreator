@@ -27,6 +27,15 @@ class CharCreationViewModel(application: Application) : AndroidViewModel(applica
         get() = character
 
     //observer attribute fields
+    val attrPoints : LiveData<Int>
+        get () = Transformations.map(character) {val i = when(it.AgeId){
+            0-> 15 - (it.Strength+it.Agility+it.Wits+it.Empathy)
+            1-> 14 - (it.Strength+it.Agility+it.Wits+it.Empathy)
+            2-> 13 - (it.Strength+it.Agility+it.Wits+it.Empathy)
+            else-> 13 - (it.Strength+it.Agility+it.Wits+it.Empathy)
+        }
+            i
+    }
     val charStrength : LiveData<Int>
         get() = Transformations.map(character) { it.Strength }
     val charAgility : LiveData<Int>
@@ -35,40 +44,49 @@ class CharCreationViewModel(application: Application) : AndroidViewModel(applica
         get() =  Transformations.map(character) { it.Wits }
     val charEmpathy : LiveData<Int>
         get() = Transformations.map(character) { it.Empathy }
+
     //observer skill fields
+    val skillPoints : LiveData<Int>
+        get () = Transformations.map(character) {val i = when(it.AgeId){
+            0-> 8 - it.MySkills?.values.sum()
+            1-> 10 - it.MySkills?.values.sum()
+            2-> 12 - it.MySkills?.values.sum()
+            else-> 8 - it.MySkills?.values.sum()
+        }
+            i
+        }
     val charMight : LiveData<Int>
-        get() = Transformations.map(character) { it.MySkills?.get(Skills.Might) ?: 0}
+        get() = Transformations.map(character) { it.MySkills.get(Skills.Might) ?: 0}
     val charEndurance : LiveData<Int>
-        get() = MutableLiveData<Int>().apply{value = character.value?.MySkills?.get(Skills.Endurance) ?: 2}
+        get() = Transformations.map(character) { it.MySkills.get(Skills.Endurance) ?: 0}
     val charCraft : LiveData<Int>
-        get() = MutableLiveData<Int>().apply{value = character.value?.MySkills?.get(Skills.Crafting) ?: 2}
+        get() = Transformations.map(character) { it.MySkills.get(Skills.Crafting) ?: 0}
     val charMelee : LiveData<Int>
-        get() = MutableLiveData<Int>().apply{value = character.value?.MySkills?.get(Skills.Melee) ?: 2}
+        get() = Transformations.map(character) { it.MySkills.get(Skills.Melee) ?: 0}
     val charStealth : LiveData<Int>
-        get() = MutableLiveData<Int>().apply{value = character.value?.MySkills?.get(Skills.Stealth) ?: 2}
+        get() = Transformations.map(character) { it.MySkills.get(Skills.Stealth) ?: 0}
     val charSleight : LiveData<Int>
-        get() = MutableLiveData<Int>().apply{value = character.value?.MySkills?.get(Skills.SleightOfHand) ?: 2}
+        get() = Transformations.map(character) { it.MySkills.get(Skills.SleightOfHand) ?: 0}
     val charMove : LiveData<Int>
-        get() = MutableLiveData<Int>().apply{value = character.value?.MySkills?.get(Skills.Move) ?: 2}
+        get() = Transformations.map(character) { it.MySkills.get(Skills.Move) ?: 0}
     val charMarksman : LiveData<Int>
-        get() = MutableLiveData<Int>().apply{value = character.value?.MySkills?.get(Skills.Marksmanship) ?: 2}
+        get() = Transformations.map(character) { it.MySkills.get(Skills.Marksmanship) ?: 0}
     val charScout : LiveData<Int>
-        get() = MutableLiveData<Int>().apply{value = character.value?.MySkills?.get(Skills.Scouting) ?: 2}
+        get() = Transformations.map(character) { it.MySkills.get(Skills.Scouting) ?: 0}
     val charLore : LiveData<Int>
-        get() = MutableLiveData<Int>().apply{value = character.value?.MySkills?.get(Skills.Lore) ?: 2}
+        get() = Transformations.map(character) { it.MySkills.get(Skills.Lore) ?: 0}
     val charSurvival : LiveData<Int>
-        get() = MutableLiveData<Int>().apply{value = character.value?.MySkills?.get(Skills.Survival) ?: 2}
+        get() = Transformations.map(character) { it.MySkills.get(Skills.Survival) ?: 0}
     val charInsight : LiveData<Int>
-        get() = MutableLiveData<Int>().apply{value = character.value?.MySkills?.get(Skills.Insight) ?: 2}
+        get() = Transformations.map(character) { it.MySkills.get(Skills.Insight) ?: 0}
     val charManipulation : LiveData<Int>
-        get() = MutableLiveData<Int>().apply{value = character.value?.MySkills?.get(Skills.Manipulation) ?: 2}
+        get() = Transformations.map(character) { it.MySkills.get(Skills.Manipulation) ?: 0}
     val charPerfomance : LiveData<Int>
-        get() = MutableLiveData<Int>().apply{value = character.value?.MySkills?.get(Skills.Performance) ?: 2}
+        get() = Transformations.map(character) { it.MySkills.get(Skills.Performance) ?: 0}
     val charHealing : LiveData<Int>
-        get() = MutableLiveData<Int>().apply{
-            value = character.value?.MySkills?.get(Skills.Healing) ?: 2}
+        get() = Transformations.map(character) { it.MySkills.get(Skills.Healing) ?: 0}
     val charAnimal : LiveData<Int>
-        get() = MutableLiveData<Int>().apply{value = character.value?.MySkills?.get(Skills.AnimalHandling) ?: 2}
+        get() = Transformations.map(character) { it.MySkills.get(Skills.AnimalHandling) ?: 0}
 
     private val kTName = MutableLiveData<String>()
     val kinTalentName : LiveData<String>
@@ -122,21 +140,22 @@ class CharCreationViewModel(application: Application) : AndroidViewModel(applica
 
     fun IncrementAttribute(idAttribute : Attributes)
     {
-        character.value?.let { ch ->
-            ch.IncrementAttribute(idAttribute)
+        character.value?.let {
+            if(it.AttrPointsLeft() > 0)
+                it.IncrementAttribute(idAttribute)
         }
     }
 
     fun DecrementAttribute(idAttribute : Attributes)
-    {   character.value?.let{ch ->
-           ch.DecrementAttribute(idAttribute)
+    {   character.value?.let{
+           it.DecrementAttribute(idAttribute)
         }
     }
 
     fun ChangeSkill(idSkill : Skills, addOrNot : Boolean)
     {
-        character.value?.let{ch ->
-            ch.ChangeSkill(idSkill, addOrNot)
+        character.value?.let {
+            it.ChangeSkill(idSkill, addOrNot)
         }
     }
     //bindable livedata variable

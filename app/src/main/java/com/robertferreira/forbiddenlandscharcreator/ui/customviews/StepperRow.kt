@@ -54,7 +54,7 @@ class StepperRow : LinearLayout {
         }
 
         stepper_value.text = minimum_value.toString()
-        stepper_remove.isEnabled = false
+        //stepper_remove.isEnabled = false
     }
     fun isShowMinimumValue(): Int {
         return minimum_value

@@ -155,6 +155,7 @@
                         android:text="@string/strength" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+
                         android:id="@+id/strength_stepper"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -280,6 +281,7 @@
                         android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:id="@+id/might_stepper"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1.5"
@@ -294,6 +296,7 @@
                         android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:id="@+id/endurance_stepper"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1.5"
@@ -317,6 +320,7 @@
                         android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:id="@+id/melee_stepper"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1.5"
@@ -331,6 +335,7 @@
                         android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:id="@+id/craft_stepper"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1.5"
@@ -359,6 +364,7 @@
                         android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:id="@+id/stealth_stepper"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1.5"
@@ -373,6 +379,7 @@
                         android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:id="@+id/sleight_stepper"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1.5"
@@ -395,6 +402,7 @@
                         android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:id="@+id/move_stepper"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1.5"
@@ -409,6 +417,7 @@
                         android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:id="@+id/marksmanship_stepper"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1.5"
@@ -437,6 +446,7 @@
                         android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:id="@+id/scouting_stepper"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1.5"
@@ -451,6 +461,7 @@
                         android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:id="@+id/lore_stepper"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1.5"
@@ -473,6 +484,7 @@
                         android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:id="@+id/survival_stepper"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1.5"
@@ -487,6 +499,7 @@
                         android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:id="@+id/insight_stepper"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1.5"
@@ -515,6 +528,7 @@
                         android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:id="@+id/manipulation_stepper"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1.5"
@@ -529,6 +543,7 @@
                         android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:id="@+id/performance_stepper"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1.5"
@@ -551,6 +566,7 @@
                         android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:id="@+id/healing_stepper"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1.5"
@@ -565,6 +581,7 @@
                         android:textSize="12sp" />
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:id="@+id/animal_stepper"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1.5"

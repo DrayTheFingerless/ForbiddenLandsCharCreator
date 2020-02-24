@@ -1,8 +1,10 @@
 package com.robertferreira.forbiddenlandscharcreator
 
+import androidx.databinding.BaseObservable
+import androidx.databinding.Bindable
 import org.w3c.dom.Attr
 
-class FLCharacter {
+class FLCharacter : BaseObservable() {
 
 
      var Name: String = ""
@@ -13,30 +15,21 @@ class FLCharacter {
      var AgeId: Int = 0
      var AgeNumber: Int = 0
 
-     var AttributePoints : Int = 5
-     var StrengthMax : Int = 4
      var Strength: Int = 2
-     var AgilityMax : Int = 4
      var Agility: Int = 2
-     var WitsMax : Int = 4
      var Wits: Int = 2
-     var EmpathyMax : Int = 4
      var Empathy: Int = 2
 
      var Pride: String = ""
      var DarkSecret: String = ""
      var Reputation: Int = 0
 
-     var CurrentSkillPoints : Int = 8
      var MySkills : MutableMap<Skills, Int> = mutableMapOf()
-
 
      var TalentList: ArrayList<Talent> = ArrayList()
      var Face: String = ""
      var Body: String = ""
      var Clothing: String = ""
-
-
 
      var CurrentWillPoints : Int = 0
 
@@ -60,7 +53,6 @@ class FLCharacter {
          enumValues<Skills>().forEach { MySkills.set(it, 0)  }
      }
 
-
      fun UpdateKin(kin : Kin)
      {
          val previousKin = this.Kin
@@ -78,13 +70,11 @@ class FLCharacter {
          //if any non key skill is above 1, update skill point pull and reset sklls to 1
          MySkills.forEach{
              if(!this.Profession.Skills.contains(it.key) && it.value > 1) {
-                 CurrentSkillPoints = CurrentSkillPoints + (it.value - 1)
                  MySkills.put(it.key, 1)
             }
          }
 
-         //insert Gear logic
-
+         //insert Gear logics
      }
 
      fun UpdateAge(ageId : Int, ageNumber : Int)
@@ -122,13 +112,10 @@ class FLCharacter {
              }
          }
 
-         var currentTotalAttr = Strength + Agility + Wits + Empathy + AttributePoints
-         var currentTotalSkills = MySkills.values.sum() + CurrentSkillPoints
+         var currentTotalAttr = Strength + Agility + Wits + Empathy
+         var currentTotalSkills = MySkills.values.sum()
 
-         if(currentTotalAttr - maxAttr < AttributePoints)
-         {    AttributePoints = AttributePoints - (currentTotalAttr - maxAttr)}
-         else {
-             AttributePoints = maxAttr - 8
+         if(currentTotalAttr > maxAttr) {
              Strength = 2
              Agility = 2
              Wits = 2
@@ -136,56 +123,65 @@ class FLCharacter {
          }
 
 
-         if(currentTotalSkills - maxSkill < CurrentSkillPoints)
-            CurrentSkillPoints = CurrentSkillPoints - (currentTotalSkills - maxSkill)
-         else {
-            CurrentSkillPoints = maxSkill
+         if(currentTotalSkills > maxSkill){
             MySkills.forEach{MySkills.set(it.key, 0)}
          }
+
+         notifyChange()
      }
 
      private fun UpdateKeyAttributes(previousAttribute : Attributes, attribute : Attributes){
          if(previousAttribute != attribute) {
              //check which attribute key was previous, then reduce value of previous key attribute, check if new max is higher than current value,
              //if current value higher than max, decrement current and add that point back to Attribute pool
-             when (previousAttribute) {
-                 Attributes.Strength -> {
-                     StrengthMax--
-                     if (StrengthMax < Strength) {
-                         Strength--
-                         AttributePoints++
-                     }
-                 }
-                 Attributes.Agility -> {
-                     AgilityMax--
-                     if (AgilityMax < Agility) {
-                         Agility--
-                         AttributePoints++
-                     }
-                 }
-                 Attributes.Wits -> {
-                     WitsMax--
-                     if (WitsMax < Wits) {
-                         Wits--
-                         AttributePoints++
-                     }
-                 }
-                 Attributes.Empathy -> {
-                     EmpathyMax--
-                     if (EmpathyMax < Empathy) {
-                         Empathy--
-                         AttributePoints++
-                     }
-                 }
-             }
-             //increment new key attribute by 1, after decrementing previous key attribute
-             when (attribute) {
-                 Attributes.Strength -> StrengthMax++
-                 Attributes.Agility -> AgilityMax++
-                 Attributes.Wits -> WitsMax++
-                 Attributes.Empathy -> EmpathyMax++
-             }
+             Strength = 2
+             Agility = 2
+             Wits = 2
+             Empathy = 2
          }
      }
 
+     fun IncrementAttribute(attribute: Attributes ){
+         var max = 4
+         if(Profession.KeyAttribute == attribute)
+             max++
+         if(Kin.KeyAttribute == attribute)
+             max++
+
+         when (attribute) {
+             Attributes.Strength -> if(Strength < max) Strength++
+             Attributes.Agility -> if(Agility < max) Agility++
+             Attributes.Wits -> if(Wits < max) Wits++
+             Attributes.Empathy -> if(Empathy < max) Empathy++
+         }
+
+         notifyChange()
+     }
+
+    fun DecrementAttribute(attribute: Attributes ){
+        when (attribute) {
+            Attributes.Strength -> if(Strength > 2) Strength--
+            Attributes.Agility -> if(Agility > 2) Agility--
+            Attributes.Wits -> if(Wits > 2) Wits--
+            Attributes.Empathy -> if(Strength > 2) Empathy--
+        }
+
+        notifyChange()
+
+    }
+
+    fun ChangeSkill(skill: Skills, addOrSubtract: Boolean)
+    {
+        var max = 1
+        if(Profession.Skills.contains(skill))
+            max = 3
+        MySkills.get(skill)?.let{ va ->
+            if(addOrSubtract && va < max)
+                MySkills.set(skill,va+1)
+            else if(!addOrSubtract && va > 0)
+                MySkills.set(skill,va+1)
+        }
+
+        notifyChange()
+    }
  }

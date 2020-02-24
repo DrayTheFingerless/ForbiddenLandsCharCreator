@@ -10,7 +10,9 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
+import com.robertferreira.forbiddenlandscharcreator.Attributes
 import com.robertferreira.forbiddenlandscharcreator.R
+import com.robertferreira.forbiddenlandscharcreator.Skills
 import kotlinx.android.synthetic.main.attribute_stepper.view.*
 
 /**
@@ -53,27 +55,6 @@ class StepperRow : LinearLayout {
 
         stepper_value.text = minimum_value.toString()
         stepper_remove.isEnabled = false
-
-        stepper_remove.setOnClickListener {
-            if(current_value > minimum_value){
-                stepper_add.isEnabled = true
-                current_value-=1
-            }
-            else stepper_remove.isEnabled = false
-
-            setText(current_value)
-        }
-        stepper_add.setOnClickListener {
-
-            if(current_value < max_value){
-                stepper_remove.isEnabled = true
-                current_value+=1
-            }
-            else stepper_add.isEnabled = false
-
-            setText(current_value)
-        }
-
     }
     fun isShowMinimumValue(): Int {
         return minimum_value

@@ -41,5 +41,7 @@
     <string name="healing">Healing</string>
     <string name="animal_handling">Animal Handling</string>
     <string name="none">None</string>
+    <string name="talents">Talents</string>
+    <string name="kin_talent">Kin Talent</string>
 
 </resources>

@@ -10,7 +10,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-    <ScrollView android:layout_width="match_parent"
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/darker_gray"
         android:backgroundTint="@color/BackgroundGray"
@@ -45,6 +48,7 @@
                     android:layout_weight="1" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -55,11 +59,12 @@
                 <TextView
                     android:id="@+id/kin_talent_display"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="2"
-                    android:hint="Kin Talent"
                     android:foregroundTint="@android:color/white"
+                    android:gravity="center_vertical"
+                    android:hint="@string/kin_talent"
                     android:visibility="visible" />
 
                 <Spinner
@@ -84,14 +89,14 @@
                 <Spinner
                     android:id="@+id/ageSpinner"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="2" />
 
                 <EditText
                     android:id="@+id/ageNumber"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="Age Number"
                     android:hint="@string/age"
@@ -123,8 +128,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:gravity="right"
-                    android:text="13" />
+                    android:gravity="center_vertical|end" />
 
                 <ImageView
                     android:id="@+id/drop_attr_img"
@@ -215,17 +219,10 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                </LinearLayout>
-
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/skill_title_layout"
+                android:id="@+id/skills_title_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
@@ -247,8 +244,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:gravity="right"
-                    android:text="8" />
+                    android:gravity="center_vertical|end" />
 
                 <ImageView
                     android:id="@+id/drop_skill_img"
@@ -592,32 +588,71 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/talents_title_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="monospace"
+                    android:text="@string/talents"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/talent_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:gravity="center_vertical|end" />
+
+                <Button
+                    android:id="@+id/add_talent_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/drop_talent_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:srcCompat="@android:drawable/arrow_down_float" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/talents_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
 
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:fontFamily="monospace"
-                    android:text="Talents"
-                    android:textSize="18sp" />
-
                 <LinearLayout
                     android:id="@+id/talent_list_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:orientation="vertical"></LinearLayout>
 
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:backgroundTint="@color/BackgroundGray"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="@+id/scrollView2"
+        app:srcCompat="@android:drawable/ic_media_next" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

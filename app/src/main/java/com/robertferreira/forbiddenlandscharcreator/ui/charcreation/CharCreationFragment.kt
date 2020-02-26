@@ -14,6 +14,9 @@ import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.robertferreira.forbiddenlandscharcreator.Ages
 import com.robertferreira.forbiddenlandscharcreator.Attributes
 import com.robertferreira.forbiddenlandscharcreator.Kin
@@ -44,13 +47,15 @@ class CharCreationFragment : Fragment() {
         viewModel =  ViewModelProviders.of(this).get(CharCreationViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_charcreation, container, false)
 
-        //example view model bind. get text view, link textview value with Observer
-        /*val textView: TextView = root.findViewById(R.id.text_gallery)
-        viewModel.text.observe(this, Observer {
-            textView.text = it
-        })*/
 
-        //setup simple adapter for kin spinner with boilerplate kins array
+
+        binding.fab.setOnClickListener { view ->
+            /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()*/
+            Navigation.createNavigateOnClickListener(R.id.action_new_to_skills)
+        }
+
+        //setup simple adapter for kin spinner with hard coded kins array
         val kinAdapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, Kins.kins )
         kinAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.kinSpinner!!.setAdapter(kinAdapter)
@@ -103,7 +108,6 @@ class CharCreationFragment : Fragment() {
         setObservers()
         setSteppers()
 
-
         return binding.root
     }
 
@@ -121,7 +125,6 @@ class CharCreationFragment : Fragment() {
        }
 
         kinSpinner.onItemSelectedListener = listener
-
     }
 
     fun setObservers(){

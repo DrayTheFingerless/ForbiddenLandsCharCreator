@@ -10,7 +10,12 @@
     <fragment
         android:id="@+id/nav_new"
         android:name="com.robertferreira.forbiddenlandscharcreator.ui.charcreation.CharCreationFragment"
-        android:label="Character Creation" />
+        android:label="Character Creation" >
+        <action
+            android:id="@+id/action_new_to_skills"
+            app:destination="@id/skillCreationFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+    </fragment>
     <fragment
         android:id="@+id/nav_list"
         android:name="com.robertferreira.forbiddenlandscharcreator.ui.charlist.CharListFragment"
@@ -19,4 +24,8 @@
         android:id="@+id/nav_options"
         android:name="com.robertferreira.forbiddenlandscharcreator.ui.options.OptionsFragment"
         android:label="Options" />
+    <fragment
+        android:id="@+id/skillCreationFragment"
+        android:name="com.robertferreira.forbiddenlandscharcreator.ui.charcreation.SkillCreationFragment"
+        android:label="SkillCreationFragment" />
 </navigation>

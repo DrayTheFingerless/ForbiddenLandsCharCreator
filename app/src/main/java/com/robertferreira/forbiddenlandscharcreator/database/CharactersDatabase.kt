@@ -10,7 +10,7 @@ import com.robertferreira.forbiddenlandscharcreator.Skills
 import com.robertferreira.forbiddenlandscharcreator.Talent
 import com.robertferreira.forbiddenlandscharcreator.utils.Converters
 
-@Database(entities =[FLCharacter::class, Skills::class, Talent::class], version = 1, exportSchema = false)
+@Database(entities =[FLCharacter::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class CharactersDatabase : RoomDatabase(){
 

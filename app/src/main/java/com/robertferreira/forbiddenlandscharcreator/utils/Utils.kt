@@ -2,9 +2,11 @@ package com.robertferreira.forbiddenlandscharcreator
 
 import android.content.Context
 import android.util.Log
+import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.robertferreira.forbiddenlandscharcreator.Talent
+import com.robertferreira.forbiddenlandscharcreator.Attributes
+import com.robertferreira.forbiddenlandscharcreator.Skills
 import java.io.IOException
 
 
@@ -39,8 +41,9 @@ enum class Attributes(val id : Int) {
     Strength(0),
     Agility(1),
     Wits(2),
-    Empathy(3)
+    Empathy(3);
 }
+
 
 enum class Skills(val id : Int) {
     Might (0),
@@ -58,5 +61,29 @@ enum class Skills(val id : Int) {
     Manipulation (12),
     Performance (13),
     Healing (14),
-    AnimalHandling (15),
+    AnimalHandling (15);
+}
+
+class AttributeConverter {
+    @TypeConverter
+    fun toAttribute(status: Int): Attributes? {
+        return Attributes.valueOf(status.toString())
+    }
+
+    @TypeConverter
+    fun toInteger(attr: Attributes): Int? {
+        return attr.id
+    }
+}
+
+class SkillConverter {
+    @TypeConverter
+    fun toSkill(status: Int): Skills? {
+       return Skills.valueOf(status.toString())
+    }
+
+    @TypeConverter
+    fun toInteger(skill: Skills): Int? {
+        return skill.id
+    }
 }

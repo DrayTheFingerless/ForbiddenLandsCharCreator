@@ -1,5 +1,6 @@
 package com.robertferreira.forbiddenlandscharcreator.ui.charcreation
 
+import android.app.Application
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.robertferreira.forbiddenlandscharcreator.Attributes
+import com.robertferreira.forbiddenlandscharcreator.FLCharacter
 
 import com.robertferreira.forbiddenlandscharcreator.R
 import com.robertferreira.forbiddenlandscharcreator.Skills
@@ -32,18 +34,19 @@ class SkillCreationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_charcreation, container, false)
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.skill_creation_fragment,
+            container,
+            false
+        )
+
+        viewModel = ViewModelProviders.of(this).get(SkillCreationViewModel::class.java)
 
         setObservers()
         setSteppers()
 
         return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(SkillCreationViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
     fun setObservers(){

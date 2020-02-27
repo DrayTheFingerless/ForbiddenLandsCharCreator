@@ -1,78 +1,131 @@
 package com.robertferreira.forbiddenlandscharcreator
 
+import android.os.Parcel
+import android.os.Parcelable
+import android.os.Parcelable.Creator
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
+import androidx.room.ColumnInfo
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import com.robertferreira.forbiddenlandscharcreator.Attributes.Agility
 import com.robertferreira.forbiddenlandscharcreator.Attributes.Empathy
 import com.robertferreira.forbiddenlandscharcreator.Attributes.Wits
+import com.robertferreira.forbiddenlandscharcreator.utils.Converters
+import kotlinx.android.parcel.Parcelize
 import org.w3c.dom.Attr
+import java.time.Instant
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
-class FLCharacter : BaseObservable() {
+@Entity(tableName = "characters_table")
+data class FLCharacter(
+
+    @PrimaryKey(autoGenerate = true)
+    var charId: Long = 0L,
+
+    @ColumnInfo(name = "created")
+    var created: Instant = Instant.now(),
+
+    @ColumnInfo(name = "modified")
+    var modified: Instant = Instant.now(),
+
+    @ColumnInfo(name = "name")
+    var Name: String = "",
+
+    @ColumnInfo(name = "kin")
+    var Kin: Int = 0,
+
+    @ColumnInfo(name = "profession")
+    var Profession: Int = 0,
+
+    //0 - Young, 1 - Adult, 2 - Old
+    @ColumnInfo(name = "age")
+    var AgeId: Int = 0,
+    @ColumnInfo(name = "agenumber")
+    var AgeNumber: Int = 0,
+
+    @ColumnInfo(name = "strength")
+    @Bindable var Strength: Int = 2,
+    @ColumnInfo(name = "agility")
+    @Bindable var Agility: Int = 2,
+    @ColumnInfo(name = "wits")
+    @Bindable var Wits: Int = 2,
+    @ColumnInfo(name = "empathy")
+    @Bindable var Empathy: Int = 2,
+
+    @ColumnInfo(name = "pride")
+     var Pride: String = "",
+    @ColumnInfo(name = "secret")
+     var DarkSecret: String = "",
+    @ColumnInfo(name = "reputation")
+     var Reputation: Int = 0,
 
 
-     var Name: String = ""
-     var Kin: Kin = Kins.kins[0]
-     var Profession: Profession = Professions.professions[0]
 
-     //0 - Young, 1 - Adult, 2 - Old
-     var AgeId: Int = 0
-     var AgeNumber: Int = 0
+    @ColumnInfo(name = "face")
+     var Face: String = "",
+    @ColumnInfo(name = "body")
+     var Body: String = "",
+    @ColumnInfo(name = "clothing")
+     var Clothing: String = "",
+    @ColumnInfo(name = "willpower")
+     var CurrentWillPoints : Int = 0,
 
-    @Bindable var Strength: Int = 2
-    @Bindable var Agility: Int = 2
-    @Bindable var Wits: Int = 2
-    @Bindable var Empathy: Int = 2
 
-     var Pride: String = ""
-     var DarkSecret: String = ""
-     var Reputation: Int = 0
+    @ColumnInfo(name = "carrycapacity")
+     var CarryCapacity: Int =  0,
 
-     var MySkills : MutableMap<Skills, Int> = mutableMapOf()
+    @TypeConverters(SkillConverter::class)
+    var MySkills : MutableMap<Skills, Int> = mutableMapOf(),
 
-     var TalentList: ArrayList<Talent> = ArrayList()
-     var Face: String = ""
-     var Body: String = ""
-     var Clothing: String = ""
+    var TalentList: ArrayList<Talent> = arrayListOf(),
 
-     var CurrentWillPoints : Int = 0
+    var Relationships: HashMap<String, String> = HashMap(),
 
-     var Relationships: HashMap<String, String> = HashMap()
-
-     var CarryCapacity: Int =  0
-
-     var Gear: HashMap<Int, String> = HashMap()
+    var Gear: HashMap<Int, String> = HashMap(),
 
      //0 = none, 1 = d6, 2 = d8, 3 = d10, 4 = d12
-     var FoodDie: Int = 1
-     var WaterDie: Int = 1
-     var ArrowsDie: Int = 0
-     var TorchesDie: Int = 0
+    @ColumnInfo(name = "food")
+     var FoodDie: Int = 1,
+    @ColumnInfo(name = "water")
+     var WaterDie: Int = 1,
+    @ColumnInfo(name = "arrows")
+     var ArrowsDie: Int = 0,
+    @ColumnInfo(name = "torches")
+     var TorchesDie: Int = 0,
 
 
      //in Silver
+    @ColumnInfo(name = "money")
      var Money: Int = 0
 
-     init {
+) : BaseObservable() {
+
+    init {
          enumValues<Skills>().forEach { MySkills.set(it, 0)  }
      }
 
-     fun UpdateKin(kin : Kin)
+     fun UpdateKin(newkin : Int)
      {
-         val previousKin = this.Kin
-         this.Kin = kin
-         UpdateKeyAttributes(previousKin.KeyAttribute, this.Kin.KeyAttribute)
+         val previousKin = Kins.kins.first{this.Kin == it.KinId}
+         this.Kin = newkin
+         UpdateKeyAttributes(previousKin.KeyAttribute, Kins.kins.first{newkin == it.KinId}.KeyAttribute)
 
      }
 
-     fun UpdateProfession(profession : Profession)
+     fun UpdateProfession(newprofession : Int)
      {
-         val previousProfession = this.Profession
-         this.Profession = profession
-         UpdateKeyAttributes(previousProfession.KeyAttribute, this.Profession.KeyAttribute)
+         val previousProfession = Professions.professions.first{this.Profession == it.ProfessionId}
+         this.Profession = newprofession
+         UpdateKeyAttributes(previousProfession.KeyAttribute, Professions.professions.first{newprofession == it.ProfessionId}.KeyAttribute)
 
          //if any non key skill is above 1, update skill point pull and reset sklls to 1
          MySkills.forEach{
-             if(!this.Profession.Skills.contains(it.key) && it.value > 1) {
+             if(!Professions.professions.first{newprofession == it.ProfessionId}.Skills.contains(it.key) && it.value > 1) {
                  MySkills.put(it.key, 1)
             }
          }
@@ -148,9 +201,9 @@ class FLCharacter : BaseObservable() {
 
     fun IncrementAttribute(attribute: Attributes ){
          var max = 4
-         if(Profession.KeyAttribute == attribute)
+         if(Professions.professions.first{Profession == it.ProfessionId}.KeyAttribute == attribute)
              max++
-         if(Kin.KeyAttribute == attribute)
+         if(Kins.kins.first{Kin == it.KinId}.KeyAttribute == attribute)
              max++
 
          when (attribute) {
@@ -191,7 +244,7 @@ class FLCharacter : BaseObservable() {
     fun ChangeSkill(skill: Skills, addOrSubtract: Boolean)
     {
         var max = 1
-        if(Profession.Skills.contains(skill))
+        if(Professions.professions.first{Profession == it.ProfessionId}.Skills.contains(skill))
             max = 3
         MySkills.get(skill)?.let{ va ->
             if(addOrSubtract && va < max && SkillPointsLeft() > 0)
@@ -222,4 +275,4 @@ class FLCharacter : BaseObservable() {
             else -> return 8 - currentUsed
         }
     }
- }
+}

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mobile_navigation"
     xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/nav_home">
     <fragment
@@ -13,8 +14,9 @@
         android:label="Character Creation" >
         <action
             android:id="@+id/action_new_to_skills"
-            app:destination="@id/skillCreationFragment"
-            app:enterAnim="@anim/nav_default_enter_anim" />
+            app:destination="@id/nav_new_skills"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:popUpTo="@+id/nav_new" />
     </fragment>
     <fragment
         android:id="@+id/nav_list"
@@ -25,7 +27,11 @@
         android:name="com.robertferreira.forbiddenlandscharcreator.ui.options.OptionsFragment"
         android:label="Options" />
     <fragment
-        android:id="@+id/skillCreationFragment"
+        android:id="@+id/nav_new_skills"
         android:name="com.robertferreira.forbiddenlandscharcreator.ui.charcreation.SkillCreationFragment"
-        android:label="SkillCreationFragment" />
+        android:label="SkillCreationFragment" >
+        <argument
+            android:name="character"
+            app:argType="com.robertferreira.forbiddenlandscharcreator.FLCharacter" />
+    </fragment>
 </navigation>

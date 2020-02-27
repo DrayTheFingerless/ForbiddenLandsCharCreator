@@ -6,6 +6,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.robertferreira.forbiddenlandscharcreator.Attributes
 import com.robertferreira.forbiddenlandscharcreator.FLCharacter
 import com.robertferreira.forbiddenlandscharcreator.Kins
@@ -16,13 +18,13 @@ import com.robertferreira.forbiddenlandscharcreator.Utils.loadTalents
 import com.robertferreira.forbiddenlandscharcreator.utils.PropertyAwareMutableLiveData
 
 
-class CharCreationViewModel(application: Application) : AndroidViewModel(application) {
+class CharCreationViewModel(application: Application, character: FLCharacter) : AndroidViewModel(application) {
 
     /*@OnLifecycleEvent(Lifecycle.Event.)
     fun onResume() {  }*/
 
     //Character to be saved
-    private val character = PropertyAwareMutableLiveData<FLCharacter>().apply { value = FLCharacter() }
+    private val character = PropertyAwareMutableLiveData<FLCharacter>().apply{ value = character }
     val char: LiveData<FLCharacter>
         get() = character
 
@@ -112,6 +114,9 @@ class CharCreationViewModel(application: Application) : AndroidViewModel(applica
     val gTalents : LiveData<List<Talent>> = listGeneralTalents
 
 
+    init{
+
+    }
 
     //filters from all profession talents into a filtered list for Prof Talents Spinner
     fun getFilteredProfessionTalents(profId : Int)  {
@@ -121,14 +126,14 @@ class CharCreationViewModel(application: Application) : AndroidViewModel(applica
     }
 
     fun SelectKin(position : Int){
-        character.value?.UpdateKin(Kins.kins[position])
-        kTName.value = kTalents.value?.first{ it.id == character.value?.Kin?.KinId }?.name ?: "None"
+        character.value?.UpdateKin(position)
+        kTName.value = kTalents.value?.first{ it.id == character.value?.Kin }?.name ?: "None"
     }
 
     fun SelectProfession(position : Int){
         character.value?.let{ch->
             getFilteredProfessionTalents(position)
-            ch.UpdateProfession(Professions.professions[position])
+            ch.UpdateProfession(position)
         }
     }
 
@@ -163,4 +168,13 @@ class CharCreationViewModel(application: Application) : AndroidViewModel(applica
         value = ""
     }
     val Text : LiveData<String> = text*/
+}
+
+class CharCreationViewModelFactory(private val application : Application, private val char: FLCharacter) : ViewModelProvider.Factory {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(CharCreationViewModel::class.java)) {
+            return CharCreationViewModel(application, char) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
 }

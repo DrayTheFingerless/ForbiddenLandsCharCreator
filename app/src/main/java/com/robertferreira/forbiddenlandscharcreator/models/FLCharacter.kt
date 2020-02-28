@@ -22,7 +22,7 @@ import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 @Entity(tableName = "characters_table")
-data class FLCharacter(
+class FLCharacter(
 
     @PrimaryKey(autoGenerate = true)
     var charId: Long = 0L,
@@ -79,14 +79,13 @@ data class FLCharacter(
     @ColumnInfo(name = "carrycapacity")
      var CarryCapacity: Int =  0,
 
-    @TypeConverters(SkillConverter::class)
     var MySkills : MutableMap<Skills, Int> = mutableMapOf(),
 
     var TalentList: ArrayList<Talent> = arrayListOf(),
 
-    var Relationships: HashMap<String, String> = HashMap(),
+    var Relationships: HashMap<String, String> = hashMapOf(),
 
-    var Gear: HashMap<Int, String> = HashMap(),
+    var Gear: HashMap<Int, String> = hashMapOf(),
 
      //0 = none, 1 = d6, 2 = d8, 3 = d10, 4 = d12
     @ColumnInfo(name = "food")
@@ -109,7 +108,7 @@ data class FLCharacter(
          enumValues<Skills>().forEach { MySkills.set(it, 0)  }
      }
 
-     fun UpdateKin(newkin : Int)
+    fun UpdateKin(newkin : Int)
      {
          val previousKin = Kins.kins.first{this.Kin == it.KinId}
          this.Kin = newkin
@@ -275,4 +274,5 @@ data class FLCharacter(
             else -> return 8 - currentUsed
         }
     }
+
 }

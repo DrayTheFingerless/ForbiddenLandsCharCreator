@@ -10,11 +10,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
-        <ScrollView android:layout_width="match_parent"
+
+        <ScrollView
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/darker_gray"
-            android:backgroundTint="@color/BackgroundGray"
-            android:orientation="vertical">
+            android:background="@color/backgroundLightGray"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="-16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -25,18 +28,19 @@
                     android:id="@+id/skills_title_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="10dp"
+                    android:layout_marginVertical="8dp"
+                    android:background="@color/BackgroundGray"
                     android:clickable="true"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
+                        android:layout_margin="8dp"
                         android:layout_weight="1"
-                        android:fontFamily="monospace"
+                        android:fontFamily="@font/im_fell_great_primer"
                         android:text="@string/skills"
-                        android:textSize="18sp" />
+                        android:textSize="24sp" />
 
                     <TextView
                         android:id="@+id/skill_points"
@@ -46,12 +50,15 @@
                         android:layout_weight="1"
                         android:gravity="center_vertical|end" />
 
-                    <ImageView
-                        android:id="@+id/drop_skill_img"
+                    <TextView
+                        android:id="@+id/textView5"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        app:srcCompat="@android:drawable/arrow_down_float" />
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:fontFamily="@font/im_fell_great_primer"
+                        android:gravity="center"
+                        android:text="@string/points"
+                        android:textAlignment="center" />
 
                 </LinearLayout>
 
@@ -68,35 +75,39 @@
                         android:orientation="horizontal"
                         android:padding="5dp">
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/might"
-                            android:textSize="12sp" />
-
                         <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                             android:id="@+id/might_stepper"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_weight="1.5"
+                            android:layout_margin="8dp"
                             app:init_value="0" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_margin="4dp"
                             android:layout_weight="1"
+                            android:fontFamily="@font/im_fell_great_primer"
                             android:gravity="center"
-                            android:text="@string/endurance"
-                            android:textSize="12sp" />
+                            android:text="@string/might"
+                            android:textSize="14sp" />
 
                         <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                             android:id="@+id/endurance_stepper"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            app:init_value="0" />
+
+                        <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1.5"
-                            app:init_value="0" />
+                            android:layout_margin="4dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/im_fell_great_primer"
+                            android:gravity="center"
+                            android:text="@string/endurance"
+                            android:textSize="14sp" />
 
 
                     </LinearLayout>
@@ -107,35 +118,40 @@
                         android:orientation="horizontal"
                         android:padding="5dp">
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/melee"
-                            android:textSize="12sp" />
-
                         <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                             android:id="@+id/melee_stepper"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_weight="1.5"
+                            android:layout_margin="8dp"
                             app:init_value="0" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_margin="4dp"
                             android:layout_weight="1"
+                            android:fontFamily="@font/im_fell_great_primer"
                             android:gravity="center"
-                            android:text="@string/crafting"
-                            android:textSize="12sp" />
+                            android:text="@string/melee"
+                            android:textSize="14sp" />
 
                         <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                             android:id="@+id/craft_stepper"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            app:init_value="0" />
+
+                        <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1.5"
-                            app:init_value="0" />
+                            android:layout_margin="4dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/im_fell_great_primer"
+                            android:gravity="center"
+                            android:text="@string/crafting"
+                            android:textSize="14sp" />
+
                     </LinearLayout>
 
 
@@ -151,35 +167,39 @@
                         android:orientation="horizontal"
                         android:padding="5dp">
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/stealth"
-                            android:textSize="12sp" />
-
                         <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                             android:id="@+id/stealth_stepper"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_weight="1.5"
+                            android:layout_margin="8dp"
                             app:init_value="0" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_margin="4dp"
                             android:layout_weight="1"
+                            android:fontFamily="@font/im_fell_great_primer"
                             android:gravity="center"
-                            android:text="@string/sleight_hand"
-                            android:textSize="12sp" />
+                            android:text="@string/stealth"
+                            android:textSize="14sp" />
 
                         <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                             android:id="@+id/sleight_stepper"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            app:init_value="0" />
+
+                        <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1.5"
-                            app:init_value="0" />
+                            android:layout_margin="4dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/im_fell_great_primer"
+                            android:gravity="center"
+                            android:text="@string/sleight_hand"
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
@@ -189,35 +209,39 @@
                         android:orientation="horizontal"
                         android:padding="5dp">
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/move"
-                            android:textSize="12sp" />
-
                         <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                             android:id="@+id/move_stepper"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_weight="1.5"
+                            android:layout_margin="8dp"
                             app:init_value="0" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_margin="4dp"
                             android:layout_weight="1"
+                            android:fontFamily="@font/im_fell_great_primer"
                             android:gravity="center"
-                            android:text="@string/marksmanship"
-                            android:textSize="12sp" />
+                            android:text="@string/move"
+                            android:textSize="14sp" />
 
                         <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                             android:id="@+id/marksmanship_stepper"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            app:init_value="0" />
+
+                        <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1.5"
-                            app:init_value="0" />
+                            android:layout_margin="4dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/im_fell_great_primer"
+                            android:gravity="center"
+                            android:text="@string/marksmanship"
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
@@ -233,35 +257,39 @@
                         android:orientation="horizontal"
                         android:padding="5dp">
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/scouting"
-                            android:textSize="12sp" />
-
                         <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                             android:id="@+id/scouting_stepper"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_weight="1.5"
+                            android:layout_margin="8dp"
                             app:init_value="0" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_margin="4dp"
                             android:layout_weight="1"
+                            android:fontFamily="@font/im_fell_great_primer"
                             android:gravity="center"
-                            android:text="@string/lore"
-                            android:textSize="12sp" />
+                            android:text="@string/scouting"
+                            android:textSize="14sp" />
 
                         <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                             android:id="@+id/lore_stepper"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            app:init_value="0" />
+
+                        <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1.5"
-                            app:init_value="0" />
+                            android:layout_margin="4dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/im_fell_great_primer"
+                            android:gravity="center"
+                            android:text="@string/lore"
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
@@ -271,35 +299,39 @@
                         android:orientation="horizontal"
                         android:padding="5dp">
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/survival"
-                            android:textSize="12sp" />
-
                         <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                             android:id="@+id/survival_stepper"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_weight="1.5"
+                            android:layout_margin="8dp"
                             app:init_value="0" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_margin="4dp"
                             android:layout_weight="1"
+                            android:fontFamily="@font/im_fell_great_primer"
                             android:gravity="center"
-                            android:text="@string/insight"
-                            android:textSize="12sp" />
+                            android:text="@string/survival"
+                            android:textSize="14sp" />
 
                         <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                             android:id="@+id/insight_stepper"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            app:init_value="0" />
+
+                        <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1.5"
-                            app:init_value="0" />
+                            android:layout_margin="4dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/im_fell_great_primer"
+                            android:gravity="center"
+                            android:text="@string/insight"
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
@@ -315,35 +347,39 @@
                         android:orientation="horizontal"
                         android:padding="5dp">
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/manipulation"
-                            android:textSize="12sp" />
-
                         <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                             android:id="@+id/manipulation_stepper"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_weight="1.5"
+                            android:layout_margin="8dp"
                             app:init_value="0" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_margin="4dp"
                             android:layout_weight="1"
+                            android:fontFamily="@font/im_fell_great_primer"
                             android:gravity="center"
-                            android:text="@string/performance"
-                            android:textSize="12sp" />
+                            android:text="@string/manipulation"
+                            android:textSize="14sp" />
 
                         <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                             android:id="@+id/performance_stepper"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            app:init_value="0" />
+
+                        <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1.5"
-                            app:init_value="0" />
+                            android:layout_margin="4dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/im_fell_great_primer"
+                            android:gravity="center"
+                            android:text="@string/performance"
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
@@ -353,40 +389,55 @@
                         android:orientation="horizontal"
                         android:padding="5dp">
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/healing"
-                            android:textSize="12sp" />
-
                         <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                             android:id="@+id/healing_stepper"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_weight="1.5"
+                            android:layout_margin="8dp"
                             app:init_value="0" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_margin="4dp"
                             android:layout_weight="1"
+                            android:fontFamily="@font/im_fell_great_primer"
                             android:gravity="center"
-                            android:text="@string/animal_handling"
-                            android:textSize="12sp" />
+                            android:text="@string/healing"
+                            android:textSize="14sp" />
 
                         <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                             android:id="@+id/animal_stepper"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            app:init_value="0" />
+
+                        <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1.5"
-                            app:init_value="0" />
+                            android:layout_margin="4dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/im_fell_great_primer"
+                            android:gravity="center"
+                            android:text="@string/animal_handling"
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
                 </LinearLayout>
-
+                <Button
+                    android:id="@+id/skills_next_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorPrimary"
+                    android:fontFamily="@font/im_fell_great_primer"
+                    android:gravity="center"
+                    android:text="Next"
+                    android:textColor="@color/backgroundLightGray"
+                    android:textStyle="bold" />
             </LinearLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

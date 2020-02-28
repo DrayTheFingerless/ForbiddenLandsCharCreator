@@ -23,15 +23,11 @@
         android:name="com.robertferreira.forbiddenlandscharcreator.ui.charlist.CharListFragment"
         android:label="Character List" />
     <fragment
-        android:id="@+id/nav_options"
-        android:name="com.robertferreira.forbiddenlandscharcreator.ui.options.OptionsFragment"
-        android:label="Options" />
-    <fragment
         android:id="@+id/nav_new_skills"
         android:name="com.robertferreira.forbiddenlandscharcreator.ui.charcreation.SkillCreationFragment"
-        android:label="SkillCreationFragment" >
-        <argument
-            android:name="character"
-            app:argType="com.robertferreira.forbiddenlandscharcreator.FLCharacter" />
-    </fragment>
+        android:label="Skills- Character Creation"></fragment>
+    <fragment
+        android:id="@+id/nav_roller"
+        android:name="com.robertferreira.forbiddenlandscharcreator.ui.diceroller.DiceRollerFragment"
+        android:label="Dice Roller" />
 </navigation>

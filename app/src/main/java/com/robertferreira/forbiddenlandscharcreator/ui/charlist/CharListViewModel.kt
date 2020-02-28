@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class CharListViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is list Fragment"
+        value = "This is list of characters. Under Construction."
     }
     val text: LiveData<String> = _text
 }

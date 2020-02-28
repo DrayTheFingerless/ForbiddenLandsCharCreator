@@ -52,14 +52,7 @@ class CharCreationFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_charcreation, container, false)
 
 
-        binding.newNextButton.setOnClickListener {
-            /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()*/
-
-            var bundle = bundleOf("char" to viewModel.char.value)
-
-            Navigation.findNavController(it).navigate(R.id.action_new_to_skills, bundle);
-        }
+        binding.newNextButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_new_to_skills))
 
         //setup simple adapter for kin spinner with hard coded kins array
         val kinAdapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, Kins.kins )

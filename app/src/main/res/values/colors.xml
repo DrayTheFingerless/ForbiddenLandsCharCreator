@@ -5,5 +5,6 @@
     <color name="colorAccent">#D8371B</color>
     <color name="BackgroundGray">#71919191</color>
     <color name="Transparent">#00919191</color>
+    <color name="backgroundLightGray">#EEEEEE</color>
 
 </resources>

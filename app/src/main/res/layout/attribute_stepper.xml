@@ -1,37 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:background="#00ffffff"
     android:layout_height="wrap_content"
+    android:background="@drawable/border"
     android:orientation="horizontal">
 
-    <ImageButton
-        android:id="@+id/stepper_remove"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_margin="0dp"
-        android:contentDescription="removeButton"
-        android:backgroundTint="@color/Transparent"
-        android:src="@drawable/ic_remove" />
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/stepper_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:backgroundTint="@color/Transparent"
+            android:outlineProvider="none"
+            android:padding="0dp"
+            android:src="@drawable/ic_add_black" />
+
+        <ImageButton
+            android:id="@+id/stepper_remove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:backgroundTint="@color/Transparent"
+            android:padding="0dp"
+            android:src="@drawable/ic_remove" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/stepper_value"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_margin="5dp"
-        android:padding="0dp"
+        android:fontFamily="@font/im_fell_great_primer"
         android:gravity="center"
-        android:text="2" />
+        android:minEms="1"
+        android:padding="0dp"
+        android:text="2"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-    <ImageButton
-        android:id="@+id/stepper_add"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_margin="0dp"
-        android:contentDescription="addButton"
-        android:backgroundTint="@color/Transparent"
-        android:src="@drawable/ic_add_black" />
 
-</merge>
+</LinearLayout>

@@ -7,287 +7,345 @@
             name="charViewModel"
             type="com.robertferreira.forbiddenlandscharcreator.ui.charcreation.CharCreationViewModel" />
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
 
-    <ScrollView
-        android:id="@+id/scrollView2"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/darker_gray"
-        android:backgroundTint="@color/BackgroundGray"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/BackgroundGray"
+            android:backgroundTint="@color/BackgroundGray"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:orientation="horizontal"
-                android:padding="10dp">
-
-                <Spinner
-                    android:id="@+id/kinSpinner"
-                    style="@android:style/Widget.Material.Light.Spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:foregroundTint="@android:color/white" />
-
-                <Spinner
-                    android:id="@+id/professionSpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:orientation="horizontal"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/kin_talent_display"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_weight="2"
-                    android:foregroundTint="@android:color/white"
-                    android:gravity="center_vertical"
-                    android:hint="@string/kin_talent"
-                    android:visibility="visible" />
-
-                <Spinner
-                    android:id="@+id/prof_talent_spinner"
-                    style="@android:style/Widget.Material.Light.Spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="2"
-                    android:foregroundTint="@android:color/white"
-                    android:visibility="visible" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="199dp"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:orientation="horizontal"
-                android:padding="10dp">
-
-                <Spinner
-                    android:id="@+id/ageSpinner"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_weight="2" />
-
-                <EditText
-                    android:id="@+id/ageNumber"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:autofillHints="Age Number"
-                    android:hint="@string/age"
-                    android:inputType="number" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/attr_title_layout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:clickable="true"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:fontFamily="monospace"
-                    android:text="@string/attributes"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/attribute_points"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|end" />
-
-                <ImageView
-                    android:id="@+id/drop_attr_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    app:srcCompat="@android:drawable/arrow_down_float" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/attr_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
                 android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:fontFamily="@font/im_fell_great_primer"
+                    android:text="@string/menu_new"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/border"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/new_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="8dp"
+                        android:fontFamily="@font/im_fell_great_primer"
+                        android:hint="Insert your character's name"
+                        android:inputType="textPersonName" />
+                </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+
+                    android:background="@drawable/border"
                     android:orientation="horizontal"
-                    android:padding="5dp">
+                    android:padding="10dp">
+
+                    <Spinner
+                        android:id="@+id/kinSpinner"
+                        style="@android:style/Widget.Material.Light.Spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:foregroundTint="@android:color/white"
+                        android:gravity="center_vertical" />
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:id="@+id/kin_talent_display"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_margin="8dp"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/strength" />
+                        android:fontFamily="@font/im_fell_great_primer"
+                        android:foregroundTint="@android:color/white"
 
-                    <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
-
-                        android:id="@+id/strength_stepper"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.5"
-                        app:init_value="2" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/agility" />
-
-                    <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
-                        android:id="@+id/agility_stepper"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.5"
-                        app:init_value="2" />
-
+                        android:gravity="center|center_vertical"
+                        android:hint="@string/kin_talent"
+                        android:visibility="visible" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/border"
                     android:orientation="horizontal"
-                    android:padding="5dp">
+                    android:padding="10dp">
 
-                    <TextView
-                        android:layout_width="0dp"
+                    <Spinner
+                        android:id="@+id/professionSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1" />
+
+                    <Spinner
+                        android:id="@+id/prof_talent_spinner"
+                        style="@android:style/Widget.Material.Light.Spinner"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_margin="8dp"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/wits" />
+                        android:foregroundTint="@android:color/white"
 
-                    <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
-                        android:id="@+id/wits_stepper"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.5"
-                        app:init_value="2" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/empathy" />
-
-                    <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
-                        android:id="@+id/empathy_stepper"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.5"
-                        app:init_value="2" />
+                        android:visibility="visible" />
 
                 </LinearLayout>
 
-            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/border"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
 
-            <LinearLayout
-                android:id="@+id/talents_title_layout"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:orientation="horizontal">
+                    <Spinner
+                        android:id="@+id/ageSpinner"
+                        style="@android:style/Widget.Material.Light.Spinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:gravity="center_vertical" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/ageNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:autofillHints="Age Number"
+                        android:fontFamily="@font/im_fell_great_primer"
+                        android:gravity="center_vertical"
+                        android:hint="@string/age"
+                        android:inputType="number" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/attr_title_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/BackgroundGray"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/im_fell_great_primer"
+                        android:text="@string/attributes"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/attribute_points"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|end" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:fontFamily="@font/im_fell_great_primer"
+                        android:gravity="center"
+                        android:text="@string/points" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/attr_layout"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:fontFamily="monospace"
-                    android:text="@string/talents"
-                    android:textSize="18sp" />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/talent_points"
-                    android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="5dp">
+
+                        <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+
+                            android:id="@+id/strength_stepper"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            app:init_value="2" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/im_fell_great_primer"
+                            android:gravity="center"
+                            android:text="@string/strength"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+                        <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                            android:id="@+id/agility_stepper"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            app:init_value="2" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/im_fell_great_primer"
+                            android:gravity="center"
+                            android:text="@string/agility"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:padding="5dp">
+
+                        <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                            android:id="@+id/wits_stepper"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            app:init_value="2">
+
+                        </com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/im_fell_great_primer"
+                            android:gravity="center"
+                            android:text="@string/wits"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+                        <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                            android:id="@+id/empathy_stepper"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            app:init_value="2" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/im_fell_great_primer"
+                            android:gravity="center"
+                            android:text="@string/empathy"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/talents_title_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/BackgroundGray"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/im_fell_great_primer"
+                        android:text="@string/talents"
+                        android:textSize="24sp" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="8dp"
+                        android:background="@color/Transparent"
+                        android:scaleType="center"
+                        app:srcCompat="@drawable/ic_add_black" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/talents_layout"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:gravity="center_vertical|end" />
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:id="@+id/talent_list_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"></LinearLayout>
+
+                </LinearLayout>
 
                 <Button
-                    android:id="@+id/add_talent_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <ImageView
-                    android:id="@+id/drop_talent_img"
+                    android:id="@+id/new_next_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    app:srcCompat="@android:drawable/arrow_down_float" />
+                    android:layout_margin="8dp"
+                    android:background="@color/colorPrimary"
+                    android:fontFamily="@font/im_fell_great_primer"
+                    android:gravity="center"
+                    android:text="Next"
+                    android:textColor="@color/backgroundLightGray"
+                    android:textStyle="bold" />
 
             </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/talents_layout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+        </ScrollView>
 
 
-                <LinearLayout
-                    android:id="@+id/talent_list_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"></LinearLayout>
 
-            </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
-
-    <ImageButton
-        android:id="@+id/new_next_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
-        app:layout_constraintEnd_toEndOf="@+id/scrollView2"
-        app:layout_constraintStart_toStartOf="@+id/scrollView2"
-        app:srcCompat="@android:drawable/ic_media_play" />
-
-    <!--
+        <!--
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
@@ -299,5 +357,5 @@
             app:layout_constraintEnd_toEndOf="@+id/scrollView2"
             app:srcCompat="@android:drawable/ic_media_next" />-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

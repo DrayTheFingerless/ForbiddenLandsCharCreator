@@ -18,13 +18,13 @@ import com.robertferreira.forbiddenlandscharcreator.Utils.loadTalents
 import com.robertferreira.forbiddenlandscharcreator.utils.PropertyAwareMutableLiveData
 
 
-class CharCreationViewModel(application: Application, character: FLCharacter) : AndroidViewModel(application) {
+class CharCreationViewModel(application: Application) : AndroidViewModel(application) {
 
     /*@OnLifecycleEvent(Lifecycle.Event.)
     fun onResume() {  }*/
 
     //Character to be saved
-    private val character = PropertyAwareMutableLiveData<FLCharacter>().apply{ value = character }
+    private val character = PropertyAwareMutableLiveData<FLCharacter>().apply{ value = FLCharacter() }
     val char: LiveData<FLCharacter>
         get() = character
 
@@ -170,11 +170,12 @@ class CharCreationViewModel(application: Application, character: FLCharacter) : 
     val Text : LiveData<String> = text*/
 }
 
+/*
 class CharCreationViewModelFactory(private val application : Application, private val char: FLCharacter) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(CharCreationViewModel::class.java)) {
-            return CharCreationViewModel(application, char) as T
+            return CharCreationViewModel(application) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
-}
+}*/

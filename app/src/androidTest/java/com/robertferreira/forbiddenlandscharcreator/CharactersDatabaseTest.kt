@@ -2,6 +2,7 @@ package com.robertferreira.forbiddenlandscharcreator
 
 import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
+
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.robertferreira.forbiddenlandscharcreator.database.CharactersDatabase
 import com.robertferreira.forbiddenlandscharcreator.database.CharactersDatabaseDAO

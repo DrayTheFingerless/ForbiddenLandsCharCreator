@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import com.robertferreira.forbiddenlandscharcreator.Attributes
 import com.robertferreira.forbiddenlandscharcreator.FLCharacter
 
@@ -42,6 +43,12 @@ class SkillCreationFragment : Fragment() {
         )
 
         viewModel = ViewModelProviders.of(this).get(SkillCreationViewModel::class.java)
+
+        binding.skillsNextButton.setOnClickListener {
+            /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()*/
+            Navigation.createNavigateOnClickListener(R.id.action_new_to_skills)
+        }
 
         setObservers()
         setSteppers()

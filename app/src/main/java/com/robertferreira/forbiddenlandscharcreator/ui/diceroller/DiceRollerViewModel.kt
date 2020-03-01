@@ -9,19 +9,19 @@ import kotlin.random.Random.Default
 
 class DiceRollerViewModel(application: Application) : AndroidViewModel(application){
 
-    private val baseDice : MutableLiveData<MutableList<Int>> = MutableLiveData<MutableList<Int>>().apply{ value = mutableListOf()}
+    private var baseDice : MutableLiveData<MutableList<Int>> = MutableLiveData<MutableList<Int>>().apply{ value = mutableListOf()}
     val bDice : LiveData<MutableList<Int>>
         get() = baseDice
 
-    private val skillDice : MutableLiveData<MutableList<Int>> = MutableLiveData<MutableList<Int>>().apply{ value = mutableListOf()}
+    private var skillDice : MutableLiveData<MutableList<Int>> = MutableLiveData<MutableList<Int>>().apply{ value = mutableListOf()}
     val sDice : LiveData<MutableList<Int>>
         get() = skillDice
 
-    private val gearDice : MutableLiveData<MutableList<Int>> = MutableLiveData<MutableList<Int>>().apply{ value = mutableListOf()}
+    private var gearDice : MutableLiveData<MutableList<Int>> = MutableLiveData<MutableList<Int>>().apply{ value = mutableListOf()}
     val gDice : LiveData<MutableList<Int>>
         get() = gearDice
 
-    private val otherDice : MutableLiveData<MutableList<Int>> = MutableLiveData<MutableList<Int>>().apply{ value = mutableListOf()}
+    private var otherDice : MutableLiveData<MutableList<Int>> = MutableLiveData<MutableList<Int>>().apply{ value = mutableListOf()}
     val oDice : LiveData<MutableList<Int>>
         get() = otherDice
 
@@ -40,10 +40,10 @@ class DiceRollerViewModel(application: Application) : AndroidViewModel(applicati
     fun removeDie(type : Int)
     {
         when(type){
-            0 -> baseDice.value?.let{if (it.count() > 0 ) it.removeAt(it.last())}
-            1 -> baseDice.value?.let{if (it.count() > 0 ) it.removeAt(it.last())}
-            2 -> baseDice.value?.let{if (it.count() > 0 ) it.removeAt(it.last())}
-            3 -> baseDice.value?.let{if (it.count() > 0 ) it.removeAt(it.last())}
+            0 -> baseDice.value?.let{ if (it.count() > 0 ) it.removeAt(it.lastIndex) }
+            1 -> skillDice.value?.let{if (it.count() > 0 ) it.removeAt(it.lastIndex)}
+            2 -> gearDice.value?.let{if (it.count() > 0 ) it.removeAt(it.lastIndex)}
+            3 -> otherDice.value?.let{if (it.count() > 0 ) it.removeAt(it.lastIndex)}
             else -> return
         }
     }
@@ -59,19 +59,61 @@ class DiceRollerViewModel(application: Application) : AndroidViewModel(applicati
         }
     }
 
-    fun rollDice()
-    {
+    fun rollDice() {
         baseDice.value?.let {
-            it.mapInPlace{Random.nextInt(1,6)}
+            var temp = it
+            for(x in 0 until it.count())
+                temp.set(x , Random.nextInt(1,7))
+            baseDice.value = temp
         }
         skillDice.value?.let {
-            it.mapInPlace{Random.nextInt(1,6)}
+            var temp = it
+            for(x in 0 until it.count())
+                temp.set(x , Random.nextInt(1,7))
+            skillDice.value = temp
         }
         gearDice.value?.let {
-            it.mapInPlace{Random.nextInt(1,6)}
+            var temp = it
+            for(x in 0 until it.count())
+                temp.set(x , Random.nextInt(1,7))
+            gearDice.value = temp
         }
         otherDice.value?.let {
-            it.mapInPlace{Random.nextInt(1,6)}
+            var temp = it
+            for(x in 0 until it.count())
+                temp.set(x , Random.nextInt(1,7))
+            otherDice.value = temp
+        }
+    }
+
+    fun pushRollDice() {
+        baseDice.value?.let {
+            var temp = it
+            for(x in 0 until it.count())
+                if(temp[x] != 6 && temp[x] != 1)
+                    temp.set(x , Random.nextInt(1,7))
+            baseDice.value = temp
+        }
+        skillDice.value?.let {
+            var temp = it
+            for(x in 0 until it.count())
+                if(temp[x] != 6)
+                    temp.set(x , Random.nextInt(1,7))
+            skillDice.value = temp
+        }
+        gearDice.value?.let {
+            var temp = it
+            for(x in 0 until it.count())
+                if(temp[x] != 6 && temp[x] != 1)
+                    temp.set(x , Random.nextInt(1,7))
+            gearDice.value = temp
+        }
+        otherDice.value?.let {
+            var temp = it
+            for(x in 0 until it.count())
+                if(temp[x] != 6 && temp[x] != 1)
+                    temp.set(x , Random.nextInt(1,7))
+            otherDice.value = temp
         }
     }
 }

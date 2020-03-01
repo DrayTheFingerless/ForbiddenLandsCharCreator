@@ -5,17 +5,21 @@
     <data>
 
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:background="@color/backgroundLightGray">
 
         <ScrollView
             android:id="@+id/scrollView2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/darker_gray"
-            android:backgroundTint="@color/BackgroundGray"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/roll_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
 
             <LinearLayout
@@ -32,7 +36,6 @@
                     android:textSize="18sp" />
 
                 <LinearLayout
-                    android:id="@+id/base_dice_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
@@ -41,12 +44,52 @@
                         android:id="@+id/base_dice_stepper"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp" >
+                        android:layout_margin="8dp">
 
                     </com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow>
 
                     <LinearLayout
-                        android:id="@+id/show_dice_layout"
+                        android:id="@+id/base_dice_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"></LinearLayout>
+
+                    <TableLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </TableLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:fontFamily="@font/im_fell_great_primer"
+                    android:text="@string/skill_dice"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:id="@+id/skill_dice_stepper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp">
+
+                    </com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow>
+
+                    <LinearLayout
+                        android:id="@+id/skill_dice_layout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"></LinearLayout>
@@ -58,7 +101,7 @@
 
                         <TableRow
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content" />
 
                         <TableRow
                             android:layout_width="wrap_content"
@@ -76,8 +119,152 @@
                     </TableLayout>
 
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:fontFamily="@font/im_fell_great_primer"
+                    android:text="@string/gear_dice"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:id="@+id/gear_dice_stepper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp">
+
+                    </com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow>
+
+                    <LinearLayout
+                        android:id="@+id/gear_dice_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"></LinearLayout>
+
+                    <TableLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent" />
+
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent" />
+                    </TableLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:fontFamily="@font/im_fell_great_primer"
+                    android:text="@string/other_dice"
+                    android:textSize="18sp"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:id="@+id/other_dice_stepper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp">
+
+                    </com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow>
+
+                    <LinearLayout
+                        android:id="@+id/other_dice_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"></LinearLayout>
+
+                    <TableLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent" />
+
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent" />
+                    </TableLayout>
+
+                </LinearLayout>
+
             </LinearLayout>
         </ScrollView>
+
+        <Button
+            android:id="@+id/roll_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="@font/im_fell_great_primer"
+            android:gravity="center"
+            android:text="@string/roll"
+            android:textColor="@color/backgroundLightGray"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/push_roll_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/push_roll_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="8dp"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/im_fell_great_primer"
+            android:padding="8dp"
+            android:text="@string/push_roll"
+            android:textColor="@color/backgroundLightGray"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

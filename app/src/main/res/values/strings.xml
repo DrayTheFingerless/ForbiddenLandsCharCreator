@@ -49,5 +49,11 @@
     <string name="dice_roller">Dice Roller</string>
     <string name="points">Points</string>
     <string name="base_dice">Base Dice</string>
+    <string name="skill_dice">Skill Dice</string>
+    <string name="gear_dice">Gear Dice</string>
+    <string name="other_dice">Other Dice</string>
+    <string name="next">Next</string>
+    <string name="roll">Roll</string>
+    <string name="push_roll">Push Roll</string>
 
 </resources>

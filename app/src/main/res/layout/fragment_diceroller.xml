@@ -38,55 +38,40 @@
                     android:orientation="horizontal">
 
                     <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
+                        android:id="@+id/base_dice_stepper"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp" />
+                        android:layout_margin="8dp" >
+
+                    </com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow>
+
+                    <LinearLayout
+                        android:id="@+id/show_dice_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"></LinearLayout>
 
                     <TableLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
 
                         <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
-                            <ImageView
-                                android:id="@+id/imageView9"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:padding="0dp"
-                                app:srcCompat="@drawable/dice_base_3" />
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
 
-                            <ImageView
-                                android:id="@+id/imageView8"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                app:srcCompat="@drawable/dice_base_2" />
                         </TableRow>
 
                         <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:id="@+id/imageView7"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                app:srcCompat="@drawable/dice_base_1" />
-
-                            <ImageView
-                                android:id="@+id/imageView10"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/dice_base_4" />
-                        </TableRow>
-
-                        <TableRow
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent" />
 
                         <TableRow
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent" />
                     </TableLayout>
 

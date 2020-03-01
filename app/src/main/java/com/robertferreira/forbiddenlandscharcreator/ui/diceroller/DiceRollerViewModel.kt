@@ -39,7 +39,6 @@ class DiceRollerViewModel(application: Application) : AndroidViewModel(applicati
 
     fun removeDie(type : Int)
     {
-
         when(type){
             0 -> baseDice.value?.let{if (it.count() > 0 ) it.removeAt(it.last())}
             1 -> baseDice.value?.let{if (it.count() > 0 ) it.removeAt(it.last())}
@@ -48,6 +47,7 @@ class DiceRollerViewModel(application: Application) : AndroidViewModel(applicati
             else -> return
         }
     }
+
     inline fun <T> MutableList<T>.mapInPlace(mutator: (T)->T) {
         val iterate = this.listIterator()
         while (iterate.hasNext()) {
@@ -58,6 +58,7 @@ class DiceRollerViewModel(application: Application) : AndroidViewModel(applicati
             }
         }
     }
+
     fun rollDice()
     {
         baseDice.value?.let {

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Forbidden Lands Char Creator</string>
     <string name="nav_header_title">Forbidden Lands</string>
-    <string name="nav_header_subtitle">Character Manager</string>
+    <string name="nav_header_subtitle">Characters &amp; Dice Roller</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 

@@ -25,9 +25,18 @@ class DiceRollerViewModel(application: Application) : AndroidViewModel(applicati
     val oDice : LiveData<MutableList<Int>>
         get() = otherDice
 
+    private val _diceRolled = MutableLiveData<Boolean>()
+    val diceRolled : LiveData<Boolean>
+        get() = _diceRolled
 
-    fun addDie(type : Int)
-    {
+    private val _dicePushRolled = MutableLiveData<Boolean>()
+    val dicePushRolled : LiveData<Boolean>
+        get() = _dicePushRolled
+
+    init {
+        _diceRolled.value = false
+    }
+    fun addDie(type : Int) {
         when(type){
             0 -> baseDice.value?.add(1)
             1 -> skillDice.value?.add(1)
@@ -37,13 +46,12 @@ class DiceRollerViewModel(application: Application) : AndroidViewModel(applicati
         }
     }
 
-    fun removeDie(type : Int)
-    {
-        when(type){
+    fun removeDie(type : Int) {
+        when(type) {
             0 -> baseDice.value?.let{ if (it.count() > 0 ) it.removeAt(it.lastIndex) }
-            1 -> skillDice.value?.let{if (it.count() > 0 ) it.removeAt(it.lastIndex)}
-            2 -> gearDice.value?.let{if (it.count() > 0 ) it.removeAt(it.lastIndex)}
-            3 -> otherDice.value?.let{if (it.count() > 0 ) it.removeAt(it.lastIndex)}
+            1 -> skillDice.value?.let{ if (it.count() > 0 ) it.removeAt(it.lastIndex) }
+            2 -> gearDice.value?.let{ if (it.count() > 0 ) it.removeAt(it.lastIndex) }
+            3 -> otherDice.value?.let{ if (it.count() > 0 ) it.removeAt(it.lastIndex) }
             else -> return
         }
     }
@@ -84,6 +92,7 @@ class DiceRollerViewModel(application: Application) : AndroidViewModel(applicati
                 temp.set(x , Random.nextInt(1,7))
             otherDice.value = temp
         }
+        _diceRolled.value = true
     }
 
     fun pushRollDice() {
@@ -115,5 +124,14 @@ class DiceRollerViewModel(application: Application) : AndroidViewModel(applicati
                     temp.set(x , Random.nextInt(1,7))
             otherDice.value = temp
         }
+
+        _dicePushRolled.value = true
     }
+
+    fun onDiceRolled(){
+        _diceRolled.value = false
+        _dicePushRolled.value = false
+    }
+
+
 }

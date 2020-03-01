@@ -39,6 +39,14 @@ class DiceRollerFragment : Fragment() {
     lateinit var viewModel : DiceRollerViewModel
     lateinit var binding : FragmentDicerollerBinding
     lateinit var pop :ShowRoll
+    var base6  : Int = 0
+    var base1 : Int = 0
+    var skill6 : Int= 0
+    var skill1 : Int= 0
+    var gear6 : Int= 0
+    var gear1 : Int= 0
+    var other6 : Int= 0
+    var other1 : Int= 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,6 +55,9 @@ class DiceRollerFragment : Fragment() {
     ): View? {
         viewModel = ViewModelProviders.of(this).get(DiceRollerViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_diceroller, container, false)
+        pop = ShowRoll()
+
+
 
         setStepper(binding.baseDiceStepper, binding.baseDiceLayout, R.drawable.dice_base_1, 0)
         setStepper(binding.skillDiceStepper, binding.skillDiceLayout, R.drawable.dice_skill_1, 1)
@@ -56,36 +67,45 @@ class DiceRollerFragment : Fragment() {
         viewModel.bDice.observe(viewLifecycleOwner, Observer{
             for (x in 0 until it.count())
                 setD6Face(binding.baseDiceLayout[x] as ImageView,it[x],0)
-            /*val total6 = it.filter{v -> v == 6}.sum()
-            pop.binding.base6s.text = "6s: " + total6.toString()
-            val total1 = it.filter{v -> v == 1}.sum()
-            pop.binding.base6s.text = "1s: " + total1.toString()*/
+            base6 = it.filter{v -> v == 6}.count()
+            base1 = it.filter{v -> v == 1}.count()
         })
         viewModel.sDice.observe(viewLifecycleOwner, Observer{
             for (x in 0 until it.count())
                 setD6Face(binding.skillDiceLayout[x] as ImageView,it[x],1)
-/*            val total6 = it.filter{v -> v == 6}.sum()
-            pop.binding.skill6s.text = "6s: " + total6.toString()
-            val total1 = it.filter{v -> v == 1}.sum()
-            pop.binding.skill1s.text = "1s: " + total1.toString()*/
+            skill6 = it.filter{v -> v == 6}.count()
+            skill1 = it.filter{v -> v == 1}.count()
         })
         viewModel.gDice.observe(viewLifecycleOwner, Observer{
             for (x in 0 until it.count())
                 setD6Face(binding.gearDiceLayout[x] as ImageView,it[x],2)
-            /*val total6 = it.filter{v -> v == 6}.sum()
-            pop.binding.gear6s.text = "6s: " + total6.toString()
-            val total1 = it.filter{v -> v == 1}.sum()
-            pop.binding.gear1s.text = "1s: " + total1.toString()*/
+            gear6 = it.filter{v -> v == 6}.count()
+            gear1 = it.filter{v -> v == 1}.count()
         })
        /* viewModel.oDice.observe(viewLifecycleOwner, Observer{
             for (x in 0 until it.count())
                 setD6Face(binding.otherDiceLayout[x] as ImageView,it[x],3)
         })*/
-        pop = ShowRoll()
+
+
+        viewModel.diceRolled.observe(viewLifecycleOwner, Observer { rolled ->
+            if(rolled){
+                val dialog = ShowRoll.newInstance(base6,base1,skill6,skill1,gear6,gear1, other6,other1, false)
+                dialog.show(childFragmentManager, "dialog")
+                viewModel.onDiceRolled()
+            }
+        })
+
+        viewModel.dicePushRolled.observe(viewLifecycleOwner, Observer { rolled ->
+            if(rolled){
+                val dialog = ShowRoll.newInstance(base6,base1,skill6,skill1,gear6,gear1, other6,other1, true)
+                dialog.show(childFragmentManager, "dialog")
+                viewModel.onDiceRolled()
+            }
+        })
 
         binding.rollButton.setOnClickListener {
             viewModel.rollDice()
-            showDialog()
             binding.pushRollButton.visibility = View.VISIBLE
         }
 
@@ -93,12 +113,24 @@ class DiceRollerFragment : Fragment() {
             viewModel.pushRollDice()
         }
 
+        arguments?.let{ arg ->
+            var numBase = arguments?.getInt("base")
+            var numSkill = arguments?.getInt("skills")
+            var numGear = arguments?.getInt("gear")
+            numBase?.let{ d ->
+                for(x in 0 ..(d-1))
+                    viewModel.addDie(0)
+            }
+            numSkill?.let{ d ->
+                for(x in 0 ..(d-1))
+                    viewModel.addDie(1)
+            }
+            numGear?.let{ d ->
+                for(x in 0 ..(d-1))
+                    viewModel.addDie(2)
+            }
+        }
         return binding.root
-    }
-
-    private fun showDialog() {
-        val fm = this.fragmentManager
-        pop.show(fm, "showRoll")
     }
 
     fun setStepper(stepper: StepperRow, layout : LinearLayout, imageResource : Int , type: Int){
@@ -184,5 +216,59 @@ class ShowRoll : DialogFragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.dice_roll_dialog, container, false)
 
 
+        binding.base6s.text = "Successes: " + arguments?.getInt(BASE6).toString() ?: throw IllegalStateException("No args provided")
+        binding.base1s.text = "Banes: " + arguments?.getInt(BASE1).toString() ?: throw IllegalStateException("No args provided")
+        binding.skill6s.text ="Successes: " +  arguments?.getInt(SKILL6).toString() ?: throw IllegalStateException("No args provided")
+        //binding.skill1s.text ="Banes: " +  arguments?.getInt(SKILL1).toString() ?: throw IllegalStateException("No args provided")
+        binding.gear6s.text ="Successes: " +  arguments?.getInt(GEAR6).toString() ?: throw IllegalStateException("No args provided")
+        binding.gear1s.text ="Banes: " +  arguments?.getInt(GEAR1).toString() ?: throw IllegalStateException("No args provided")
+
+        var totalsuc = 0
+        var totalbane = 0
+        totalsuc = (arguments?.getInt(BASE6) ?: 0) + (arguments?.getInt(SKILL6) ?: 0) + (arguments?.getInt(GEAR6) ?: 0)
+        totalbane = (arguments?.getInt(BASE1) ?: 0) + (arguments?.getInt(GEAR1) ?: 0)
+
+        binding.totalSuccesses.text ="Total successes: "+ (totalsuc).toString() ?: throw IllegalStateException("No args provided")
+        binding.totalBanes.text ="Total banes: "+ (totalbane).toString() ?: throw IllegalStateException("No args provided")
+
+        arguments?.getBoolean(PUSHED)?.let{
+            if(it) binding.titleText.text =getString( R.string.push_roll)
+            else binding.titleText.text = getString(R.string.roll)
+        }
         return binding.root
-    }}
+    }
+
+    companion object {
+
+        private const val BASE6 = "Base6"
+        private const val BASE1 = "Base1"
+        private const val SKILL6 = "Skill6"
+        private const val SKILL1 = "Skill1"
+        private const val GEAR6 = "Gear6"
+        private const val GEAR1= "Gear1"
+        private const val OTHER6 = "Other6"
+        private const val OTHER1 = "Other1"
+
+        private const val PUSHED = "Pushed"
+
+        fun newInstance(
+           base6 : Int, base1 : Int,
+           skill6 : Int, skill1 : Int,
+           gear6 : Int, gear1 : Int,
+           other6 : Int, other1 : Int,
+           pushed : Boolean
+        ): ShowRoll = ShowRoll().apply {
+            arguments = Bundle().apply {
+                putInt(BASE6, base6)
+                putInt(BASE1, base1)
+                putInt(SKILL6, skill6)
+                putInt(SKILL1, skill1)
+                putInt(GEAR6, gear6)
+                putInt(GEAR1, gear1)
+                putInt(OTHER6, other6)
+                putInt(OTHER1, other1)
+                putBoolean(PUSHED, pushed)
+            }
+        }
+    }
+}

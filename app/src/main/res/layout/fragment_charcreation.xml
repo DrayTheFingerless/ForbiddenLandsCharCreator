@@ -10,15 +10,20 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/backgroundLightGray">
 
         <ScrollView
             android:id="@+id/scrollView2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/BackgroundGray"
-            android:backgroundTint="@color/BackgroundGray"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/backgroundLightGray"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/new_next_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -65,10 +70,10 @@
 
                     <Spinner
                         android:id="@+id/kinSpinner"
-                        style="@android:style/Widget.Material.Light.Spinner"
+                        style="@android:style/Widget.DeviceDefault.Spinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:foregroundTint="@android:color/white"
                         android:gravity="center_vertical" />
@@ -77,7 +82,7 @@
                         android:id="@+id/kin_talent_display"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_margin="8dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:fontFamily="@font/im_fell_great_primer"
                         android:foregroundTint="@android:color/white"
@@ -98,17 +103,18 @@
 
                     <Spinner
                         android:id="@+id/professionSpinner"
+                        style="@android:style/Widget.DeviceDefault.Spinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1" />
 
                     <Spinner
                         android:id="@+id/prof_talent_spinner"
-                        style="@android:style/Widget.Material.Light.Spinner"
+                        style="@android:style/Widget.DeviceDefault.Spinner"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_margin="8dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:foregroundTint="@android:color/white"
 
@@ -126,18 +132,19 @@
 
                     <Spinner
                         android:id="@+id/ageSpinner"
-                        style="@android:style/Widget.Material.Light.Spinner"
+                        style="@android:style/Widget.DeviceDefault.Spinner"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_margin="8dp"
+                        android:layout_margin="4dp"
                         android:gravity="center_vertical" />
 
                     <EditText
                         android:id="@+id/ageNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
+                        android:layout_margin="4dp"
                         android:autofillHints="Age Number"
+                        android:ems="2"
                         android:fontFamily="@font/im_fell_great_primer"
                         android:gravity="center_vertical"
                         android:hint="@string/age"
@@ -327,23 +334,26 @@
 
                 </LinearLayout>
 
-                <Button
-                    android:id="@+id/new_next_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="8dp"
-                    android:background="@color/colorPrimary"
-                    android:fontFamily="@font/im_fell_great_primer"
-                    android:gravity="center"
-                    android:text="Next"
-                    android:textColor="@color/backgroundLightGray"
-                    android:textStyle="bold" />
 
             </LinearLayout>
         </ScrollView>
 
 
+        <Button
+            android:id="@+id/new_next_button"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/im_fell_great_primer"
+            android:gravity="center"
+            android:text="Next"
+            android:textColor="@color/backgroundLightGray"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <!--
         <com.google.android.material.floatingactionbutton.FloatingActionButton

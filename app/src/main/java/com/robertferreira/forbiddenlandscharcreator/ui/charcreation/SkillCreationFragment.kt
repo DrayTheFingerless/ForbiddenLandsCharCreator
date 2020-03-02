@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
+import androidx.navigation.navGraphViewModels
 import com.robertferreira.forbiddenlandscharcreator.Attributes
 import com.robertferreira.forbiddenlandscharcreator.FLCharacter
 
@@ -25,7 +26,7 @@ class SkillCreationFragment : Fragment() {
         fun newInstance() = SkillCreationFragment()
     }
 
-    private lateinit var viewModel: SkillCreationViewModel
+    private val viewModel: CharCreationViewModel by navGraphViewModels(R.id.char_creation_nav_graph)
 
 
     private lateinit var binding : SkillCreationFragmentBinding
@@ -42,20 +43,18 @@ class SkillCreationFragment : Fragment() {
             false
         )
 
-        viewModel = ViewModelProviders.of(this).get(SkillCreationViewModel::class.java)
-
-        arguments?.let {
+/*        activity?.let {
+          viewModel = ViewModelProviders.of(it).get(CharCreationViewModel::class.java)
+        }*/
+      /*  arguments?.let {
             it.getParcelable<FLCharacter>("character")?.let {c ->
                 viewModel.setCharacter(c)
             }
-        }
+        }*/
 
-        binding.skillsNextButton.setOnClickListener {
-            /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()*/
-            Navigation.createNavigateOnClickListener(R.id.action_new_to_skills)
-        }
+        binding.skillsNextButton.setOnClickListener (Navigation.createNavigateOnClickListener(R.id.action_skills_to_info))
 
+        //hook up skill steppers
         setObservers()
         setSteppers()
 

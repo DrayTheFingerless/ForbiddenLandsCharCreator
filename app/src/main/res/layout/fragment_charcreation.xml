@@ -31,7 +31,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/new_char_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
@@ -57,7 +57,7 @@
                         android:fontFamily="@font/im_fell_great_primer"
                         android:hint="Insert your character's name"
                         android:inputType="textPersonName"
-                        android:text="@={charViewModel.newName}"/>
+                        android:text="@={charViewModel.Name}"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -349,7 +349,7 @@
             android:background="@color/colorPrimary"
             android:fontFamily="@font/im_fell_great_primer"
             android:gravity="center"
-            android:text="Next"
+            android:text="@string/next"
             android:textColor="@color/backgroundLightGray"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

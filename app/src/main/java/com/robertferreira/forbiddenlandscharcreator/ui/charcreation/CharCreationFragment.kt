@@ -18,6 +18,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.navGraphViewModels
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.robertferreira.forbiddenlandscharcreator.Ages
 import com.robertferreira.forbiddenlandscharcreator.Attributes
@@ -38,7 +39,7 @@ import kotlinx.android.synthetic.main.fragment_charcreation.*
 
 class CharCreationFragment : Fragment() {
 
-    private lateinit var viewModel: CharCreationViewModel
+    private val viewModel: CharCreationViewModel by navGraphViewModels(R.id.char_creation_nav_graph)
 
     private lateinit var binding : FragmentCharcreationBinding
 
@@ -47,10 +48,18 @@ class CharCreationFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProviders.of(this).get(CharCreationViewModel::class.java)
+
+/*        activity?.let {
+            viewModel = ViewModelProviders.of(it).get(CharCreationViewModel::class.java)
+        }*/
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_charcreation, container, false)
 
+        binding.charViewModel = viewModel
+
+        viewModel.Name.observe(viewLifecycleOwner, Observer {
+            binding.newCharTitle.text = it
+        })
 
         binding.newNextButton.setOnClickListener{
             val bundle = Bundle()
@@ -110,6 +119,8 @@ class CharCreationFragment : Fragment() {
         //hook up steppers
         setObservers()
         setSteppers()
+
+
 
         return binding.root
     }

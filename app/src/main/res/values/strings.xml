@@ -55,5 +55,12 @@
     <string name="next">Next</string>
     <string name="roll">Roll</string>
     <string name="push_roll">Push Roll</string>
+    <string name="general_info">General Information</string>
+    <string name="pride">Pride</string>
+    <string name="describe_your_pride">Describe what your Pride is</string>
+    <string name="dark_secret">Dark Secret</string>
+    <string name="describe_your_secret">What is your darkest secret?</string>
+    <string name="relationships">Relationships</string>
+    <string name="add">Add</string>
 
 </resources>

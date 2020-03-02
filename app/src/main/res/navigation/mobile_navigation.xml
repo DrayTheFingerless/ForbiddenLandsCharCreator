@@ -9,26 +9,37 @@
         android:name="com.robertferreira.forbiddenlandscharcreator.ui.home.HomeFragment"
         android:label="Home" />
     <fragment
-        android:id="@+id/nav_new"
-        android:name="com.robertferreira.forbiddenlandscharcreator.ui.charcreation.CharCreationFragment"
-        android:label="Character Creation" >
-        <action
-            android:id="@+id/action_new_to_skills"
-            app:destination="@id/nav_new_skills"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:popUpTo="@+id/nav_new" />
-        <argument android:name="character" />
-    </fragment>
-    <fragment
         android:id="@+id/nav_list"
         android:name="com.robertferreira.forbiddenlandscharcreator.ui.charlist.CharListFragment"
         android:label="Character List" />
     <fragment
-        android:id="@+id/nav_new_skills"
-        android:name="com.robertferreira.forbiddenlandscharcreator.ui.charcreation.SkillCreationFragment"
-        android:label="Skills- Character Creation"></fragment>
-    <fragment
         android:id="@+id/nav_roller"
         android:name="com.robertferreira.forbiddenlandscharcreator.ui.diceroller.DiceRollerFragment"
         android:label="Dice Roller" />
+    <navigation
+        android:id="@+id/char_creation_nav_graph"
+        app:startDestination="@id/nav_new" >
+        <fragment
+            android:id="@+id/nav_new"
+            android:name="com.robertferreira.forbiddenlandscharcreator.ui.charcreation.CharCreationFragment"
+            android:label="Character Creation">
+            <action
+                android:id="@+id/action_new_to_skills"
+                app:destination="@id/nav_new_skills"
+                app:enterAnim="@anim/nav_default_enter_anim"
+                app:popUpTo="@+id/nav_new" />
+        </fragment>
+        <fragment
+            android:id="@+id/nav_new_skills"
+            android:name="com.robertferreira.forbiddenlandscharcreator.ui.charcreation.SkillCreationFragment"
+            android:label="Skills- Character Creation">
+            <action
+                android:id="@+id/action_skills_to_info"
+                app:destination="@id/nav_new_info" />
+        </fragment>
+        <fragment
+            android:id="@+id/nav_new_info"
+            android:name="com.robertferreira.forbiddenlandscharcreator.ui.charcreation.InfoCreationFragment"
+            android:label="Info - Character Creation" />
+    </navigation>
 </navigation>

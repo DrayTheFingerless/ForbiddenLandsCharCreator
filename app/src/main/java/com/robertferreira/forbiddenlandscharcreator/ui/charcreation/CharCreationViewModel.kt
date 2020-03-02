@@ -3,24 +3,20 @@ package com.robertferreira.forbiddenlandscharcreator.ui.charcreation
 import android.app.Application
 import android.util.Log
 import androidx.databinding.BaseObservable
-import androidx.databinding.Bindable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.robertferreira.forbiddenlandscharcreator.Attributes
 import com.robertferreira.forbiddenlandscharcreator.FLCharacter
-import com.robertferreira.forbiddenlandscharcreator.Kins
-import com.robertferreira.forbiddenlandscharcreator.Professions
 import com.robertferreira.forbiddenlandscharcreator.Skills
 import com.robertferreira.forbiddenlandscharcreator.Talent
 import com.robertferreira.forbiddenlandscharcreator.Utils.loadTalents
 import com.robertferreira.forbiddenlandscharcreator.utils.PropertyAwareMutableLiveData
 
 
-class CharCreationViewModel(application: Application) : AndroidViewModel(application) {
+class CharCreationViewModel(application: Application) :  AndroidViewModel(application) {
 
     /*@OnLifecycleEvent(Lifecycle.Event.)
     fun onResume() {  }*/
@@ -92,6 +88,7 @@ class CharCreationViewModel(application: Application) : AndroidViewModel(applica
     val charAnimal : LiveData<Int>
         get() = Transformations.map(character) { it.MySkills.get(Skills.AnimalHandling) ?: 0}
 
+
     private val kTName = MutableLiveData<String>()
     val kinTalentName : LiveData<String>
         get() = kTName
@@ -115,7 +112,6 @@ class CharCreationViewModel(application: Application) : AndroidViewModel(applica
     private val listGeneralTalents = MutableLiveData<List<Talent>>().apply { value =  loadTalents(this@CharCreationViewModel.getApplication(),"general_talents") }
     val gTalents : LiveData<List<Talent>> = listGeneralTalents
 
-
     init{
 
     }
@@ -126,19 +122,28 @@ class CharCreationViewModel(application: Application) : AndroidViewModel(applica
         filterListProfessionTalents.value = listProfessionTalents.value?.filter{it.type == profId}
         print(filterListProfessionTalents.value?.count())
     }
-    var newName : String? = null
-        set(value) {
-            if (field != value) {
-                field = value
-                value?.let {
-                    setName(it)
-                }
-            }
-        }
 
-    fun setName(name : String){
-        character.value?.Name = name
+
+    var Name = MutableLiveData<String>()
+
+    // This observer will invoke onNameChanged() when the user updates the name
+    private val NameObserver = Observer<String> {
+        onNameChanged(it)
     }
+
+    init {
+        Name.observeForever(NameObserver)
+    }
+
+    override fun onCleared() {
+        Name.removeObserver(NameObserver)
+    }
+
+    fun onNameChanged(newName: String) {
+        // Some code
+        character.value?.Name = newName
+    }
+
 
     fun SelectKin(position : Int){
         character.value?.UpdateKin(position)
@@ -178,19 +183,33 @@ class CharCreationViewModel(application: Application) : AndroidViewModel(applica
             it.ChangeSkill(idSkill, addOrNot)
         }
     }
-    //bindable livedata variable
-/*    private val text = MutableLiveData<String>().apply {
-        value = ""
-    }
-    val Text : LiveData<String> = text*/
-}
 
-/*
-class CharCreationViewModelFactory(private val application : Application, private val char: FLCharacter) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(CharCreationViewModel::class.java)) {
-            return CharCreationViewModel(application) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
+    fun setPride(pride : String){
+        character.value?.Pride = pride
     }
-}*/
+    fun setDarkSecret(secret : String){
+        character.value?.DarkSecret = secret
+    }
+    fun addRelationship(name: String, description: String){
+        character.value?.let{
+            it.AddRelationship(name,description)
+        }
+    }
+    fun removeRelationship(name: String){
+        character.value?.let{
+            it.RemoveRelationShip(name)
+        }
+    }
+
+    fun addGear(gearId: Int, name: String){
+        character.value?.let{
+            it.AddGear(gearId,name)
+        }
+    }
+    fun removeRelationship(gearId: Int){
+        character.value?.let{
+            it.RemoveGear(gearId)
+        }
+    }
+
+}

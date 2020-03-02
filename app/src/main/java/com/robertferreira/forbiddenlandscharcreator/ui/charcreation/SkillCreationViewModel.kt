@@ -15,6 +15,7 @@ class SkillCreationViewModel : ViewModel() {
         get() = character
 
     //observer skill fields
+
     val skillPoints : LiveData<Int>
         get () = Transformations.map(character) {val i = when(it.AgeId){
             0-> 8 - it.MySkills?.values.sum()

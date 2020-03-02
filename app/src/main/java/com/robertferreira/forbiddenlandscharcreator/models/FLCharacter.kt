@@ -70,8 +70,8 @@ class FLCharacter(
 
     var MySkills : MutableMap<Skills, Int> = mutableMapOf(),
     var TalentList: @RawValue ArrayList<Talent> = arrayListOf(),
-    var Relationships: HashMap<String, String> = hashMapOf(),
-    var Gear: HashMap<Int, String> = hashMapOf(),
+    var Relationships: MutableMap<String, String> = mutableMapOf(),
+    var Gear: MutableMap<Int, String> = mutableMapOf(),
 
      //0 = none, 1 = d6, 2 = d8, 3 = d10, 4 = d12
     @ColumnInfo(name = "food")
@@ -290,6 +290,26 @@ class FLCharacter(
         }
     }
 
+    fun AddRelationship(name: String, description: String){
+        Relationships.put(name, description)
+        notifyChange()
+
+    }
+    fun RemoveRelationShip(name: String){
+        Relationships.remove(name)
+        notifyChange()
+
+    }
+
+    fun AddGear(gear: Int, description: String){
+        Gear.put(gear, description)
+        notifyChange()
+    }
+    fun RemoveGear(gear: Int){
+        Gear.remove(gear)
+        notifyChange()
+
+    }
 
 
     override fun describeContents(): Int {

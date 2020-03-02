@@ -44,6 +44,12 @@ class SkillCreationFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this).get(SkillCreationViewModel::class.java)
 
+        arguments?.let {
+            it.getParcelable<FLCharacter>("character")?.let {c ->
+                viewModel.setCharacter(c)
+            }
+        }
+
         binding.skillsNextButton.setOnClickListener {
             /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()*/

@@ -56,7 +56,8 @@
                         android:layout_margin="8dp"
                         android:fontFamily="@font/im_fell_great_primer"
                         android:hint="Insert your character's name"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:text="@={charViewModel.newName}"/>
                 </LinearLayout>
 
                 <LinearLayout

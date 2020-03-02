@@ -63,4 +63,8 @@ class SkillCreationViewModel : ViewModel() {
             it.ChangeSkill(idSkill, addOrNot)
         }
     }
+
+    fun setCharacter(c : FLCharacter){
+        character.value = c
+    }
 }

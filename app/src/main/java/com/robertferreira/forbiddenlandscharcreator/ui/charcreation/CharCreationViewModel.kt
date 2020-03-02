@@ -2,6 +2,8 @@ package com.robertferreira.forbiddenlandscharcreator.ui.charcreation
 
 import android.app.Application
 import android.util.Log
+import androidx.databinding.BaseObservable
+import androidx.databinding.Bindable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -123,6 +125,19 @@ class CharCreationViewModel(application: Application) : AndroidViewModel(applica
         Log.i("filtering talents", profId.toString())
         filterListProfessionTalents.value = listProfessionTalents.value?.filter{it.type == profId}
         print(filterListProfessionTalents.value?.count())
+    }
+    var newName : String? = null
+        set(value) {
+            if (field != value) {
+                field = value
+                value?.let {
+                    setName(it)
+                }
+            }
+        }
+
+    fun setName(name : String){
+        character.value?.Name = name
     }
 
     fun SelectKin(position : Int){

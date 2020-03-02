@@ -10,11 +10,13 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
+import androidx.versionedparcelable.ParcelField
 import com.robertferreira.forbiddenlandscharcreator.Attributes.Agility
 import com.robertferreira.forbiddenlandscharcreator.Attributes.Empathy
 import com.robertferreira.forbiddenlandscharcreator.Attributes.Wits
 import com.robertferreira.forbiddenlandscharcreator.utils.Converters
 import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 import org.w3c.dom.Attr
 import java.time.Instant
 import java.util.*
@@ -22,32 +24,25 @@ import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 @Entity(tableName = "characters_table")
+@Parcelize
 class FLCharacter(
-
     @PrimaryKey(autoGenerate = true)
     var charId: Long = 0L,
-
-    @ColumnInfo(name = "created")
+/*    @ColumnInfo(name = "created")
     var created: Instant = Instant.now(),
-
     @ColumnInfo(name = "modified")
-    var modified: Instant = Instant.now(),
-
+    var modified: Instant = Instant.now(),*/
     @ColumnInfo(name = "name")
     var Name: String = "",
-
     @ColumnInfo(name = "kin")
     var Kin: Int = 0,
-
     @ColumnInfo(name = "profession")
     var Profession: Int = 0,
-
     //0 - Young, 1 - Adult, 2 - Old
     @ColumnInfo(name = "age")
     var AgeId: Int = 0,
     @ColumnInfo(name = "agenumber")
     var AgeNumber: Int = 0,
-
     @ColumnInfo(name = "strength")
     @Bindable var Strength: Int = 2,
     @ColumnInfo(name = "agility")
@@ -56,16 +51,12 @@ class FLCharacter(
     @Bindable var Wits: Int = 2,
     @ColumnInfo(name = "empathy")
     @Bindable var Empathy: Int = 2,
-
     @ColumnInfo(name = "pride")
      var Pride: String = "",
     @ColumnInfo(name = "secret")
      var DarkSecret: String = "",
     @ColumnInfo(name = "reputation")
      var Reputation: Int = 0,
-
-
-
     @ColumnInfo(name = "face")
      var Face: String = "",
     @ColumnInfo(name = "body")
@@ -74,17 +65,12 @@ class FLCharacter(
      var Clothing: String = "",
     @ColumnInfo(name = "willpower")
      var CurrentWillPoints : Int = 0,
-
-
     @ColumnInfo(name = "carrycapacity")
      var CarryCapacity: Int =  0,
 
     var MySkills : MutableMap<Skills, Int> = mutableMapOf(),
-
-    var TalentList: ArrayList<Talent> = arrayListOf(),
-
+    var TalentList: @RawValue ArrayList<Talent> = arrayListOf(),
     var Relationships: HashMap<String, String> = hashMapOf(),
-
     var Gear: HashMap<Int, String> = hashMapOf(),
 
      //0 = none, 1 = d6, 2 = d8, 3 = d10, 4 = d12
@@ -96,17 +82,46 @@ class FLCharacter(
      var ArrowsDie: Int = 0,
     @ColumnInfo(name = "torches")
      var TorchesDie: Int = 0,
-
-
      //in Silver
     @ColumnInfo(name = "money")
      var Money: Int = 0
 
-) : BaseObservable() {
+) : BaseObservable(), Parcelable {
 
     init {
          enumValues<Skills>().forEach { MySkills.set(it, 0)  }
      }
+
+    constructor(parcel: Parcel) : this(
+        parcel.readLong(),
+        parcel.readString().toString(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readInt(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readInt(),
+        parcel.readInt(),
+        mutableMapOf(),
+        arrayListOf(),
+        hashMapOf(),
+        hashMapOf(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt()
+    ) {
+    }
 
     fun UpdateKin(newkin : Int)
      {
@@ -273,6 +288,12 @@ class FLCharacter(
             2 -> return 12 - currentUsed
             else -> return 8 - currentUsed
         }
+    }
+
+
+
+    override fun describeContents(): Int {
+        return 0
     }
 
 }

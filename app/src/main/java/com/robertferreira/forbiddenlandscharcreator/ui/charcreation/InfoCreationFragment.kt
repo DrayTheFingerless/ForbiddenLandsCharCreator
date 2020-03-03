@@ -2,6 +2,7 @@ package com.robertferreira.forbiddenlandscharcreator.ui.charcreation
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.fonts.Font
 import android.os.Bundle
 import android.provider.SyncStateContract.Constants
 import android.view.LayoutInflater
@@ -15,10 +16,17 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.navigation.navGraphViewModels
 import com.robertferreira.forbiddenlandscharcreator.R
 import com.robertferreira.forbiddenlandscharcreator.databinding.AddTitleDescriptionDialogBinding
 import com.robertferreira.forbiddenlandscharcreator.databinding.InfoCreationFragmentBinding
+import com.robertferreira.forbiddenlandscharcreator.ui.customviews.RelationshipRow
+import kotlinx.android.synthetic.main.add_title_description_dialog.view.*
+import kotlinx.android.synthetic.main.add_title_description_dialog.view.description_field
+import kotlinx.android.synthetic.main.dice_roll_dialog.view.*
+import kotlinx.android.synthetic.main.relationship_row.*
+import kotlinx.android.synthetic.main.relationship_row.view.*
 import org.w3c.dom.Text
 
 
@@ -70,6 +78,9 @@ class InfoCreationFragment : Fragment() {
 
         setRelationshipList()
 
+        binding.nextInfoButton.setOnClickListener (Navigation.createNavigateOnClickListener(R.id.action_skills_to_info))
+
+
         return binding.root
     }
 
@@ -90,25 +101,17 @@ class InfoCreationFragment : Fragment() {
 
         viewModel.char.observe(viewLifecycleOwner, Observer {
             binding.relationsLayout.removeAllViews()
-            for(item in it.Relationships){
-                var title = TextView(context)
-                var desc = TextView(context)
-                title.layoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
-                title.text = item.key
-                title.minEms = 10
-                desc.layoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
-                desc.text = item.value
-                // Creating a LinearLayout.LayoutParams object for text view
-                val param = desc.layoutParams as LinearLayout.LayoutParams
-                param.setMargins(8,8,8,8)
-                param.weight = 1F
-                title.layoutParams = param
-                desc.layoutParams = param
-                var parent = LinearLayout(context)
-                parent.orientation = HORIZONTAL
-                parent.addView(title)
-                parent.addView(desc)
-                binding.relationsLayout.addView(parent)
+
+            for (item in it.Relationships) {
+                context?.let { con ->
+                    var row = RelationshipRow(con)
+                    row.title_field.text = item.key
+
+                    row.setValues(item.key,item.value)
+                    // Creating a LinearLayout.LayoutParams object for text view
+
+                    binding.relationsLayout.addView(row)
+                }
             }
         })
     }

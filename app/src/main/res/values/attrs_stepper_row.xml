@@ -3,4 +3,9 @@
     <declare-styleable name="StepperRow">
         <attr name="init_value" format="integer" />
     </declare-styleable>
+
+    <declare-styleable name="RelationshipRow">
+        <attr name="id" format="integer" />
+    </declare-styleable>
+
 </resources>

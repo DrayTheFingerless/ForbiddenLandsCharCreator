@@ -126,17 +126,30 @@ class CharCreationViewModel(application: Application) :  AndroidViewModel(applic
 
     var Name = MutableLiveData<String>()
 
-    // This observer will invoke onNameChanged() when the user updates the name
     private val NameObserver = Observer<String> {
         onNameChanged(it)
     }
+    var Pride = MutableLiveData<String>()
 
+    private val PrideObserver = Observer<String> {
+        setPride(it)
+    }
+
+    var DarkSecret = MutableLiveData<String>()
+
+    private val DarkSecretObserver = Observer<String> {
+        setDarkSecret(it)
+    }
     init {
         Name.observeForever(NameObserver)
+        Pride.observeForever(PrideObserver)
+        DarkSecret.observeForever(DarkSecretObserver)
     }
 
     override fun onCleared() {
         Name.removeObserver(NameObserver)
+        Pride.removeObserver(PrideObserver)
+        DarkSecret.removeObserver(DarkSecretObserver)
     }
 
     fun onNameChanged(newName: String) {
@@ -157,6 +170,11 @@ class CharCreationViewModel(application: Application) :  AndroidViewModel(applic
         }
     }
 
+    fun SelectProfessionTalent(position : Int){
+        character.value?.let{ch->
+            ch.ProfessionTalent = position
+        }
+    }
     fun SelectAge(position : Int, value : Int){
         character.value?.let{ch->
             ch.UpdateAge(position, value)
@@ -183,6 +201,8 @@ class CharCreationViewModel(application: Application) :  AndroidViewModel(applic
             it.ChangeSkill(idSkill, addOrNot)
         }
     }
+
+
 
     fun setPride(pride : String){
         character.value?.Pride = pride

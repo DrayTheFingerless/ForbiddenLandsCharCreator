@@ -110,12 +110,26 @@ class CharCreationFragment : Fragment() {
         var profTalentAdapter = ArrayAdapter<Talent>(this.requireContext(), android.R.layout.simple_spinner_item )
         profTalentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.profTalentSpinner!!.setAdapter(profTalentAdapter)
+        binding.profTalentSpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                viewModel.SelectProfessionTalent(-1)
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val selectedProfession = professionSpinner.selectedItem as Profession
+                viewModel.SelectProfessionTalent(position)
+            }
+        }
+
         viewModel.pTalents.observe(viewLifecycleOwner, Observer {
             Log.i("filtered talents0", it.count().toString())
             profTalentAdapter.clear()
             profTalentAdapter.addAll(it)
         })
 
+        viewModel.char.observe(viewLifecycleOwner, Observer {
+            binding.profTalentSpinner.setSelection(it.ProfessionTalent)
+        })
         //hook up steppers
         setObservers()
         setSteppers()

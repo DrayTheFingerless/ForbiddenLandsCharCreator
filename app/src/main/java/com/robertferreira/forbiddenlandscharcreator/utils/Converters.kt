@@ -60,25 +60,25 @@ class Converters {
     }
 
     @TypeConverter
-    fun toHashMapSS(value: String?): HashMap<String,String> {
+    fun toMutableMapSS(value: String?): MutableMap<String,String> {
         val mapType = object :
-            TypeToken<HashMap<String,String>?>() {}.type
+            TypeToken<MutableMap<String,String>?>() {}.type
         return Gson().fromJson(value, mapType)
     }
     @TypeConverter
-    fun fromHashMapSS(map: HashMap<String,String>?): String {
+    fun fromMutableMapSS(map: MutableMap<String,String>?): String {
         val gson = Gson()
         return gson.toJson(map)
     }
 
     @TypeConverter
-    fun toHashMapIS(value: String?): HashMap<Int,String> {
+    fun toMutableMapIS(value: String?): MutableMap<Int,String> {
         val mapType = object :
-            TypeToken<HashMap<Int,String>?>() {}.type
+            TypeToken<MutableMap<Int,String>?>() {}.type
         return Gson().fromJson(value, mapType)
     }
     @TypeConverter
-    fun fromHashMapIS(map: HashMap<Int,String>?): String {
+    fun fromMutableMapIS(map: MutableMap<Int,String>?): String {
         val gson = Gson()
         return gson.toJson(map)
     }

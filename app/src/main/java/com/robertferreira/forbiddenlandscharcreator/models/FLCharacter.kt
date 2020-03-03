@@ -38,6 +38,8 @@ class FLCharacter(
     var Kin: Int = 0,
     @ColumnInfo(name = "profession")
     var Profession: Int = 0,
+    @ColumnInfo(name = "professiontalent")
+    var ProfessionTalent: Int = 0,
     //0 - Young, 1 - Adult, 2 - Old
     @ColumnInfo(name = "age")
     var AgeId: Int = 0,
@@ -95,6 +97,7 @@ class FLCharacter(
     constructor(parcel: Parcel) : this(
         parcel.readLong(),
         parcel.readString().toString(),
+        parcel.readInt(),
         parcel.readInt(),
         parcel.readInt(),
         parcel.readInt(),

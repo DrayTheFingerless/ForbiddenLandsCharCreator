@@ -8,7 +8,7 @@
             android:id="@+id/nav_home"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_new"
+            android:id="@+id/char_creation_nav_graph"
             android:title="@string/menu_new" />
         <item
             android:id="@+id/nav_list"

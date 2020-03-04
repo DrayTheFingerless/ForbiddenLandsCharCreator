@@ -62,5 +62,7 @@
     <string name="describe_your_secret">What is your darkest secret?</string>
     <string name="relationships">Relationships</string>
     <string name="add">Add</string>
+    <string name="creation_description">Time to create a character! Fill in your Kin, Profession, Attributes and Skills, and fill in the information to describe who you are. Don\'t forget to list any relationships you have with other characters!</string>
+    <string name="start">Start</string>
 
 </resources>

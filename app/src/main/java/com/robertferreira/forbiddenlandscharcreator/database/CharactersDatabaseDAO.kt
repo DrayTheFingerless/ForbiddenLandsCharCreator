@@ -23,7 +23,7 @@ interface CharactersDatabaseDAO {
     fun clear()
 
     @Query("SELECT * FROM characters_table ORDER BY charID DESC")
-    fun getAllCharacters() : LiveData<List<FLCharacter>>
+    fun getAllCharacters() : List<FLCharacter>
 
     @Query("SELECT * FROM characters_table ORDER BY charId DESC LIMIT 1")
     fun getLastCharacter() : FLCharacter

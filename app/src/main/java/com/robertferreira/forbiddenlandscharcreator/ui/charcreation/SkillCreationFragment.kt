@@ -16,6 +16,7 @@ import com.robertferreira.forbiddenlandscharcreator.FLCharacter
 
 import com.robertferreira.forbiddenlandscharcreator.R
 import com.robertferreira.forbiddenlandscharcreator.Skills
+import com.robertferreira.forbiddenlandscharcreator.database.CharactersDatabase
 import com.robertferreira.forbiddenlandscharcreator.databinding.SkillCreationFragmentBinding
 import com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
 import kotlinx.android.synthetic.main.attribute_stepper.view.*
@@ -26,7 +27,11 @@ class SkillCreationFragment : Fragment() {
         fun newInstance() = SkillCreationFragment()
     }
 
-    private val viewModel: CharCreationViewModel by navGraphViewModels(R.id.char_creation_nav_graph)
+    private val viewModel: CharCreationViewModel by navGraphViewModels(R.id.char_creation_nav_graph){
+        val application = requireNotNull(this.activity).application
+        val dataSource = CharactersDatabase.getInstance(application).charactersDatabaseDAO()
+        CharCreationViewModelFactory(dataSource, application)
+    }
 
 
     private lateinit var binding : SkillCreationFragmentBinding

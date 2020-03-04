@@ -14,7 +14,7 @@ import com.robertferreira.forbiddenlandscharcreator.utils.Converters
 @TypeConverters(Converters::class)
 abstract class CharactersDatabase : RoomDatabase(){
 
-    abstract val charactersDatabaseDAO: CharactersDatabaseDAO
+    abstract fun charactersDatabaseDAO(): CharactersDatabaseDAO
 
     companion object{
 
@@ -35,6 +35,7 @@ abstract class CharactersDatabase : RoomDatabase(){
                         .build()
                     INSTANCE = instance
                 }
+
 
                 return instance
             }

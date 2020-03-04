@@ -19,6 +19,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.navGraphViewModels
 import com.robertferreira.forbiddenlandscharcreator.R
+import com.robertferreira.forbiddenlandscharcreator.database.CharactersDatabase
 import com.robertferreira.forbiddenlandscharcreator.databinding.AddTitleDescriptionDialogBinding
 import com.robertferreira.forbiddenlandscharcreator.databinding.InfoCreationFragmentBinding
 import com.robertferreira.forbiddenlandscharcreator.ui.customviews.RelationshipRow
@@ -39,7 +40,11 @@ class InfoCreationFragment : Fragment() {
     }
     private lateinit var binding : InfoCreationFragmentBinding
 
-    private val viewModel: CharCreationViewModel by navGraphViewModels(R.id.char_creation_nav_graph)
+    private val viewModel: CharCreationViewModel by navGraphViewModels(R.id.char_creation_nav_graph){
+        val application = requireNotNull(this.activity).application
+        val dataSource = CharactersDatabase.getInstance(application).charactersDatabaseDAO()
+        CharCreationViewModelFactory(dataSource, application)
+    }
 
     lateinit var pop :ShowAddRelation
 
@@ -78,8 +83,15 @@ class InfoCreationFragment : Fragment() {
 
         setRelationshipList()
 
-        binding.nextInfoButton.setOnClickListener (Navigation.createNavigateOnClickListener(R.id.action_skills_to_info))
+        binding.nextInfoButton.setOnClickListener {
+            //test saving character
+            viewModel.saveCharacter()
+        }
 
+        viewModel.creationDone.observe(viewLifecycleOwner, Observer {
+            if(it) view?.let { it1 -> Navigation.findNavController(it1).popBackStack(R.id.nav_begin_new, false) }
+
+        })
 
         return binding.root
     }

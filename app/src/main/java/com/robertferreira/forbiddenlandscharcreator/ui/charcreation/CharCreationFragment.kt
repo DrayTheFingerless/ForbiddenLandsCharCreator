@@ -30,6 +30,7 @@ import com.robertferreira.forbiddenlandscharcreator.Professions
 import com.robertferreira.forbiddenlandscharcreator.R
 import com.robertferreira.forbiddenlandscharcreator.Skills
 import com.robertferreira.forbiddenlandscharcreator.Talent
+import com.robertferreira.forbiddenlandscharcreator.database.CharactersDatabase
 import com.robertferreira.forbiddenlandscharcreator.databinding.FragmentCharcreationBinding
 import com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
 import kotlinx.android.synthetic.main.attribute_stepper.*
@@ -39,7 +40,11 @@ import kotlinx.android.synthetic.main.fragment_charcreation.*
 
 class CharCreationFragment : Fragment() {
 
-    private val viewModel: CharCreationViewModel by navGraphViewModels(R.id.char_creation_nav_graph)
+    private val viewModel: CharCreationViewModel by navGraphViewModels(R.id.char_creation_nav_graph){
+        val application = requireNotNull(this.activity).application
+        val dataSource = CharactersDatabase.getInstance(application).charactersDatabaseDAO()
+        CharCreationViewModelFactory(dataSource, application)
+    }
 
     private lateinit var binding : FragmentCharcreationBinding
 
@@ -52,6 +57,9 @@ class CharCreationFragment : Fragment() {
 /*        activity?.let {
             viewModel = ViewModelProviders.of(it).get(CharCreationViewModel::class.java)
         }*/
+        val application = requireNotNull(this.activity).application
+        val dataSource = CharactersDatabase.getInstance(application).charactersDatabaseDAO()
+        val viewModelFactory = CharCreationViewModelFactory(dataSource, application)
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_charcreation, container, false)
 
@@ -130,11 +138,10 @@ class CharCreationFragment : Fragment() {
         viewModel.char.observe(viewLifecycleOwner, Observer {
             binding.profTalentSpinner.setSelection(it.ProfessionTalent)
         })
+
         //hook up steppers
         setObservers()
         setSteppers()
-
-
 
         return binding.root
     }

@@ -42,4 +42,12 @@
             android:name="com.robertferreira.forbiddenlandscharcreator.ui.charcreation.InfoCreationFragment"
             android:label="Info - Character Creation" />
     </navigation>
+    <fragment
+        android:id="@+id/nav_begin_new"
+        android:name="com.robertferreira.forbiddenlandscharcreator.ui.charcreation.BeginCharCreationFragment"
+        android:label="Create your character" >
+        <action
+            android:id="@+id/action_begin_to_new"
+            app:destination="@id/char_creation_nav_graph" />
+    </fragment>
 </navigation>

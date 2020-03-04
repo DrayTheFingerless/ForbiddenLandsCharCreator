@@ -1,6 +1,7 @@
 package com.robertferreira.forbiddenlandscharcreator.ui.charcreation
 
 import android.app.Application
+import android.provider.SyncStateContract.Helpers.insert
 import android.util.Log
 import androidx.databinding.BaseObservable
 import androidx.lifecycle.AndroidViewModel
@@ -8,18 +9,34 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.Transformations
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.robertferreira.forbiddenlandscharcreator.Attributes
 import com.robertferreira.forbiddenlandscharcreator.FLCharacter
 import com.robertferreira.forbiddenlandscharcreator.Skills
 import com.robertferreira.forbiddenlandscharcreator.Talent
 import com.robertferreira.forbiddenlandscharcreator.Utils.loadTalents
+import com.robertferreira.forbiddenlandscharcreator.database.CharactersDatabaseDAO
 import com.robertferreira.forbiddenlandscharcreator.utils.PropertyAwareMutableLiveData
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
-class CharCreationViewModel(application: Application) :  AndroidViewModel(application) {
+class CharCreationViewModel(val database: CharactersDatabaseDAO,
+                                application: Application) :  AndroidViewModel(application) {
 
     /*@OnLifecycleEvent(Lifecycle.Event.)
     fun onResume() {  }*/
+
+    private var viewModelJob = Job()
+    private val uiScope = CoroutineScope(Dispatchers.Main +  viewModelJob)
+
+    private val _creationDone = MutableLiveData<Boolean>()
+    val creationDone : LiveData<Boolean>
+        get() = _creationDone
 
     //Character to be saved
     private val character = PropertyAwareMutableLiveData<FLCharacter>().apply{ value = FLCharacter() }
@@ -147,9 +164,13 @@ class CharCreationViewModel(application: Application) :  AndroidViewModel(applic
     }
 
     override fun onCleared() {
+        super.onCleared()
+
         Name.removeObserver(NameObserver)
         Pride.removeObserver(PrideObserver)
         DarkSecret.removeObserver(DarkSecretObserver)
+        viewModelJob.cancel()
+
     }
 
     fun onNameChanged(newName: String) {
@@ -232,4 +253,27 @@ class CharCreationViewModel(application: Application) :  AndroidViewModel(applic
         }
     }
 
+    fun saveCharacter(){
+        character.value?.let {
+            uiScope.launch {
+                withContext(Dispatchers.IO) {
+                    database.insert(it)
+                }
+                _creationDone?.value = true
+            }
+        }
+    }
+}
+
+
+class CharCreationViewModelFactory(
+    private val dataSource: CharactersDatabaseDAO,
+    private val application: Application) : ViewModelProvider.Factory {
+    @Suppress("unchecked_cast")
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(CharCreationViewModel::class.java)) {
+            return CharCreationViewModel(dataSource, application) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
 }

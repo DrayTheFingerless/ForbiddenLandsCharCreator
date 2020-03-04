@@ -6,6 +6,9 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.robertferreira.forbiddenlandscharcreator.database.CharactersDatabase
 import com.robertferreira.forbiddenlandscharcreator.database.CharactersDatabaseDAO
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.junit.After
 
 import org.junit.Test
@@ -36,7 +39,7 @@ class CharactersDatabaseTest{
             .allowMainThreadQueries()
             .build()
 
-        characterDao = db.charactersDatabaseDAO
+        characterDao = db.charactersDatabaseDAO()
     }
 
     @After

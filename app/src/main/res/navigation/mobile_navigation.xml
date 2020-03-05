@@ -11,7 +11,11 @@
     <fragment
         android:id="@+id/nav_list"
         android:name="com.robertferreira.forbiddenlandscharcreator.ui.charlist.CharListFragment"
-        android:label="Character List" />
+        android:label="Character List" >
+        <action
+            android:id="@+id/action_list_to_show"
+            app:destination="@id/nav_show" />
+    </fragment>
     <fragment
         android:id="@+id/nav_roller"
         android:name="com.robertferreira.forbiddenlandscharcreator.ui.diceroller.DiceRollerFragment"
@@ -50,4 +54,8 @@
             android:id="@+id/action_begin_to_new"
             app:destination="@id/char_creation_nav_graph" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_show"
+        android:name="com.robertferreira.forbiddenlandscharcreator.ui.charlist.CharShowFragment"
+        android:label="Character" />
 </navigation>

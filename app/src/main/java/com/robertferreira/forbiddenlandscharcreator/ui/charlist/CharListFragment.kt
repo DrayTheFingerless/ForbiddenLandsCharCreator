@@ -9,11 +9,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import com.robertferreira.forbiddenlandscharcreator.R
 import com.robertferreira.forbiddenlandscharcreator.database.CharactersDatabase
 import com.robertferreira.forbiddenlandscharcreator.databinding.FragmentCharcreationBinding
 import com.robertferreira.forbiddenlandscharcreator.databinding.FragmentCharlistBinding
+import com.robertferreira.forbiddenlandscharcreator.ui.charlist.CharListAdapter.CharacterListener
 
 class CharListFragment : Fragment() {
 
@@ -21,6 +24,8 @@ class CharListFragment : Fragment() {
     private lateinit var charListViewModel: CharListViewModel
 
     private lateinit var binding : FragmentCharlistBinding
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,8 +41,22 @@ class CharListFragment : Fragment() {
 
         charListViewModel = ViewModelProviders.of(this, viewModelFactory).get(CharListViewModel::class.java)
 
-        charListViewModel.text.observe(viewLifecycleOwner, Observer {
-            binding.textGallery.text = it
+        binding.viewModel = charListViewModel
+
+        val adapter = CharListAdapter(CharacterListener {
+                charId ->  charListViewModel.onCharacterClicked(charId)
+        })
+        binding.charList.adapter = adapter
+
+        charListViewModel.charList.observe(viewLifecycleOwner, Observer {
+            adapter.data = it
+        })
+
+        charListViewModel.navigateToCharacter.observe(viewLifecycleOwner, Observer {char ->
+            char?.let {
+                this.findNavController().navigate(R.id.action_list_to_show)
+                charListViewModel.onCharacterNavigated()
+            }
         })
 
         return binding.root

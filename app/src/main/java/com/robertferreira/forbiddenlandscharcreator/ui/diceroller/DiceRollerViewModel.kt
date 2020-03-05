@@ -36,6 +36,7 @@ class DiceRollerViewModel(application: Application) : AndroidViewModel(applicati
     init {
         _diceRolled.value = false
     }
+
     fun addDie(type : Int) {
         when(type){
             0 -> baseDice.value?.add(1)

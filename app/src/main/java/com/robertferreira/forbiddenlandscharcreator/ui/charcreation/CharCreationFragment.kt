@@ -65,6 +65,7 @@ class CharCreationFragment : Fragment() {
 
         binding.charViewModel = viewModel
 
+
         viewModel.Name.observe(viewLifecycleOwner, Observer {
             binding.newCharTitle.text = it
         })

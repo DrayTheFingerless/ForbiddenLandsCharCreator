@@ -12,6 +12,7 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.LinearLayout
 import android.widget.LinearLayout.HORIZONTAL
 import android.widget.TextView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
@@ -89,8 +90,9 @@ class InfoCreationFragment : Fragment() {
         }
 
         viewModel.creationDone.observe(viewLifecycleOwner, Observer {
-            if(it) view?.let { it1 -> Navigation.findNavController(it1).popBackStack(R.id.nav_begin_new, false) }
-
+            if(it) view?.let { it1 ->
+                Toast.makeText(context,"Character created",Toast.LENGTH_LONG)
+                Navigation.findNavController(it1).popBackStack(R.id.nav_begin_new, false) }
         })
 
         return binding.root

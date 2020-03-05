@@ -33,7 +33,6 @@ class SkillCreationFragment : Fragment() {
         CharCreationViewModelFactory(dataSource, application)
     }
 
-
     private lateinit var binding : SkillCreationFragmentBinding
 
     override fun onCreateView(

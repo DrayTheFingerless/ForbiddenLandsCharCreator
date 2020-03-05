@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.robertferreira.forbiddenlandscharcreator.FLCharacter
 import com.robertferreira.forbiddenlandscharcreator.database.CharactersDatabaseDAO
 import com.robertferreira.forbiddenlandscharcreator.ui.charcreation.CharCreationViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -24,17 +25,37 @@ class CharListViewModel(val database: CharactersDatabaseDAO,
     val text: LiveData<String>
         get()=_text
 
+    private val _charList = MutableLiveData<List<FLCharacter>>().apply {
+        uiScope.launch {
+            value = getCharacters()
+        }
+    }
+    val charList: LiveData<List<FLCharacter>>
+        get()= _charList
+
+
+    private val _navigateToCharacter = MutableLiveData<Long>()
+    val navigateToCharacter
+        get() = _navigateToCharacter
+
     init{
         uiScope.launch {
-            _text.value = getCharacters()
+            _charList.value = getCharacters()
         }
     }
 
-    suspend fun getCharacters() : String {
+    suspend fun getCharacters() : List<FLCharacter>? {
         return withContext(Dispatchers.IO) {
             val clist = database.getAllCharacters()
-            clist.count().toString()
+            clist
         }
+    }
+
+    fun onCharacterClicked(id: Long){
+        _navigateToCharacter.value = id
+    }
+    fun onCharacterNavigated() {
+        _navigateToCharacter.value = null
     }
 }
 

@@ -157,10 +157,33 @@ class CharCreationViewModel(val database: CharactersDatabaseDAO,
     private val DarkSecretObserver = Observer<String> {
         setDarkSecret(it)
     }
+
+    var Body = MutableLiveData<String>()
+
+    private val BodyObserver = Observer<String> {
+        setBody(it)
+    }
+
+    var Face = MutableLiveData<String>()
+
+    private val FaceObserver = Observer<String> {
+        setFace(it)
+    }
+
+    var Clothing = MutableLiveData<String>()
+
+    private val ClothingObserver = Observer<String> {
+        setClothing(it)
+    }
+
     init {
         Name.observeForever(NameObserver)
         Pride.observeForever(PrideObserver)
         DarkSecret.observeForever(DarkSecretObserver)
+        Body.observeForever(BodyObserver)
+        Face.observeForever(FaceObserver)
+        Clothing.observeForever(ClothingObserver)
+
     }
 
     override fun onCleared() {
@@ -231,6 +254,16 @@ class CharCreationViewModel(val database: CharactersDatabaseDAO,
     fun setDarkSecret(secret : String){
         character.value?.DarkSecret = secret
     }
+    fun setBody(b : String){
+        character.value?.Body = b
+    }
+    fun setFace(f : String){
+        character.value?.Face = f
+    }
+    fun setClothing(c : String){
+        character.value?.Clothing = c
+    }
+
     fun addRelationship(name: String, description: String){
         character.value?.let{
             it.AddRelationship(name,description)
@@ -242,18 +275,24 @@ class CharCreationViewModel(val database: CharactersDatabaseDAO,
         }
     }
 
-    fun addGear(gearId: Int, name: String){
+    fun addGear(name: String, weight: String){
         character.value?.let{
-            it.AddGear(gearId,name)
+            try {
+                val w = weight.toFloat()
+                it.AddGear(name, w)
+            } catch (e : Exception) {
+
+            }
         }
     }
-    fun removeRelationship(gearId: Int){
+
+    fun removeGear(gearId: Int) {
         character.value?.let{
             it.RemoveGear(gearId)
         }
     }
 
-    fun saveCharacter(){
+    fun saveCharacter() {
         character.value?.let {
             uiScope.launch {
                 withContext(Dispatchers.IO) {

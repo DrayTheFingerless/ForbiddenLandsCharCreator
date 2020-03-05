@@ -57,7 +57,7 @@
                         android:fontFamily="@font/im_fell_great_primer"
                         android:hint="Insert your character's name"
                         android:inputType="textPersonName"
-                        android:text="@={charViewModel.Name}"/>
+                        android:text="James" />
                 </LinearLayout>
 
                 <LinearLayout

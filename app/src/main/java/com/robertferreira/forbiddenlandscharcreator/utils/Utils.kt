@@ -1,7 +1,10 @@
 package com.robertferreira.forbiddenlandscharcreator
 
 import android.content.Context
+import android.content.res.Resources
 import android.util.Log
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -87,3 +90,4 @@ class SkillConverter {
         return skill.id
     }
 }
+

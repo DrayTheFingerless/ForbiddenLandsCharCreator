@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken
 import com.robertferreira.forbiddenlandscharcreator.Kin
 import com.robertferreira.forbiddenlandscharcreator.Skills
 import com.robertferreira.forbiddenlandscharcreator.Talent
+import com.robertferreira.forbiddenlandscharcreator.models.Gear
 import java.time.Instant
 
 
@@ -36,6 +37,18 @@ class Converters {
     }
 
     @TypeConverter
+    fun fromStringToGears(value: String?): ArrayList<Gear> {
+        val mapType = object :
+            TypeToken<ArrayList<Gear>?>() {}.type
+        return Gson().fromJson(value, mapType)
+    }
+    @TypeConverter
+    fun fromGearsToString(map: ArrayList<Gear>?): String {
+        val gson = Gson()
+        return gson.toJson(map)
+    }
+
+    @TypeConverter
     fun fromStringToTalent(value: String?): Talent {
         val mapType = object :
             TypeToken<Talent?>() {}.type
@@ -43,6 +56,18 @@ class Converters {
     }
     @TypeConverter
     fun fromTalentToString(map: Talent?): String {
+        val gson = Gson()
+        return gson.toJson(map)
+    }
+
+    @TypeConverter
+    fun fromStringToGear(value: String?): Gear {
+        val mapType = object :
+            TypeToken<Gear?>() {}.type
+        return Gson().fromJson(value, mapType)
+    }
+    @TypeConverter
+    fun fromGearToString(map: Gear?): String {
         val gson = Gson()
         return gson.toJson(map)
     }

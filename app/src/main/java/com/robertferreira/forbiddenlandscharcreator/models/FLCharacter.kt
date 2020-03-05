@@ -14,6 +14,7 @@ import androidx.versionedparcelable.ParcelField
 import com.robertferreira.forbiddenlandscharcreator.Attributes.Agility
 import com.robertferreira.forbiddenlandscharcreator.Attributes.Empathy
 import com.robertferreira.forbiddenlandscharcreator.Attributes.Wits
+import com.robertferreira.forbiddenlandscharcreator.models.Gear
 import com.robertferreira.forbiddenlandscharcreator.utils.Converters
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.parcel.RawValue
@@ -22,6 +23,7 @@ import java.time.Instant
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
+import kotlin.random.Random
 
 @Entity(tableName = "characters_table")
 @Parcelize
@@ -68,12 +70,12 @@ class FLCharacter(
     @ColumnInfo(name = "willpower")
      var CurrentWillPoints : Int = 0,
     @ColumnInfo(name = "carrycapacity")
-     var CarryCapacity: Int =  0,
+     var CarryCapacity: Int =  4,
 
     var MySkills : MutableMap<Skills, Int> = mutableMapOf(),
     var TalentList: @RawValue ArrayList<Talent> = arrayListOf(),
     var Relationships: MutableMap<String, String> = mutableMapOf(),
-    var Gear: MutableMap<Int, String> = mutableMapOf(),
+    var Gear: @RawValue ArrayList<Gear> = arrayListOf(),
 
      //0 = none, 1 = d6, 2 = d8, 3 = d10, 4 = d12
     @ColumnInfo(name = "food")
@@ -117,7 +119,7 @@ class FLCharacter(
         mutableMapOf(),
         arrayListOf(),
         hashMapOf(),
-        hashMapOf(),
+        arrayListOf(),
         parcel.readInt(),
         parcel.readInt(),
         parcel.readInt(),
@@ -148,6 +150,13 @@ class FLCharacter(
          }
 
          //insert Gear logics
+         val prof = Professions.professions.first{newprofession == it.ProfessionId}
+         FoodDie = prof.Food
+         WaterDie = prof.Water
+         TorchesDie = prof.Torch
+         ArrowsDie = prof.Arrows
+         Money = Random.nextInt(1,((prof.Silver*2)+5))
+         Gear.addAll(prof.Gear)
      }
 
      fun UpdateAge(ageId : Int, ageNumber : Int)
@@ -163,6 +172,7 @@ class FLCharacter(
 
          AgeId = ageId
          AgeNumber = ageNumber
+         Reputation = AgeId
 
          when(AgeId){
              0-> {
@@ -190,11 +200,11 @@ class FLCharacter(
 
          if(currentTotalAttr > maxAttr) {
              Strength = 2
+             CarryCapacity = 4
              Agility = 2
              Wits = 2
              Empathy = 2
          }
-
 
          if(currentTotalSkills > maxSkill){
             MySkills.forEach{MySkills.set(it.key, 0)}
@@ -208,6 +218,7 @@ class FLCharacter(
              //check which attribute key was previous, then reduce value of previous key attribute, check if new max is higher than current value,
              //if current value higher than max, decrement current and add that point back to Attribute pool
              Strength = 2
+             CarryCapacity = 4
              Agility = 2
              Wits = 2
              Empathy = 2
@@ -216,7 +227,7 @@ class FLCharacter(
 
      }
 
-    fun IncrementAttribute(attribute: Attributes ){
+    fun IncrementAttribute(attribute: Attributes) {
          var max = 4
          if(Professions.professions.first{Profession == it.ProfessionId}.KeyAttribute == attribute)
              max++
@@ -225,6 +236,7 @@ class FLCharacter(
 
          when (attribute) {
              Attributes.Strength -> if(Strength < max) { Strength++
+                 CarryCapacity+=2
                  notifyPropertyChanged(this.Strength)}
              Attributes.Agility -> if(Agility < max) {
                  Agility++
@@ -239,9 +251,10 @@ class FLCharacter(
          notifyChange()
      }
 
-    fun DecrementAttribute(attribute: Attributes ){
+    fun DecrementAttribute(attribute: Attributes ) {
         when (attribute) {
             Attributes.Strength -> if(Strength > 2) {Strength--
+                CarryCapacity-=2
                 notifyPropertyChanged(this.Strength)
             }
             Attributes.Agility -> if(Agility > 2){ Agility--
@@ -255,11 +268,9 @@ class FLCharacter(
             }
         }
         notifyChange()
-
     }
 
-    fun ChangeSkill(skill: Skills, addOrSubtract: Boolean)
-    {
+    fun ChangeSkill(skill: Skills, addOrSubtract: Boolean) {
         var max = 1
         if(Professions.professions.first{Profession == it.ProfessionId}.Skills.contains(skill))
             max = 3
@@ -293,30 +304,25 @@ class FLCharacter(
         }
     }
 
-    fun AddRelationship(name: String, description: String){
+    fun AddRelationship(name: String, description: String) {
         Relationships.put(name, description)
         notifyChange()
-
     }
-    fun RemoveRelationShip(name: String){
+    fun RemoveRelationShip(name: String) {
         Relationships.remove(name)
         notifyChange()
-
     }
 
-    fun AddGear(gear: Int, description: String){
-        Gear.put(gear, description)
+    fun AddGear(gear: String, weight: Float) {
+        Gear.add(Gear(gear, weight))
         notifyChange()
     }
-    fun RemoveGear(gear: Int){
-        Gear.remove(gear)
+    fun RemoveGear(position: Int) {
+        Gear.removeAt(position)
         notifyChange()
-
     }
-
 
     override fun describeContents(): Int {
         return 0
     }
-
 }

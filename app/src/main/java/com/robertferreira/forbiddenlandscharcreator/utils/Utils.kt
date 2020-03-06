@@ -30,7 +30,6 @@ object Utils {
     //function loads a list of Talents from json file
     fun loadTalents(context: Context, filename : String) : List<Talent>{
         val jsonFileString = Utils.getJsonDataFromAsset(context, filename)
-        Log.i("talents", jsonFileString)
 
         val gson = Gson()
         val listType = object : TypeToken<List<Talent>>() {}.type

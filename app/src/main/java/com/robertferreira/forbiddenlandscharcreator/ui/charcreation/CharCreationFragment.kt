@@ -131,7 +131,6 @@ class CharCreationFragment : Fragment() {
         }
 
         viewModel.pTalents.observe(viewLifecycleOwner, Observer {
-            Log.i("filtered talents0", it.count().toString())
             profTalentAdapter.clear()
             profTalentAdapter.addAll(it)
         })

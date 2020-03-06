@@ -135,7 +135,6 @@ class CharCreationViewModel(val database: CharactersDatabaseDAO,
 
     //filters from all profession talents into a filtered list for Prof Talents Spinner
     fun getFilteredProfessionTalents(profId : Int)  {
-        Log.i("filtering talents", profId.toString())
         filterListProfessionTalents.value = listProfessionTalents.value?.filter{it.type == profId}
         print(filterListProfessionTalents.value?.count())
     }

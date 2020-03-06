@@ -6,5 +6,6 @@
     <color name="BackgroundGray">#71919191</color>
     <color name="Transparent">#00919191</color>
     <color name="backgroundLightGray">#EEEEEE</color>
+    <color name="greenPrimary">#76A225</color>
 
 </resources>

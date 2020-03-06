@@ -121,12 +121,12 @@ class CharCreationFragment : Fragment() {
         binding.profTalentSpinner!!.setAdapter(profTalentAdapter)
         binding.profTalentSpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                viewModel.SelectProfessionTalent(-1)
+                viewModel.SelectProfessionTalent(null)
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val selectedProfession = professionSpinner.selectedItem as Profession
-                viewModel.SelectProfessionTalent(position)
+                val selectedTalent = professionSpinner.selectedItem as Talent
+                viewModel.SelectProfessionTalent(selectedTalent)
             }
         }
 
@@ -144,6 +144,11 @@ class CharCreationFragment : Fragment() {
         setSteppers()
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.setName("James")
     }
 
     fun setKinListener(kinSpinner : Spinner) {

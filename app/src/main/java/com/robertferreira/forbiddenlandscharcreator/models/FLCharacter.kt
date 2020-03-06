@@ -159,6 +159,11 @@ class FLCharacter(
          Gear.addAll(prof.Gear)
      }
 
+    fun UpdateProfessionTalent(newTalent : Int)
+    {
+        this.ProfessionTalent = newTalent
+    }
+
      fun UpdateAge(ageId : Int, ageNumber : Int)
      {
         //0 - Young, 1 - Adult, 2 - Old

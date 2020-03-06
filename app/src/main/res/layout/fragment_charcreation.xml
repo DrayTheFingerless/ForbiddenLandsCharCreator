@@ -57,7 +57,7 @@
                         android:fontFamily="@font/im_fell_great_primer"
                         android:hint="Insert your character's name"
                         android:inputType="textPersonName"
-                        android:text="James" />
+                        android:text="@={charViewModel.name}" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -158,7 +158,7 @@
                     android:id="@+id/attr_title_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/BackgroundGray"
+                    android:background="@color/Transparent"
                     android:clickable="true"
                     android:orientation="horizontal">
 
@@ -195,6 +195,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:background="@drawable/border"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -220,7 +221,7 @@
                             android:gravity="center"
                             android:text="@string/strength"
                             android:textAlignment="center"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
 
                         <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                             android:id="@+id/agility_stepper"
@@ -238,7 +239,7 @@
                             android:gravity="center"
                             android:text="@string/agility"
                             android:textAlignment="center"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
 
 
                     </LinearLayout>
@@ -267,7 +268,7 @@
                             android:gravity="center"
                             android:text="@string/wits"
                             android:textAlignment="center"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
 
                         <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
                             android:id="@+id/empathy_stepper"
@@ -285,7 +286,7 @@
                             android:gravity="center"
                             android:text="@string/empathy"
                             android:textAlignment="center"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 

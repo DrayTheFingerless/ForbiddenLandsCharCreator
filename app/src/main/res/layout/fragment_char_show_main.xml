@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/backgroundLightGray"
+            android:backgroundTintMode="src_atop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/border"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="8dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/im_fell_great_primer"
+                                android:text="Strength:"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/strength_remaining"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginVertical="8dp"
+                                android:fontFamily="@font/im_fell_great_primer"
+                                android:text="3"
+                                android:textColor="@color/design_default_color_on_secondary"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/strength_total"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginVertical="8dp"
+                                android:layout_marginRight="8dp"
+                                android:fontFamily="@font/im_fell_great_primer"
+                                android:text=" / 5"
+                                android:textColor="@color/design_default_color_on_secondary"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <ImageButton
+                                    android:id="@+id/add_strength"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="0dp"
+                                    android:layout_weight="1"
+                                    android:adjustViewBounds="true"
+                                    android:backgroundTint="@color/Transparent"
+                                    android:padding="4dp"
+                                    android:scaleType="fitCenter"
+                                    android:tint="@color/greenPrimary"
+                                    app:srcCompat="@drawable/ic_add_black" />
+
+                                <ImageButton
+                                    android:id="@+id/remove_strength"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="0dp"
+                                    android:layout_weight="1"
+                                    android:adjustViewBounds="true"
+                                    android:backgroundTint="@color/Transparent"
+                                    android:padding="4dp"
+                                    android:scaleType="fitCenter"
+                                    android:tint="@color/colorAccent"
+                                    app:srcCompat="@drawable/ic_remove" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="8dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/im_fell_great_primer"
+                                android:text="Agility:"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/agility_remaining"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginVertical="8dp"
+                                android:fontFamily="@font/im_fell_great_primer"
+                                android:text="3"
+                                android:textColor="@color/design_default_color_on_secondary"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/agility_total"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginVertical="8dp"
+                                android:layout_marginRight="8dp"
+                                android:fontFamily="@font/im_fell_great_primer"
+                                android:text=" / 5"
+                                android:textColor="@color/design_default_color_on_secondary"
+                                android:textSize="18sp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <ImageButton
+                                    android:id="@+id/add_agility"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="0dp"
+                                    android:layout_weight="1"
+                                    android:adjustViewBounds="true"
+                                    android:backgroundTint="@color/Transparent"
+                                    android:padding="4dp"
+                                    android:scaleType="fitCenter"
+                                    android:tint="@color/greenPrimary"
+                                    app:srcCompat="@drawable/ic_add_black" />
+
+                                <ImageButton
+                                    android:id="@+id/remove_agility"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="0dp"
+                                    android:layout_weight="1"
+                                    android:adjustViewBounds="true"
+                                    android:backgroundTint="@color/Transparent"
+                                    android:padding="4dp"
+                                    android:scaleType="fitCenter"
+                                    android:tint="@color/colorAccent"
+                                    app:srcCompat="@drawable/ic_remove" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/divider7"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/design_default_color_on_secondary" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="8dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/im_fell_great_primer"
+                                android:text="Wits:"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/wits_remaining"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginVertical="8dp"
+                                android:fontFamily="@font/im_fell_great_primer"
+                                android:text="3"
+                                android:textColor="@color/design_default_color_on_secondary"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/wits_total"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginVertical="8dp"
+                                android:layout_marginRight="8dp"
+                                android:fontFamily="@font/im_fell_great_primer"
+                                android:text=" / 5"
+                                android:textColor="@color/design_default_color_on_secondary"
+                                android:textSize="18sp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <ImageButton
+                                    android:id="@+id/add_wits"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="0dp"
+                                    android:layout_weight="1"
+                                    android:adjustViewBounds="true"
+                                    android:backgroundTint="@color/Transparent"
+                                    android:padding="4dp"
+                                    android:scaleType="fitCenter"
+                                    android:tint="@color/greenPrimary"
+                                    app:srcCompat="@drawable/ic_add_black" />
+
+                                <ImageButton
+                                    android:id="@+id/remove_wits"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="0dp"
+                                    android:layout_weight="1"
+                                    android:adjustViewBounds="true"
+                                    android:backgroundTint="@color/Transparent"
+                                    android:padding="4dp"
+                                    android:scaleType="fitCenter"
+                                    android:tint="@color/colorAccent"
+                                    app:srcCompat="@drawable/ic_remove" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="8dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/im_fell_great_primer"
+                                android:text="Empathy:"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/empathy_remaining"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginVertical="8dp"
+                                android:fontFamily="@font/im_fell_great_primer"
+                                android:text="3"
+                                android:textColor="@color/design_default_color_on_secondary"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/empathy_total"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginVertical="8dp"
+                                android:layout_marginRight="8dp"
+                                android:fontFamily="@font/im_fell_great_primer"
+                                android:text=" / 5"
+                                android:textColor="@color/design_default_color_on_secondary"
+                                android:textSize="18sp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <ImageButton
+                                    android:id="@+id/add_empathy"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="0dp"
+                                    android:layout_weight="1"
+                                    android:adjustViewBounds="true"
+                                    android:backgroundTint="@color/Transparent"
+                                    android:padding="4dp"
+                                    android:scaleType="fitCenter"
+                                    android:tint="@color/greenPrimary"
+                                    app:srcCompat="@drawable/ic_add_black" />
+
+                                <ImageButton
+                                    android:id="@+id/remove_empathy"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="0dp"
+                                    android:layout_weight="1"
+                                    android:adjustViewBounds="true"
+                                    android:backgroundTint="@color/Transparent"
+                                    android:padding="4dp"
+                                    android:scaleType="fitCenter"
+                                    android:tint="@color/colorAccent"
+                                    app:srcCompat="@drawable/ic_remove" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -117,7 +117,8 @@ class CharCreationViewModel(val database: CharactersDatabaseDAO,
         get() = listKinTalents
 
     //list of Profession Talents
-    private var listProfessionTalents = MutableLiveData<List<Talent>>().apply { value =  loadTalents(this@CharCreationViewModel.getApplication(),"profession_talents") }
+    private var listProfessionTalents = MutableLiveData<List<Talent>>().apply {
+        value =  loadTalents(this@CharCreationViewModel.getApplication(),"profession_talents") }
 
     //list of Profession Talents Filtered by Profession selected
     private var filterListProfessionTalents = MutableLiveData<List<Talent>>().apply { value =  listOf() }
@@ -213,9 +214,9 @@ class CharCreationViewModel(val database: CharactersDatabaseDAO,
         }
     }
 
-    fun SelectProfessionTalent(position : Int){
+    fun SelectProfessionTalent(talent : Talent?){
         character.value?.let{ch->
-            ch.ProfessionTalent = position
+            ch.ProfessionTalent = talent?.id ?: 0
         }
     }
     fun SelectAge(position : Int, value : Int){
@@ -245,7 +246,9 @@ class CharCreationViewModel(val database: CharactersDatabaseDAO,
         }
     }
 
-
+    fun setName(name : String){
+        character.value?.Name = name
+    }
 
     fun setPride(pride : String){
         character.value?.Pride = pride

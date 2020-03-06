@@ -22,5 +22,10 @@ object Kins {
         Kin("Orc",6, Attributes.Strength,"Flashy bitz dem boyz has"),
         Kin("Goblin",7, Attributes.Agility,"I dun like em"))
 
+    fun findKin(kinId:Int): String{
+        return kins.first{
+            it.KinId == kinId
+        }.toString()
+    }
 }
 

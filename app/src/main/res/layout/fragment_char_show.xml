@@ -47,7 +47,7 @@
                     android:layout_margin="8dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/im_fell_great_primer"
-                    android:text="Kin: Elf"
+                    android:text="@{viewModel.kin}"
                     android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="18sp" />
 
@@ -57,7 +57,7 @@
                     android:layout_margin="8dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/im_fell_great_primer"
-                    android:text="Age: 35 (Adult)"
+                    android:text="@{viewModel.age}"
                     android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -79,7 +79,7 @@
                     android:layout_margin="8dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/im_fell_great_primer"
-                    android:text="Profession: Druid"
+                    android:text="@{viewModel.profession}"
                     android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="18sp" />
 
@@ -89,7 +89,7 @@
                     android:layout_margin="8dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/im_fell_great_primer"
-                    android:text="Talent: Path of Healing"
+                    android:text="@{viewModel.profTalent}"
                     android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="18sp" />
             </LinearLayout>

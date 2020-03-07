@@ -1,5 +1,6 @@
 [
   {
+    "id": 0,
   "type": 0,
   "name": "Path of Healing",
   "description": "Your calling is to use the forces of nature to heal and nurture the injured and the lost souls. The rank of this talent determines which spells you can use.",
@@ -7,8 +8,8 @@
   "rank_2": "You can cast rank 1 and rank 2 spells from the Healing discipline.",
   "rank_3": "You can cast rank 1, 2 and 3 spells from the Healing discipline."
 },
-{
-"type": 0,
+{    "id": 1,
+  "type": 0,
 "name": "Path of Shifting Shapes",
 "description": "You are one with the feral creatures of the world and can assume their attributes or even take their form. The rank of this talent determines which spells you can use.",
 "rank_1": "You can cast rank 1 spells from the Shapeshifting discipline.",
@@ -16,7 +17,8 @@
 "rank_3": "You can cast rank 1, 2 and 3 spells from the Shapeshifting discipline."
 },
 {
-"type": 0,
+  "id": 2,
+  "type": 0,
 "name": "Path of Sight",
 "description": "You can see beyond sight, and your inner eye can see what has happened and what will happen. The rank of this talent determines which spells you can use",
 "rank_1": "You can cast rank 1 spells from the Awareness discipline.",
@@ -24,7 +26,8 @@
 "rank_3": "You can cast rank 1, 2 and 3 spells from the Awareness discipline."
 },
 {
-"type": 1,
+  "id": 3,
+  "type": 1,
 "name": "Path of the Blade",
 "description": "You are one with your blade. You practice with your weapon every day and know all its qualities, as if it were part of your own body.",
 "rank_1": "When you hit with a close combat attack, you can spend a Willpower Point to find a weakness in your opponent’s armor or natural armor. The armor has no effect against your attack.",
@@ -32,7 +35,8 @@
 "rank_3": "When you hit with a close combat attack, you can increase the damage by spending WP. Every point spent increases damage by 1. You must state how many WP you use before your opponent rolls for armor."
 },
 {
-"type": 1,
+  "id": 4,
+  "type": 1,
 "name": "Path of the Enemy",
 "description": "You see through your opponent and anticipate his next move before it happens. Observe that this talent is only applicable if you use the system for hidden combinations in close combat",
 "rank_1": "If you spend a Willpower Point when you and your opponent choose your hidden combinations, your opponent must choose his combination first and then reveal his first or second card to you before you choose your own combination. Your opponent chooses which card to show.",
@@ -40,6 +44,7 @@
 "rank_3": "As per rank 1, but your opponent must show both his actions before you choose your own actions."
 },
 {
+  "id": 5,
 "type": 1,
 "name": "Path of the Shield",
 "description": "You are a rock in the heat of battle, immovable and hard to kill. This talent affects how you PARRY attacks, regardless of whether you do it with a shield or a weapon.",
@@ -48,6 +53,7 @@
 "rank_3": "You can cast rank 1 spells from the Healing discipline."
 },
 {
+  "id": 6,
 "type": 2,
 "name": "Path of the Arrow",
 "description": "You are a master archer and fire arrows as if they were controlled by your own will.",
@@ -56,6 +62,7 @@
 "rank_3": "When you hit with a ranged weapon attack, you can increase the damage by spending WP. Every point spent increases damage by 1. You must state how many WP you use before your opponent rolls for any armor."
 },
 {
+  "id": 7,
 "type": 2,
 "name": "Path of the Beast",
 "description": "You have an animal as a trusted companion. Pick the type of animal yourself from the table on page 124 of the Gamemaster’s Guide, and give your animal a name. You cannot choose a riding animal.",
@@ -64,6 +71,7 @@
 "rank_3": "You can send your animal to fight for you. If you spend a WP when it is your turn to fight, the animal will also fight and follow your orders for one round, at your turn in the initiative order. Roll normally for the animal’s attacks."
 },
 {
+  "id": 8,
 "type": 2,
 "name": "Path of the Forest",
 "description": "You are a master at surviving in the wilderness. Read more about journeys in Chapter 7.",
@@ -72,6 +80,7 @@
 "rank_3": "By spending a WP, you don’t need to eat or drink during one full day."
 },
 {
+  "id": 9,
 "type": 3,
 "name": "Path of the Hymn",
 "description": "Your songs can help your comrades get up on their feet, even in the heat of combat. Using the talent in combat counts as a slow action.",
@@ -80,6 +89,7 @@
 "rank_3": "Your song grants a portion of your power to one of your comrades within LONG distance. You simply give a number of WP of your choice to your friend. The half-elf kin talent PSYCHIC POWER cannot be combined with this effect."
 },
 {
+  "id": 10,
 "type": 3,
 "name": "Path of the Song",
 "description": "Your beautiful voice can captivate any audience, and can even torment the listeners if you so choose.",
@@ -88,6 +98,7 @@
 "rank_3": "You can sing so powerfully that your song cuts into the ears of any listeners within SHORT range. Your song causes 1 point of damage to Strength per WP you spend. You can distribute the damage across as many opponents as you want. The targets may attempt to resist the effect by rolling for INSIGHT – each x rolled negates 1 point of damage. No effect against monsters."
 },
 {
+  "id": 11,
 "type": 3,
 "name": "Path of the Warcry",
 "description": "Your voice inspires your comrades and strikes fear into the hearts of your enemies. Using chapter 4 68 this talent in combat counts as a slow action (see page 85).",
@@ -96,6 +107,7 @@
 "rank_3": "Your cry can strike fear into the heart of the most savage of opponents. Your cry inflicts 1 point of damage to Wits in a single opponent within SHORT range for every WP you spend. The target may attempt to resist the effect by rolling forINSIGHT – each x rolled negates 1 point of damage. No effect against monsters."
 },
 {
+  "id": 12,
 "type": 4,
 "name": "Path of Gold",
 "description": "You are a master at bargaining and have an unerring ability to sniff out gold and jewels.",
@@ -104,6 +116,7 @@
 "rank_3": "You always have gold hidden somewhere. For every WP you spend, you find 1 piece of gold in one of your pockets, even if you were recently searched or something similar."
 },
 {
+  "id": 13,
 "type": 4,
 "name": "Path of Lies",
 "description": "You are a master liar, skilled at both seeing through lies and telling them yourself without being discovered.",
@@ -112,6 +125,7 @@
 "rank_3": "When you MANIPULATE someone and succeed, you can spend a WP to avoid doing something in return (see page 99) and your opponent also loses the ability to attack you. What you are asking must still be reasonable according to the GM’s assessment."
 },
 {
+  "id": 14,
 "type": 4,
 "name": "Path of Many Things",
 "description": "You carry a knapsack that contains a seemingly endless supply of stuff and knick knacks. The knapsack is a HEAVY item (see page 37).",
@@ -120,6 +134,7 @@
 "rank_3": "As per rank 2, but the item can cost up to 1 piece of gold per WP spent."
 },
 {
+  "id": 15,
 "type": 5,
 "name": "Path of the Companion",
 "description": "Your horse (or another riding animal) is your closest friend and companion, and will help you if you are in trouble.",
@@ -128,6 +143,7 @@
 "rank_3": "Your horse can kick opponents when you are in the saddle. If you spend a WP when it is your turn to act in the round, the horse can also attack in close combat, right after your action. Roll normally for the horse’s attack."
 },
 {
+  "id": 16,
 "type": 5,
 "name": "Path of the Knight",
 "description": "You are a master at fighting mounted. All chapter 4 70 the effects of this talent require that you are mounted and that you are in an OPEN zone in combat (see page 88).",
@@ -136,6 +152,7 @@
 "rank_3": "When you attack from a mount in close combat and your attack roll succeeds, you can spend WP to increase damage. Every point spent increases damage by 1. You must state how many WP you use before your opponent rolls for armor."
 },
 {
+  "id": 17,
 "type": 5,
 "name": "Path of the Plains",
 "description": "Your mount is fast like the wind.",
@@ -144,6 +161,7 @@
 "rank_3": "You can coax your mount into running at breakneck speed for a short period of time. Every WP you spend increases the mount’s Movement Rate (see page 115) one step, but only during one round."
 },
 {
+  "id": 18,
 "type": 6,
 "name": "Path of the Face",
 "description": "You are a master of disguise and can easily assume the appearance of others.",
@@ -152,6 +170,7 @@
 "rank_3": "You can assume another person’s appearance completely, even if they are of the opposite sex or another kin. In other respects, treat this the same as per rank 2."
 },
 {
+  "id": 19,
 "type": 6,
 "name": "Path of the Killer",
 "description": "Battles are not always fought in the open and with steel clashing against steel. Another, less heroic type of fight takes place in the shadows, with hidden weapons and unsuspecting victims.",
@@ -160,6 +179,7 @@
 "rank_3": "You can make others do your job for you through the power of hypnosis. By spending a WP, you can force your opponent to perform a specific action at a time of your choosing. However, you must speak to your opponent for a short time before you can use this talent."
 },
 {
+  "id": 20,
 "type": 6,
 "name": "Path of Poison",
 "description": "You always carry an assortment of poisons. Your collection counts as one TINY item and doesn’t encumber you.",
@@ -167,7 +187,7 @@
 "rank_2": "As per rank 1, but you can also choose another kind of poison. See the examples on page 113.",
 "rank_3": "As per rank 2, but you can also choose to have the poison already applied to one of your weapons, for example, right before an attack (see page 114). Using this talent does not count as an action."
 },
-{
+{"id": 21,
 "type": 7,
 "name": "Path of Blood",
 "description": "The rank of this talent determines which spells you can use. Read more about magic in Chapter 6.",
@@ -176,6 +196,7 @@
 "rank_3": "You can cast rank 1, 2 and 3 spells from the Blood Magic discipline."
 },
 {
+  "id": 22,
 "type": 7,
 "name": "Path of Death",
 "description": "The rank of this talent determines which spells you can use. Read more about magic in Chapter 6.",
@@ -184,6 +205,7 @@
 "rank_3": "You can cast rank 1, 2 and 3 spells from the Death Magic discipline."
 },
 {
+  "id": 23,
 "type": 7,
 "name": "Path of Signs",
 "description": "The rank of this talent determines which spells you can use. Read more about magic in Chapter 6.",
@@ -192,6 +214,7 @@
 "rank_3": "You can cast rank 1, 2 and 3 spells from the Symbolism discipline."
 },
 {
+  "id": 24,
 "type": 7,
 "name": "Path of Stone",
 "description": "The rank of this talent determines which spells you can use. Read more about magic in Chapter 6.",

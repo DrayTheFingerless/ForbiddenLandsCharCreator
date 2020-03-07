@@ -2,16 +2,11 @@ package com.robertferreira.forbiddenlandscharcreator.ui.charcreation
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.fonts.Font
 import android.os.Bundle
-import android.provider.SyncStateContract.Constants
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.LinearLayout
-import android.widget.LinearLayout.HORIZONTAL
-import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
@@ -24,12 +19,7 @@ import com.robertferreira.forbiddenlandscharcreator.database.CharactersDatabase
 import com.robertferreira.forbiddenlandscharcreator.databinding.AddTitleDescriptionDialogBinding
 import com.robertferreira.forbiddenlandscharcreator.databinding.InfoCreationFragmentBinding
 import com.robertferreira.forbiddenlandscharcreator.ui.customviews.RelationshipRow
-import kotlinx.android.synthetic.main.add_title_description_dialog.view.*
-import kotlinx.android.synthetic.main.add_title_description_dialog.view.description_field
-import kotlinx.android.synthetic.main.dice_roll_dialog.view.*
-import kotlinx.android.synthetic.main.relationship_row.*
 import kotlinx.android.synthetic.main.relationship_row.view.*
-import org.w3c.dom.Text
 
 
 class InfoCreationFragment : Fragment() {
@@ -41,7 +31,7 @@ class InfoCreationFragment : Fragment() {
     }
     private lateinit var binding : InfoCreationFragmentBinding
 
-    private val viewModel: CharCreationViewModel by navGraphViewModels(R.id.char_creation_nav_graph){
+    private val viewModel: CharViewModel by navGraphViewModels(R.id.char_creation_nav_graph){
         val application = requireNotNull(this.activity).application
         val dataSource = CharactersDatabase.getInstance(application).charactersDatabaseDAO()
         CharCreationViewModelFactory(dataSource, application)

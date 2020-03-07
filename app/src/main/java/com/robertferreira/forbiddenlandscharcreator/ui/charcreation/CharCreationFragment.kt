@@ -1,46 +1,33 @@
 package com.robertferreira.forbiddenlandscharcreator.ui.charcreation
-import android.R.layout
-import android.app.Application
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.TextView
-import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.navGraphViewModels
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.robertferreira.forbiddenlandscharcreator.Ages
 import com.robertferreira.forbiddenlandscharcreator.Attributes
-import com.robertferreira.forbiddenlandscharcreator.FLCharacter
-import com.robertferreira.forbiddenlandscharcreator.Kin
 import com.robertferreira.forbiddenlandscharcreator.Kins
 import com.robertferreira.forbiddenlandscharcreator.Profession
 import com.robertferreira.forbiddenlandscharcreator.Professions
 import com.robertferreira.forbiddenlandscharcreator.R
-import com.robertferreira.forbiddenlandscharcreator.Skills
 import com.robertferreira.forbiddenlandscharcreator.Talent
 import com.robertferreira.forbiddenlandscharcreator.database.CharactersDatabase
 import com.robertferreira.forbiddenlandscharcreator.databinding.FragmentCharcreationBinding
 import com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
-import kotlinx.android.synthetic.main.attribute_stepper.*
 import kotlinx.android.synthetic.main.attribute_stepper.view.*
 import kotlinx.android.synthetic.main.fragment_charcreation.*
 
 
 class CharCreationFragment : Fragment() {
 
-    private val viewModel: CharCreationViewModel by navGraphViewModels(R.id.char_creation_nav_graph){
+    private val viewModel: CharViewModel by navGraphViewModels(R.id.char_creation_nav_graph){
         val application = requireNotNull(this.activity).application
         val dataSource = CharactersDatabase.getInstance(application).charactersDatabaseDAO()
         CharCreationViewModelFactory(dataSource, application)
@@ -125,8 +112,8 @@ class CharCreationFragment : Fragment() {
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val selectedTalent = professionSpinner.selectedItem as Talent
-                viewModel.SelectProfessionTalent(selectedTalent)
+                val talent = parent?.selectedItem as Talent
+                viewModel.SelectProfessionTalent(talent)
             }
         }
 

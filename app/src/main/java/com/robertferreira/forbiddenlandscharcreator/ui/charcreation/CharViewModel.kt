@@ -1,9 +1,6 @@
 package com.robertferreira.forbiddenlandscharcreator.ui.charcreation
 
 import android.app.Application
-import android.provider.SyncStateContract.Helpers.insert
-import android.util.Log
-import androidx.databinding.BaseObservable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,10 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.robertferreira.forbiddenlandscharcreator.Attributes
-import com.robertferreira.forbiddenlandscharcreator.FLCharacter
-import com.robertferreira.forbiddenlandscharcreator.Skills
-import com.robertferreira.forbiddenlandscharcreator.Talent
+import com.robertferreira.forbiddenlandscharcreator.*
 import com.robertferreira.forbiddenlandscharcreator.Utils.loadTalents
 import com.robertferreira.forbiddenlandscharcreator.database.CharactersDatabaseDAO
 import com.robertferreira.forbiddenlandscharcreator.utils.PropertyAwareMutableLiveData
@@ -25,8 +19,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
-class CharCreationViewModel(val database: CharactersDatabaseDAO,
-                                application: Application) :  AndroidViewModel(application) {
+class CharViewModel(val database: CharactersDatabaseDAO,
+                    application: Application) :  AndroidViewModel(application) {
 
     /*@OnLifecycleEvent(Lifecycle.Event.)
     fun onResume() {  }*/
@@ -112,22 +106,23 @@ class CharCreationViewModel(val database: CharactersDatabaseDAO,
 
 
     //list of Kin Talents
-    private var listKinTalents = MutableLiveData<List<Talent>>().apply { value =  loadTalents(this@CharCreationViewModel.getApplication(),"kin_talents") }
+    private var listKinTalents = MutableLiveData<List<Talent>>().apply {
+        value =  loadTalents(this@CharViewModel.getApplication(),"kin_talents") }
     val kTalents : LiveData<List<Talent>>
         get() = listKinTalents
 
     //list of Profession Talents
     private var listProfessionTalents = MutableLiveData<List<Talent>>().apply {
-        value =  loadTalents(this@CharCreationViewModel.getApplication(),"profession_talents") }
+        value =  loadTalents(this@CharViewModel.getApplication(),"profession_talents") }
 
     //list of Profession Talents Filtered by Profession selected
     private var filterListProfessionTalents = MutableLiveData<List<Talent>>().apply { value =  listOf() }
     val pTalents : LiveData<List<Talent>>
         get() = filterListProfessionTalents
 
-
     //list of General Talents
-    private val listGeneralTalents = MutableLiveData<List<Talent>>().apply { value =  loadTalents(this@CharCreationViewModel.getApplication(),"general_talents") }
+    private val listGeneralTalents = MutableLiveData<List<Talent>>().apply {
+        value =  loadTalents(this@CharViewModel.getApplication(),"general_talents") }
     val gTalents : LiveData<List<Talent>> = listGeneralTalents
 
     init{
@@ -185,6 +180,7 @@ class CharCreationViewModel(val database: CharactersDatabaseDAO,
         Clothing.observeForever(ClothingObserver)
 
     }
+
 
     override fun onCleared() {
         super.onCleared()
@@ -312,8 +308,8 @@ class CharCreationViewModelFactory(
     private val application: Application) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(CharCreationViewModel::class.java)) {
-            return CharCreationViewModel(dataSource, application) as T
+        if (modelClass.isAssignableFrom(CharViewModel::class.java)) {
+            return CharViewModel(dataSource, application) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

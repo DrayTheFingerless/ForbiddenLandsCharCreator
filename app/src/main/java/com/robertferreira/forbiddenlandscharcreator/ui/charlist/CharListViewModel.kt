@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.robertferreira.forbiddenlandscharcreator.FLCharacter
 import com.robertferreira.forbiddenlandscharcreator.database.CharactersDatabaseDAO
-import com.robertferreira.forbiddenlandscharcreator.ui.charcreation.CharCreationViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

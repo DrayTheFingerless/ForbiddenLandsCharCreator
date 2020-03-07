@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.navGraphViewModels
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
@@ -16,6 +17,7 @@ import com.robertferreira.forbiddenlandscharcreator.FLCharacter
 
 import com.robertferreira.forbiddenlandscharcreator.R
 import com.robertferreira.forbiddenlandscharcreator.databinding.FragmentCharShowBinding
+import com.robertferreira.forbiddenlandscharcreator.ui.charcreation.CharViewModel
 
 
 class CharShowFragment : Fragment() {
@@ -24,7 +26,8 @@ class CharShowFragment : Fragment() {
     private lateinit var characterShowCollectionAdapter: CharacterShowAdapter
     private lateinit var viewPager: ViewPager2
 
-    lateinit var viewModel : CharShowViewModel
+    private val viewModel : CharShowViewModel by navGraphViewModels(R.id.char_show_nav_graph)
+
     lateinit var binding : FragmentCharShowBinding
 
     override fun onCreateView(
@@ -33,7 +36,7 @@ class CharShowFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_char_show, container, false)
-        viewModel = ViewModelProviders.of(this).get(CharShowViewModel::class.java)
+        //viewModel = ViewModelProviders.of(this).get(CharShowViewModel::class.java)
         binding.setLifecycleOwner(this)
 
         binding.viewModel = viewModel

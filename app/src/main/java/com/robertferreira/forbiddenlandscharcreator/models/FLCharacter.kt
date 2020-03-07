@@ -72,6 +72,7 @@ class FLCharacter(
     @ColumnInfo(name = "carrycapacity")
      var CarryCapacity: Int =  4,
 
+    @TypeConverters(Converters::class)
     var MySkills : MutableMap<Skills, Int> = mutableMapOf(),
     var TalentList: @RawValue ArrayList<Talent> = arrayListOf(),
     var Relationships: MutableMap<String, String> = mutableMapOf(),
@@ -116,7 +117,7 @@ class FLCharacter(
         parcel.readString().toString(),
         parcel.readInt(),
         parcel.readInt(),
-        mutableMapOf(),
+         mutableMapOf(),
         arrayListOf(),
         hashMapOf(),
         arrayListOf(),

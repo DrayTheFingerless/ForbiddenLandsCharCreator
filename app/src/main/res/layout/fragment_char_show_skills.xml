@@ -2,7 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
+    <data>
+        <variable
+            name="viewModel"
+            type="com.robertferreira.forbiddenlandscharcreator.ui.charlist.charshow.CharShowViewModel" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -83,7 +87,7 @@
                                 android:layout_marginVertical="8dp"
                                 android:layout_weight="2"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="1"
+                                android:text="@{viewModel.charMight}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -127,7 +131,7 @@
                                 android:layout_marginVertical="8dp"
                                 android:layout_weight="2"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="1"
+                                android:text="@{viewModel.charEndurance}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -183,7 +187,7 @@
                                 android:layout_marginVertical="8dp"
                                 android:layout_weight="2"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="1"
+                                android:text="@{viewModel.charMelee}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -227,7 +231,7 @@
                                 android:layout_marginVertical="8dp"
                                 android:layout_weight="2"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="1"
+                                android:text="@{viewModel.charCraft}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -301,7 +305,7 @@
                                 android:layout_marginVertical="8dp"
                                 android:layout_weight="2"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="1"
+                                android:text="@{viewModel.charStealth}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -345,7 +349,7 @@
                                 android:layout_marginVertical="8dp"
                                 android:layout_weight="2"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="1"
+                                android:text="@{viewModel.charSleight}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -401,7 +405,7 @@
                                 android:layout_marginVertical="8dp"
                                 android:layout_weight="2"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="1"
+                                android:text="@{viewModel.charMove}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -445,7 +449,7 @@
                                 android:layout_marginVertical="8dp"
                                 android:layout_weight="2"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="1"
+                                android:text="@{viewModel.charMarksman}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -519,7 +523,7 @@
                                 android:layout_marginVertical="8dp"
                                 android:layout_weight="2"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="1"
+                                android:text="@{viewModel.charScout}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -563,7 +567,7 @@
                                 android:layout_marginVertical="8dp"
                                 android:layout_weight="2"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="1"
+                                android:text="@{viewModel.charLore}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -619,7 +623,7 @@
                                 android:layout_marginVertical="8dp"
                                 android:layout_weight="2"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="1"
+                                android:text="@{viewModel.charSurvival}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -663,7 +667,7 @@
                                 android:layout_marginVertical="8dp"
                                 android:layout_weight="2"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="1"
+                                android:text="@{viewModel.charInsight}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -737,7 +741,7 @@
                                 android:layout_marginVertical="8dp"
                                 android:layout_weight="2"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="1"
+                                android:text="@{viewModel.charManipulation}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -781,7 +785,7 @@
                                 android:layout_marginVertical="8dp"
                                 android:layout_weight="2"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="1"
+                                android:text="@{viewModel.charPerfomance}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -837,7 +841,7 @@
                                 android:layout_marginVertical="8dp"
                                 android:layout_weight="2"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="1"
+                                android:text="@{viewModel.charHealing}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -881,7 +885,7 @@
                                 android:layout_marginVertical="8dp"
                                 android:layout_weight="2"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="1"
+                                android:text="@{viewModel.charAnimal}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />

@@ -56,9 +56,10 @@ class CharShowFragment : Fragment() {
         val tabLayout = view.findViewById<TabLayout>(R.id.tab_layout)
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             when(position){
-                0 ->tab.text = "Attributes"
+                0 ->tab.text = "Main"
                 1 -> tab.text = "Skills"
                 2 -> tab.text = "Talents"
+                3 -> tab.text = "Info"
                 else -> tab.text = "Gear"
             }
         }.attach()
@@ -80,6 +81,7 @@ class CharacterShowAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) 
             0 -> fragment = CharShowMainFragment()
             1 -> fragment = CharShowSkillsFragment()
             2 -> fragment = CharShowTalentFragment()
+            3 -> fragment = CharShowInfoFragment()
             else -> fragment = CharShowMainFragment()
         }
 

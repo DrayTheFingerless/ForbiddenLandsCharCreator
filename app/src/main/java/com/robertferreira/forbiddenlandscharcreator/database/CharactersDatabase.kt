@@ -6,12 +6,13 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.robertferreira.forbiddenlandscharcreator.FLCharacter
+import com.robertferreira.forbiddenlandscharcreator.SkillConverter
 import com.robertferreira.forbiddenlandscharcreator.Skills
 import com.robertferreira.forbiddenlandscharcreator.Talent
 import com.robertferreira.forbiddenlandscharcreator.utils.Converters
 
 @Database(entities =[FLCharacter::class], version = 1, exportSchema = false)
-@TypeConverters(Converters::class)
+@TypeConverters(Converters::class,SkillConverter::class)
 abstract class CharactersDatabase : RoomDatabase(){
 
     abstract fun charactersDatabaseDAO(): CharactersDatabaseDAO

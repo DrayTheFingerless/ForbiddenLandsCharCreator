@@ -15,13 +15,14 @@ class Converters {
     @TypeConverter
     fun fromStringToSkillMap(value: String?): MutableMap<Skills, Int> {
         val mapType = object :
-            TypeToken<MutableMap<Skills, Int>?>() {}.type
-        return Gson().fromJson(value, mapType)
+            TypeToken<MutableMap<Skills, Int>>() {}.type
+        val result : MutableMap<Skills,Int> = Gson().fromJson(value, mapType)
+        return result
     }
     @TypeConverter
     fun fromSkillMapToString(map: MutableMap<Skills, Int>?): String {
         val gson = Gson()
-        return gson.toJson(map)
+        return gson.toJson(map).toString()
     }
 
     @TypeConverter
@@ -33,7 +34,7 @@ class Converters {
     @TypeConverter
     fun fromTalentsToString(map: ArrayList<Talent>?): String {
         val gson = Gson()
-        return gson.toJson(map)
+        return gson.toJson(map).toString()
     }
 
     @TypeConverter
@@ -45,7 +46,7 @@ class Converters {
     @TypeConverter
     fun fromGearsToString(map: ArrayList<Gear>?): String {
         val gson = Gson()
-        return gson.toJson(map)
+        return gson.toJson(map).toString()
     }
 
     @TypeConverter
@@ -57,7 +58,7 @@ class Converters {
     @TypeConverter
     fun fromTalentToString(map: Talent?): String {
         val gson = Gson()
-        return gson.toJson(map)
+        return gson.toJson(map).toString()
     }
 
     @TypeConverter
@@ -69,7 +70,7 @@ class Converters {
     @TypeConverter
     fun fromGearToString(map: Gear?): String {
         val gson = Gson()
-        return gson.toJson(map)
+        return gson.toJson(map).toString()
     }
 
     @TypeConverter
@@ -81,7 +82,7 @@ class Converters {
     @TypeConverter
     fun fromSkillToString(map: Skills?): String {
         val gson = Gson()
-        return gson.toJson(map)
+        return gson.toJson(map).toString()
     }
 
     @TypeConverter
@@ -93,7 +94,7 @@ class Converters {
     @TypeConverter
     fun fromMutableMapSS(map: MutableMap<String,String>?): String {
         val gson = Gson()
-        return gson.toJson(map)
+        return gson.toJson(map).toString()
     }
 
     @TypeConverter
@@ -105,7 +106,7 @@ class Converters {
     @TypeConverter
     fun fromMutableMapIS(map: MutableMap<Int,String>?): String {
         val gson = Gson()
-        return gson.toJson(map)
+        return gson.toJson(map).toString()
     }
 
     @TypeConverter

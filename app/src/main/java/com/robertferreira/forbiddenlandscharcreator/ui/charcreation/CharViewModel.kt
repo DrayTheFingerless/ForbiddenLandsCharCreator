@@ -116,7 +116,7 @@ class CharViewModel(val database: CharactersDatabaseDAO,
         value =  loadTalents(this@CharViewModel.getApplication(),"profession_talents") }
 
     //list of Profession Talents Filtered by Profession selected
-    private var filterListProfessionTalents = MutableLiveData<List<Talent>>().apply { value =  listOf() }
+    private var filterListProfessionTalents = MutableLiveData<List<Talent>>()
     val pTalents : LiveData<List<Talent>>
         get() = filterListProfessionTalents
 
@@ -140,6 +140,11 @@ class CharViewModel(val database: CharactersDatabaseDAO,
 
     private val NameObserver = Observer<String> {
         onNameChanged(it)
+    }
+    var AgeNumber = MutableLiveData<String>()
+
+    private val AgeNumberObserver = Observer<String> {
+        onAgeChanged(it)
     }
     var Pride = MutableLiveData<String>()
 
@@ -173,6 +178,8 @@ class CharViewModel(val database: CharactersDatabaseDAO,
 
     init {
         Name.observeForever(NameObserver)
+        AgeNumber.observeForever(AgeNumberObserver)
+
         Pride.observeForever(PrideObserver)
         DarkSecret.observeForever(DarkSecretObserver)
         Body.observeForever(BodyObserver)
@@ -186,8 +193,12 @@ class CharViewModel(val database: CharactersDatabaseDAO,
         super.onCleared()
 
         Name.removeObserver(NameObserver)
+        AgeNumber.removeObserver(AgeNumberObserver)
         Pride.removeObserver(PrideObserver)
         DarkSecret.removeObserver(DarkSecretObserver)
+        Body.removeObserver(BodyObserver)
+        Face.removeObserver(FaceObserver)
+        Clothing.removeObserver(ClothingObserver)
         viewModelJob.cancel()
 
     }
@@ -196,7 +207,14 @@ class CharViewModel(val database: CharactersDatabaseDAO,
         // Some code
         character.value?.Name = newName
     }
-
+    fun onAgeChanged(newAge: String) {
+        try {
+            val i = newAge.toInt()
+            character.value?.AgeNumber = i
+        } catch (nfe: NumberFormatException) {
+            character.value?.AgeNumber = 0
+        }
+    }
 
     fun SelectKin(position : Int){
         character.value?.UpdateKin(position)

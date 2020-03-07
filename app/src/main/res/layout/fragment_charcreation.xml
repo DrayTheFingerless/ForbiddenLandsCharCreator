@@ -10,15 +10,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/backgroundLightGray">
+        android:layout_height="match_parent">
 
         <ScrollView
             android:id="@+id/scrollView2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
-            android:background="@color/backgroundLightGray"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/new_next_button"
             app:layout_constraintEnd_toEndOf="parent"
@@ -149,7 +147,8 @@
                         android:fontFamily="@font/im_fell_great_primer"
                         android:gravity="center_vertical"
                         android:hint="@string/age"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:text="@={charViewModel.AgeNumber}" />
 
 
                 </LinearLayout>

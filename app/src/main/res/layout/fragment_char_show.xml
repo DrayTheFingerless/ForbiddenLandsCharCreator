@@ -42,20 +42,18 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:layout_weight="1"
                     android:fontFamily="@font/im_fell_great_primer"
                     android:text="@{viewModel.kin}"
                     android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="18sp" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:layout_weight="1"
                     android:fontFamily="@font/im_fell_great_primer"
                     android:text="@{viewModel.age}"
                     android:textColor="@color/design_default_color_on_secondary"
@@ -74,20 +72,18 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:layout_weight="1"
                     android:fontFamily="@font/im_fell_great_primer"
                     android:text="@{viewModel.profession}"
                     android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="18sp" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:layout_weight="1"
                     android:fontFamily="@font/im_fell_great_primer"
                     android:text="@{viewModel.profTalent}"
                     android:textColor="@color/design_default_color_on_secondary"

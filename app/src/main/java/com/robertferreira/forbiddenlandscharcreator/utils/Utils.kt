@@ -64,6 +64,15 @@ enum class Skills(val id : Int) {
     Performance (13),
     Healing (14),
     AnimalHandling (15);
+    companion object {
+        fun returnPairList(): List<Pair<Skills, Int>> {
+            var list: MutableList<Pair<Skills, Int>> = mutableListOf()
+            enumValues<Skills>().forEach {
+                list.add(Pair(it, 0))
+            }
+            return list
+        }
+    }
 }
 
 class AttributeConverter {

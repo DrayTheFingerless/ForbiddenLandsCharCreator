@@ -120,10 +120,8 @@ class CharCreationFragment : Fragment() {
         viewModel.pTalents.observe(viewLifecycleOwner, Observer {
             profTalentAdapter.clear()
             profTalentAdapter.addAll(it)
-        })
-
-        viewModel.char.observe(viewLifecycleOwner, Observer {
-            binding.profTalentSpinner.setSelection(it.ProfessionTalent)
+            binding.profTalentSpinner.setSelection(0)
+            viewModel.SelectProfessionTalent(binding.profTalentSpinner.selectedItem as Talent)
         })
 
         //hook up steppers

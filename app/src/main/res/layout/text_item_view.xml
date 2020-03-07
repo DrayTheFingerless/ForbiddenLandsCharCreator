@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
 
         <variable
@@ -9,13 +9,15 @@
             name="clickListener"
             type="com.robertferreira.forbiddenlandscharcreator.ui.charlist.CharListAdapter.CharacterListener" />
     </data>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/nameText"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp"
-    android:textSize="24sp"
-    android:onClick="@{() -> clickListener.onClick(character)}"/>
+
+    <TextView
+        android:id="@+id/nameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/im_fell_great_primer"
+        android:onClick="@{() -> clickListener.onClick(character)}"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textSize="24sp" />
 </layout>

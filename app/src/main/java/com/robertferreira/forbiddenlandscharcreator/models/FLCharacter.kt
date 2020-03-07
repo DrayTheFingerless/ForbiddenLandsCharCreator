@@ -55,6 +55,14 @@ class FLCharacter(
     @Bindable var Wits: Int = 2,
     @ColumnInfo(name = "empathy")
     @Bindable var Empathy: Int = 2,
+    @ColumnInfo(name = "currentstrength")
+    @Bindable var CurrentStrength: Int = 2,
+    @ColumnInfo(name = "currentagility")
+    @Bindable var CurrentAgility: Int = 2,
+    @ColumnInfo(name = "currentwits")
+    @Bindable var CurrentWits: Int = 2,
+    @ColumnInfo(name = "currentempathy")
+    @Bindable var CurrentEmpathy: Int = 2,
     @ColumnInfo(name = "pride")
      var Pride: String = "",
     @ColumnInfo(name = "secret")
@@ -72,8 +80,8 @@ class FLCharacter(
     @ColumnInfo(name = "carrycapacity")
      var CarryCapacity: Int =  4,
 
-    @TypeConverters(Converters::class)
-    var MySkills : MutableMap<Skills, Int> = mutableMapOf(),
+    @TypeConverters(Converters::class, SkillConverter::class)
+    var MySkills : MutableMap<Skills, Int> = Skills.returnPairList().toMap().toMutableMap(),
     var TalentList: @RawValue ArrayList<Talent> = arrayListOf(),
     var Relationships: MutableMap<String, String> = mutableMapOf(),
     var Gear: @RawValue ArrayList<Gear> = arrayListOf(),
@@ -94,7 +102,6 @@ class FLCharacter(
 ) : BaseObservable(), Parcelable {
 
     init {
-         enumValues<Skills>().forEach { MySkills.set(it, 0)  }
      }
 
     constructor(parcel: Parcel) : this(
@@ -109,6 +116,10 @@ class FLCharacter(
         parcel.readInt(),
         parcel.readInt(),
         parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt(),
         parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.readInt(),
@@ -117,7 +128,7 @@ class FLCharacter(
         parcel.readString().toString(),
         parcel.readInt(),
         parcel.readInt(),
-         mutableMapOf(),
+        mutableMapOf(),
         arrayListOf(),
         hashMapOf(),
         arrayListOf(),
@@ -210,6 +221,10 @@ class FLCharacter(
              Agility = 2
              Wits = 2
              Empathy = 2
+             CurrentStrength = 2
+             CurrentAgility = 2
+             CurrentWits = 2
+             CurrentEmpathy = 2
          }
 
          if(currentTotalSkills > maxSkill){
@@ -223,11 +238,16 @@ class FLCharacter(
          if(previousAttribute != attribute) {
              //check which attribute key was previous, then reduce value of previous key attribute, check if new max is higher than current value,
              //if current value higher than max, decrement current and add that point back to Attribute pool
+             //or screw it, everything back to basic
              Strength = 2
              CarryCapacity = 4
              Agility = 2
              Wits = 2
              Empathy = 2
+             CurrentStrength = 2
+             CurrentAgility = 2
+             CurrentWits = 2
+             CurrentEmpathy = 2
          }
          notifyChange()
 
@@ -241,16 +261,23 @@ class FLCharacter(
              max++
 
          when (attribute) {
-             Attributes.Strength -> if(Strength < max) { Strength++
+             Attributes.Strength -> if(this.Strength < max) {
+                 CurrentStrength++
+                 this.Strength++
                  CarryCapacity+=2
                  notifyPropertyChanged(this.Strength)}
-             Attributes.Agility -> if(Agility < max) {
-                 Agility++
+             Attributes.Agility -> if(this.Agility < max) {
+                 CurrentAgility++
+                 this.Agility++
                  notifyPropertyChanged(this.Agility)
                 }
-             Attributes.Wits -> if(Wits < max) { Wits++
+             Attributes.Wits -> if(this.Wits < max) {
+                 CurrentWits++
+                 this.Wits++
                 notifyPropertyChanged(this.Wits)}
-             Attributes.Empathy -> if(Empathy < max){ Empathy++
+             Attributes.Empathy -> if(this.Empathy < max){
+                 CurrentEmpathy++
+                 this.Empathy++
                  notifyPropertyChanged(this.Empathy)
              }
          }
@@ -259,17 +286,25 @@ class FLCharacter(
 
     fun DecrementAttribute(attribute: Attributes ) {
         when (attribute) {
-            Attributes.Strength -> if(Strength > 2) {Strength--
+            Attributes.Strength -> if(Strength > 2) {
+                CurrentStrength--
+                Strength--
                 CarryCapacity-=2
                 notifyPropertyChanged(this.Strength)
             }
-            Attributes.Agility -> if(Agility > 2){ Agility--
+            Attributes.Agility -> if(Agility > 2){
+                CurrentAgility--
+                Agility--
                 notifyPropertyChanged(this.Agility)
             }
-            Attributes.Wits -> if(Wits > 2){ Wits--
+            Attributes.Wits -> if(Wits > 2){
+                CurrentWits--
+                Wits--
                 notifyPropertyChanged(this.Wits)
             }
-            Attributes.Empathy -> if(Empathy > 2) {Empathy--
+            Attributes.Empathy -> if(Empathy > 2) {
+                CurrentEmpathy--
+                Empathy--
                 notifyPropertyChanged(this.Empathy)
             }
         }

@@ -1,140 +1,336 @@
 [
   {
-    "name": "Ambidextrous"
+    "id": 0,
+    "name": "Ambidextrous",
+    "description": "You are skilled in the art of fighting with one close combat weapon in each hand. You have a primary weapon in your favored (or sword) hand and a secondary weapon in your other hand. You can draw both weapons with a single DRAW WEAPON action.",
+    "rank_1": "You can use your secondary weapon to perform one extra attack per round, as a fast action. It must be a LIGHT weapon and the attack is modified by –2.",
+    "rank_2": "Same as per rank 1, but you can use a normal weapon as your secondary weapon.",
+    "rank_3": "Same as per rank 2, and your attack with your secondary weapon is not modified."
   },
   {
-    "name": "Axe Fighter"
+    "id": 1,
+    "name": "Axe Fighter",
+    "description": "Nothing splits a shield – or a skull – like a mighty axe.",
+    "rank_1": "Your attack rolls are modified by +1 when you fight with an axe.",
+    "rank_2": "When you hit an enemy with your axe and inflict at least 1 point of damage, you automatically inflict a critical injury (slash wound). The critical injury itself doesn’t break your opponent – unless it kills him of course. No effect against monsters or animals.",
+    "rank_3": "You can add a D8 Artifact Die to all attack rolls with an axe."
   },
   {
-    "name": "Berserker"
+    "id": 2,
+    "name": "Berserker",
+    "description": "When you are Broken (see page 107), you can choose to unleash a primal rage upon the world. You immediately recover as many points in the attribute that has been decreased to zero as your rank in BERSERKER. You must immediately attack the nearest opponent in close combat, and keep fighting until you are Broken (again) or until all opponents within sight have been Broken. During your rage, you are immune to any attempts to MANIPULATE you and all your close combat attacks do one extra point of damage. If Broken during a BERSERKER rage, you cannot use this talent.",
+    "rank_1": "",
+    "rank_2": "",
+    "rank_3": ""
   },
   {
-    "name": "Bowyer"
+    "id": 3,
+    "name": "Bowyer",
+    "description": "You have learned how to turn wood and leather into lethal bows and slings.",
+    "rank_1": "You can use the CRAFTING skill to make ranged weapons from the weapons table (see page 103), with normal stats.",
+    "rank_2": "You can make ranged weapons with a Weapon Bonus that is one point higher than normal. This takes twice as long, and your roll is modified by –2.",
+    "rank_3": "You can make ranged weapons with a Weapon Bonus that is two points higher than normal. This takes four times as long and your roll is modified by –4."
   },
   {
-    "name": "Brawler"
+    "id": 4,
+    "name": "Brawler",
+    "description": "You don’t need weapons to strike down your enemy.",
+    "rank_1": "All your unarmed attacks are modified by +1.",
+    "rank_2": "You can headbutt your enemy. It counts as a normal unarmed attack, but it is a fast action.",
+    "rank_3": "You can add a D8 Artifact Die to all your unarmed attacks."
   },
   {
-    "name": "Builder"
+    "id": 5,
+    "name": "Builder",
+    "description": "You are are a skilled engineer and can build advanced constructions in your stronghold.",
+    "rank_1": "You can build advanced functions in your stronghold. See Chapter 8.",
+    "rank_2": "You get a +1 modification when you build a function in a stronghold.",
+    "rank_3": "You can add a D8 Artifact Die to your roll when you build a function in your stronghold."
   },
   {
-    "name": "Chef"
+    "id": 6,
+    "name": "Chef",
+    "description": "You know how to cook using simple things, even while you are on a journey through the wilderness.",
+    "rank_1": "You can turn up to D6 units of VEGETABLES, MEAT, or FISH into FOOD (see Chapter 7). Cooking requires a fire and takes a Quarter Day (see page 144). In a proper kitchen, you can cook up to a dozen units of FOOD in a Quarter Day.",
+    "rank_2": "When you cook for a Quarter Day, you create an extra unit of FOOD.",
+    "rank_3": "The food you cook is so delicious that whoever eats it immediately recovers a point of lost Empathy."
   },
   {
-    "name": "Cold Blooded"
+    "id": 7,
+    "name": "Cold Blooded",
+    "description": "You are completely callous and can kill defenseless enemies without so much as a second’s hesitation.",
+    "rank_1": "You can perform a COUP DE GRACE (see page 108) without needing to roll dice.",
+    "rank_2": "As per rank 1, and you also don’t need to spend a Willpower Point or suffer damage to Empathy.",
+    "rank_3": "As per rank 2, but you also recover a point of lost Empathy when you perform a COUP DE GRACE."
   },
   {
-    "name": "Defender"
+    "id": 8,
+    "name": "Defender",
+    "description": "You are skilled at using weapons and shields to protect yourself in close combat.",
+    "rank_1": "You get one free PARRY every round of combat. The extra PARRY does not count as one of your actions in the round.",
+    "rank_2": "You get a +1 bonus to all PARRIES.",
+    "rank_3": "You can PARRY an unlimited number of times in the same round of combat, but only once against the same attack. Only the first PARRY counts towards your actions in the round."
   },
   {
-    "name": "Dragonslayer"
+    "id": 9,
+    "name": "Dragonslayer",
+    "description": "Dragonslayer is the title given to those who seek talents 75 honor and fame by killing beasts and monsters.",
+    "rank_1": "All your attacks against monsters are modified by +1.",
+    "rank_2": "Your attacks against monsters cause 1 additional point of damage.",
+    "rank_3": "You can add a D8 Artifact Die to your roll in attacks against monsters."
   },
   {
-    "name": "Executioner"
+    "id": 10,
+    "name": "Executioner",
+    "description": "You know where to strike to make sure your opponent falls and does not get up again. Ever.",
+    "rank_1": "When you inflict a critical injury on your opponent, you can reroll once. The highest roll counts.",
+    "rank_2": "As per rank 1, but you can also reverse the D66 roll for the critical injury – a roll of 16 becomes 61, for example.",
+    "rank_3": "When you inflict a critical injury on your enemy, you may choose freely from the relevant list."
   },
   {
-    "name": "Fast Footwork"
+    "id": 11,
+    "name": "Fast Footwork",
+    "description": "You are fast and quick on your feet, and hard to hit in combat.",
+    "rank_1": "You can DODGE for free once in every round of combat. The extra DODGE doesn’t count toward your actions in the round.",
+    "rank_2": "You get a +1 bonus whenever you DODGE.",
+    "rank_3": "You can DODGE an unlimited number of times in the same round of combat, but only once against the same attack. Only the first DODGE counts towards your actions in the round."
   },
   {
+    "id": 12,
     "name": "Fast Shooter"
-  },
+  ,"description": "You can fire your bow or sling lightning fast. Hunters can combine this talent with PATH OF THE ARROW.",
+    "rank_1": "You don’t need to PREPARE before you SHOOT with a ranged weapon. Does not apply to crossbows.",
+    "rank_2": "You can SHOOT with a ranged weapon and RUN at the same time.",
+    "rank_3": "You only need to spend a fast action to SHOOT with a ranged weapon, meaning you can SHOOT twice in a round."},
   {
+    "id": 13,
     "name": "Fearless"
-  },
+  ,"description": "Not even the horrors that lurk in the Forbidden Lands scare you.",
+    "rank_1": "You can roll an INSIGHT roll as “armor” against fear attacks – each x rolled eliminates one x rolled in the fear attack. The INSIGHT roll does not count as an action.",
+    "rank_2": "You can choose to have damage from a fear attack decrease your Empathy instead of your Wits.",
+    "rank_3": "You are immune to fear attacks."},
   {
+    "id": 14,
     "name": "Firm Grip"
-  },
+  ,"description": "It takes a lot for you to lose your grip on your weapon.",
+    "rank_1": "DISARMING you requires an extra chapter 4 76 x – that is, two x for a one-handed weapon and three x for a two-handed weapon.",
+    "rank_2": "DISARMING you requires two extra x – three x for a one-handed weapon and four x for a two-handed weapon.",
+    "rank_3": "You cannot be DISARMED."},
   {
+    "id": 15,
     "name": "Fisher"
-  },
+  ,"description": "You have mastered the art of pulling fish from rivers and lakes. You need a net, a rod, or some other piece of fishing equipment. Read more about fishing in Chapter 7.",
+    "rank_1": "Your roll for SURVIVAL is modified by +1 when you FISH.",
+    "rank_2": "Fishing sets you at ease. A Quarter Day spent FISHING counts as RESTING for you.",
+    "rank_3": "The amount of FISH you catch is doubled."},
   {
+    "id": 16,
     "name": "Hammer Fighter"
-  },
+  ,"description": "Bashing heads in with a sturdy warhammer is your idea of a good day in the Forbidden Lands.",
+    "rank_1": "You get +1 to all attack rolls with a BLUNT melee weapon.",
+    "rank_2": "All attacks with a BLUNT weapon inflict at least 1 point of damage, even if the target’s armor absorbs all damage.",
+    "rank_3": "You can add a D8 Artifact Die to all attack rolls with a BLUNT weapon."},
   {
+    "id": 17,
     "name": "Herbalist"
-  },
+  ,"description": "You know the difference between edible plants and regular weeds.",
+    "rank_1": "Your SURVIVAL roll is modified by +1 when you FORAGE during journeys. Read more about journeys in Chapter 7.",
+    "rank_2": "Walking the lands sets you at ease. A Quarter Day spent FORAGING counts as RESTING for you.",
+    "rank_3": "The amount of VEGETABLES you find when FORAGING is doubled."},
   {
+    "id": 18,
     "name": "Horseback Fighter"
-  },
+  ,"description": "You are trained in the art of fightning from the back of a mount. All of the effects below require you to be in an OPEN zone (see page 88).",
+    "rank_1": "You can fire a short bow or sling from a mount.",
+    "rank_2": "You get a +1 bonus to all melee attacks from a mount.",
+    "rank_3": "You can make a MOUNTED CHARGE attack from a mount. This combines a full movement action by the mount (from at least SHORT range to ARM’S LENGTH) with a melee attack by you. You can add a D8 Artifact Die to the melee attack."},
   {
+    "id": 19,
     "name": "Incorruptible"
-  },
+  ,"description": "When others try to affect you, you are as immovable as a mighty oak in the wind.",
+    "rank_1": "Your INSIGHT roll is modified by +1 when someone attempts to MANIPULATE you.",
+    "rank_2": "You can add a D8 Artifact Die to your roll when someone MANIPULATES you.",
+    "rank_3": "You cannot be MANIPULATED."},
   {
+    "id": 20,
     "name": "Knife Fighter"
-  },
+  ,"description": "You are lethal with a knife in hand.",
+    "rank_1": "Your attack rolls are modified by +1 when you fight with a knife or a dagger.",
+    "rank_2": "You can STAB as a fast action using a knife or a dagger.",
+    "rank_3": "You can add a D8 Artifact Die to all attacks with a knife or a dagger."},
   {
+    "id": 21,
     "name": "Lightning Fast"
-  },
+  ,"description": "You react with the speed of a snake, and usually strike before your opponent.",
+    "rank_1": "You can draw two initiative cards instead of one during the initiative draw. Choose the one you want to use, and shuffle the other one back into the deck before others draw their cards.",
+    "rank_2": "You can draw three initiative cards instead of one during the initiative draw.",
+    "rank_3": "You can draw four initiative cards instead of one during the initiative draw."},
   {
+    "id": 22,
     "name": "Lockpicker"
-  },
+  ,"description": "You have mastered the art of picking locks. You need some sort of tool. Lockpicks can give you a bonus.",
+    "rank_1": "Your SLEIGHT OF HAND roll is modified by +1 when you pick a lock.",
+    "rank_2": "You can roll for SLEIGHT OF HAND to get out of chains or ropes even when you are bound yourself.",
+    "rank_3": "You can add a D8 Artifact Die to your roll when you pick a lock."},
   {
+    "id": 23,
     "name": "Lucky"
-  },
+  ,"description": "No matter how bad the odds are, you always get away unscathed.",
+    "rank_1": "When you suffer a critical injury, you can reroll once. The lowest roll counts.",
+    "rank_2": "As per rank 1, but you can also reverse the D66 roll for the critical injury – a roll of 16 becomes 61, for example.",
+    "rank_3": "When you suffer a critical injury, you may choose your injury freely from the relevant list."},
   {
+    "id": 24,
     "name": "Master of the Hunt"
-  },
+  ,"description": "You are a skilled hunter and can find prey where others cannot.",
+    "rank_1": "Your SURVIVAL roll is modified by +1 when you HUNT during journeys. Read more about journeys in Chapter 7.",
+    "rank_2": "Hunting sets you at ease. A Quarter Day spent HUNTING counts as RESTING.",
+    "rank_3": "When HUNTING, you may roll two D6s on the animals table (see page 152) and choose which result you want to use."},
   {
+    "id": 25,
     "name": "Melee Charge"
-  },
+  ,"description": "You throw yourself into combat without any concern for the risk involved.",
+    "rank_1": "When you move from NEAR to ARM’S LENGTH range you can, as the same action, SLASH, STAB, PUNCH, or SHOVE. This is called a CHARGE.",
+    "rank_2": "Your attack is modified by +1 when you CHARGE.",
+    "rank_3": "When you CHARGE, you can add a D8 Artifact Die to the roll."},
   {
+    "id": 26,
     "name": "Pack Rat"
-  },
+  ,"description": "You know how to pack your belongings so they don’t take up much space and your gear becomes easy to carry.",
+    "rank_1": "You can carry two more items than normal without being encumbered (see page 37).",
+    "rank_2": "You can carry five more items than normal without being encumbered.",
+    "rank_3": "You can carry ten more items than normal without being encumbered."},
   {
+    "id": 27,
     "name": "Pain Resistant"
-  },
+  ,"description": "You have learned to endure pain that would make others lose their minds. This talent can only be used if you use the advanced close combat rules.",
+    "rank_1": "If you take a single point of damage from a close combat attack, you don’t lose your attack in the same step (see page 96).",
+    "rank_2": "You never lose your own attack because of pain.",
+    "rank_3": "You recover one lost point of Agility, Wits or Empathy for every point of damage to Strength that you suffer."},
   {
+    "id": 28,
     "name": "Pathfinder"
-  },
+  ,"description": "You are a master at finding the right path through woods and over mountains in the wilderness.",
+    "rank_1": "Your SURVIVAL roll is modified by +1 when you LEAD THE WAY (see page 147).",
+    "rank_2": "You’re most comfortable in the wilds. LEADING THE WAY for a Quarter Day counts as REST for you.",
+    "rank_3": "You can add a D8 Artifact Die to your SURVIVAL rolls when you LEAD THE WAY."},
   {
+    "id": 29,
     "name": "Poisoner"
-  },
+  ,"description": "You have mastered the art of brewing poisons of every kind. Read more about poisons in Chapter 5.",
+    "rank_1": "You can use the CRAFTING skill to concoct poisons. See the table on page 186 for required raw materials and equipment. The Potency of the poison increases by 1 for every x you roll beyond the first.",
+    "rank_2": "As per rank 1, and all your rolls to concoct poisons are modified by +1.",
+    "rank_3": "As per rank 2, and you can add a D8 Artifact Die to your rolls to concoct poisons."},
   {
+    "id": 30,
     "name": "Quartermaster"
-  },
+  ,"description": "You can find good campsites and can make sure your party are comfortable by the campfire.",
+    "rank_1": "Your SURVIVAL roll is modified by +1 when you MAKE CAMP during journeys. Read more about journeys in Chapter 7.",
+    "rank_2": "When you have MADE CAMP, the person KEEPING WATCH gets a +2 bonus to SCOUTING.",
+    "rank_3": "You can add a D8 Artifact Die to your roll when you MAKE CAMP."},
   {
+    "id": 31,
     "name": "Quickdraw"
-  },
+  ,"description": "You draw your weapon quicker than the enemy can blink.",
+    "rank_1": "You can draw a LIGHT weapon without spending an action. This includes picking up a weapon from the ground.",
+    "rank_2": "As per rank 1, but also applicable to normal weapons.",
+    "rank_3": "As per rank 2, but also applicable to HEAVY weapons."},
   {
+    "id": 32,
     "name": "Sailor"
-  },
+  ,"description": "You know how to steer rafts and boats over unknown waters.",
+    "rank_1": "Your SURVIVAL roll is modified by +1 when you LEAD THE WAY at sea (see page 147).",
+    "rank_2": "Life at sea is soothing to you. A Quarter Day spent LEADING THE WAY on a boat counts as REST for you.",
+    "rank_3": "You can add a D8 Artifact Die to your SURVIVAL rolls when you LEAD THE WAY at sea."},
   {
+    "id": 33,
     "name": "Sharpshooter"
-  },
+  ,"description": "You are a master archer and your arrow almost always hits its target.",
+    "rank_1": "Your attack rolls are modified by +1 when you SHOOT a bow or a crossbow.",
+    "rank_2": "You can SHOOT a bow or a crossbow at SHORT and LONG range without any penalties (see page 97).",
+    "rank_3": "You can add a D8 Artifact Die to any attack with a bow or a crossbow."},
   {
+    "id": 34,
     "name": "Sharp Tongue"
-  },
+  ,"description": "You are a master at formulating scathing abuses that can unhinge even the most steadfast of enemies.",
+    "rank_1": "When you MANIPULATE someone, and roll more x than you need to win the opposed roll, you can inflict 1 point of damage to Empathy on your opponent per extra x.",
+    "rank_2": "Your MANIPULATE roll is modified by +1 if you insult your opponent.",
+    "rank_3": "You can add a D8 Artifact Die to your MANIPULATE roll if you insult your opponent in some way."},
   {
+    "id": 35,
     "name": "Shield Fighter"
-  },
+  ,"description": "You are one with your shield, and it can protect you from any attack.",
+    "rank_1": "Your PARRY rolls are modified by +1 when you have a shield.",
+    "rank_2": "You can use your shield to SLASH as a fast action. The Weapon Damage is 1 (blunt trauma).",
+    "rank_3": "You can add a D8 Artifact Die to all PARRY rolls when you use a shield."},
   {
+    "id": 36,
     "name": "Sixth Sense"
-  },
+  ,"description": "The hairs on the back of your neck stand up when enemies lurk in the bushes.",
+    "rank_1": "Your SCOUT roll is modified by +1 when an enemy tries to ambush you or performs a sneak attack (see page 90).",
+    "rank_2": "When you spot an ambush or a sneak attack, you also see how many the attackers are, what kin they belong to, and what weapons they use.",
+    "rank_3": "You can add a D8 Artifact Die to your SCOUT roll when you try to spot an ambush or a sneak attack."},
   {
+    "id": 37,
     "name": "Smith"
-  },
+  ,"description": "You know the art of hammering coarse iron into lethal blades and protective armor.",
+    "rank_1": "You can use the CRAFTING skill to make any close combat weapon, shield, or metal armor from the weapons tables in Chapter 5, with normal stats. You can also turn IRON ORE into IRON at a FORGE (see page 167).",
+    "rank_2": "You can make weapons, shields and metal armor with a Weapon Bonus or Armor Rating that is one point higher than normal. This takes twice as long, and your roll is modified by –2.",
+    "rank_3": "You can make weeapons, shields and metal armor with a Weapon Bonus or Armor Rating that is two points higher than normal. This takes four times as long and your roll is modified by –4."},
   {
+    "id": 38,
     "name": "Spear Fighter"
-  },
+  ,"description": "A mighty spear can slay even the biggest of monsters.",
+    "rank_1": "You get +1 when you attack with a spear, pike, halberd, or trident.",
+    "rank_2": "When you wield a spear, pike, talents 81 halberd, or trident, you may immediately strike an enemy who moves from NEAR range to ARM’S LENGTH from you. The attack counts towards your actions in the round, but breaks the turn order and occurs before the enemy can attack you.",
+    "rank_3": "You can add a D8 Artifact Die to attacks with a spear, halberd, or trident."},
   {
+    "id": 39,
     "name": "Steady Feet"
-  },
+  ,"description": "You have good balance and cannot be knocked over easily.",
+    "rank_1": "SHOVING you to the ground requires two x instead of one.",
+    "rank_2": "You cannot be SHOVED to the ground.",
+    "rank_3": "You get up from a prone position without spending an action on it. It still needs to happen at your turn in the round."},
   {
+    "id": 40,
     "name": "Sword Fighter"
-  },
+  ,"description": "You have practiced with a sword in hand since you were a child.",
+    "rank_1": "Your attack and PARRY rolls are modified by +1 when you fight with a sword.",
+    "rank_2": "You can SLASH two enemies with your sword with a single action. Roll separately for the two attacks. If you use hidden combinations (see page 94), the second attack occurs outside of the combination.",
+    "rank_3": "You can add a D8 Artifact Die to all attack and PARRY rolls with a sword."},
   {
+    "id": 41,
     "name": "Tailor"
-  },
+  ,"description": "You know the art of turning wool into cloth, and to craft that cloth into clothes.",
+    "rank_1": "With a successful CRAFTING roll, you can turn up to D6 units of WOOL into CLOTH. If you fail, the WOOL is destroyed. If you have access to a TAILOR SHOP (see page 171), you can create CLOTH faster and without rolling dice. You can also use CRAFTING to sew clothes of normal chapter 4 82 quality, similar to to what’s found in the equipment lists on page 190.",
+    "rank_2": "You can make clothes of superior quality, which can be sold at twice the normal price. Your roll is modified by –2.",
+    "rank_3": "You can make clothes of exceptional quality, which can be sold at four times the normal price. Your roll is modified by –4."},
   {
+    "id": 42,
     "name": "Tanner"
-  },
+  ,"description": "You know the art of turning pelts into leather, and to craft that leather into armor.",
+    "rank_1": "With a successful CRAFTING roll, you can turn up to D6 units of PELTS into LEATHER. If you fail, the PELTS are destroyed. If you have access to a TANNERY (see page 172), you can create LEATHER faster and without rolling dice. You can also use the CRAFTING skill to make leather armor with normal stats according to the armor table on page 106.",
+    "rank_2": "You can make leather armor with an Armor Rating that is one point higher than normal. This takes twice as long, and your roll is modified by –2.",
+    "rank_3": "You can make leather armor with an Armor Rating that is two points higher than normal. This takes four times as long and your roll is modified by –4."},
   {
+    "id": 43,
     "name": "Threatening"
-  },
+  ,"description": "You have a scary physical presence and can threaten people to make them do what you want.",
+    "rank_1": "You can roll MIGHT instead of MANIPULATE when you threaten someone to make them do what you want. If you succeed, your opponent cannot demand anything in return from you. He can still choose to attack you.",
+    "rank_2": "As per rank 1, and your MIGHT roll is modified by +1 when you threaten someone.",
+    "rank_3": "As per rank 2, and you can add a D8 Artifact Die to your roll when you threaten someone."},
   {
+    "id": 44,
     "name": "Throwing Arm"
-  },
+  ,"description": "You can hit anything with a thrown rock.",
+    "rank_1": "Your attack rolls are modified by +1 when you use a thrown weapon or a sling.",
+    "rank_2": "You can throw incredibly far. All attacks with a thrown weapon or a sling have LONG range.",
+    "rank_3": "You can add a D8 Artifact Die to attacks with a thrown weapon or a sling."},
   {
+    "id": 45,
     "name": "Wanderer"
-  }
+  ,"description": "You can travel on foot through the wilderness for a long time without stopping for rest.",
+    "rank_1": "Your ENDURANCE roll is modified by +1 when you force march (see page 146).",
+    "rank_2": "Your ENDURANCE rolls for forced marches succeed automatically.",
+    "rank_3": "HIKING for a Quarter Day counts as REST for you."}
 ]

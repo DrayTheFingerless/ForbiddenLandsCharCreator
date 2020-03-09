@@ -20,9 +20,11 @@
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/talents_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="8dp" />
+                android:layout_margin="8dp"
+                app:layoutManager="LinearLayoutManager"/>
         </LinearLayout>
     </LinearLayout>
 

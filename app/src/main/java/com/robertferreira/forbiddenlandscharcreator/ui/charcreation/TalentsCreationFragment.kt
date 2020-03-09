@@ -18,6 +18,7 @@ import com.robertferreira.forbiddenlandscharcreator.databinding.InfoCreationFrag
 import com.robertferreira.forbiddenlandscharcreator.databinding.TalentsCreationFragmentBinding
 import com.robertferreira.forbiddenlandscharcreator.ui.customviews.TalentSelectFragment
 import com.robertferreira.forbiddenlandscharcreator.ui.customviews.TalentSelectViewModel
+import com.robertferreira.forbiddenlandscharcreator.ui.customviews.TalentShowDialogFragment
 
 class TalentsCreationFragment : Fragment() {
 
@@ -51,6 +52,15 @@ class TalentsCreationFragment : Fragment() {
         binding.talentsList.adapter = adapter
 
 
+        viewModel.showTalent.observe(viewLifecycleOwner, Observer {
+            if(it) {
+                viewModel.tClicked.value?.let { talent ->
+                    val dialog = TalentShowDialogFragment.newInstance(talent)
+                    dialog.show(childFragmentManager, "dialog")
+                }
+                viewModel.showTalent.value = false
+            }
+        })
 
         tSelectViewModel.newTalent.observe(viewLifecycleOwner, Observer {
             if(it) {
@@ -65,6 +75,16 @@ class TalentsCreationFragment : Fragment() {
             it.TalentList?.let { tlts ->
                 adapter.data = tlts
                 adapter.notifyDataSetChanged()
+            }
+        })
+
+        viewModel.talentRemoved.observe(viewLifecycleOwner, Observer {
+            if(it) {
+                viewModel.char.value?.TalentList?.let { tlts ->
+                    adapter.data = tlts
+                    adapter.notifyDataSetChanged()
+                }
+                viewModel.talentRemoved.value = false
             }
         })
 

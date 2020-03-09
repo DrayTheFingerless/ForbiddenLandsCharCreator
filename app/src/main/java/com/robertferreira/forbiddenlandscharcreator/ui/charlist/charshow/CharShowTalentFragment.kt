@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.navGraphViewModels
 
@@ -13,6 +14,8 @@ import com.robertferreira.forbiddenlandscharcreator.R
 import com.robertferreira.forbiddenlandscharcreator.databinding.FragmentCharShowMainBinding
 import com.robertferreira.forbiddenlandscharcreator.databinding.FragmentCharShowTalentBinding
 import com.robertferreira.forbiddenlandscharcreator.ui.charcreation.CharViewModel
+import com.robertferreira.forbiddenlandscharcreator.ui.charcreation.TalentsListAdapter
+import com.robertferreira.forbiddenlandscharcreator.ui.customviews.TalentShowDialogFragment
 
 class CharShowTalentFragment : Fragment() {
 
@@ -26,17 +29,32 @@ class CharShowTalentFragment : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_char_show_talent, container, false)
         //viewModel = ViewModelProviders.of(this).get(CharShowViewModel::class.java)
-        binding.setLifecycleOwner(this)
-
         binding.viewModel = viewModel
+
+        val adapter = TalentsListAdapter(TalentsListAdapter.TalentListener {
+                tId ->  viewModel.talentClicked(tId)
+        }, TalentsListAdapter.RemoveListener{
+        })
+        binding.talentsList.adapter = adapter
+
+
+        viewModel.showTalent.observe(viewLifecycleOwner, Observer {
+            if(it) {
+                viewModel.tClicked.value?.let { talent ->
+                    val dialog = TalentShowDialogFragment.newInstance(talent)
+                    dialog.show(childFragmentManager, "dialog")
+                }
+                viewModel.showTalent.value = false
+            }
+        })
+
+        viewModel.character.observe(viewLifecycleOwner, Observer {
+            it.TalentList?.let { tlts ->
+                adapter.data = tlts
+                adapter.notifyDataSetChanged()
+            }
+        })
 
         return binding.root
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        arguments?.takeIf { it.containsKey(ARG_PAGE) }?.apply {
-
-        }
-    }
-
 }

@@ -299,10 +299,19 @@ class CharViewModel(val database: CharactersDatabaseDAO,
 
     fun talentClicked(talentId : Int){
         //show a popup with talent info
+        character.value?.TalentList?.first { it.id == talentId }?.let {
+            tClicked.value = it
+            showTalent.value = true
+        }
     }
+
+    val talentRemoved = MutableLiveData<Boolean>().apply { value = false }
+    var showTalent = MutableLiveData<Boolean>().apply { value = false }
+    val tClicked = MutableLiveData<Talent>()
 
     fun removeClicked(talentId : Int) {
         character.value?.TalentList?.removeIf { it.id == talentId }
+        talentRemoved.value = true
     }
 
     fun addGear(name: String, weight: String){

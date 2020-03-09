@@ -74,6 +74,7 @@ class CharShowViewModel(application: Application) : AndroidViewModel(application
     var Face =Transformations.map(_character) { it.Face }
     var Clothing = Transformations.map(_character) { it.Clothing }
 
+
     init {
     }
 
@@ -84,4 +85,15 @@ class CharShowViewModel(application: Application) : AndroidViewModel(application
     fun setCharacter(c: FLCharacter){
         _character.value = c
     }
+
+    fun talentClicked(talentId : Int){
+        //show a popup with talent info
+        character.value?.TalentList?.first { it.id == talentId }?.let {
+            tClicked.value = it
+            showTalent.value = true
+        }
+    }
+
+    var showTalent = MutableLiveData<Boolean>().apply { value = false }
+    val tClicked = MutableLiveData<Talent>()
 }

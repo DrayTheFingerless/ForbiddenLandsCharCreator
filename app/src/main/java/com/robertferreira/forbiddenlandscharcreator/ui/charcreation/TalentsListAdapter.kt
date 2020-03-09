@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.robertferreira.forbiddenlandscharcreator.FLCharacter
 import com.robertferreira.forbiddenlandscharcreator.Talent
 import com.robertferreira.forbiddenlandscharcreator.databinding.TalentsRowItemViewBinding
+import com.robertferreira.forbiddenlandscharcreator.ui.charcreation.TalentsListAdapter.TalentListener
+import com.robertferreira.forbiddenlandscharcreator.ui.charcreation.TalentsListAdapter.RemoveListener
 
-class TalentsListAdapter(val clickListener: TalentListener, val removeListener : RemoveListener)  : RecyclerView.Adapter<TextItemViewHolder>(){
+class TalentsListAdapter(val clickListener: TalentListener, val removeListener : RemoveListener)  : RecyclerView.Adapter<TalentRowViewHolder>(){
 
     var data = listOf<Talent>()
         set(value) {
@@ -19,13 +21,13 @@ class TalentsListAdapter(val clickListener: TalentListener, val removeListener :
         return data.size
     }
 
-    override fun onBindViewHolder(holder: TextItemViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TalentRowViewHolder, position: Int) {
         val item = data[position]
         holder.bind(clickListener, removeListener, item)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TextItemViewHolder {
-        return TextItemViewHolder.from(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TalentRowViewHolder {
+        return TalentRowViewHolder.from(parent)
     }
 
     class TalentListener(val clickListener: (tId: Int) -> Unit) {
@@ -39,9 +41,9 @@ class TalentsListAdapter(val clickListener: TalentListener, val removeListener :
 }
 
 
-class TextItemViewHolder private constructor(val binding: TalentsRowItemViewBinding): RecyclerView.ViewHolder(binding.root){
+class TalentRowViewHolder private constructor(val binding: TalentsRowItemViewBinding): RecyclerView.ViewHolder(binding.root){
 
-    fun bind(clickListener: TalentsListAdapter.TalentListener, removeListener: TalentsListAdapter.RemoveListener, item: Talent) {
+    fun bind(clickListener: TalentListener, removeListener: RemoveListener, item: Talent) {
         val res = itemView.context.resources
 
         binding.nameText.text = item.name
@@ -53,10 +55,10 @@ class TextItemViewHolder private constructor(val binding: TalentsRowItemViewBind
     }
 
     companion object {
-        fun from(parent: ViewGroup): TextItemViewHolder {
+        fun from(parent: ViewGroup): TalentRowViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val binding = TalentsRowItemViewBinding.inflate(layoutInflater, parent, false)
-            return TextItemViewHolder(binding)
+            return TalentRowViewHolder(binding)
         }
     }
 }

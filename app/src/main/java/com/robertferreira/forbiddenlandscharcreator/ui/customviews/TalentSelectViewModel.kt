@@ -16,6 +16,8 @@ class TalentSelectViewModel(application: Application) : AndroidViewModel(applica
     }
     val gTalents: LiveData<List<Talent>> = listGeneralTalents
 
+
+    val newTalent = MutableLiveData<Boolean>().apply { value = false }
     private val _talentSelected = MutableLiveData<Talent>()
     val talentSelected: LiveData<Talent>
         get() = _talentSelected
@@ -23,5 +25,6 @@ class TalentSelectViewModel(application: Application) : AndroidViewModel(applica
     fun setTalent(itemId: Int)
     {
         _talentSelected.value = listGeneralTalents.value?.first { it.id == itemId }
+        newTalent.value = true
     }
 }

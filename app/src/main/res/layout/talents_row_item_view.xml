@@ -2,7 +2,6 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
-
         <variable
             name="talent"
             type="com.robertferreira.forbiddenlandscharcreator.Talent" />
@@ -16,16 +15,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="@{() -> clickListener.onClick(talent)}">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/nameText"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:fontFamily="@font/im_fell_great_primer"
-            
+            android:onClick="@{() -> clickListener.onClick(talent)}"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:textSize="24sp"

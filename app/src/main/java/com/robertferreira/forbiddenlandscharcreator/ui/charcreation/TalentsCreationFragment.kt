@@ -52,13 +52,20 @@ class TalentsCreationFragment : Fragment() {
 
 
 
-        tSelectViewModel.talentSelected.observe(viewLifecycleOwner, Observer {
-            viewModel.addTalent(it)
+        tSelectViewModel.newTalent.observe(viewLifecycleOwner, Observer {
+            if(it) {
+                tSelectViewModel.talentSelected.value?.let { t ->
+                    viewModel.addTalent(t)
+                }
+                tSelectViewModel.newTalent.value = false
+            }
         })
 
         viewModel.char.observe(viewLifecycleOwner, Observer {
             it.TalentList?.let { tlts ->
-                adapter.data = tlts}
+                adapter.data = tlts
+                adapter.notifyDataSetChanged()
+            }
         })
 
         binding.addTalentButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_talents_to_select_new))

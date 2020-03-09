@@ -52,7 +52,7 @@ class SkillCreationFragment : Fragment() {
             }
         }*/
 
-        binding.skillsNextButton.setOnClickListener (Navigation.createNavigateOnClickListener(R.id.action_skills_to_info))
+        binding.skillsNextButton.setOnClickListener (Navigation.createNavigateOnClickListener(R.id.action_skills_to_talents))
 
         //hook up skill steppers
         setObservers()

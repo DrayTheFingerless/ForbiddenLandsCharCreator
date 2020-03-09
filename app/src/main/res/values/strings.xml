@@ -67,5 +67,6 @@
     <string name="body">Body</string>
     <string name="face">Face</string>
     <string name="clothing">Clothing</string>
+    <string name="remove">Remove</string>
 
 </resources>

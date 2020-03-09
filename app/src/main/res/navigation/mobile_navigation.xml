@@ -38,13 +38,28 @@
             android:name="com.robertferreira.forbiddenlandscharcreator.ui.charcreation.SkillCreationFragment"
             android:label="Skills- Character Creation">
             <action
-                android:id="@+id/action_skills_to_info"
-                app:destination="@id/nav_new_info" />
+                android:id="@+id/action_skills_to_talents"
+                app:destination="@id/nav_new_talents" />
         </fragment>
         <fragment
             android:id="@+id/nav_new_info"
             android:name="com.robertferreira.forbiddenlandscharcreator.ui.charcreation.InfoCreationFragment"
             android:label="Info - Character Creation" />
+        <fragment
+            android:id="@+id/nav_new_talents"
+            android:name="com.robertferreira.forbiddenlandscharcreator.ui.charcreation.TalentsCreationFragment"
+            android:label="Talents  - Character Creation" >
+            <action
+                android:id="@+id/action_talents_to_info"
+                app:destination="@id/nav_new_info" />
+            <action
+                android:id="@+id/action_talents_to_select_new"
+                app:destination="@id/nav_new_talent_select" />
+        </fragment>
+        <fragment
+            android:id="@+id/nav_new_talent_select"
+            android:name="com.robertferreira.forbiddenlandscharcreator.ui.customviews.TalentSelectFragment"
+            android:label="TalentSelectFragment" />
     </navigation>
     <fragment
         android:id="@+id/nav_begin_new"

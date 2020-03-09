@@ -99,7 +99,6 @@ class CharViewModel(val database: CharactersDatabaseDAO,
     val charAnimal : LiveData<Int>
         get() = Transformations.map(character) { it.MySkills.get(Skills.AnimalHandling) ?: 0}
 
-
     private val kTName = MutableLiveData<String>()
     val kinTalentName : LiveData<String>
         get() = kTName
@@ -207,6 +206,7 @@ class CharViewModel(val database: CharactersDatabaseDAO,
         // Some code
         character.value?.Name = newName
     }
+
     fun onAgeChanged(newAge: String) {
         try {
             val i = newAge.toInt()
@@ -289,6 +289,20 @@ class CharViewModel(val database: CharactersDatabaseDAO,
         character.value?.let{
             it.RemoveRelationShip(name)
         }
+    }
+
+    fun addTalent(item: Talent){
+        character.value?.let{
+            it.AddTalent(item)
+        }
+    }
+
+    fun talentClicked(talentId : Int){
+        //show a popup with talent info
+    }
+
+    fun removeClicked(talentId : Int) {
+        character.value?.TalentList?.removeIf { it.id == talentId }
     }
 
     fun addGear(name: String, weight: String){

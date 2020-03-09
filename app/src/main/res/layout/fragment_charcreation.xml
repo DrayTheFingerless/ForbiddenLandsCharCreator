@@ -208,16 +208,17 @@
                             android:id="@+id/strength_stepper"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_margin="8dp"
+                            android:layout_margin="4dp"
                             app:init_value="2" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_margin="8dp"
+                            android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
                             android:gravity="center"
+                            android:padding="0dp"
                             android:text="@string/strength"
                             android:textAlignment="center"
                             android:textSize="14sp" />
@@ -226,16 +227,17 @@
                             android:id="@+id/agility_stepper"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_margin="8dp"
+                            android:layout_margin="4dp"
                             app:init_value="2" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_margin="8dp"
+                            android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
                             android:gravity="center"
+                            android:padding="0dp"
                             android:text="@string/agility"
                             android:textAlignment="center"
                             android:textSize="14sp" />
@@ -253,7 +255,7 @@
                             android:id="@+id/wits_stepper"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_margin="8dp"
+                            android:layout_margin="4dp"
                             app:init_value="2">
 
                         </com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow>
@@ -261,10 +263,11 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_margin="8dp"
+                            android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
                             android:gravity="center"
+                            android:padding="0dp"
                             android:text="@string/wits"
                             android:textAlignment="center"
                             android:textSize="14sp" />
@@ -273,19 +276,20 @@
                             android:id="@+id/empathy_stepper"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_margin="8dp"
+                            android:layout_margin="4dp"
                             app:init_value="2" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_margin="8dp"
+                            android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
                             android:gravity="center"
                             android:text="@string/empathy"
                             android:textAlignment="center"
-                            android:textSize="14sp" />
+                            android:textSize="14sp"
+                            android:padding="0dp" />
 
                     </LinearLayout>
 

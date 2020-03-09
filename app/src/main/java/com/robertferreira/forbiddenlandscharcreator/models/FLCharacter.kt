@@ -354,6 +354,11 @@ class FLCharacter(
         notifyChange()
     }
 
+    fun AddTalent(talent: Talent){
+        TalentList.add(talent)
+        notifyChange()
+    }
+
     fun AddGear(gear: String, weight: Float) {
         Gear.add(Gear(gear, weight))
         notifyChange()

@@ -12,7 +12,7 @@ import com.robertferreira.forbiddenlandscharcreator.R.layout
 import com.robertferreira.forbiddenlandscharcreator.databinding.TextItemViewBinding
 import com.robertferreira.forbiddenlandscharcreator.ui.charlist.CharListAdapter.CharacterListener
 
-class CharListAdapter(val clickListener: CharacterListener)  : RecyclerView.Adapter<TextItemViewHolder>(){
+class CharListAdapter(val clickListener: CharacterListener) : RecyclerView.Adapter<TextItemViewHolder>(){
 
     var data = listOf<FLCharacter>()
         set(value) {
@@ -36,6 +36,7 @@ class CharListAdapter(val clickListener: CharacterListener)  : RecyclerView.Adap
     class CharacterListener(val clickListener: (charId: Long) -> Unit) {
         fun onClick(character: FLCharacter) = clickListener(character.charId)
     }
+
 }
 
 

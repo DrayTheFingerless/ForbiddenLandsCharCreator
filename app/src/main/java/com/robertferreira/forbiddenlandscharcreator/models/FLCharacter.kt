@@ -214,6 +214,7 @@ class FLCharacter(
 
          var currentTotalAttr = Strength + Agility + Wits + Empathy
          var currentTotalSkills = MySkills.values.sum()
+         var currentTotalTalents = TalentList.sumBy { it.rankValue }
 
          if(currentTotalAttr > maxAttr) {
              Strength = 2
@@ -230,6 +231,9 @@ class FLCharacter(
          if(currentTotalSkills > maxSkill){
             MySkills.forEach{MySkills.set(it.key, 0)}
          }
+
+         if(currentTotalTalents > maxTalent)
+             TalentList.clear()
 
          notifyChange()
      }
@@ -325,6 +329,21 @@ class FLCharacter(
         notifyChange()
     }
 
+
+    fun  ChangeTalent(talentId: Int, addOrSubtract: Boolean){
+        TalentList.first{it.id == talentId}.apply {
+            if(addOrSubtract) increaseRank()
+            else {
+                if(this.rankValue>1) decreaseRank()
+                else TalentList.remove(this)
+            }
+            notifyChange()
+        }
+    }
+
+    fun RemoveTalent(talentId: Int)
+    {}
+
     fun AttrPointsLeft() : Int{
         val currentUsed = Strength+Agility+Wits+Empathy
         when(AgeId){
@@ -342,6 +361,16 @@ class FLCharacter(
             1 -> return 10 - currentUsed
             2 -> return 12 - currentUsed
             else -> return 8 - currentUsed
+        }
+    }
+
+    fun TalentPointsleft() : Int {
+        val currentUsed = TalentList.sumBy{it.rankValue}
+        when(AgeId){
+            0 -> return 1 - currentUsed
+            1 -> return 2 - currentUsed
+            2 -> return 3 - currentUsed
+            else -> return 1 - currentUsed
         }
     }
 

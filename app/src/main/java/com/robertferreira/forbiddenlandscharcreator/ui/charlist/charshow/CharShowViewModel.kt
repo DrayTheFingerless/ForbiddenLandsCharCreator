@@ -93,6 +93,16 @@ class CharShowViewModel(application: Application) : AndroidViewModel(application
             showTalent.value = true
         }
     }
+    fun addTClicked(talentId : Int) {
+        character.value?.ChangeTalent(talentId, true)
+    }
+
+    fun removeTClicked(talentId : Int) {
+        character.value?.TalentList?.first{it.id == talentId}?.rankValue?.let{
+            if(it > 1)
+                character.value?.ChangeTalent(talentId, false)
+        }
+    }
 
     var showTalent = MutableLiveData<Boolean>().apply { value = false }
     val tClicked = MutableLiveData<Talent>()

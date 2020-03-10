@@ -296,35 +296,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/talents_title_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/BackgroundGray"
-                    android:clickable="true"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/im_fell_great_primer"
-                        android:text="@string/talents"
-                        android:textSize="24sp" />
-
-                    <ImageButton
-                        android:id="@+id/imageButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="8dp"
-                        android:background="@color/Transparent"
-                        android:scaleType="center"
-                        app:srcCompat="@drawable/ic_add_black" />
-
-                </LinearLayout>
-
-                <LinearLayout
                     android:id="@+id/talents_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

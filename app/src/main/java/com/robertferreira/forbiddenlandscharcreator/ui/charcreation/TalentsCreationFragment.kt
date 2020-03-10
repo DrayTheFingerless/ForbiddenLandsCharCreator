@@ -44,14 +44,23 @@ class TalentsCreationFragment : Fragment() {
 
         binding.charViewModel = viewModel
 
+
         val adapter = TalentsListAdapter(TalentsListAdapter.TalentListener {
                 tId ->  viewModel.talentClicked(tId)
         }, TalentsListAdapter.RemoveListener{
-                tId -> viewModel.removeClicked(tId)
-        })
+                tId -> viewModel.removeTClicked(tId)
+        },TalentsListAdapter.AddListener{
+                tId -> viewModel.addTClicked(tId)
+        }, false)
         binding.talentsList.adapter = adapter
 
 
+        //talent points
+        viewModel.talentPoints.observe(viewLifecycleOwner, Observer{
+            binding.talentPoints.text = it.toString()
+        })
+
+        //show pop up of talent
         viewModel.showTalent.observe(viewLifecycleOwner, Observer {
             if(it) {
                 viewModel.tClicked.value?.let { talent ->
@@ -62,6 +71,7 @@ class TalentsCreationFragment : Fragment() {
             }
         })
 
+        //update list when new talent
         tSelectViewModel.newTalent.observe(viewLifecycleOwner, Observer {
             if(it) {
                 tSelectViewModel.talentSelected.value?.let { t ->
@@ -71,6 +81,7 @@ class TalentsCreationFragment : Fragment() {
             }
         })
 
+
         viewModel.char.observe(viewLifecycleOwner, Observer {
             it.TalentList?.let { tlts ->
                 adapter.data = tlts
@@ -78,20 +89,20 @@ class TalentsCreationFragment : Fragment() {
             }
         })
 
-        viewModel.talentRemoved.observe(viewLifecycleOwner, Observer {
+        binding.addTalentButton.setOnClickListener{
+            viewModel.tryAddTalent()
+        }
+
+        viewModel.navigateToAddTalent.observe(viewLifecycleOwner, Observer {
             if(it) {
-                viewModel.char.value?.TalentList?.let { tlts ->
-                    adapter.data = tlts
-                    adapter.notifyDataSetChanged()
-                }
-                viewModel.talentRemoved.value = false
+                findNavController().navigate(R.id.action_talents_to_select_new)
+                viewModel.navigateToAddTalent.value = false
             }
         })
 
-        binding.addTalentButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_talents_to_select_new))
-
         binding.nextButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_talents_to_info))
 
-        return binding.root
+
+            return binding.root
+        }
     }
-}

@@ -297,6 +297,19 @@ class CharViewModel(val database: CharactersDatabaseDAO,
         }
     }
 
+    //observe talents
+    //observer skill fields
+    val talentPoints : LiveData<Int>
+        get () = Transformations.map(character) {
+            val sum = it.TalentList.sumBy { it.rankValue }
+            val i = when(it.AgeId){
+                0-> 1 - sum
+                1-> 2 - sum
+                2-> 3 - sum
+                else-> 3 - sum
+            }
+            i
+    }
     fun talentClicked(talentId : Int){
         //show a popup with talent info
         character.value?.TalentList?.first { it.id == talentId }?.let {
@@ -304,14 +317,23 @@ class CharViewModel(val database: CharactersDatabaseDAO,
             showTalent.value = true
         }
     }
+    val navigateToAddTalent = MutableLiveData<Boolean>().apply { value = false }
+    fun tryAddTalent(){
+        character.value?.let{
+            if (it.TalentPointsleft() > 0)
+                navigateToAddTalent.value = true
+        }
+    }
 
-    val talentRemoved = MutableLiveData<Boolean>().apply { value = false }
     var showTalent = MutableLiveData<Boolean>().apply { value = false }
     val tClicked = MutableLiveData<Talent>()
 
-    fun removeClicked(talentId : Int) {
-        character.value?.TalentList?.removeIf { it.id == talentId }
-        talentRemoved.value = true
+    fun removeTClicked(talentId : Int) { character.value?.ChangeTalent(talentId, false) }
+    fun addTClicked(talentId : Int) {
+        talentPoints.value?.let {
+            if(it > 0)
+                character.value?.ChangeTalent(talentId, true)
+        }
     }
 
     fun addGear(name: String, weight: String){

@@ -13,7 +13,6 @@ import androidx.navigation.navGraphViewModels
 import com.robertferreira.forbiddenlandscharcreator.R
 import com.robertferreira.forbiddenlandscharcreator.databinding.FragmentCharShowMainBinding
 import com.robertferreira.forbiddenlandscharcreator.databinding.FragmentCharShowTalentBinding
-import com.robertferreira.forbiddenlandscharcreator.ui.charcreation.CharViewModel
 import com.robertferreira.forbiddenlandscharcreator.ui.charcreation.TalentsListAdapter
 import com.robertferreira.forbiddenlandscharcreator.ui.customviews.TalentShowDialogFragment
 
@@ -34,7 +33,8 @@ class CharShowTalentFragment : Fragment() {
         val adapter = TalentsListAdapter(TalentsListAdapter.TalentListener {
                 tId ->  viewModel.talentClicked(tId)
         }, TalentsListAdapter.RemoveListener{
-        })
+        },TalentsListAdapter.AddListener{
+        },  true)
         binding.talentsList.adapter = adapter
 
 

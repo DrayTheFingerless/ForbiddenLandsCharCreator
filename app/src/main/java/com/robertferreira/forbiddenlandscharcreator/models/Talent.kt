@@ -11,7 +11,7 @@ open class Talent {
     var type : Int = -1
     var id : Int = -1
 
-    var rankValue : Int = 0
+    var rankValue : Int = 1
 
     constructor (){
 
@@ -49,7 +49,8 @@ open class Talent {
     }
 
     fun decreaseRank(){
-        if(rankValue>0)
+        if(rankValue>1)
         rankValue--
+
     }
 }

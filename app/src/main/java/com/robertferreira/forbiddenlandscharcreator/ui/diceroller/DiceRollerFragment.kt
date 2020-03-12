@@ -45,8 +45,12 @@ class DiceRollerFragment : Fragment() {
     var skill1 : Int= 0
     var gear6 : Int= 0
     var gear1 : Int= 0
-    var other6 : Int= 0
-    var other1 : Int= 0
+    var d8success : Int= 0
+    var d8banes : Int= 0
+    var d10success : Int= 0
+    var d10banes : Int= 0
+    var d12success : Int= 0
+    var d12banes : Int= 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,25 +66,47 @@ class DiceRollerFragment : Fragment() {
         setStepper(binding.baseDiceStepper, binding.baseDiceLayout, R.drawable.dice_base_1, 0)
         setStepper(binding.skillDiceStepper, binding.skillDiceLayout, R.drawable.dice_skill_1, 1)
         setStepper(binding.gearDiceStepper, binding.gearDiceLayout, R.drawable.dice_gear_1, 2)
+        setStepper(binding.d8Stepper, binding.d8DiceLayout, R.drawable.dice_d8_1, 3)
+        setStepper(binding.d10Stepper, binding.d10DiceLayout, R.drawable.dice_d10_1, 4)
+        setStepper(binding.d12Stepper, binding.d12DiceLayout, R.drawable.dice_d12_1, 5)
+
         //setStepper(binding.otherDiceStepper, binding.otherDiceLayout, R.drawable.dice_d8_1, 3)
 
         viewModel.bDice.observe(viewLifecycleOwner, Observer{
             for (x in 0 until it.count())
-                setD6Face(binding.baseDiceLayout[x] as ImageView,it[x],0)
+                setDiceFace(binding.baseDiceLayout[x] as ImageView,it[x],0)
             base6 = it.filter{v -> v == 6}.count()
             base1 = it.filter{v -> v == 1}.count()
         })
         viewModel.sDice.observe(viewLifecycleOwner, Observer{
             for (x in 0 until it.count())
-                setD6Face(binding.skillDiceLayout[x] as ImageView,it[x],1)
+                setDiceFace(binding.skillDiceLayout[x] as ImageView,it[x],1)
             skill6 = it.filter{v -> v == 6}.count()
             skill1 = it.filter{v -> v == 1}.count()
         })
         viewModel.gDice.observe(viewLifecycleOwner, Observer{
             for (x in 0 until it.count())
-                setD6Face(binding.gearDiceLayout[x] as ImageView,it[x],2)
+                setDiceFace(binding.gearDiceLayout[x] as ImageView,it[x],2)
             gear6 = it.filter{v -> v == 6}.count()
             gear1 = it.filter{v -> v == 1}.count()
+        })
+        viewModel.d8Dice.observe(viewLifecycleOwner, Observer{
+            for (x in 0 until it.count())
+                setDiceFace(binding.d8DiceLayout[x] as ImageView,it[x],3)
+            d8success = countSuccesses(it)
+            d8banes = it.filter{v -> v == 1}.count()
+        })
+        viewModel.d10Dice.observe(viewLifecycleOwner, Observer{
+            for (x in 0 until it.count())
+                setDiceFace(binding.d10DiceLayout[x] as ImageView,it[x],4)
+            d10success = countSuccesses(it)
+            d10banes = it.filter{v -> v == 1}.count()
+        })
+        viewModel.d12Dice.observe(viewLifecycleOwner, Observer{
+            for (x in 0 until it.count())
+                setDiceFace(binding.d12DiceLayout[x] as ImageView,it[x],5)
+            d12success = countSuccesses(it)
+            d12banes = it.filter{v -> v == 1}.count()
         })
        /* viewModel.oDice.observe(viewLifecycleOwner, Observer{
             for (x in 0 until it.count())
@@ -90,7 +116,7 @@ class DiceRollerFragment : Fragment() {
 
         viewModel.diceRolled.observe(viewLifecycleOwner, Observer { rolled ->
             if(rolled){
-                val dialog = ShowRoll.newInstance(base6,base1,skill6,skill1,gear6,gear1, other6,other1, false)
+                val dialog = ShowRoll.newInstance(base6,base1,skill6,skill1,gear6,gear1, d8success+d10success+d12success,d8banes+d10banes+d12banes, false)
                 dialog.show(childFragmentManager, "dialog")
                 viewModel.onDiceRolled()
             }
@@ -98,7 +124,7 @@ class DiceRollerFragment : Fragment() {
 
         viewModel.dicePushRolled.observe(viewLifecycleOwner, Observer { rolled ->
             if(rolled){
-                val dialog = ShowRoll.newInstance(base6,base1,skill6,skill1,gear6,gear1, other6,other1, true)
+                val dialog = ShowRoll.newInstance(base6,base1,skill6,skill1,gear6,gear1, d8success+d10success+d12success,d8banes+d10banes+d12banes, true)
                 dialog.show(childFragmentManager, "dialog")
                 viewModel.onDiceRolled()
             }
@@ -117,6 +143,10 @@ class DiceRollerFragment : Fragment() {
             var numBase = arguments?.getInt("base")
             var numSkill = arguments?.getInt("skills")
             var numGear = arguments?.getInt("gear")
+            var num8 = arguments?.getInt("d8")
+            var num10 = arguments?.getInt("d10")
+            var num12 = arguments?.getInt("d12")
+
             numBase?.let{ d ->
                 for(x in 0 ..(d-1))
                     viewModel.addDie(0)
@@ -162,45 +192,98 @@ class DiceRollerFragment : Fragment() {
         }
     }
 
-    fun setD6Face(view: ImageView, value: Int, type: Int){
+    fun setDiceFace(view: ImageView, value: Int, type: Int){
         when(value) {
             1 -> when(type) {
                 0 -> view.setImageResource(R.drawable.dice_base_1)
                 1 -> view.setImageResource(R.drawable.dice_skill_1)
                 2 -> view.setImageResource(R.drawable.dice_gear_1)
                 3 -> view.setImageResource(R.drawable.dice_d8_1)
+                4 -> view.setImageResource(R.drawable.dice_d10_1)
+                5 -> view.setImageResource(R.drawable.dice_d12_1)
             }
             2 -> when(type) {
                 0 -> view.setImageResource(R.drawable.dice_base_2)
                 1 -> view.setImageResource(R.drawable.dice_skill_2)
                 2 -> view.setImageResource(R.drawable.dice_gear_2)
                 3 -> view.setImageResource(R.drawable.dice_d8_2)
+                4 -> view.setImageResource(R.drawable.dice_d10_2)
+                5 -> view.setImageResource(R.drawable.dice_d12_2)
             }
             3 -> when(type) {
                 0 -> view.setImageResource(R.drawable.dice_base_3)
                 1 -> view.setImageResource(R.drawable.dice_skill_3)
                 2 -> view.setImageResource(R.drawable.dice_gear_3)
                 3 -> view.setImageResource(R.drawable.dice_d8_3)
+                4 -> view.setImageResource(R.drawable.dice_d10_3)
+                5 -> view.setImageResource(R.drawable.dice_d12_3)
             }
             4 -> when(type) {
                 0 -> view.setImageResource(R.drawable.dice_base_4)
                 1 -> view.setImageResource(R.drawable.dice_skill_4)
                 2 -> view.setImageResource(R.drawable.dice_gear_4)
                 3 -> view.setImageResource(R.drawable.dice_d8_4)
+                4 -> view.setImageResource(R.drawable.dice_d10_4)
+                5 -> view.setImageResource(R.drawable.dice_d12_4)
             }
             5 -> when(type) {
                 0 -> view.setImageResource(R.drawable.dice_base_5)
                 1 -> view.setImageResource(R.drawable.dice_skill_5)
                 2 -> view.setImageResource(R.drawable.dice_gear_5)
                 3 -> view.setImageResource(R.drawable.dice_d8_5)
+                4 -> view.setImageResource(R.drawable.dice_d10_5)
+                5 -> view.setImageResource(R.drawable.dice_d12_5)
             }
             6 -> when(type) {
                 0 -> view.setImageResource(R.drawable.dice_base_6)
                 1 -> view.setImageResource(R.drawable.dice_skill_6)
                 2 -> view.setImageResource(R.drawable.dice_gear_6)
                 3 -> view.setImageResource(R.drawable.dice_d8_6)
+                4 -> view.setImageResource(R.drawable.dice_d10_6)
+                5 -> view.setImageResource(R.drawable.dice_d12_6)
+            }
+            7 -> when(type) {
+                3 -> view.setImageResource(R.drawable.dice_d8_7)
+                4 -> view.setImageResource(R.drawable.dice_d10_7)
+                5 -> view.setImageResource(R.drawable.dice_d12_7)
+            }
+            8 -> when(type) {
+                3 -> view.setImageResource(R.drawable.dice_d8_8)
+                4 -> view.setImageResource(R.drawable.dice_d10_8)
+                5 -> view.setImageResource(R.drawable.dice_d12_8)
+            }
+            9 -> when(type) {
+                4 -> view.setImageResource(R.drawable.dice_d10_9)
+                5 -> view.setImageResource(R.drawable.dice_d12_9)
+            }
+            10 -> when(type) {
+                4 -> view.setImageResource(R.drawable.dice_d10_10)
+                5 -> view.setImageResource(R.drawable.dice_d12_10)
+            }
+            11 -> when(type) {
+                5 -> view.setImageResource(R.drawable.dice_d12_11)
+            }
+            12 -> when(type) {
+                5 -> view.setImageResource(R.drawable.dice_d12_12)
             }
         }
+    }
+
+    fun countSuccesses(results : MutableList<Int>) : Int {
+        var total = 0
+        if(results.count() > 0)
+            for(x in 0 until results.count())
+                when(results[x]){
+                    6 -> total++
+                    7 -> total++
+                    8 -> total+=2
+                    9 -> total+=2
+                    10 -> total+=3
+                    11 -> total+=3
+                    12 -> total+=4
+                }
+
+        return total
     }
 }
 
@@ -222,11 +305,13 @@ class ShowRoll : DialogFragment() {
         //binding.skill1s.text ="Banes: " +  arguments?.getInt(SKILL1).toString() ?: throw IllegalStateException("No args provided")
         binding.gear6s.text ="Successes: " +  arguments?.getInt(GEAR6).toString() ?: throw IllegalStateException("No args provided")
         binding.gear1s.text ="Banes: " +  arguments?.getInt(GEAR1).toString() ?: throw IllegalStateException("No args provided")
+        binding.other6s.text ="Successes: " +  arguments?.getInt(OTHER6).toString() ?: throw IllegalStateException("No args provided")
+        binding.other1s.text ="Banes: " +  arguments?.getInt(OTHER1).toString() ?: throw IllegalStateException("No args provided")
 
         var totalsuc = 0
         var totalbane = 0
-        totalsuc = (arguments?.getInt(BASE6) ?: 0) + (arguments?.getInt(SKILL6) ?: 0) + (arguments?.getInt(GEAR6) ?: 0)
-        totalbane = (arguments?.getInt(BASE1) ?: 0) + (arguments?.getInt(GEAR1) ?: 0)
+        totalsuc = (arguments?.getInt(BASE6) ?: 0) + (arguments?.getInt(SKILL6) ?: 0) + (arguments?.getInt(GEAR6) ?: 0)+ (arguments?.getInt(OTHER6) ?: 0)
+        totalbane = (arguments?.getInt(BASE1) ?: 0) + (arguments?.getInt(GEAR1) ?: 0) + (arguments?.getInt(OTHER1) ?: 0)
 
         binding.totalSuccesses.text ="Total successes: "+ (totalsuc).toString() ?: throw IllegalStateException("No args provided")
         binding.totalBanes.text ="Total banes: "+ (totalbane).toString() ?: throw IllegalStateException("No args provided")

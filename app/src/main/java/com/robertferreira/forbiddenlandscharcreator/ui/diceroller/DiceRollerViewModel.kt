@@ -21,9 +21,15 @@ class DiceRollerViewModel(application: Application) : AndroidViewModel(applicati
     val gDice : LiveData<MutableList<Int>>
         get() = gearDice
 
-    private var otherDice : MutableLiveData<MutableList<Int>> = MutableLiveData<MutableList<Int>>().apply{ value = mutableListOf()}
-    val oDice : LiveData<MutableList<Int>>
-        get() = otherDice
+    private var _d8Dice : MutableLiveData<MutableList<Int>> = MutableLiveData<MutableList<Int>>().apply{ value = mutableListOf()}
+    val d8Dice : LiveData<MutableList<Int>>
+        get() = _d8Dice
+    private var _d10Dice : MutableLiveData<MutableList<Int>> = MutableLiveData<MutableList<Int>>().apply{ value = mutableListOf()}
+    val d10Dice : LiveData<MutableList<Int>>
+        get() = _d10Dice
+    private var _d12Dice : MutableLiveData<MutableList<Int>> = MutableLiveData<MutableList<Int>>().apply{ value = mutableListOf()}
+    val d12Dice : LiveData<MutableList<Int>>
+        get() = _d12Dice
 
     private val _diceRolled = MutableLiveData<Boolean>()
     val diceRolled : LiveData<Boolean>
@@ -35,6 +41,7 @@ class DiceRollerViewModel(application: Application) : AndroidViewModel(applicati
 
     init {
         _diceRolled.value = false
+        _dicePushRolled.value = false
     }
 
     fun addDie(type : Int) {
@@ -42,7 +49,9 @@ class DiceRollerViewModel(application: Application) : AndroidViewModel(applicati
             0 -> baseDice.value?.add(1)
             1 -> skillDice.value?.add(1)
             2 -> gearDice.value?.add(1)
-            3 -> otherDice.value?.add(1)
+            3 -> d8Dice.value?.add(1)
+            4 -> d10Dice.value?.add(1)
+            5 -> d12Dice.value?.add(1)
             else -> return
         }
     }
@@ -52,7 +61,9 @@ class DiceRollerViewModel(application: Application) : AndroidViewModel(applicati
             0 -> baseDice.value?.let{ if (it.count() > 0 ) it.removeAt(it.lastIndex) }
             1 -> skillDice.value?.let{ if (it.count() > 0 ) it.removeAt(it.lastIndex) }
             2 -> gearDice.value?.let{ if (it.count() > 0 ) it.removeAt(it.lastIndex) }
-            3 -> otherDice.value?.let{ if (it.count() > 0 ) it.removeAt(it.lastIndex) }
+            3 -> d8Dice.value?.let{ if (it.count() > 0 ) it.removeAt(it.lastIndex) }
+            4 -> d10Dice.value?.let{ if (it.count() > 0 ) it.removeAt(it.lastIndex) }
+            5 -> d12Dice.value?.let{ if (it.count() > 0 ) it.removeAt(it.lastIndex) }
             else -> return
         }
     }
@@ -87,11 +98,23 @@ class DiceRollerViewModel(application: Application) : AndroidViewModel(applicati
                 temp.set(x , Random.nextInt(1,7))
             gearDice.value = temp
         }
-        otherDice.value?.let {
+        _d8Dice.value?.let {
             var temp = it
             for(x in 0 until it.count())
-                temp.set(x , Random.nextInt(1,7))
-            otherDice.value = temp
+                temp.set(x , Random.nextInt(1,9))
+            _d8Dice.value = temp
+        }
+        _d10Dice.value?.let {
+            var temp = it
+            for(x in 0 until it.count())
+                temp.set(x , Random.nextInt(1,11))
+            _d10Dice.value = temp
+        }
+        _d12Dice.value?.let {
+            var temp = it
+            for(x in 0 until it.count())
+                temp.set(x , Random.nextInt(1,13))
+            _d12Dice.value = temp
         }
         _diceRolled.value = true
     }
@@ -118,14 +141,27 @@ class DiceRollerViewModel(application: Application) : AndroidViewModel(applicati
                     temp.set(x , Random.nextInt(1,7))
             gearDice.value = temp
         }
-        otherDice.value?.let {
+        _d8Dice.value?.let {
             var temp = it
             for(x in 0 until it.count())
-                if(temp[x] != 6 && temp[x] != 1)
-                    temp.set(x , Random.nextInt(1,7))
-            otherDice.value = temp
+                if(temp[x] < 6 && temp[x] != 1)
+                    temp.set(x , Random.nextInt(1,9))
+            _d8Dice.value = temp
         }
-
+        _d10Dice.value?.let {
+            var temp = it
+            for(x in 0 until it.count())
+                if(temp[x] < 6 && temp[x] != 1)
+                    temp.set(x , Random.nextInt(1,11))
+            _d10Dice.value = temp
+        }
+        _d12Dice.value?.let {
+            var temp = it
+            for(x in 0 until it.count())
+                if(temp[x] < 6 && temp[x] != 1)
+                    temp.set(x , Random.nextInt(1,13))
+            _d12Dice.value = temp
+        }
         _dicePushRolled.value = true
     }
 

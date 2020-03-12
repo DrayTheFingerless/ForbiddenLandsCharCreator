@@ -69,5 +69,10 @@
     <string name="clothing">Clothing</string>
     <string name="remove">Remove</string>
     <string name="rank">Rank</string>
+    <string name="artifact_dice">Artifact Dice</string>
+    <string name="other">Other</string>
+    <string name="gear">Gear</string>
+    <string name="skill">Skill</string>
+    <string name="base">Base</string>
 
 </resources>

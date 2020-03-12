@@ -74,5 +74,6 @@
     <string name="gear">Gear</string>
     <string name="skill">Skill</string>
     <string name="base">Base</string>
+    <string name="finish">Finish</string>
 
 </resources>

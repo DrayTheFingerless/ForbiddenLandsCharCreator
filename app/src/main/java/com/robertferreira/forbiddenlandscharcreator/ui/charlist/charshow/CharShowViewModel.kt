@@ -30,32 +30,32 @@ class CharShowViewModel(application: Application) : AndroidViewModel(application
               else -> ""
           }
     }
-    val charStrength : LiveData<String> = Transformations.map(_character) { it.Strength.toString() }
-    val charAgility : LiveData<String> = Transformations.map(_character) { it.Agility.toString() }
-    val charWits : LiveData<String> =  Transformations.map(_character) { it.Wits.toString() }
-    val charEmpathy : LiveData<String> = Transformations.map(_character) { it.Empathy.toString() }
-    val charCurrentStrength : LiveData<String> = Transformations.map(_character) { it.CurrentStrength.toString() }
-    val charCurrentAgility : LiveData<String> = Transformations.map(_character) { it.CurrentAgility.toString() }
-    val charCurrentWits : LiveData<String> =  Transformations.map(_character) { it.CurrentWits.toString() }
-    val charCurrentEmpathy : LiveData<String> = Transformations.map(_character) { it.CurrentEmpathy.toString() }
+    val charStrength : LiveData<Int> = Transformations.map(_character) { it.Strength }
+    val charAgility : LiveData<Int> = Transformations.map(_character) { it.Agility }
+    val charWits : LiveData<Int> =  Transformations.map(_character) { it.Wits }
+    val charEmpathy : LiveData<Int> = Transformations.map(_character) { it.Empathy }
+    val charCurrentStrength : LiveData<Int> = Transformations.map(_character) { it.CurrentStrength }
+    val charCurrentAgility : LiveData<Int> = Transformations.map(_character) { it.CurrentAgility }
+    val charCurrentWits : LiveData<Int> =  Transformations.map(_character) { it.CurrentWits }
+    val charCurrentEmpathy : LiveData<Int> = Transformations.map(_character) { it.CurrentEmpathy }
 
-    val charMight : LiveData<String> = Transformations.map(_character) {
-        it.MySkills.get(Skills.Might).toString() }
-    val charEndurance : LiveData<String> = Transformations.map(_character) { it.MySkills.get(Skills.Endurance) .toString()}
-    val charCraft : LiveData<String> = Transformations.map(_character) { it.MySkills.get(Skills.Crafting).toString()}
-    val charMelee : LiveData<String> = Transformations.map(_character) { it.MySkills.get(Skills.Melee).toString()}
-    val charStealth : LiveData<String> = Transformations.map(_character) { it.MySkills.get(Skills.Stealth).toString() }
-    val charSleight : LiveData<String> = Transformations.map(_character) { it.MySkills.get(Skills.SleightOfHand).toString() }
-    val charMove : LiveData<String> = Transformations.map(_character) { it.MySkills.get(Skills.Move).toString() }
-    val charMarksman : LiveData<String> = Transformations.map(_character) { it.MySkills.get(Skills.Marksmanship).toString() }
-    val charScout : LiveData<String> = Transformations.map(_character) { it.MySkills.get(Skills.Scouting).toString() }
-    val charLore : LiveData<String> = Transformations.map(_character) { it.MySkills.get(Skills.Lore).toString() }
-    val charSurvival : LiveData<String> = Transformations.map(_character) { it.MySkills.get(Skills.Survival).toString() }
-    val charInsight : LiveData<String> = Transformations.map(_character) { it.MySkills.get(Skills.Insight).toString() }
-    val charManipulation : LiveData<String> = Transformations.map(_character) { it.MySkills.get(Skills.Manipulation).toString() }
-    val charPerfomance : LiveData<String> = Transformations.map(_character) { it.MySkills.get(Skills.Performance).toString() }
-    val charHealing : LiveData<String> = Transformations.map(_character) { it.MySkills.get(Skills.Healing).toString() }
-    val charAnimal : LiveData<String> = Transformations.map(_character) { it.MySkills.get(Skills.AnimalHandling).toString() }
+    val charMight : LiveData<Int> = Transformations.map(_character) {
+        it.MySkills.get(Skills.Might) }
+    val charEndurance : LiveData<Int> = Transformations.map(_character) { it.MySkills.get(Skills.Endurance)}
+    val charCraft : LiveData<Int> = Transformations.map(_character) { it.MySkills.get(Skills.Crafting)}
+    val charMelee : LiveData<Int> = Transformations.map(_character) { it.MySkills.get(Skills.Melee)}
+    val charStealth : LiveData<Int> = Transformations.map(_character) { it.MySkills.get(Skills.Stealth) }
+    val charSleight : LiveData<Int> = Transformations.map(_character) { it.MySkills.get(Skills.SleightOfHand) }
+    val charMove : LiveData<Int> = Transformations.map(_character) { it.MySkills.get(Skills.Move) }
+    val charMarksman : LiveData<Int> = Transformations.map(_character) { it.MySkills.get(Skills.Marksmanship) }
+    val charScout : LiveData<Int> = Transformations.map(_character) { it.MySkills.get(Skills.Scouting) }
+    val charLore : LiveData<Int> = Transformations.map(_character) { it.MySkills.get(Skills.Lore) }
+    val charSurvival : LiveData<Int> = Transformations.map(_character) { it.MySkills.get(Skills.Survival) }
+    val charInsight : LiveData<Int> = Transformations.map(_character) { it.MySkills.get(Skills.Insight) }
+    val charManipulation : LiveData<Int> = Transformations.map(_character) { it.MySkills.get(Skills.Manipulation) }
+    val charPerfomance : LiveData<Int> = Transformations.map(_character) { it.MySkills.get(Skills.Performance) }
+    val charHealing : LiveData<Int> = Transformations.map(_character) { it.MySkills.get(Skills.Healing) }
+    val charAnimal : LiveData<Int> = Transformations.map(_character) { it.MySkills.get(Skills.AnimalHandling) }
 
     //list of Profession Talents
     private var listProfessionTalents = MutableLiveData<List<Talent>>().apply {
@@ -86,6 +86,65 @@ class CharShowViewModel(application: Application) : AndroidViewModel(application
         _character.value = c
     }
 
+    fun addStrength(){
+      _character.value?.let{
+          if(it.Strength > it.CurrentStrength)
+              it.CurrentStrength++
+          it.notifyChange()
+      }
+    }
+    fun addAgility(){
+        _character.value?.let{
+            if(it.Agility > it.CurrentAgility)
+                it.CurrentAgility++
+            it.notifyChange()
+
+        }
+    }
+    fun addWits(){
+        _character.value?.let{
+            if(it.Wits > it.CurrentWits)
+                it.CurrentWits++
+            it.notifyChange()
+        }
+    }
+    fun addEmpathy(){
+        _character.value?.let{
+            if(it.Empathy > it.CurrentEmpathy)
+                it.CurrentEmpathy++
+            it.notifyChange()
+        }
+    }
+
+    fun removeStrength(){
+        _character.value?.let{
+            if(it.CurrentStrength> 0)
+                it.CurrentStrength--
+            it.notifyChange()
+        }
+    }
+    fun removeAgility(){
+        _character.value?.let{
+            if(it.CurrentAgility> 0)
+                it.CurrentAgility--
+            it.notifyChange()
+        }
+    }
+    fun removeWits(){
+        _character.value?.let{
+            if(it.CurrentWits> 0)
+                it.CurrentWits--
+            it.notifyChange()
+        }
+    }
+    fun removeEmpathy(){
+        _character.value?.let{
+            if(it.CurrentEmpathy> 0)
+                it.CurrentEmpathy--
+            it.notifyChange()
+        }
+    }
+
     fun talentClicked(talentId : Int){
         //show a popup with talent info
         character.value?.TalentList?.first { it.id == talentId }?.let {
@@ -94,13 +153,17 @@ class CharShowViewModel(application: Application) : AndroidViewModel(application
         }
     }
     fun addTClicked(talentId : Int) {
-        character.value?.ChangeTalent(talentId, true)
+        character.value?.let{
+            it.ChangeTalent(talentId, true)
+        }
     }
 
     fun removeTClicked(talentId : Int) {
-        character.value?.TalentList?.first{it.id == talentId}?.rankValue?.let{
-            if(it > 1)
-                character.value?.ChangeTalent(talentId, false)
+        character.value?.let{
+            it.TalentList?.first{it.id == talentId}?.rankValue?.let{value ->
+                if(value > 1)
+                    it.ChangeTalent(talentId, false)
+            }
         }
     }
 

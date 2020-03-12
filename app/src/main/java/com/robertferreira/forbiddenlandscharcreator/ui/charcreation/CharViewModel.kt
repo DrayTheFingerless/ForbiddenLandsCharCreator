@@ -330,8 +330,8 @@ class CharViewModel(val database: CharactersDatabaseDAO,
 
     fun removeTClicked(talentId : Int) { character.value?.ChangeTalent(talentId, false) }
     fun addTClicked(talentId : Int) {
-        talentPoints.value?.let {
-            if(it > 0)
+        character.value?.let {
+            if(it.TalentPointsleft() > 0)
                 character.value?.ChangeTalent(talentId, true)
         }
     }

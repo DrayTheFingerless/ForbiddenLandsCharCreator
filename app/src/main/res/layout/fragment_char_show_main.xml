@@ -60,7 +60,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginVertical="8dp"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="@{viewModel.charCurrentStrength}"
+                                android:text="@{viewModel.charCurrentStrength.toString()}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -84,7 +84,7 @@
                                 android:layout_marginVertical="8dp"
                                 android:layout_marginRight="8dp"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="@{viewModel.charStrength}"
+                                android:text="@{viewModel.charStrength.toString()}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -146,7 +146,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginVertical="8dp"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="@{viewModel.charCurrentAgility}"
+                                android:text="@{viewModel.charCurrentAgility.toString()}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -171,7 +171,7 @@
                                 android:layout_marginVertical="8dp"
                                 android:layout_marginRight="8dp"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="@{viewModel.charAgility}"
+                                android:text="@{viewModel.charAgility.toString()}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -246,7 +246,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginVertical="8dp"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="@{viewModel.charCurrentWits}"
+                                android:text="@{viewModel.charCurrentWits.toString()}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -271,7 +271,7 @@
                                 android:layout_marginVertical="8dp"
                                 android:layout_marginRight="8dp"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="@{viewModel.charWits}"
+                                android:text="@{viewModel.charWits.toString()}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -333,7 +333,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginVertical="8dp"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="@{viewModel.charCurrentEmpathy}"
+                                android:text="@{viewModel.charCurrentEmpathy.toString()}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -358,7 +358,7 @@
                                 android:layout_marginVertical="8dp"
                                 android:layout_marginRight="8dp"
                                 android:fontFamily="@font/im_fell_great_primer"
-                                android:text="@{viewModel.charEmpathy}"
+                                android:text="@{viewModel.charEmpathy.toString()}"
                                 android:textColor="@color/design_default_color_on_secondary"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />

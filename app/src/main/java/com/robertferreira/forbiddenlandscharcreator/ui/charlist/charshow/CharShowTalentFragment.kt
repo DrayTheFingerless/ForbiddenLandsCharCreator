@@ -31,9 +31,11 @@ class CharShowTalentFragment : Fragment() {
         binding.viewModel = viewModel
 
         val adapter = TalentsListAdapter(TalentsListAdapter.TalentListener {
-                tId ->  viewModel.talentClicked(tId)
+            tId ->  viewModel.talentClicked(tId)
         }, TalentsListAdapter.RemoveListener{
+            tId -> viewModel.removeTClicked(tId)
         },TalentsListAdapter.AddListener{
+            tId ->  viewModel.addTClicked(tId)
         },  true)
         binding.talentsList.adapter = adapter
 

@@ -33,6 +33,7 @@ import com.robertferreira.forbiddenlandscharcreator.databinding.DiceRollDialogBi
 import com.robertferreira.forbiddenlandscharcreator.databinding.FragmentDicerollerBinding
 import com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
 import kotlinx.android.synthetic.main.attribute_stepper.view.*
+import kotlinx.android.synthetic.main.fragment_diceroller.*
 
 class DiceRollerFragment : Fragment() {
 
@@ -141,23 +142,62 @@ class DiceRollerFragment : Fragment() {
 
         arguments?.let{ arg ->
             var numBase = arguments?.getInt("base")
-            var numSkill = arguments?.getInt("skills")
+            var numSkill = arguments?.getInt("skill")
             var numGear = arguments?.getInt("gear")
             var num8 = arguments?.getInt("d8")
             var num10 = arguments?.getInt("d10")
             var num12 = arguments?.getInt("d12")
 
             numBase?.let{ d ->
-                for(x in 0 ..(d-1))
+                for(x in 0  until d) {
+                    var iv = ImageView(context)
+                    iv.layoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
+                    iv.setImageResource(R.drawable.dice_base_1)
+
+                    // Creating a LinearLayout.LayoutParams object for text view
+                    val param = iv.layoutParams as LinearLayout.LayoutParams
+                    param.setMargins(8,8,8,8)
+                    param.weight = 1F
+                    iv.layoutParams = param
                     viewModel.addDie(0)
+                    binding.baseDiceStepper.current_value++
+                    binding.baseDiceStepper.setText(binding.baseDiceStepper.current_value)
+                    binding.baseDiceLayout.addView(iv)
+                }
             }
             numSkill?.let{ d ->
-                for(x in 0 ..(d-1))
+                for(x in 0 until d){
+                    var iv = ImageView(context)
+                    iv.layoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
+                    iv.setImageResource(R.drawable.dice_skill_1)
+
+                    // Creating a LinearLayout.LayoutParams object for text view
+                    val param = iv.layoutParams as LinearLayout.LayoutParams
+                    param.setMargins(8,8,8,8)
+                    param.weight = 1F
+                    iv.layoutParams = param
                     viewModel.addDie(1)
+                    binding.skillDiceStepper.current_value++
+                    binding.skillDiceStepper.setText(binding.skillDiceStepper.current_value)
+                    binding.skillDiceLayout.addView(iv)
+                }
             }
             numGear?.let{ d ->
-                for(x in 0 ..(d-1))
+                for(x in 0 until d){
+                    var iv = ImageView(context)
+                    iv.layoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
+                    iv.setImageResource(R.drawable.dice_gear_1)
+
+                    // Creating a LinearLayout.LayoutParams object for text view
+                    val param = iv.layoutParams as LinearLayout.LayoutParams
+                    param.setMargins(8,8,8,8)
+                    param.weight = 1F
+                    iv.layoutParams = param
                     viewModel.addDie(2)
+                    binding.gearDiceStepper.current_value++
+                    binding.gearDiceStepper.setText(binding.gearDiceStepper.current_value)
+                    binding.gearDiceLayout.addView(iv)
+                }
             }
         }
         return binding.root

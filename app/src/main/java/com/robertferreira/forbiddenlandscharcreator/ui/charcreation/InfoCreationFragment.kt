@@ -81,7 +81,7 @@ class InfoCreationFragment : Fragment() {
 
         viewModel.creationDone.observe(viewLifecycleOwner, Observer {
             if(it) view?.let { it1 ->
-                Toast.makeText(context,"Character created",Toast.LENGTH_LONG)
+                Toast.makeText(context,"Character created",Toast.LENGTH_LONG).show()
                 Navigation.findNavController(it1).popBackStack(R.id.nav_begin_new, false) }
         })
 

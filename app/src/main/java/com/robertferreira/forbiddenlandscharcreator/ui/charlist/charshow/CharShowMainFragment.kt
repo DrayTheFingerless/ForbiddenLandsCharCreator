@@ -30,6 +30,33 @@ class CharShowMainFragment : Fragment() {
 
         binding.viewModel = viewModel
 
+
+        //set buttons
+        binding.addStrength.setOnClickListener{
+            viewModel.addStrength()
+        }
+        binding.addAgility.setOnClickListener{
+            viewModel.addAgility()
+        }
+        binding.addWits.setOnClickListener{
+            viewModel.addWits()
+        }
+        binding.addEmpathy.setOnClickListener{
+            viewModel.addEmpathy()
+        }
+        binding.removeStrength.setOnClickListener{
+            viewModel.removeStrength()
+        }
+        binding.removeAgility.setOnClickListener{
+            viewModel.removeAgility()
+        }
+        binding.removeWits.setOnClickListener{
+            viewModel.removeWits()
+        }
+        binding.removeEmpathy.setOnClickListener{
+            viewModel.removeEmpathy()
+        }
+
         return binding.root
     }
 

@@ -15,7 +15,7 @@
         <ScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="24dp"
             app:layout_constraintBottom_toTopOf="@+id/next_info_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -187,7 +187,7 @@
             android:background="@color/colorPrimary"
             android:fontFamily="@font/im_fell_great_primer"
             android:gravity="center"
-            android:text="@string/next"
+            android:text="@string/finish"
             android:textAlignment="center"
             android:textColor="@color/backgroundLightGray"
             android:textStyle="bold"

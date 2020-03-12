@@ -71,10 +71,19 @@
     </fragment>
     <navigation
         android:id="@+id/char_show_nav_graph"
+        android:label="@string/dice_roller"
         app:startDestination="@id/nav_show">
         <fragment
             android:id="@+id/nav_show"
             android:name="com.robertferreira.forbiddenlandscharcreator.ui.charlist.charshow.CharShowFragment"
-            android:label="Character" />
+            android:label="Character">
+            <action
+                android:id="@+id/action_show_to_dice"
+                app:destination="@id/nav_dice" />
+        </fragment>
+        <fragment
+            android:id="@+id/nav_dice"
+            android:name="com.robertferreira.forbiddenlandscharcreator.ui.diceroller.DiceRollerFragment"
+            android:label="@string/dice_roller" />
     </navigation>
 </navigation>

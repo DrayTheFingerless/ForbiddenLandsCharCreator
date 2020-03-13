@@ -1,65 +1,69 @@
 package com.robertferreira.forbiddenlandscharcreator.models
 
+import android.content.Context
+import com.robertferreira.forbiddenlandscharcreator.Skills
+import com.robertferreira.forbiddenlandscharcreator.Utils.creatJSONList
+
 
 open class Gear(
     val Id: Int,
     val Name: String,
-    val Weight: Float,
+    val Weight: Weight,
     val Bonus: Int,
-    val BonusType: BonusType) {
+    val GearType: ItemType,
+    val Features: List<String> = listOf()
+) {
     val Equipped: Boolean = false
     val Selected: Boolean = false
     val Comment: String = ""
     //in Copper
     val Cost: Int = 0
-    val Features: List<String> = listOf()
     val SkillMod : Int = 0
     val AttributeMod: Int = 0
     val ActionMod: Int = 0
+    val BonusType: Skills = Skills.Might
 }
 
 
 class Weapon(id: Int,
              name: String,
-             weight: Float,
+             weight: Weight,
              bonus: Int,
-             bonusType: BonusType,
-             type: ItemType = ItemType.Weapon,
+             bonusType: Skills,
              val TwoHanded: Boolean,
              val Damage: Int,
              val Range: Range,
-             features : List<String>
-             ) : Gear(id,name, weight,bonus,bonusType){
+             features : List<String>,
+             gearType: ItemType = ItemType.Weapon
+             ) : Gear(id,name, weight,bonus,gearType,features){
 
+    companion object{
+        fun getWeapons(context: Context) : List<Weapon>{
+            return creatJSONList<Weapon>(context,"weapons_gear")
+        }
+    }
 }
 
-class Armor(id: Int,
+class Armour(id: Int,
             name: String,
-            weight: Float,
+            weight: Weight,
             bonus: Int,
-            bonusType: BonusType,
-            Type: ItemType = ItemType.Armor,
-            val ArmorRating: Int) : Gear(id,name, weight,bonus,bonusType) {
+            features : List<String>,
+            gearType: ItemType = ItemType.Weapon
+) : Gear(id,name, weight,bonus,gearType,features) {
+    companion object{
+        fun getArmours(context: Context) : List<Armour>{
+            return creatJSONList<Armour>(context,"armor_gear")
+        }
+    }
 }
-
-
-class Helmet(id: Int,
-            name: String,
-            weight: Float,
-            bonus: Int,
-            bonusType: BonusType,
-            Type: ItemType = ItemType.Helmet,
-            val ArmorRating: Int) : Gear(id,name, weight,bonus,bonusType) {
-}
-
 
 class Shield(id: Int,
             name: String,
-            weight: Float,
+            weight: Weight,
             bonus: Int,
-            bonusType: BonusType,
-            Type: ItemType = ItemType.Shield,
-            val ArmorRating: Int) : Gear(id,name, weight,bonus,bonusType) {
+            features : List<String>,
+            gearType: ItemType = ItemType.Shield) : Gear(id,name, weight,bonus,gearType,features) {
 }
 
 
@@ -90,5 +94,6 @@ enum class ItemType(i:Int){
     Helmet(1),
     Shield(2),
     Weapon(3),
-    Other(4)
+    Ranged(4),
+    Other(5)
 }

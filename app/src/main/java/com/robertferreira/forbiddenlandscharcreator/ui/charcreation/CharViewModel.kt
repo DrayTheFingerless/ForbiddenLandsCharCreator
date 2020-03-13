@@ -1,6 +1,7 @@
 package com.robertferreira.forbiddenlandscharcreator.ui.charcreation
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -293,7 +294,9 @@ class CharViewModel(val database: CharactersDatabaseDAO,
 
     fun addTalent(item: Talent){
         character.value?.let{
-            it.AddTalent(item)
+            if(!it.TalentList.contains(item))
+                it.AddTalent(item)
+            else Toast.makeText(getApplication(),"Talent already added", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -336,11 +339,11 @@ class CharViewModel(val database: CharactersDatabaseDAO,
         }
     }
 
-    fun addGear(name: String, weight: String){
+    fun addGear(gearId: Int){
         character.value?.let{
             try {
-                val w = weight.toFloat()
-                it.AddGear(name, w)
+               // val w = weight.toFloat()
+                //it.AddGear(name, w)
             } catch (e : Exception) {
 
             }

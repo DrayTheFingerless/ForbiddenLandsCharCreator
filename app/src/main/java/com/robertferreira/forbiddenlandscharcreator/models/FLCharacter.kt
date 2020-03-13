@@ -97,8 +97,17 @@ class FLCharacter(
      var TorchesDie: Int = 0,
      //in Silver
     @ColumnInfo(name = "money")
-     var Money: Int = 0
+     var Money: Int = 0,
 
+    //Conditions
+    @ColumnInfo(name = "hungry")
+    var Hungry: Boolean = false,
+    @ColumnInfo(name = "thirsty")
+    var Thirsty: Boolean= false,
+    @ColumnInfo(name = "sleepy")
+    var Sleepy: Boolean = false,
+    @ColumnInfo(name = "cold")
+    var Cold: Boolean = false
 ) : BaseObservable(), Parcelable {
 
     init {

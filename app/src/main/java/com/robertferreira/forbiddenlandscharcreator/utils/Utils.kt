@@ -10,6 +10,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.robertferreira.forbiddenlandscharcreator.Attributes
 import com.robertferreira.forbiddenlandscharcreator.Skills
+import com.robertferreira.forbiddenlandscharcreator.models.Weapon
 import java.io.IOException
 
 
@@ -33,6 +34,16 @@ object Utils {
 
         val gson = Gson()
         val listType = object : TypeToken<List<Talent>>() {}.type
+
+        return gson.fromJson(jsonFileString, listType)
+    }
+
+    //function loads a list of Talents from json file
+    fun <T> creatJSONList(context: Context, filename : String) : List<T>{
+        val jsonFileString = Utils.getJsonDataFromAsset(context, filename)
+
+        val gson = Gson()
+        val listType = object : TypeToken<List<T>>() {}.type
 
         return gson.fromJson(jsonFileString, listType)
     }

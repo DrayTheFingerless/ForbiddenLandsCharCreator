@@ -1,0 +1,74 @@
+[
+  {
+    "id": 33,
+    "name": "Leather",
+    "weight": 1,
+    "bonus":2,
+    "features": [],
+    "type": 0,
+    "cost": 30
+  },
+  {
+    "id": 34,
+    "name": "Studded Leather",
+    "weight": 2,
+    "bonus":3,
+    "features": [],
+    "type": 0,
+    "cost": 50
+  },
+  {
+    "id": 35,
+    "name": "Chainmail",
+    "weight": 3,
+    "bonus":6,
+    "features": ["3 for Piercing"],
+    "type": 0,
+    "cost": 240
+  },
+  {
+    "id": 36,
+    "name": "Plate Armor",
+    "weight": 3,
+    "bonus":8,
+    "features": ["-1 Move"],
+    "type": 0,
+    "cost": 800
+  },
+  {
+    "id": 37,
+    "name": "Studded Leather Cap",
+    "weight": 1,
+    "bonus":1,
+    "features": [],
+    "type": 1,
+    "cost": 20
+  },
+  {
+    "id": 38,
+    "name": "Open Helmet",
+    "weight": 1,
+    "bonus":2,
+    "features": [],
+    "type": 1,
+    "cost": 80
+  },
+  {
+    "id": 39,
+    "name": "Closed Helmet",
+    "weight": 2,
+    "bonus":3,
+    "features": [],
+    "type": 1,
+    "cost": 180
+  },
+  {
+    "id": 40,
+    "name": "Great Helm",
+    "weight": 2,
+    "bonus":4,
+    "features": ["-2 Scout"],
+    "type": 1,
+    "cost": 300
+  }
+]

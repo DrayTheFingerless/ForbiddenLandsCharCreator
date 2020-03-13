@@ -388,12 +388,12 @@ class FLCharacter(
         notifyChange()
     }
 
-    fun AddGear(gear: String, weight: Float) {
-        Gear.add(Gear(gear, weight))
+    fun AddGear(gear: Gear) {
+        Gear.add(gear)
         notifyChange()
     }
-    fun RemoveGear(position: Int) {
-        Gear.removeAt(position)
+    fun RemoveGear(gearId: Int) {
+        Gear.removeIf{it.Id == gearId}
         notifyChange()
     }
 

@@ -50,16 +50,24 @@
             android:name="com.robertferreira.forbiddenlandscharcreator.ui.charcreation.TalentsCreationFragment"
             android:label="Talents  - Character Creation" >
             <action
-                android:id="@+id/action_talents_to_info"
-                app:destination="@id/nav_new_info" />
-            <action
                 android:id="@+id/action_talents_to_select_new"
                 app:destination="@id/nav_new_talent_select" />
+            <action
+                android:id="@+id/action_talent_to_gear"
+                app:destination="@id/nav_new_gear" />
         </fragment>
         <fragment
             android:id="@+id/nav_new_talent_select"
             android:name="com.robertferreira.forbiddenlandscharcreator.ui.customviews.TalentSelectFragment"
             android:label="TalentSelectFragment" />
+        <fragment
+            android:id="@+id/nav_new_gear"
+            android:name="com.robertferreira.forbiddenlandscharcreator.ui.charcreation.GearCreationFragment"
+            android:label="Gear - Character Creation">
+            <action
+                android:id="@+id/action_gear_to_info"
+                app:destination="@id/nav_new_info" />
+        </fragment>
     </navigation>
     <fragment
         android:id="@+id/nav_begin_new"

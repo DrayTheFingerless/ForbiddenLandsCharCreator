@@ -89,10 +89,10 @@ class TalentsCreationFragment : Fragment() {
             }
         })
 
+        //navigate to talent select
         binding.addTalentButton.setOnClickListener{
             viewModel.tryAddTalent()
         }
-
         viewModel.navigateToAddTalent.observe(viewLifecycleOwner, Observer {
             if(it) {
                 findNavController().navigate(R.id.action_talents_to_select_new)
@@ -100,7 +100,7 @@ class TalentsCreationFragment : Fragment() {
             }
         })
 
-        binding.nextButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_talents_to_info))
+        binding.nextButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_talent_to_gear))
 
 
             return binding.root

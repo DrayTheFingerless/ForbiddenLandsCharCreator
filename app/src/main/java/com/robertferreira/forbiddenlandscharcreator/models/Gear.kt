@@ -25,7 +25,7 @@ open class Gear(
 }
 
 
-class Weapon(id: Int,
+class Weapon : Application (id: Int,
              name: String,
              weight: Weight,
              bonus: Int,

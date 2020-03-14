@@ -1,5 +1,7 @@
 package com.robertferreira.forbiddenlandscharcreator
 
+import android.app.Application
+import com.robertferreira.forbiddenlandscharcreator.models.Armour
 import com.robertferreira.forbiddenlandscharcreator.models.Gear
 import com.robertferreira.forbiddenlandscharcreator.models.Weapon
 
@@ -17,14 +19,14 @@ class Profession (val Name : String, val ProfessionId : Int, val KeyAttribute : 
     }
 }
 
-object Professions {
+object Professions : Application() {
     val professions = arrayListOf<Profession>(
         Profession("Druid",0, Attributes.Wits, listOf(Skills.Endurance, Skills.Survival, Skills.Insight, Skills.Healing, Skills.AnimalHandling),"Registered animal lover",
         2,2,0,0,1,
             listOf()),
         Profession("Fighter",1, Attributes.Strength, listOf(Skills.Might, Skills.Endurance, Skills.Melee, Skills.Crafting, Skills.Move),"Big Sticks",
             2,1,0,0,1,
-            listOf()),
+            listOf(Armour.getArmours(getApplicationContext()).first { it.Name == "Studded Leather" })),
         Profession("Hunter",2, Attributes.Agility, listOf(Skills.Stealth, Skills.Move, Skills.Marksmanship, Skills.Scouting, Skills.Survival),"Loner in the woods",
             2,2,0,3,1,
             listOf()),

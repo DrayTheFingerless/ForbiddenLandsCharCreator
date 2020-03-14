@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 
 import com.robertferreira.forbiddenlandscharcreator.R
@@ -25,6 +27,7 @@ class GearCreationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(
             inflater,
@@ -48,6 +51,35 @@ class GearCreationFragment : Fragment() {
                 adapter.notifyDataSetChanged()
             }
         })
+
+        //gear points
+        viewModel.maxWeight.observe(viewLifecycleOwner, Observer{
+            binding.weightMax.text = it.toString()
+        })
+
+        //update list with new item
+/*        gearSelectModel.newTalent.observe(viewLifecycleOwner, Observer {
+            if(it) {
+                gearSelectModel.gearSelected.value?.let { t ->
+                    viewModel.addTalent(t)
+                }
+                gearSelectModel.newGear.value = false
+            }
+        })*/
+
+        //navigate to talent select
+/*        binding.addGearButton.setOnClickListener{
+            viewModel.tryAddGear()
+        }
+        viewModel.navigateToItems.observe(viewLifecycleOwner, Observer {
+            if(it) {
+                findNavController().navigate(R.id.action_talents_to_select_new)
+                viewModel.navigateToItems.value = false
+            }
+        })*/
+
+        binding.nextButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gear_to_info))
+
 
         return binding.root
     }

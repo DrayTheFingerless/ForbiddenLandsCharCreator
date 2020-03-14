@@ -339,6 +339,15 @@ class CharViewModel(val database: CharactersDatabaseDAO,
         }
     }
 
+
+    //Gear
+
+    val maxWeight : LiveData<Int>
+        get () = Transformations.map(character) {
+            val sum = it.Strength * 2
+            sum
+        }
+
     fun addGear(gearId: Int){
         character.value?.let{
             try {
@@ -350,7 +359,18 @@ class CharViewModel(val database: CharactersDatabaseDAO,
         }
     }
 
-    fun removeGear(gearId: Int) {
+    fun gearClicked(gearId: Int){
+        character.value?.let{
+            try {
+                // val w = weight.toFloat()
+                //it.AddGear(name, w)
+            } catch (e : Exception) {
+
+            }
+        }
+    }
+
+    fun removeGearClicked(gearId: Int) {
         character.value?.let{
             it.RemoveGear(gearId)
         }

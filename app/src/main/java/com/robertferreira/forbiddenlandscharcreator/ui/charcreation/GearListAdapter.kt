@@ -31,12 +31,12 @@ class GearListAdapter(val clickListener: GearListener,
     }
 
     class GearListener(val clickListener: (tId: Int) -> Unit) {
-        fun onClick(gear: Gear) = clickListener(gear.Id)
+        fun onClick(gear: Gear) = clickListener(gear.id)
     }
 
 
     class DeleteGearListener(val clickListener: (tId: Int) -> Unit) {
-        fun onClick(gear: Gear) = clickListener(gear.Id)
+        fun onClick(gear: Gear) = clickListener(gear.id)
     }
 }
 
@@ -46,11 +46,11 @@ class GearRowViewHolder private constructor(val binding: GearItemRowViewBinding)
     fun bind(clickListener: GearListener, deleteListener: DeleteGearListener, item: Gear) {
         val res = itemView.context.resources
 
-        binding.nameText.text = item.Name
+        binding.nameText.text = item.name
         binding.gear = item
         binding.clickListener = clickListener
         binding.deleteListener = deleteListener
-        binding.weightText.text = item.Weight.toString()
+        binding.weightText.text = item.weight.toString()
         binding.executePendingBindings()
     }
 

@@ -1,0 +1,29 @@
+[
+  {
+    "id": 41,
+    "name": "Arrows, Iron Head",
+    "weight": 2,
+    "bonus": 1,
+    "features": [],
+    "gearType": 5,
+    "cost": 12
+  },
+  {
+    "id": 42,
+    "name": "Grappling Hook",
+    "weight": 2,
+    "bonus":1,
+    "features": ["+1 Climbing"],
+    "gearType": 5,
+    "cost": 30
+  },
+  {
+    "id": 43,
+    "name": "Blanket",
+    "weight": 1,
+    "bonus":1,
+    "features": ["+1 Cold"],
+    "gearType": 5,
+    "cost": 7
+  }
+]

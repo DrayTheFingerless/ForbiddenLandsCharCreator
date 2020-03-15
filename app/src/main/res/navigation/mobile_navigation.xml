@@ -67,7 +67,14 @@
             <action
                 android:id="@+id/action_gear_to_info"
                 app:destination="@id/nav_new_info" />
+            <action
+                android:id="@+id/action_new_gear_to_gear_select"
+                app:destination="@id/nav_new_gear_select" />
         </fragment>
+        <fragment
+            android:id="@+id/nav_new_gear_select"
+            android:name="com.robertferreira.forbiddenlandscharcreator.ui.customviews.gearselect.GearSelectFragment"
+            android:label="Gear Select" />
     </navigation>
     <fragment
         android:id="@+id/nav_begin_new"

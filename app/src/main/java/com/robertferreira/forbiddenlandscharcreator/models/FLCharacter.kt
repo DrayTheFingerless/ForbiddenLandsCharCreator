@@ -402,7 +402,7 @@ class FLCharacter(
         notifyChange()
     }
     fun RemoveGear(gearId: Int) {
-        Gear.removeIf{it.Id == gearId}
+        Gear.removeIf{it.id == gearId}
         notifyChange()
     }
 

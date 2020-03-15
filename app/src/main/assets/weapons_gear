@@ -5,11 +5,11 @@
     "weight": 1,
     "bonus": 1,
     "bonusType": 2,
-    "twohanded": false,
+    "twoHanded": false,
     "damage": 1,
     "range": 0,
     "features": ["Pointed"],
-    "type": 3,
+    "gearType": 3,
     "cost": 10
   },
   {
@@ -18,11 +18,11 @@
     "weight": 1,
     "bonus": 1,
     "bonusType": 2,
-    "twohanded": false,
+    "twoHanded": false,
     "damage": 1,
     "range": 0,
     "features": ["Edged", "Pointed"],
-    "type": 3,
+    "gearType": 3,
     "cost": 20
   },
   {
@@ -31,11 +31,11 @@
     "weight": 2,
     "bonus": 1,
     "bonusType": 2,
-    "twohanded": false,
+    "twoHanded": false,
     "damage": 2,
     "range": 0,
     "features": ["Edged", "Pointed"],
-    "type": 3,
+    "gearType": 3,
     "cost": 40
   },
   {
@@ -44,11 +44,11 @@
     "weight": 2,
     "bonus": 2,
     "bonusType": 2,
-    "twohanded": false,
+    "twoHanded": false,
     "damage": 1,
     "range": 0,
     "features": ["Edged", "Pointed", "Parrying"],
-    "type": 3,
+    "gearType": 3,
     "cost": 60
   },
   {
@@ -57,11 +57,11 @@
     "weight": 2,
     "bonus": 2,
     "bonusType": 2,
-    "twohanded": false,
+    "twoHanded": false,
     "damage": 2,
     "range": 0,
     "features": ["Edged", "Pointed", "Parrying"],
-    "type": 3,
+    "gearType": 3,
     "cost": 100
   },
   {
@@ -70,11 +70,11 @@
     "weight": 3,
     "bonus": 2,
     "bonusType": 2,
-    "twohanded": false,
+    "twoHanded": false,
     "damage": 2,
     "range": 0,
     "features": ["Edged", "Pointed", "Parrying"],
-    "type": 3,
+    "gearType": 3,
     "cost": 180
   },
   {
@@ -83,11 +83,11 @@
     "weight": 3,
     "bonus": 2,
     "bonusType": 2,
-    "twohanded": true,
+    "twoHanded": true,
     "damage": 3,
     "range": 0,
     "features": ["Edged", "Pointed", "Parrying"],
-    "type": 3,
+    "gearType": 3,
     "cost": 400
   },
   {
@@ -96,11 +96,11 @@
     "weight": 2,
     "bonus": 1,
     "bonusType": 2,
-    "twohanded": false,
+    "twoHanded": false,
     "damage": 2,
     "range": 0,
     "features": ["Edged", "Pointed", "Parrying", "Hook"],
-    "type": 3,
+    "gearType": 3,
     "cost": 80
   },
   {
@@ -109,11 +109,11 @@
     "weight": 2,
     "bonus": 2,
     "bonusType": 2,
-    "twohanded": false,
+    "twoHanded": false,
     "damage": 2,
     "range": 0,
     "features": ["Edged", "Hook"],
-    "type": 3,
+    "gearType": 3,
     "cost": 20
   },
   {
@@ -122,11 +122,11 @@
     "weight": 3,
     "bonus": 2,
     "bonusType": 2,
-    "twohanded": false,
+    "twoHanded": false,
     "damage": 2,
     "range": 0,
     "features": ["Edged", "Hook"],
-    "type": 3,
+    "gearType": 3,
     "cost": 60
   },
   {
@@ -135,11 +135,11 @@
     "weight": 3,
     "bonus": 2,
     "bonusType": 2,
-    "twohanded": true,
+    "twoHanded": true,
     "damage": 3,
     "range": 0,
     "features": ["Edged", "Hook"],
-    "type": 3,
+    "gearType": 3,
     "cost": 180
   },
   {
@@ -148,11 +148,11 @@
     "weight": 2,
     "bonus": 2,
     "bonusType": 2,
-    "twohanded": false,
+    "twoHanded": false,
     "damage": 1,
     "range": 0,
     "features": ["Blunt"],
-    "type": 3,
+    "gearType": 3,
     "cost": 40
   },
   {
@@ -161,11 +161,11 @@
     "weight": 2,
     "bonus": 2,
     "bonusType": 2,
-    "twohanded": false,
+    "twoHanded": false,
     "damage": 2,
     "range": 0,
     "features": ["Blunt"],
-    "type": 3,
+    "gearType": 3,
     "cost": 80
   },
   {
@@ -174,11 +174,11 @@
     "weight": 2,
     "bonus": 2,
     "bonusType": 2,
-    "twohanded": false,
+    "twoHanded": false,
     "damage": 2,
     "range": 0,
     "features": ["Blunt", "Hook"],
-    "type": 3,
+    "gearType": 3,
     "cost": 120
   },
   {
@@ -187,11 +187,11 @@
     "weight": 2,
     "bonus": 1,
     "bonusType": 2,
-    "twohanded": false,
+    "twoHanded": false,
     "damage": 2,
     "range": 1,
     "features": ["Blunt"],
-    "type": 3,
+    "gearType": 3,
     "cost": 160
   },
   {
@@ -200,11 +200,11 @@
     "weight": 2,
     "bonus": 1,
     "bonusType": 2,
-    "twohanded": false,
+    "twoHanded": false,
     "damage": 1,
     "range": 0,
     "features": ["Blunt"],
-    "type": 3,
+    "gearType": 3,
     "cost": 10
   },
   {
@@ -213,11 +213,11 @@
     "weight": 3,
     "bonus": 1,
     "bonusType": 2,
-    "twohanded": true,
+    "twoHanded": true,
     "damage": 2,
     "range": 0,
     "features": ["Blunt"],
-    "type": 3,
+    "gearType": 3,
     "cost": 20
   },
   {
@@ -226,11 +226,11 @@
     "weight": 3,
     "bonus": 2,
     "bonusType": 2,
-    "twohanded": true,
+    "twoHanded": true,
     "damage": 3,
     "range": 0,
     "features": ["Blunt", "Hook"],
-    "type": 3,
+    "gearType": 3,
     "cost": 220
   },
   {
@@ -239,11 +239,11 @@
     "weight": 2,
     "bonus": 1,
     "bonusType": 2,
-    "twohanded": true,
+    "twoHanded": true,
     "damage": 1,
     "range": 1,
     "features": ["Blunt", "Hook", "Parrying"],
-    "type": 3,
+    "gearType": 3,
     "cost": 10
   },
   {
@@ -252,11 +252,11 @@
     "weight": 2,
     "bonus": 1,
     "bonusType": 2,
-    "twohanded": false,
+    "twoHanded": false,
     "damage": 1,
     "range": 1,
     "features": ["Pointed"],
-    "type": 3,
+    "gearType": 3,
     "cost": 20
   },
   {
@@ -265,11 +265,11 @@
     "weight": 2,
     "bonus": 2,
     "bonusType": 2,
-    "twohanded": true,
+    "twoHanded": true,
     "damage": 1,
     "range": 1,
     "features": ["Pointed"],
-    "type": 3,
+    "gearType": 3,
     "cost": 40
   },
   {
@@ -278,11 +278,11 @@
     "weight": 3,
     "bonus": 2,
     "bonusType": 2,
-    "twohanded": true,
+    "twoHanded": true,
     "damage": 2,
     "range": 1,
     "features": ["Pointed"],
-    "type": 3,
+    "gearType": 3,
     "cost": 120
   },
   {
@@ -291,11 +291,11 @@
     "weight": 3,
     "bonus": 2,
     "bonusType": 2,
-    "twohanded": true,
+    "twoHanded": true,
     "damage": 2,
     "range": 1,
     "features": ["Pointed","Edged","Hook"],
-    "type": 3,
+    "gearType": 3,
     "cost": 300
   },
   {
@@ -304,11 +304,11 @@
     "weight": 2,
     "bonus": 1,
     "bonusType": 2,
-    "twohanded": true,
+    "twoHanded": true,
     "damage": 2,
     "range": 1,
     "features": ["Pointed","Hook"],
-    "type": 3,
+    "gearType": 3,
     "cost": 60
   },
   {
@@ -317,11 +317,11 @@
     "weight": 1,
     "bonus": 0,
     "bonusType": 7,
-    "twohanded": false,
+    "twoHanded": false,
     "damage": 1,
     "range": 2,
     "features": [],
-    "type": 4,
+    "gearType": 4,
     "cost": 0
   },
   {
@@ -330,11 +330,11 @@
     "weight": 1,
     "bonus": 1,
     "bonusType": 7,
-    "twohanded": false,
+    "twoHanded": false,
     "damage": 1,
     "range": 2,
     "features": [],
-    "type": 4,
+    "gearType": 4,
     "cost": 10
   },
   {
@@ -343,11 +343,11 @@
     "weight": 2,
     "bonus": 1,
     "bonusType": 7,
-    "twohanded": false,
+    "twoHanded": false,
     "damage": 2,
     "range": 2,
     "features": [],
-    "type": 4,
+    "gearType": 4,
     "cost": 20
   },
   {
@@ -356,11 +356,11 @@
     "weight": 2,
     "bonus": 2,
     "bonusType": 7,
-    "twohanded": false,
+    "twoHanded": false,
     "damage": 1,
     "range": 2,
     "features": [],
-    "type": 4,
+    "gearType": 4,
     "cost": 30
   },
   {
@@ -369,11 +369,11 @@
     "weight": 1,
     "bonus": 1,
     "bonusType": 7,
-    "twohanded": false,
+    "twoHanded": false,
     "damage": 1,
     "range": 2,
     "features": [],
-    "type": 4,
+    "gearType": 4,
     "cost": 10
   },
   {
@@ -382,11 +382,11 @@
     "weight": 1,
     "bonus": 2,
     "bonusType": 7,
-    "twohanded": true,
+    "twoHanded": true,
     "damage": 1,
     "range": 3,
     "features": [],
-    "type": 4,
+    "gearType": 4,
     "cost": 60
   },
   {
@@ -395,11 +395,11 @@
     "weight": 2,
     "bonus": 2,
     "bonusType": 7,
-    "twohanded": true,
+    "twoHanded": true,
     "damage": 1,
     "range": 4,
     "features": [],
-    "type": 4,
+    "gearType": 4,
     "cost": 120
   },
   {
@@ -408,11 +408,11 @@
     "weight": 2,
     "bonus": 1,
     "bonusType": 7,
-    "twohanded": true,
+    "twoHanded": true,
     "damage": 2,
     "range": 4,
     "features": ["Slow Loading"],
-    "type": 4,
+    "gearType": 4,
     "cost": 240
   },
   {
@@ -421,11 +421,11 @@
     "weight": 3,
     "bonus": 1,
     "bonusType": 7,
-    "twohanded": true,
+    "twoHanded": true,
     "damage": 3,
     "range": 4,
     "features": ["Slow Loading"],
-    "type": 4,
+    "gearType": 4,
     "cost": 400
   }
 ]

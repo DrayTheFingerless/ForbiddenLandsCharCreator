@@ -376,6 +376,13 @@ class CharViewModel(val database: CharactersDatabaseDAO,
         }
     }
 
+    val navigateToGearSelect = MutableLiveData<Boolean>().apply { value = false }
+    fun tryAddGear(){
+        character.value?.let{
+                navigateToGearSelect.value = true
+        }
+    }
+
     fun saveCharacter() {
         character.value?.let {
             uiScope.launch {

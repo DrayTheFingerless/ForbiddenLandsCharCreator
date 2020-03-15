@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity(), AppBarConfiguration.OnNavigateUpListen
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        //testInsertDB()
+        Professions.initWith(applicationContext)
     }
 
 

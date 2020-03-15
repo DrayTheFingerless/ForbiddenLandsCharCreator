@@ -67,16 +67,15 @@ class GearCreationFragment : Fragment() {
             }
         })*/
 
-        //navigate to talent select
-/*        binding.addGearButton.setOnClickListener{
+        binding.addGearButton.setOnClickListener{
             viewModel.tryAddGear()
         }
-        viewModel.navigateToItems.observe(viewLifecycleOwner, Observer {
+        viewModel.navigateToGearSelect.observe(viewLifecycleOwner, Observer {
             if(it) {
-                findNavController().navigate(R.id.action_talents_to_select_new)
-                viewModel.navigateToItems.value = false
+                findNavController().navigate(R.id.action_new_gear_to_gear_select)
+                viewModel.navigateToGearSelect.value = false
             }
-        })*/
+        })
 
         binding.nextButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_gear_to_info))
 

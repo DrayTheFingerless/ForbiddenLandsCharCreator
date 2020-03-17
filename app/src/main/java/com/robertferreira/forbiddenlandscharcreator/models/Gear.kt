@@ -15,21 +15,21 @@ open class Gear(
     val gearType: ItemType,
     val features: List<String>,
 
-    val Equipped: Boolean = false,
-    val Selected: Boolean = false,
-    val Comment: String = "",
+    val equipped: Boolean = false,
+    val selected: Boolean = false,
+    val comment: String = "",
     //in Copper
-    val Cost: Int = 0,
-    val SkillMod : Int = 0,
-    val AttributeMod: Int = 0,
-    val ActionMod: Int = 0,
+    val cost: Int = 0,
+    val skillMod : Int = 0,
+    val attributeMod: Int = 0,
+    val actionMod: Int = 0,
     val bonusType: Skills = Skills.Might){
 
     companion object{
-        fun getWeapons(context: Context) : List<Weapon>{
-            val type = object : TypeToken<List<Weapon>>() {}.type
+        fun getGear(context: Context) : List<Gear>{
+            val type = object : TypeToken<List<Gear>>() {}.type
 
-            return creatJSONList(context,"weapons_gear", type)
+            return creatJSONList(context,"general_gear", type)
         }
     }
 }
@@ -45,7 +45,7 @@ class Weapon (id: Int,
              val range: Range,
              features : List<String>,
              gearType: ItemType = ItemType.Weapon,
-              cost : Int
+             cost : Int
              ) : Gear(id,name, weight,bonus,gearType,features){
 
     companion object{
@@ -84,52 +84,34 @@ class Shield(id: Int,
 }
 
 
-enum class BonusType(i:Int){
-    @SerializedName("0")
-    Base(0),
-    @SerializedName("1")
-    Skill(1),
-    @SerializedName("2")
-    Gear(2),
-    @SerializedName("3")
-    Other(3)
+enum class BonusType{
+    Base,
+    Skill,
+    Gear,
+    Other
 }
 
-enum class Weight(i : Int){
-    @SerializedName("0")
-   Tiny(0),
-    @SerializedName("1")
-    Light(1),
-    @SerializedName("2")
-    Medium(2),
-    @SerializedName("3")
-    Heavy(3),
-    @SerializedName("4")
-    Other(4)
+enum class Weight{
+    Tiny,
+    Light,
+    Medium,
+    Heavy,
+    Other
 }
 
-enum class Range(i:Int){
-    @SerializedName("0")
-    ArmsLength(0),
-    @SerializedName("1")
-    Near(1),
-    @SerializedName("2")
-    Short(2),
-    @SerializedName("3")
-    Long(3)
+enum class Range{
+    ArmsLength,
+    Near,
+    Short,
+    Long,
+    Distant
 }
 
-enum class ItemType(i:Int){
-    @SerializedName("0")
-    Armor(0),
-    @SerializedName("1")
-    Helmet(1),
-    @SerializedName("2")
-    Shield(2),
-    @SerializedName("3")
-    Weapon(3),
-    @SerializedName("4")
-    Ranged(4),
-    @SerializedName("5")
-    Other(5)
+enum class ItemType{
+    Armor,//0
+    Helmet,
+    Shield,
+    Weapon,
+    Ranged,
+    Other
 }

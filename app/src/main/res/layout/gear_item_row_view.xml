@@ -22,7 +22,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,19 +30,28 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/nameText"
-                android:layout_width="wrap_content"
+                android:id="@+id/name_text"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_margin="8dp"
-                android:layout_weight="2"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
                 android:fontFamily="@font/im_fell_great_primer"
                 android:onClick="@{() -> clickListener.onClick(gear)}"
                 android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/weight_text"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/im_fell_great_primer" />
+
+            <TextView
+                android:id="@+id/cost_text"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="4dp"

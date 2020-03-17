@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
@@ -18,11 +19,7 @@ import com.robertferreira.forbiddenlandscharcreator.ui.customviews.TalentSelectV
 
 class GearSelectFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = GearSelectFragment()
-    }
-
-    private lateinit var viewModel: GearSelectViewModel
+    private val viewModel: GearSelectViewModel by activityViewModels()
 
     lateinit var binding : GearSelectFragmentBinding
 
@@ -36,8 +33,6 @@ class GearSelectFragment : Fragment() {
             container,
             false
         )
-        viewModel = ViewModelProviders.of(this).get(GearSelectViewModel::class.java)
-
         val adapter = MyGearSelectListAdapter(MyGearSelectListAdapter.GearSelectListener { id ->
             viewModel.setGear(id)
             findNavController().navigateUp()

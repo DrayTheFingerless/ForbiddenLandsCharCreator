@@ -70,7 +70,7 @@
         android:layout_margin="8dp"
         android:background="@color/colorPrimary"
         android:fontFamily="@font/im_fell_great_primer"
-        android:text="@string/finish"
+        android:text="@string/next"
         android:textColor="@color/backgroundLightGray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

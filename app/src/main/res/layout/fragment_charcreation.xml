@@ -217,10 +217,10 @@
                             android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
-                            android:gravity="center"
+                            android:gravity="center_vertical"
                             android:padding="0dp"
                             android:text="@string/strength"
-                            android:textAlignment="center"
+                            android:textAlignment="textStart"
                             android:textSize="14sp" />
 
                         <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
@@ -236,10 +236,10 @@
                             android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
-                            android:gravity="center"
+                            android:gravity="center_vertical"
                             android:padding="0dp"
                             android:text="@string/agility"
-                            android:textAlignment="center"
+                            android:textAlignment="textStart"
                             android:textSize="14sp" />
 
 
@@ -266,10 +266,10 @@
                             android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
-                            android:gravity="center"
+                            android:gravity="center_vertical"
                             android:padding="0dp"
                             android:text="@string/wits"
-                            android:textAlignment="center"
+                            android:textAlignment="textStart"
                             android:textSize="14sp" />
 
                         <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
@@ -285,11 +285,11 @@
                             android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
-                            android:gravity="center"
+                            android:gravity="center_vertical"
+                            android:padding="0dp"
                             android:text="@string/empathy"
-                            android:textAlignment="center"
-                            android:textSize="14sp"
-                            android:padding="0dp" />
+                            android:textAlignment="textStart"
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 

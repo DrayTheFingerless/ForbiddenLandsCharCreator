@@ -95,7 +95,7 @@
                             android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
-                            android:gravity="center"
+                            android:gravity="center_vertical"
                             android:text="@string/might"
                             android:textSize="14sp" />
 
@@ -112,7 +112,7 @@
                             android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
-                            android:gravity="center"
+                            android:gravity="center_vertical"
                             android:text="@string/endurance"
                             android:textSize="14sp" />
 
@@ -138,8 +138,9 @@
                             android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
-                            android:gravity="center"
+                            android:gravity="center_vertical"
                             android:text="@string/melee"
+                            android:textAlignment="textStart"
                             android:textSize="14sp" />
 
                         <com.robertferreira.forbiddenlandscharcreator.ui.customviews.StepperRow
@@ -155,7 +156,7 @@
                             android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
-                            android:gravity="center"
+                            android:gravity="center_vertical"
                             android:text="@string/crafting"
                             android:textSize="14sp" />
 
@@ -187,7 +188,7 @@
                             android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
-                            android:gravity="center"
+                            android:gravity="center_vertical"
                             android:text="@string/stealth"
                             android:textSize="14sp" />
 
@@ -204,7 +205,7 @@
                             android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
-                            android:gravity="center"
+                            android:gravity="center_vertical"
                             android:text="@string/sleight_hand"
                             android:textSize="14sp" />
 
@@ -229,7 +230,7 @@
                             android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
-                            android:gravity="center"
+                            android:gravity="center_vertical"
                             android:text="@string/move"
                             android:textSize="14sp" />
 
@@ -246,7 +247,7 @@
                             android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
-                            android:gravity="center"
+                            android:gravity="center_vertical"
                             android:text="@string/marksmanship"
                             android:textSize="14sp" />
 
@@ -277,7 +278,7 @@
                             android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
-                            android:gravity="center"
+                            android:gravity="center_vertical"
                             android:text="@string/scouting"
                             android:textSize="14sp" />
 
@@ -294,7 +295,7 @@
                             android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
-                            android:gravity="center"
+                            android:gravity="center_vertical"
                             android:text="@string/lore"
                             android:textSize="14sp" />
 
@@ -319,7 +320,7 @@
                             android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
-                            android:gravity="center"
+                            android:gravity="center_vertical"
                             android:text="@string/survival"
                             android:textSize="14sp" />
 
@@ -336,7 +337,7 @@
                             android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
-                            android:gravity="center"
+                            android:gravity="center_vertical"
                             android:text="@string/insight"
                             android:textSize="14sp" />
 
@@ -367,7 +368,7 @@
                             android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
-                            android:gravity="center"
+                            android:gravity="center_vertical"
                             android:text="@string/manipulation"
                             android:textSize="14sp" />
 
@@ -384,7 +385,7 @@
                             android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
-                            android:gravity="center"
+                            android:gravity="center_vertical"
                             android:text="@string/performance"
                             android:textSize="14sp" />
 
@@ -409,7 +410,7 @@
                             android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
-                            android:gravity="center"
+                            android:gravity="center_vertical"
                             android:text="@string/healing"
                             android:textSize="14sp" />
 
@@ -426,7 +427,7 @@
                             android:layout_margin="4dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/im_fell_great_primer"
-                            android:gravity="center"
+                            android:gravity="center_vertical"
                             android:text="@string/animal_handling"
                             android:textSize="14sp" />
 

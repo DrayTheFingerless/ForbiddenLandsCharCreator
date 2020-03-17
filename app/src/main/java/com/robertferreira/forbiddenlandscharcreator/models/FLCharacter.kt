@@ -177,6 +177,7 @@ class FLCharacter(
          TorchesDie = prof.Torch
          ArrowsDie = prof.Arrows
          Money = Random.nextInt(1,((prof.Silver*2)+5))
+         Gear.clear()
          Gear.addAll(prof.Gear)
      }
 
@@ -401,8 +402,8 @@ class FLCharacter(
         Gear.add(gear)
         notifyChange()
     }
-    fun RemoveGear(gearId: Int) {
-        Gear.removeIf{it.id == gearId}
+    fun RemoveGear(gear: Gear) {
+        Gear.remove(gear)
         notifyChange()
     }
 

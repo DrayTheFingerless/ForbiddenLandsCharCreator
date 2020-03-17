@@ -2,73 +2,73 @@
   {
     "id": 33,
     "name": "Leather",
-    "weight": 1,
+    "weight": "Light",
     "bonus":2,
     "features": [],
-    "gearType": 0,
+    "gearType": "Armor",
     "cost": 30
   },
   {
     "id": 34,
     "name": "Studded Leather",
-    "weight": 2,
+    "weight": "Medium",
     "bonus":3,
     "features": [],
-    "gearType": 0,
+    "gearType": "Armor",
     "cost": 50
   },
   {
     "id": 35,
     "name": "Chainmail",
-    "weight": 3,
+    "weight": "Heavy",
     "bonus":6,
     "features": ["3 for Piercing"],
-    "gearType": 0,
+    "gearType": "Armor",
     "cost": 240
   },
   {
     "id": 36,
     "name": "Plate Armor",
-    "weight": 3,
+    "weight": "Heavy",
     "bonus":8,
     "features": ["-1 Move"],
-    "gearType": 0,
+    "gearType": "Armor",
     "cost": 800
   },
   {
     "id": 37,
     "name": "Studded Leather Cap",
-    "weight": 1,
+    "weight": "Light",
     "bonus":1,
     "features": [],
-    "gearType": 1,
+    "gearType": "Helmet",
     "cost": 20
   },
   {
     "id": 38,
     "name": "Open Helmet",
-    "weight": 1,
+    "weight": "Light",
     "bonus":2,
     "features": [],
-    "gearType": 1,
+    "gearType": "Helmet",
     "cost": 80
   },
   {
     "id": 39,
     "name": "Closed Helmet",
-    "weight": 2,
+    "weight": "Medium",
     "bonus":3,
     "features": [],
-    "gearType": 1,
+    "gearType": "Helmet",
     "cost": 180
   },
   {
     "id": 40,
     "name": "Great Helm",
-    "weight": 2,
+    "weight": "Medium",
     "bonus":4,
     "features": ["-2 Scout"],
-    "gearType": 1,
+    "gearType": "Helmet",
     "cost": 300
   }
 ]

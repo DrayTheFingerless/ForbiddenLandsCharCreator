@@ -90,6 +90,7 @@ class CharShowViewModel(application: Application) : AndroidViewModel(application
       _character.value?.let{
           if(it.Strength > it.CurrentStrength)
               it.CurrentStrength++
+          checkBroken()
           it.notifyChange()
       }
     }
@@ -97,6 +98,7 @@ class CharShowViewModel(application: Application) : AndroidViewModel(application
         _character.value?.let{
             if(it.Agility > it.CurrentAgility)
                 it.CurrentAgility++
+            checkBroken()
             it.notifyChange()
 
         }
@@ -105,6 +107,7 @@ class CharShowViewModel(application: Application) : AndroidViewModel(application
         _character.value?.let{
             if(it.Wits > it.CurrentWits)
                 it.CurrentWits++
+            checkBroken()
             it.notifyChange()
         }
     }
@@ -112,6 +115,7 @@ class CharShowViewModel(application: Application) : AndroidViewModel(application
         _character.value?.let{
             if(it.Empathy > it.CurrentEmpathy)
                 it.CurrentEmpathy++
+            checkBroken()
             it.notifyChange()
         }
     }
@@ -120,6 +124,7 @@ class CharShowViewModel(application: Application) : AndroidViewModel(application
         _character.value?.let{
             if(it.CurrentStrength> 0)
                 it.CurrentStrength--
+            checkBroken()
             it.notifyChange()
         }
     }
@@ -127,6 +132,7 @@ class CharShowViewModel(application: Application) : AndroidViewModel(application
         _character.value?.let{
             if(it.CurrentAgility> 0)
                 it.CurrentAgility--
+            checkBroken()
             it.notifyChange()
         }
     }
@@ -134,6 +140,7 @@ class CharShowViewModel(application: Application) : AndroidViewModel(application
         _character.value?.let{
             if(it.CurrentWits> 0)
                 it.CurrentWits--
+            checkBroken()
             it.notifyChange()
         }
     }
@@ -141,7 +148,18 @@ class CharShowViewModel(application: Application) : AndroidViewModel(application
         _character.value?.let{
             if(it.CurrentEmpathy> 0)
                 it.CurrentEmpathy--
+            checkBroken()
             it.notifyChange()
+        }
+    }
+
+    fun checkBroken()
+    {
+        character.value?.let{
+            isBroken.value = it.CurrentStrength <= 0 ||
+                    it.CurrentAgility <= 0||
+                    it.CurrentWits <= 0||
+                    it.CurrentEmpathy <= 0
         }
     }
 
@@ -168,5 +186,7 @@ class CharShowViewModel(application: Application) : AndroidViewModel(application
     }
 
     var showTalent = MutableLiveData<Boolean>().apply { value = false }
+    var isBroken = MutableLiveData<Boolean>().apply { value = false }
+
     val tClicked = MutableLiveData<Talent>()
 }

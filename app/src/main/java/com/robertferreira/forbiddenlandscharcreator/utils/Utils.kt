@@ -70,40 +70,41 @@ enum class Attributes(val id : Int) {
     Empathy(3);
 }
 
+interface CodedEnum {
+    val code: Int
+}
+// It has to take class as parameter, since it is not possible to access T.values()
+// This is Java generics limitation: https://stackoverflow.com/questions/2205891/iterate-enum-values-using-java-generics
+open class CodedEnumLookup<E>(klass: Class<E>) where E: Enum<E>, E: CodedEnum {
+    val lookup = klass.enumConstants?.associate { it.code to it }
 
-enum class Skills(val id : Int) {
-    @SerializedName("0")
-    Might (0),
-    @SerializedName("1")
-    Endurance (1),
-    @SerializedName("2")
-    Melee (2),
-    @SerializedName("3")
-    Crafting (3),
-    @SerializedName("4")
-    Stealth (4),
-    @SerializedName("5")
-    SleightOfHand (5),
-    @SerializedName("6")
-    Move (6),
-    @SerializedName("7")
-    Marksmanship (7),
-    @SerializedName("8")
-    Scouting (8),
-    @SerializedName("9")
-    Lore (9),
-    @SerializedName("10")
-    Survival (10),
-    @SerializedName("11")
-    Insight (11),
-    @SerializedName("12")
-    Manipulation (12),
-    @SerializedName("13")
-    Performance (13),
-    @SerializedName("14")
-    Healing (14),
-    @SerializedName("15")
-    AnimalHandling (15);
+    init {
+        // Make sure no duplicate codes
+        check(lookup?.size == klass.enumConstants?.size)
+    }
+
+    fun get(code: Int): E? {
+        return lookup?.get(code)
+    }
+}
+
+enum class Skills {
+    Might ,
+    Endurance ,
+    Melee ,
+    Crafting ,
+    Stealth ,
+    SleightOfHand ,
+    Move ,
+    Marksmanship ,
+    Scouting ,
+    Lore ,
+    Survival ,
+    Insight ,
+    Manipulation ,
+    Performance ,
+    Healing ,
+    AnimalHandling ;
 
     companion object {
         fun returnPairList(): List<Pair<Skills, Int>> {
@@ -134,9 +135,5 @@ class SkillConverter {
        return Skills.valueOf(status.toString())
     }
 
-    @TypeConverter
-    fun toInteger(skill: Skills): Int? {
-        return skill.id
-    }
 }
 

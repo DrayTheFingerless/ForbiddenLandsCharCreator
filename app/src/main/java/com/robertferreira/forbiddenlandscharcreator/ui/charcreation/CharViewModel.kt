@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.robertferreira.forbiddenlandscharcreator.*
 import com.robertferreira.forbiddenlandscharcreator.Utils.loadTalents
 import com.robertferreira.forbiddenlandscharcreator.database.CharactersDatabaseDAO
+import com.robertferreira.forbiddenlandscharcreator.models.Gear
 import com.robertferreira.forbiddenlandscharcreator.utils.PropertyAwareMutableLiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -348,11 +349,10 @@ class CharViewModel(val database: CharactersDatabaseDAO,
             sum
         }
 
-    fun addGear(gearId: Int){
+    fun addGear(gear: Gear){
         character.value?.let{
             try {
-               // val w = weight.toFloat()
-                //it.AddGear(name, w)
+                it.AddGear(gear)
             } catch (e : Exception) {
 
             }
@@ -370,9 +370,9 @@ class CharViewModel(val database: CharactersDatabaseDAO,
         }
     }
 
-    fun removeGearClicked(gearId: Int) {
+    fun removeGearClicked(gear: Gear) {
         character.value?.let{
-            it.RemoveGear(gearId)
+            it.RemoveGear(gear)
         }
     }
 

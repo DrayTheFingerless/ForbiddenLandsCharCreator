@@ -26,6 +26,7 @@ import com.robertferreira.forbiddenlandscharcreator.ui.customviews.dummy.DummyCo
 class TalentSelectFragment : Fragment() {
 
     private val viewModel : TalentSelectViewModel  by navGraphViewModels(R.id.char_creation_nav_graph)
+
     lateinit var binding : FragmentTalentSelectListBinding
 
     override fun onCreateView(

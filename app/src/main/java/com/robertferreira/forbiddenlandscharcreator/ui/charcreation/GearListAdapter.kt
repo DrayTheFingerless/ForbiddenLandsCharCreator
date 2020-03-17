@@ -35,8 +35,8 @@ class GearListAdapter(val clickListener: GearListener,
     }
 
 
-    class DeleteGearListener(val clickListener: (tId: Int) -> Unit) {
-        fun onClick(gear: Gear) = clickListener(gear.id)
+    class DeleteGearListener(val clickListener: (g : Gear) -> Unit) {
+        fun onClick(gear: Gear) = clickListener(gear)
     }
 }
 
@@ -47,10 +47,13 @@ class GearRowViewHolder private constructor(val binding: GearItemRowViewBinding)
         val res = itemView.context.resources
 
         binding.nameText.text = item.name
+        binding.weightText.text = item.weight.toString()
+        if(item.cost > 9)
+        binding.costText.text = (item.cost / 10).toString() + " Silver"
+        else binding.costText.text = item.cost.toString() + " Copper"
         binding.gear = item
         binding.clickListener = clickListener
         binding.deleteListener = deleteListener
-        binding.weightText.text = item.weight.toString()
         binding.executePendingBindings()
     }
 

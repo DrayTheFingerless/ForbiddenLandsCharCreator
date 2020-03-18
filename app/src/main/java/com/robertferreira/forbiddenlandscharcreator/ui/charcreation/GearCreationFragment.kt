@@ -41,11 +41,10 @@ class GearCreationFragment : Fragment() {
             container,
             false
         )
-
         binding.charViewModel = viewModel
 
         val adapter = GearListAdapter(GearListAdapter.GearListener {
-                tId ->  viewModel.gearClicked(tId)
+                g ->  viewModel.gearClicked(g)
         }, GearListAdapter.DeleteGearListener{
                 g -> viewModel.removeGearClicked(g) })
         binding.gearList.adapter = adapter

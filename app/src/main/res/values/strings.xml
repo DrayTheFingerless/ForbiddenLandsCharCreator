@@ -75,5 +75,12 @@
     <string name="skill">Skill</string>
     <string name="base">Base</string>
     <string name="finish">Finish</string>
+    <string name="cost">Cost</string>
+    <string name="weight">Weight</string>
+    <string name="type">Type</string>
+    <string name="hungry">Hungry</string>
+    <string name="thirsty">Thirsty</string>
+    <string name="sleepy">Sleepy</string>
+    <string name="cold">Cold</string>
 
 </resources>

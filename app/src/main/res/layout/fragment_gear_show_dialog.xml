@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:background="@drawable/border"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/gear_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/im_fell_great_primer"
+                android:text="Gear Name"
+                android:textAlignment="center"
+                android:textColor="@color/design_default_color_on_secondary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/border">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/im_fell_great_primer"
+                        android:text="@string/cost"
+                        android:textAlignment="textStart" />
+
+                    <TextView
+                        android:id="@+id/cost_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/im_fell_great_primer"
+                        android:textAlignment="textStart" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/border">
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/im_fell_great_primer"
+                        android:text="@string/weight"
+                        android:textAlignment="textStart" />
+
+                    <TextView
+                        android:id="@+id/weight_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/im_fell_great_primer"
+                        android:textAlignment="textStart" />
+                </TableRow>
+
+            </TableLayout>
+
+            <TextView
+                android:id="@+id/effect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:fontFamily="@font/im_fell_great_primer"
+                android:text="@string/creation_description"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

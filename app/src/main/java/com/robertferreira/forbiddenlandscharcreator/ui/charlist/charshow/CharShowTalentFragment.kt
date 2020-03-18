@@ -40,13 +40,13 @@ class CharShowTalentFragment : Fragment() {
         binding.talentsList.adapter = adapter
 
 
-        viewModel.showTalent.observe(viewLifecycleOwner, Observer {
+        viewModel.showPopup.observe(viewLifecycleOwner, Observer {
             if(it) {
                 viewModel.tClicked.value?.let { talent ->
                     val dialog = TalentShowDialogFragment.newInstance(talent)
                     dialog.show(childFragmentManager, "dialog")
                 }
-                viewModel.showTalent.value = false
+                viewModel.showPopup.value = false
             }
         })
 

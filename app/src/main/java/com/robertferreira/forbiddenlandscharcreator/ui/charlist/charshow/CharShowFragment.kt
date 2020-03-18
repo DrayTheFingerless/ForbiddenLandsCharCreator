@@ -67,13 +67,14 @@ class CharShowFragment : Fragment() {
         viewPager = view.findViewById(R.id.pager)
         viewPager.adapter = characterShowCollectionAdapter
         val tabLayout = view.findViewById<TabLayout>(R.id.tab_layout)
+
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             when(position){
                 0 ->tab.text = "Main"
                 1 -> tab.text = "Skills"
                 2 -> tab.text = "Talents"
                 3 -> tab.text = "Info"
-                else -> tab.text = "Gear"
+                4 -> tab.text = "Gear"
             }
         }.attach()
 
@@ -86,7 +87,7 @@ const val ARG_PAGE = "page"
 
 class CharacterShowAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
     lateinit var fragment : Fragment
-    override fun getItemCount(): Int = 4
+    override fun getItemCount(): Int = 5
 
     override fun createFragment(position: Int): Fragment {
         // Return a NEW fragment instance in createFragment(int)
@@ -95,6 +96,7 @@ class CharacterShowAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) 
             1 -> fragment = CharShowSkillsFragment()
             2 -> fragment = CharShowTalentFragment()
             3 -> fragment = CharShowInfoFragment()
+            4 -> fragment = CharShowGearFragment()
             else -> fragment = CharShowMainFragment()
         }
 

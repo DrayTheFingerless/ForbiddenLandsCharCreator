@@ -30,8 +30,8 @@ class GearListAdapter(val clickListener: GearListener,
         return GearRowViewHolder.from(parent)
     }
 
-    class GearListener(val clickListener: (tId: Int) -> Unit) {
-        fun onClick(gear: Gear) = clickListener(gear.id)
+    class GearListener(val clickListener: (g: Gear) -> Unit) {
+        fun onClick(gear: Gear) = clickListener(gear)
     }
 
 

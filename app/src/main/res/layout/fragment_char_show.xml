@@ -98,10 +98,61 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/hungry_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/im_fell_great_primer"
+                android:text="@string/hungry"
+                android:textSize="12sp" />
+
+            <CheckBox
+                android:id="@+id/thirsty_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/im_fell_great_primer"
+                android:text="@string/thirsty"
+                android:textSize="12sp" />
+
+            <CheckBox
+                android:id="@+id/sleepy_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/im_fell_great_primer"
+                android:text="@string/sleepy"
+                android:textSize="12sp" />
+
+            <CheckBox
+                android:id="@+id/cold_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/im_fell_great_primer"
+                android:text="@string/cold"
+                android:textSize="12sp" />
+        </LinearLayout>
+
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:tabPaddingEnd="8dp"
+            app:tabPaddingStart="8dp"
+            app:tabTextAppearance="@style/MyCustomTabTextAppearance" />
+
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/pager"
             android:layout_width="match_parent"

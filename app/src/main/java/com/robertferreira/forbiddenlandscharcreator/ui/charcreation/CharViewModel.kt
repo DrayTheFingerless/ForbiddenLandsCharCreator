@@ -359,7 +359,7 @@ class CharViewModel(val database: CharactersDatabaseDAO,
         }
     }
 
-    fun gearClicked(gearId: Int){
+    fun gearClicked(gear: Gear){
         character.value?.let{
             try {
                 // val w = weight.toFloat()

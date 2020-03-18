@@ -27,7 +27,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="@{() -> clickListener.onClick(gear)}">
 
             <TextView
                 android:id="@+id/name_text"
@@ -37,7 +38,6 @@
                 android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/im_fell_great_primer"
-                android:onClick="@{() -> clickListener.onClick(gear)}"
                 android:textSize="18sp" />
 
             <TextView

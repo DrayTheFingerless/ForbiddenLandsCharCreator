@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.Transformations
 import com.robertferreira.forbiddenlandscharcreator.*
+import com.robertferreira.forbiddenlandscharcreator.models.Gear
 import com.robertferreira.forbiddenlandscharcreator.utils.PropertyAwareMutableLiveData
 
 class CharShowViewModel(application: Application) : AndroidViewModel(application){
@@ -167,7 +168,7 @@ class CharShowViewModel(application: Application) : AndroidViewModel(application
         //show a popup with talent info
         character.value?.TalentList?.first { it.id == talentId }?.let {
             tClicked.value = it
-            showTalent.value = true
+            showPopup.value = true
         }
     }
     fun addTClicked(talentId : Int) {
@@ -185,8 +186,44 @@ class CharShowViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
-    var showTalent = MutableLiveData<Boolean>().apply { value = false }
+
+    //Gear
+    fun addGear(gear: Gear){
+        character.value?.let{
+            try {
+                it.AddGear(gear)
+            } catch (e : Exception) {
+
+            }
+        }
+    }
+
+    fun gearClicked(gear: Gear){
+        //show a popup with talent info
+        character.value?.Gear?.first { it == gear }?.let {
+            gClicked.value = it
+            showPopup.value = true
+        }
+    }
+
+    fun removeGearClicked(gear: Gear) {
+        character.value?.let{
+            it.RemoveGear(gear)
+        }
+    }
+
+    val navigateToGearSelect = MutableLiveData<Boolean>().apply { value = false }
+    fun tryAddGear(){
+        character.value?.let{
+            navigateToGearSelect.value = true
+        }
+    }
+
+    //check states
+    var showPopup = MutableLiveData<Boolean>().apply { value = false }
+
     var isBroken = MutableLiveData<Boolean>().apply { value = false }
 
+    val gClicked = MutableLiveData<Gear>()
     val tClicked = MutableLiveData<Talent>()
 }

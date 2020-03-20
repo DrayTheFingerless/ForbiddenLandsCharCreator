@@ -10,13 +10,18 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.navGraphViewModels
 
 import com.robertferreira.forbiddenlandscharcreator.R
+import com.robertferreira.forbiddenlandscharcreator.database.CharactersDatabase
 import com.robertferreira.forbiddenlandscharcreator.databinding.FragmentCharShowBinding
 import com.robertferreira.forbiddenlandscharcreator.databinding.FragmentCharShowMainBinding
 import com.robertferreira.forbiddenlandscharcreator.ui.charcreation.CharViewModel
 
 class CharShowMainFragment : Fragment() {
 
-    private val viewModel : CharShowViewModel by navGraphViewModels(R.id.char_show_nav_graph)
+    private val viewModel : CharShowViewModel by navGraphViewModels(R.id.char_show_nav_graph){
+        val application = requireNotNull(this.activity).application
+        val dataSource = CharactersDatabase.getInstance(application).charactersDatabaseDAO()
+        CharShowViewModelFactory(dataSource, application)
+    }
     lateinit var binding : FragmentCharShowMainBinding
 
     override fun onCreateView(

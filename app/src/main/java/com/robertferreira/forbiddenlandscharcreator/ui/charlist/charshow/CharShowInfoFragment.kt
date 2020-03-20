@@ -9,12 +9,17 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.navGraphViewModels
 
 import com.robertferreira.forbiddenlandscharcreator.R
+import com.robertferreira.forbiddenlandscharcreator.database.CharactersDatabase
 import com.robertferreira.forbiddenlandscharcreator.databinding.FragmentCharShowInfoBinding
 import com.robertferreira.forbiddenlandscharcreator.databinding.FragmentCharShowMainBinding
 
 class CharShowInfoFragment : Fragment() {
 
-    private val viewModel : CharShowViewModel by navGraphViewModels(R.id.char_show_nav_graph)
+    private val viewModel : CharShowViewModel by navGraphViewModels(R.id.char_show_nav_graph){
+        val application = requireNotNull(this.activity).application
+        val dataSource = CharactersDatabase.getInstance(application).charactersDatabaseDAO()
+        CharShowViewModelFactory(dataSource, application)
+    }
     lateinit var binding : FragmentCharShowInfoBinding
 
     override fun onCreateView(

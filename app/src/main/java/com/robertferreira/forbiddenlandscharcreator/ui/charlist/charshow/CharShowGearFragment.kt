@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 
 import com.robertferreira.forbiddenlandscharcreator.R
+import com.robertferreira.forbiddenlandscharcreator.database.CharactersDatabase
 import com.robertferreira.forbiddenlandscharcreator.databinding.FragmentCharShowGearBinding
 import com.robertferreira.forbiddenlandscharcreator.databinding.FragmentGearShowDialogBinding
 import com.robertferreira.forbiddenlandscharcreator.models.Gear
@@ -21,7 +22,11 @@ import com.robertferreira.forbiddenlandscharcreator.ui.customviews.gearselect.Ge
 
 
 class CharShowGearFragment : Fragment() {
-    private val viewModel : CharShowViewModel by navGraphViewModels(R.id.char_show_nav_graph)
+    private val viewModel : CharShowViewModel by navGraphViewModels(R.id.char_show_nav_graph){
+        val application = requireNotNull(this.activity).application
+        val dataSource = CharactersDatabase.getInstance(application).charactersDatabaseDAO()
+        CharShowViewModelFactory(dataSource, application)
+    }
     private val gearSelectViewModel: GearSelectViewModel by activityViewModels()
     lateinit var binding : FragmentCharShowGearBinding
 
@@ -40,20 +45,15 @@ class CharShowGearFragment : Fragment() {
                 g -> viewModel.removeGearClicked(g) })
         binding.gearList.adapter = adapter
 
-        viewModel.character.observe(viewLifecycleOwner, Observer {
-            it.Gear?.let { gear ->
-                adapter.data = gear
-                adapter.notifyDataSetChanged()
-            }
-        })
 
-        viewModel.showPopup.observe(viewLifecycleOwner, Observer {
+
+        viewModel.showGear.observe(viewLifecycleOwner, Observer {
             if(it) {
                 viewModel.gClicked.value?.let { gear ->
                     val dialog = GearShowDialogFragment.newInstance(gear)
                     dialog.show(childFragmentManager, "dialog")
                 }
-                viewModel.showPopup.value = false
+                viewModel.showGear.value = false
             }
         })
 
@@ -66,7 +66,12 @@ class CharShowGearFragment : Fragment() {
                 gearSelectViewModel.newGear.value = false
             }
         })
-
+        viewModel.character.observe(viewLifecycleOwner, Observer {
+            it.Gear?.let { gear ->
+                adapter.data = gear
+                adapter.notifyDataSetChanged()
+            }
+        })
         binding.addGearButton.setOnClickListener{
             viewModel.tryAddGear()
         }

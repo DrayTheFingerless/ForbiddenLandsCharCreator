@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.navGraphViewModels
 
 import com.robertferreira.forbiddenlandscharcreator.R
+import com.robertferreira.forbiddenlandscharcreator.database.CharactersDatabase
 import com.robertferreira.forbiddenlandscharcreator.databinding.FragmentCharShowMainBinding
 import com.robertferreira.forbiddenlandscharcreator.databinding.FragmentCharShowTalentBinding
 import com.robertferreira.forbiddenlandscharcreator.ui.charcreation.TalentsListAdapter
@@ -18,7 +19,11 @@ import com.robertferreira.forbiddenlandscharcreator.ui.customviews.TalentShowDia
 
 class CharShowTalentFragment : Fragment() {
 
-    private val viewModel : CharShowViewModel by navGraphViewModels(R.id.char_show_nav_graph)
+    private val viewModel : CharShowViewModel by navGraphViewModels(R.id.char_show_nav_graph){
+        val application = requireNotNull(this.activity).application
+        val dataSource = CharactersDatabase.getInstance(application).charactersDatabaseDAO()
+        CharShowViewModelFactory(dataSource, application)
+    }
     lateinit var binding : FragmentCharShowTalentBinding
 
     override fun onCreateView(
@@ -28,6 +33,8 @@ class CharShowTalentFragment : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_char_show_talent, container, false)
         //viewModel = ViewModelProviders.of(this).get(CharShowViewModel::class.java)
+        binding.setLifecycleOwner(this)
+
         binding.viewModel = viewModel
 
         val adapter = TalentsListAdapter(TalentsListAdapter.TalentListener {
@@ -40,13 +47,13 @@ class CharShowTalentFragment : Fragment() {
         binding.talentsList.adapter = adapter
 
 
-        viewModel.showPopup.observe(viewLifecycleOwner, Observer {
+        viewModel.showTalent.observe(viewLifecycleOwner, Observer {
             if(it) {
                 viewModel.tClicked.value?.let { talent ->
                     val dialog = TalentShowDialogFragment.newInstance(talent)
                     dialog.show(childFragmentManager, "dialog")
                 }
-                viewModel.showPopup.value = false
+                viewModel.showTalent.value = false
             }
         })
 

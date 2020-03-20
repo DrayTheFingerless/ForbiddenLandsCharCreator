@@ -126,10 +126,6 @@ class CharViewModel(val database: CharactersDatabaseDAO,
         value =  loadTalents(this@CharViewModel.getApplication(),"general_talents") }
     val gTalents : LiveData<List<Talent>> = listGeneralTalents
 
-    init{
-
-    }
-
     //filters from all profession talents into a filtered list for Prof Talents Spinner
     fun getFilteredProfessionTalents(profId : Int)  {
         filterListProfessionTalents.value = listProfessionTalents.value?.filter{it.type == profId}
@@ -188,7 +184,6 @@ class CharViewModel(val database: CharactersDatabaseDAO,
         Clothing.observeForever(ClothingObserver)
 
     }
-
 
     override fun onCleared() {
         super.onCleared()
@@ -342,7 +337,6 @@ class CharViewModel(val database: CharactersDatabaseDAO,
 
 
     //Gear
-
     val maxWeight : LiveData<Int>
         get () = Transformations.map(character) {
             val sum = it.Strength * 2

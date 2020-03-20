@@ -33,7 +33,7 @@ class CharListViewModel(val database: CharactersDatabaseDAO,
         get()= _charList
 
 
-    private val _navigateToCharacter = MutableLiveData<FLCharacter>()
+    private val _navigateToCharacter = MutableLiveData<Long>()
     val navigateToCharacter
         get() = _navigateToCharacter
 
@@ -51,7 +51,9 @@ class CharListViewModel(val database: CharactersDatabaseDAO,
     }
 
     fun onCharacterClicked(id: Long){
-        _navigateToCharacter.value = _charList.value?.first{it.charId == id}
+        _charList.value?.first{it.charId == id}?.let {
+            _navigateToCharacter.value = it.charId
+        }
     }
     fun onCharacterNavigated() {
         _navigateToCharacter.value = null

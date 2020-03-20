@@ -55,7 +55,7 @@ class CharListFragment : Fragment() {
         charListViewModel.navigateToCharacter.observe(viewLifecycleOwner, Observer {char ->
             char?.let {
                 val bundle = Bundle()
-                bundle.putParcelable("character", it)
+                bundle.putLong("character", it)
                 this.findNavController().navigate(R.id.action_list_to_show, bundle)
                 charListViewModel.onCharacterNavigated()
             }

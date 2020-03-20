@@ -112,7 +112,8 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/im_fell_great_primer"
                 android:text="@string/hungry"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:checked="@={viewModel.hunger}"/>
 
             <CheckBox
                 android:id="@+id/thirsty_box"
@@ -122,7 +123,8 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/im_fell_great_primer"
                 android:text="@string/thirsty"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:checked="@={viewModel.thirst}"/>
 
             <CheckBox
                 android:id="@+id/sleepy_box"
@@ -132,7 +134,8 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/im_fell_great_primer"
                 android:text="@string/sleepy"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:checked="@={viewModel.sleep}"/>
 
             <CheckBox
                 android:id="@+id/cold_box"
@@ -142,7 +145,8 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/im_fell_great_primer"
                 android:text="@string/cold"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:checked="@={viewModel.cold}"/>
         </LinearLayout>
 
         <com.google.android.material.tabs.TabLayout

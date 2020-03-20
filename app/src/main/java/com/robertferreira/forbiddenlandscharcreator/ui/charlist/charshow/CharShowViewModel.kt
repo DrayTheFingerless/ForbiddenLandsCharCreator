@@ -1,17 +1,18 @@
 package com.robertferreira.forbiddenlandscharcreator.ui.charlist.charshow
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.Transformations
+import androidx.databinding.Bindable
+import androidx.lifecycle.*
 import com.robertferreira.forbiddenlandscharcreator.*
+import com.robertferreira.forbiddenlandscharcreator.database.CharactersDatabaseDAO
 import com.robertferreira.forbiddenlandscharcreator.models.Gear
 import com.robertferreira.forbiddenlandscharcreator.utils.PropertyAwareMutableLiveData
+import kotlinx.coroutines.*
 
-class CharShowViewModel(application: Application) : AndroidViewModel(application){
+class CharShowViewModel(val database: CharactersDatabaseDAO, application: Application) : AndroidViewModel(application){
 
+    private var viewModelJob = Job()
+    private val uiScope = CoroutineScope(Dispatchers.Main +  viewModelJob)
     private val _character = PropertyAwareMutableLiveData<FLCharacter>()
     val character
         get() = _character
@@ -75,16 +76,49 @@ class CharShowViewModel(application: Application) : AndroidViewModel(application
     var Face =Transformations.map(_character) { it.Face }
     var Clothing = Transformations.map(_character) { it.Clothing }
 
+    //conditions
+    var Hunger = MutableLiveData<Boolean>()
+    var Thirst = MutableLiveData<Boolean>()
+    var Sleep = MutableLiveData<Boolean>()
+    var Cold = MutableLiveData<Boolean>()
+    private val HungerObs = Observer<Boolean> {setHunger(it) }
+    private val ThirstObs = Observer<Boolean> { setThirst(it) }
+    private val SleepObs = Observer<Boolean> { setSleep(it) }
+    private val ColdObs = Observer<Boolean> { setCold(it) }
 
     init {
+        Hunger.observeForever(HungerObs)
+        Thirst.observeForever(ThirstObs)
+        Sleep.observeForever(SleepObs)
+        Cold.observeForever(ColdObs)
     }
+
 
     override fun onCleared() {
         super.onCleared()
+        Hunger.removeObserver(HungerObs)
+        Thirst.removeObserver(ThirstObs)
+        Sleep.removeObserver(SleepObs)
+        Cold.removeObserver(ColdObs)
     }
 
-    fun setCharacter(c: FLCharacter){
-        _character.value = c
+    fun setCharacter(c: Long){
+        uiScope.launch {
+            _character.value = getCharacter(c)
+            _character.value?.let{
+                Hunger.value = it.Hungry
+                Thirst.value = it.Thirsty
+                Sleep.value = it.Sleepy
+                Cold.value = it.Cold
+            }
+        }
+    }
+
+    suspend fun getCharacter(c: Long) : FLCharacter? {
+        return withContext(Dispatchers.IO) {
+            val c = database.get(c)
+            c
+        }
     }
 
     fun addStrength(){
@@ -156,7 +190,7 @@ class CharShowViewModel(application: Application) : AndroidViewModel(application
 
     fun checkBroken()
     {
-        character.value?.let{
+        _character.value?.let{
             isBroken.value = it.CurrentStrength <= 0 ||
                     it.CurrentAgility <= 0||
                     it.CurrentWits <= 0||
@@ -166,19 +200,19 @@ class CharShowViewModel(application: Application) : AndroidViewModel(application
 
     fun talentClicked(talentId : Int){
         //show a popup with talent info
-        character.value?.TalentList?.first { it.id == talentId }?.let {
+        _character.value?.TalentList?.first { it.id == talentId }?.let {
             tClicked.value = it
-            showPopup.value = true
+            showTalent.value = true
         }
     }
     fun addTClicked(talentId : Int) {
-        character.value?.let{
+        _character.value?.let{
             it.ChangeTalent(talentId, true)
         }
     }
 
     fun removeTClicked(talentId : Int) {
-        character.value?.let{
+        _character.value?.let{
             it.TalentList?.first{it.id == talentId}?.rankValue?.let{value ->
                 if(value > 1)
                     it.ChangeTalent(talentId, false)
@@ -200,30 +234,78 @@ class CharShowViewModel(application: Application) : AndroidViewModel(application
 
     fun gearClicked(gear: Gear){
         //show a popup with talent info
-        character.value?.Gear?.first { it == gear }?.let {
+        _character.value?.Gear?.first { it == gear }?.let {
             gClicked.value = it
-            showPopup.value = true
+            showGear.value = true
         }
     }
 
     fun removeGearClicked(gear: Gear) {
-        character.value?.let{
+        _character.value?.let{
             it.RemoveGear(gear)
         }
     }
 
     val navigateToGearSelect = MutableLiveData<Boolean>().apply { value = false }
     fun tryAddGear(){
-        character.value?.let{
+        _character.value?.let{
             navigateToGearSelect.value = true
         }
     }
 
+    fun getGearBonus(skill : Skills) : Int{
+        var gearBonus = 0
+        character.value?.let{
+            for(v in it.Gear){
+                if(v.bonusType == skill)
+                    gearBonus+=v.bonus
+            }
+        }
+        return gearBonus
+    }
+    //condition setters
+    fun setHunger(hunger: Boolean){
+        _character.value?.Hungry = hunger
+    }
+    fun setThirst(thirst: Boolean){
+        _character.value?.Thirsty = thirst
+    }
+    fun setSleep(sleep: Boolean){
+        _character.value?.Sleepy = sleep
+    }
+    fun setCold(cold: Boolean){
+        _character.value?.Cold = cold
+    }
+
     //check states
-    var showPopup = MutableLiveData<Boolean>().apply { value = false }
+    var showTalent = MutableLiveData<Boolean>().apply { value = false }
+    var showGear = MutableLiveData<Boolean>().apply { value = false }
 
     var isBroken = MutableLiveData<Boolean>().apply { value = false }
 
     val gClicked = MutableLiveData<Gear>()
     val tClicked = MutableLiveData<Talent>()
+
+    //update char
+    fun saveCharacter() {
+        character.value?.let {
+            uiScope.launch {
+                withContext(Dispatchers.IO) {
+                    database.update(it)
+                }
+            }
+        }
+    }
+}
+
+class CharShowViewModelFactory(
+    private val dataSource: CharactersDatabaseDAO,
+    private val application: Application) : ViewModelProvider.Factory {
+    @Suppress("unchecked_cast")
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(CharShowViewModel::class.java)) {
+            return CharShowViewModel(dataSource, application) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
 }

@@ -17,8 +17,9 @@
 
     <style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:font">@font/im_fell_great_primer</item>
+        <item name="android:fontFamily">@font/im_fell_great_primer</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/black</item>
         <item name="textAllCaps">false</item>
     </style>
 </resources>

@@ -1,15 +1,14 @@
 package com.robertferreira.forbiddenlandscharcreator.ui.charlist.charshow
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
@@ -18,8 +17,11 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.robertferreira.forbiddenlandscharcreator.FLCharacter
 
 import com.robertferreira.forbiddenlandscharcreator.R
+import com.robertferreira.forbiddenlandscharcreator.database.CharactersDatabase
 import com.robertferreira.forbiddenlandscharcreator.databinding.FragmentCharShowBinding
+import com.robertferreira.forbiddenlandscharcreator.ui.charcreation.CharCreationViewModelFactory
 import com.robertferreira.forbiddenlandscharcreator.ui.charcreation.CharViewModel
+import kotlinx.android.synthetic.main.fragment_char_show.*
 
 
 class CharShowFragment : Fragment() {
@@ -28,26 +30,33 @@ class CharShowFragment : Fragment() {
     private lateinit var characterShowCollectionAdapter: CharacterShowAdapter
     private lateinit var viewPager: ViewPager2
 
-    private val viewModel : CharShowViewModel by navGraphViewModels(R.id.char_show_nav_graph)
+    private val viewModel : CharShowViewModel by navGraphViewModels(R.id.char_show_nav_graph){
+        val application = requireNotNull(this.activity).application
+        val dataSource = CharactersDatabase.getInstance(application).charactersDatabaseDAO()
+        CharShowViewModelFactory(dataSource, application)
+    }
 
-    lateinit var binding : FragmentCharShowBinding
+    private lateinit var binding : FragmentCharShowBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true);
+
+        val application = requireNotNull(this.activity).application
+        val dataSource = CharactersDatabase.getInstance(application).charactersDatabaseDAO()
+
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_char_show, container, false)
         //viewModel = ViewModelProviders.of(this).get(CharShowViewModel::class.java)
+
         binding.setLifecycleOwner(this)
 
         binding.viewModel = viewModel
 
-        arguments?.let {
-            it.getParcelable<FLCharacter>("character")?.let { c ->
-                viewModel.setCharacter(c)
-            }
-        }
+
+
 
         viewModel.isBroken.observe(viewLifecycleOwner, Observer {
             if(it) {
@@ -77,8 +86,34 @@ class CharShowFragment : Fragment() {
                 4 -> tab.text = "Gear"
             }
         }.attach()
+    }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            it.getLong("character")?.let { c ->
+                viewModel.setCharacter(c)
+            }
+        }
+    }
+    override fun onDestroy() {
+        viewModel.saveCharacter()
+        super.onDestroy()
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.main, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.relationship_show -> {
+                findNavController().navigate(R.id.action_show_to_relations)
+                true
+            }
+            else ->super.onOptionsItemSelected(item)
+        }
     }
 }
 

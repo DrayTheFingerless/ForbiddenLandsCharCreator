@@ -43,15 +43,6 @@ class SkillCreationFragment : Fragment() {
             false
         )
 
-/*        activity?.let {
-          viewModel = ViewModelProviders.of(it).get(CharCreationViewModel::class.java)
-        }*/
-      /*  arguments?.let {
-            it.getParcelable<FLCharacter>("character")?.let {c ->
-                viewModel.setCharacter(c)
-            }
-        }*/
-
         binding.skillsNextButton.setOnClickListener (Navigation.createNavigateOnClickListener(R.id.action_skills_to_talents))
 
         //hook up skill steppers

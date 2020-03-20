@@ -41,13 +41,6 @@ class CharCreationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-/*        activity?.let {
-            viewModel = ViewModelProviders.of(it).get(CharCreationViewModel::class.java)
-        }*/
-        val application = requireNotNull(this.activity).application
-        val dataSource = CharactersDatabase.getInstance(application).charactersDatabaseDAO()
-        val viewModelFactory = CharCreationViewModelFactory(dataSource, application)
-
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_charcreation, container, false)
 
         binding.charViewModel = viewModel

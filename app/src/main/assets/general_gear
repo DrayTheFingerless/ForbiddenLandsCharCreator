@@ -4,12 +4,30 @@
     "name": "Arrows, Iron Head",
     "weight": "Medium",
     "bonus": 1,
-    "features": [],
+    "features": ["+1 Arrows"],
     "gearType": "Other",
     "cost": 12
   },
   {
     "id": 42,
+    "name": "Arrows, Wooden Head",
+    "weight": "Medium",
+    "bonus": 1,
+    "features": ["+1 Arrows","Armor counts double"],
+    "gearType": "Other",
+    "cost": 6
+  },
+  {
+    "id": 43,
+    "name": "Quiver",
+    "weight": "Tiny",
+    "bonus": 1,
+    "features": ["+1 Arrows","Armor counts double"],
+    "gearType": "Other",
+    "cost": 8
+  },
+  {
+    "id": 44,
     "name": "Grappling Hook",
     "weight": "Medium",
     "bonus":1,
@@ -18,12 +36,156 @@
     "cost": 30
   },
   {
-    "id": 43,
+    "id": 45,
+    "name": "Rope, 10 Meters",
+    "weight": "Medium",
+    "bonus":1,
+    "features": ["+1 Climbing"],
+    "gearType": "Other",
+    "cost": 20
+  },
+  {
+    "id": 46,
+    "name": "Tallow Candle",
+    "weight": "Tiny",
+    "bonus":0,
+    "features": ["Illuminates Arm's Length", "Lasts Quarter Day"],
+    "gearType": "Other",
+    "cost": 6
+  },
+  {
+    "id": 47,
+    "name": "Oil Lamp",
+    "weight": "Light",
+    "bonus":0,
+    "features": ["Illuminates Near", "Indoors", "Requires Lamp Oil"],
+    "gearType": "Other",
+    "cost": 5
+  },
+  {
+    "id": 48,
+    "name": "Lantern",
+    "weight": "Light",
+    "bonus":0,
+    "features": ["Illuminates Near", "Requires Lamp Oil"],
+    "gearType": "Other",
+    "cost": 20
+  },
+  {
+    "id": 49,
+    "name": "Torches",
+    "weight": "Medium",
+    "bonus":0,
+    "features": ["+1 Torches", "Illuminates Near", "Roll Die every 15 minutes"],
+    "gearType": "Other",
+    "cost": 5
+  },
+  {
+    "id": 50,
+    "name": "Sack",
+    "weight": "Tiny",
+    "bonus":0,
+    "features": ["No encumbrance"],
+    "gearType": "Other",
+    "cost": 8
+  },
+  {
+    "id": 51,
+    "name": "Backpack",
+    "weight": "Tiny",
+    "bonus":0,
+    "features": ["No encumbrance"],
+    "gearType": "Other",
+    "cost": 40
+  },
+  {
+    "id": 52,
+    "name": "Waterskin",
+    "weight": "Tiny",
+    "bonus":0,
+    "features": ["No encumbrance"],
+    "gearType": "Other",
+    "cost": 30
+  },
+  {
+    "id": 53,
+    "name": "Bandages",
+    "weight": "Light",
+    "bonus":1,
+    "features": ["+1 Healing"],
+    "gearType": "Other",
+    "cost": 6
+  },
+  {
+    "id": 54,
+    "name": "Lamp Oil",
+    "weight": "Light",
+    "bonus":0,
+    "features": ["Lasts Quarter Day"],
+    "gearType": "Other",
+    "cost": 2
+  },
+  {
+    "id": 55,
+    "name": "Ink and Quill",
+    "weight": "Tiny",
+    "bonus":0,
+    "features": ["Write Spells"],
+    "gearType": "Other",
+    "cost": 20
+  },
+  {
+    "id": 56,
+    "name": "Parchment",
+    "weight": "Tiny",
+    "bonus":0,
+    "features": ["Write Spells"],
+    "gearType": "Other",
+    "cost": 6
+  },
+  {
+    "id": 57,
     "name": "Blanket",
     "weight": "Light",
     "bonus":1,
     "features": ["+1 Cold"],
     "gearType": "Other",
     "cost": 7
+  },
+  {
+    "id": 58,
+    "name": "Sleeping Fur",
+    "weight": "Medium",
+    "bonus":2,
+    "features": ["+2 Cold"],
+    "gearType": "Other",
+    "cost": 30
+  },
+  {
+    "id": 59,
+    "name": "Flint and Steel",
+    "weight": "Tiny",
+    "bonus":1,
+    "features": ["+1 Making Camp"],
+    "gearType": "Other",
+    "cost": 2
+  },
+  {
+    "id": 60,
+    "name": "Lockpicks",
+    "weight": "Tiny",
+    "bonus":1,
+    "features": ["+1 Sleight of Hand"],
+    "gearType": "Other",
+    "cost": 100
+  },
+  {
+    "id": 61,
+    "name": "Field Rations",
+    "weight": "Medium",
+    "bonus":1,
+    "features": ["+1 Food"],
+    "gearType": "Other",
+    "cost": 100
   }
 ]

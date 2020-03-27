@@ -184,8 +184,296 @@
     "name": "Field Rations",
     "weight": "Medium",
     "bonus":1,
-    "features": ["+1 Food"],
+    "features": ["Cook 1 Food", "+1 Food"],
     "gearType": "Other",
-    "cost": 100
+    "cost": 10
+  },
+  {
+    "id": 62,
+    "name": "Field Kitchen",
+    "weight": "Heavy",
+    "bonus":0,
+    "features": ["Cook 2d6 Food", "+2d6 Food", "Quarter Day"],
+    "gearType": "Other",
+    "cost": 40
+  },
+  {
+    "id": 63,
+    "name": "Cauldron",
+    "weight": "Medium",
+    "bonus":1,
+    "features": ["+1 Cooking"],
+    "gearType": "Other",
+    "cost": 18
+  },
+  {
+    "id": 64,
+    "name": "Metal Chalice",
+    "weight": "Light",
+    "bonus":1,
+    "features": [],
+    "gearType": "Other",
+    "cost": 7
+  },
+  {
+    "id": 65,
+    "name": "Tankard",
+    "weight": "Light",
+    "bonus":0,
+    "features": [],
+    "gearType": "Other",
+    "cost": 2
+  },
+  {
+    "id": 66,
+    "name": "Metal Plate",
+    "weight": "Light",
+    "bonus":0,
+    "features": [],
+    "gearType": "Other",
+    "cost": 8
+  },
+  {
+    "id": 67,
+    "name": "Food Knife",
+    "weight": "Tiny",
+    "bonus":0,
+    "features": [],
+    "gearType": "Other",
+    "cost": 6
+  },
+  {
+    "id": 68,
+    "name": "Spoon",
+    "weight": "Tiny",
+    "bonus":0,
+    "features": [],
+    "gearType": "Other",
+    "cost": 8
+  },
+  {
+    "id": 69,
+    "name": "Bear Trap",
+    "weight": "Medium",
+    "bonus":2,
+    "features": ["+2 Hunting"],
+    "gearType": "Other",
+    "cost": 50
+  },
+  {
+    "id": 70,
+    "name": "Snares",
+    "weight": "Light",
+    "bonus":1,
+    "features": ["+1 Hunting"],
+    "gearType": "Other",
+    "cost": 10
+  },
+  {
+    "id": 71,
+    "name": "Barrel",
+    "weight": "Heavy",
+    "bonus":10,
+    "features": ["Hold Water"],
+    "gearType": "Other",
+    "cost": 8
+  },
+  {
+    "id": 72,
+    "name": "Clay Jug",
+    "weight": "Light",
+    "bonus":1,
+    "features": ["Hold Water"],
+    "gearType": "Other",
+    "cost": 5
+  },
+  {
+    "id": 73,
+    "name": "Small Tent",
+    "weight": "Medium",
+    "bonus":2,
+    "features": ["+2 Making Camp","Room for Two"],
+    "gearType": "Other",
+    "cost": 20
+  },
+  {
+    "id": 74,
+    "name": "Large Tent",
+    "weight": "Heavy",
+    "bonus":2,
+    "features": ["+2 Making Camp","Room for Six"],
+    "gearType": "Other",
+    "cost": 50
+  },
+  {
+    "id": 75,
+    "name": "Fishing Hook and Line",
+    "weight": "Light",
+    "bonus":1,
+    "features": ["+1 Fishing"],
+    "gearType": "Other",
+    "cost": 4
+  },
+  {
+  "id": 76,
+  "name": "Fishing Net",
+  "weight": "Medium",
+  "bonus":2,
+  "features": ["+2 Fishing"],
+  "gearType": "Other",
+  "cost": 10
+  },
+  {
+    "id": 77,
+    "name": "Magnifying Glass",
+    "weight": "Tiny",
+    "bonus":0,
+    "features": ["Ingredient","Spells"],
+    "gearType": "Other",
+    "cost": 300
+  },
+  {
+    "id": 78,
+    "name": "Holy Symbol",
+    "weight": "Tiny",
+    "bonus":0,
+    "features": ["Ingredient","Spells"],
+    "gearType": "Other",
+    "cost": 10
+  },
+  {
+    "id": 79,
+    "name": "Chalk",
+    "weight": "Tiny",
+    "bonus":0,
+    "features": ["Symbolists"],
+    "gearType": "Other",
+    "cost": 2
+  },
+  {
+    "id": 80,
+    "name": "Map",
+    "weight": "Tiny",
+    "bonus":0,
+    "features": ["Ingredient","Spells"],
+    "gearType": "Other",
+    "cost": 40
+  },
+  {
+    "id": 81,
+    "name": "Spyglass",
+    "weight": "Medium",
+    "bonus":2,
+    "features": ["+2 Scouting","Long Range"],
+    "gearType": "Other",
+    "cost": 300
+  },
+  {
+    "id": 82,
+    "name": "Crystal Ball",
+    "weight": "Light",
+    "bonus":0,
+    "features": ["Ingredient","Spells"],
+    "gearType": "Other",
+    "cost": 60
+  },
+  {
+    "id": 83,
+    "name": "Hourglass",
+    "weight": "Light",
+    "bonus":0,
+    "features": ["Ingredient","Spells"],
+    "gearType": "Other",
+    "cost": 120
+  },
+  {
+    "id": 84,
+    "name": "Scales",
+    "weight": "Medium",
+    "bonus":0,
+    "features": ["Ingredient","Spells"],
+    "gearType": "Other",
+    "cost": 30
+  },
+  {
+    "id": 85,
+    "name": "Flute",
+    "weight": "Light",
+    "bonus":1,
+    "features": ["+1 Performance"],
+    "gearType": "Other",
+    "cost": 15
+  },
+  {
+    "id": 86,
+    "name": "Horn",
+    "weight": "Medium",
+    "bonus":1,
+    "features": ["+1 Performance"],
+    "gearType": "Other",
+    "cost": 30
+  },
+  {
+    "id": 87,
+    "name": "Lyre",
+    "weight": "Medium",
+    "bonus":1,
+    "features": ["+1 Performance"],
+    "gearType": "Other",
+    "cost": 50
+  },
+  {
+    "id": 88,
+    "name": "Harp",
+    "weight": "Heavy",
+    "bonus":2,
+    "features": ["+2 Performance"],
+    "gearType": "Other",
+    "cost": 80
+  },
+  {
+    "id": 89,
+    "name": "Drum",
+    "weight": "Medium",
+    "bonus":1,
+    "features": ["+1 Performance"],
+    "gearType": "Other",
+    "cost": 18
+  },
+  {
+    "id": 90,
+    "name": "Lethal Poison",
+    "weight": "Tiny",
+    "bonus":3,
+    "features": ["Potency"],
+    "gearType": "Other",
+    "cost": 50
+  },
+  {
+    "id": 91,
+    "name": "Paralyzing Poison",
+    "weight": "Tiny",
+    "bonus":3,
+    "features": ["Potency"],
+    "gearType": "Other",
+    "cost": 40
+  },
+  {
+    "id": 92,
+    "name": "Sleeping Poison",
+    "weight": "Tiny",
+    "bonus":3,
+    "features": ["Potency"],
+    "gearType": "Other",
+    "cost": 30
+  },
+  {
+    "id": 93,
+    "name": "Hallucinogenic Poison",
+    "weight": "Tiny",
+    "bonus":3,
+    "features": ["Potency"],
+    "gearType": "Other",
+    "cost": 40
   }
 ]
